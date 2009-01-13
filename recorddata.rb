@@ -1,9 +1,11 @@
 class RecordData
-  def initialize(title)
+  attr_reader :title, :link, :description, :pubDate
+
+  def initialize(title, link, description, pubDate)
    @title = title
+   @link = link
+   @description = description 
+   @pubDate = pubDate 
   end
 
-  def title 
-    @title
-  end
 end
