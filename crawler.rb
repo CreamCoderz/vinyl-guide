@@ -3,14 +3,15 @@ require 'uri'
 
 class Crawler 
 
-  def initialize(httpClient)
+  def initialize(httpClient, url)
     @httpClient = httpClient
+    @url = url 
   end
 
   def crawl
-    @url = URI.parse('http://www.example.com/index.html') 
-    @response = @httpClient.start(@url.host, @url.port) { |http|
-      @response = http.get(@url.path)
+    @uri = URI.parse(@url)
+    @response = @httpClient.start(@uri.host, @uri.port) { |http|
+      @response = http.get(@uri.path)
     }
   end
 end

@@ -10,7 +10,8 @@ describe Crawler do
 			   "</rss>\n"+
 			  "</xml>"
     @httpClient.response = (@expectedResponse)
-    @crawler = Crawler.new(@httpClient)
+    @url = "http://www.example.com/index.html"
+    @crawler = Crawler.new(@httpClient, @url)
     @actualResponse = @crawler.crawl
     @actualResponse.getResponseClass.should == Net::HTTPSuccess 
     @actualResponse.body.should == @expectedResponse
