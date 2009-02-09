@@ -1,26 +1,41 @@
 require 'net/http'
 require 'uri'
 require 'crawler'
+require 'spec/feedparser_spec'
 
 describe Crawler do
-  it "should make a get request for an rss feed from ebay" do
+  URL = "http://rss.example.com/index.html"
+  
+  it "should make a get request for a given url" do
     @httpClient = SettableHttpClient.new 'unused' 
     @expectedResponse = "<?xml version =\"1.0\">\n" +
 			    "<rss version=\"2.0\">\n" +
 			   "</rss>\n"+
 			  "</xml>"
-    @httpClient.response = (@expectedResponse)
-    @url = "http://www.example.com/index.html"
-    @crawler = Crawler.new(@httpClient, @url)
-    @actualResponse = @crawler.crawl
+    @httpClient.response = @expectedResponse
+    @crawler = Crawler.new(@httpClient, URL)
+    @actualResponse = @crawler.get
     @actualResponse.getResponseClass.should == Net::HTTPSuccess 
     @actualResponse.body.should == @expectedResponse
-    @httpClient.host.should == "www.example.com"
+    @httpClient.host.should == "rss.example.com"
     @httpClient.port.should == 80
     @httpClient.path.should == "/index.html" 
   end
 
-  #TODO: test response failure
+  it "should parse request into an array of records" do
+    @httpClient = SettableHttpClient.new 'unused' 
+    @httpClient.response = FeedParserSpec::FEED_HEADER + FeedParserSpec::FEED_FOOTER 
+    @crawler = Crawler.new(@httpClient, URL)
+    @actualResults = @crawler.crawl
+    @actualResults.length.should == 0
+    @httpClient.response = FeedParserSpec::FEED_WITH_ITEMS
+    @actualResults = @crawler.crawl 
+    @actualResults.length.should == 2
+    FeedParserSpec.checkFeedItem(@actualResults[0], FeedParserSpec::JAZZBO_RECORD) 
+    FeedParserSpec.checkFeedItem(@actualResults[1], FeedParserSpec::CONGOS_RECORD) 
+  end
+  
+  #TODO: test response failure on crawl
 
   class SettableHttpClient<Net::HTTP
  
