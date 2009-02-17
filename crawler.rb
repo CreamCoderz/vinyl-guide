@@ -17,6 +17,10 @@ class Crawler
   end
 
   def crawl
-    @result = FeedParser.parse(get.body)
+    response = get
+    if (response != Net::HTTPSuccess)
+      raise Exception.new('invalid response for url: ' + @url) 
+    end
+    @result = FeedParser.parse(response.body)
   end
 end

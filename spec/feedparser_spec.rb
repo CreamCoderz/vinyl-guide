@@ -51,15 +51,15 @@ module FeedParserSpec
   
 describe FeedParser do
   it "should be empty if no items exist" do
-    @feed = FEED_HEADER + FEED_FOOTER
-    FeedParser.parse(@feed).length.should == 0
+    feed = FEED_HEADER + FEED_FOOTER
+    FeedParser.parse(feed).length.should == 0
   end
 
   it "should parse the feed into a hash" do
-    @items = FeedParser.parse(FEED_WITH_ITEMS)
-    @items.length.should == 2
-    FeedParserSpec.checkFeedItem(@items[0], JAZZBO_RECORD) 
-    FeedParserSpec.checkFeedItem(@items[1], CONGOS_RECORD) 
+    items = FeedParser.parse(FEED_WITH_ITEMS)
+    items.length.should == 2
+    FeedParserSpec.checkFeedItem(items[0], JAZZBO_RECORD) 
+    FeedParserSpec.checkFeedItem(items[1], CONGOS_RECORD) 
   end
 
 end
