@@ -1,13 +1,14 @@
+require 'spec'
 require 'net/http'
 require 'uri'
-require 'crawler'
-require 'spec/feedparser_spec'
+require File.dirname(__FILE__) + '/../../app/util/crawler'
+require File.dirname(__FILE__) + '/feedparser_spec'
 
 describe Crawler do
   URL = "http://rss.example.com/index.html"
   
   it "should make a get request for a given url" do
-    httpClient = SettableHttpClient.new 'unused' 
+    httpClient = SettableHttpClient.new 'unused'
     expectedResponse = "<?xml version =\"1.0\">\n" +
 			    "<rss version=\"2.0\">\n" +
 			   "</rss>\n"+
@@ -23,7 +24,7 @@ describe Crawler do
   end
 
   it "should parse request into an array of records" do
-    httpClient = SettableHttpClient.new 'unused' 
+    httpClient = SettableHttpClient.new 'unused'
     httpClient.setResponse(FeedParserSpec::FEED_HEADER + FeedParserSpec::FEED_FOOTER) 
     crawler = Crawler.new(httpClient, URL)
     actualResults = crawler.crawl

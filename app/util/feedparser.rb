@@ -1,5 +1,5 @@
 require 'cobravsmongoose'
-require 'recorddata'
+require File.dirname(__FILE__) + '/../domain/recorddata'
 
 class FeedParser
   def self.parse(rss)

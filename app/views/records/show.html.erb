@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%=h @record.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @record.description %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%=h @record.date %>
+</p>
+
+
+<%= link_to 'Edit', edit_record_path(@record) %> |
+<%= link_to 'Back', records_path %>

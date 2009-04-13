@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  name: The Heart of the Congoes
+  description: The epic roots masterpiece produced by Lee Perry
+  date: 1977-07-02
+
+two:
+  id: 2
+  name: Natty Pass Thru
+  description: Price Jazzbos original Black Ark materpiece
+  date: 1977-03-28

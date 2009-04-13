@@ -1,6 +1,6 @@
 require 'net/http'
 require 'uri'
-require 'feedparser'
+require File.dirname(__FILE__) + '/feedparser'
 
 class Crawler 
 
