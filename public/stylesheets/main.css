@@ -1,0 +1,82 @@
+body {
+    color: #000000;
+    font-family: Verdana, sans-serif;
+    font-size: 11px;
+    text-align: left;
+}
+
+h2 {
+    color: red;
+}
+
+label {
+    font-weight: bold;
+}
+
+input, select {
+    border: 1px solid #000;
+    background: #ffc;
+}
+
+.controls a:link {
+    color: #fff;
+    text-decoration: none;
+}
+
+.controls a:visited {
+    color: #fff;
+    text-decoration: none;
+}
+
+.controls a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.controls a:active {
+    color: #fff;
+    text-decoration: none;
+}
+
+.new a:link {
+    color: #000;
+    text-decoration: none;
+}
+
+.new a:visited {
+    color: #000;
+    text-decoration: none;
+}
+
+.new a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+.new a:active {
+    color: #000;
+    text-decoration: none;
+}
+
+.controls {
+    color: #fff;
+    background-color: #000;
+    border: 2px solid #000;
+}
+
+.button {
+    border: 1px solid #000;
+    background: #999;
+}
+
+.recordItem {
+    margin: 2px;
+    border: 2px solid #000;
+    list-style: none;
+}
+
+.container {
+    margin: 10px;
+    float: left;
+}
+

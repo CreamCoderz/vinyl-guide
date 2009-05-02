@@ -67,3 +67,1290 @@ Migrating to CreateRecords (20090329042943)
   [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
   [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM `schema_migrations`[0m
   [4;35;1mSQL (0.7ms)[0m   [0mINSERT INTO `schema_migrations` (version) VALUES ('20090329042943')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-21 21:08:04) [GET]
+
+ActionController::RoutingError (No route matches "/test" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-21 21:08:42) [GET]
+
+ActionController::RoutingError (No route matches "/new" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-21 21:08:47) [GET]
+
+ActionController::RoutingError (No route matches "/record" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-21 21:08:51) [GET]
+  [4;36;1mRecord Load (32.6ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+Completed in 71ms (View: 33, DB: 33) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-21 21:19:24) [GET]
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+Completed in 10ms (View: 4, DB: 1) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-21 21:21:38) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+Completed in 10ms (View: 5, DB: 1) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-21 21:30:39) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+Completed in 11ms (View: 6, DB: 1) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-21 21:32:50) [GET]
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+Completed in 8ms (View: 2, DB: 1) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-21 21:32:51) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+Completed in 9ms (View: 1, DB: 1) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-21 21:32:52) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+Completed in 8ms (View: 1, DB: 0) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-21 21:32:57) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+Completed in 8ms (View: 1, DB: 1) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-21 21:32:58) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+Completed in 8ms (View: 1, DB: 0) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-21 21:33:16) [GET]
+  [4;35;1mRecord Load (2.0ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+Completed in 8ms (View: 2, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-21 21:33:17) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-21 21:33:41) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+Completed in 6ms (View: 1, DB: 1) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-21 21:33:41) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+Completed in 8ms (View: 1, DB: 0) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-21 21:40:56) [GET]
+  [4;35;1mRecord Load (0.5ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 14ms (View: 5, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateRecords (20090329042943)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mSQL (3.6ms)[0m   [0;1mdescribe `records`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `records`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (55.0ms)[0m   [0;1mDROP DATABASE IF EXISTS `vinylguide_test2`[0m
+  [4;35;1mSQL (12.8ms)[0m   [0mCREATE DATABASE `vinylguide_test2` DEFAULT CHARACTER SET `utf8`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mCREATE TABLE `records` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `description` varchar(255), `date` date, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (5.5ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM `schema_migrations`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mINSERT INTO `schema_migrations` (version) VALUES ('20090329042943')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-21 21:46:54) [GET]
+  [4;35;1mRecord Load (1.9ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 15ms (View: 7, DB: 4) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-21 21:46:55) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 13ms (View: 4, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-21 21:46:56) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 13ms (View: 4, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-21 21:49:53) [GET]
+  [4;35;1mRecord Load (2.0ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 13ms (View: 5, DB: 4) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-21 21:51:57) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 16ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-21 21:53:20) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 16ms (View: 9, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-21 21:54:25) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 18ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-21 21:55:39) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 17ms (View: 9, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-21 21:58:10) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 57ms (View: 51, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-21 21:58:58) [GET]
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 13ms (View: 5, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#show (for 127.0.0.1 at 2009-04-21 21:59:31) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mRecord Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (1.8ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 1) [0m
+Rendering template within layouts/records
+Rendering records/show
+Completed in 19ms (View: 6, DB: 4) | 200 OK [http://localhost/records/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-21 21:59:33) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 11ms (View: 5, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-22 21:31:25) [GET]
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Completed in 44ms (View: 37, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (32.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-29 22:27:42) [GET]
+  [4;36;1mRecord Load (75.0ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Completed in 200ms (View: 102, DB: 109) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-04-29 22:29:35) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mRecord Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+  [4;35;1mRecord Load (0.8ms)[0m   [0mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/edit
+Completed in 45ms (View: 38, DB: 3) | 200 OK [http://localhost/records/2/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-04-29 22:36:13) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mRecord Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+  [4;35;1mRecord Load (1.6ms)[0m   [0mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/edit
+Completed in 16ms (View: 8, DB: 3) | 200 OK [http://localhost/records/2/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#update (for 127.0.0.1 at 2009-04-29 22:36:37) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"xceAF5eFW/t9EpEZVMNB3+pPJHuhMmfdWURVYVQt5Mk=", "id"=>"2", "record"=>{"name"=>"Junior Brown: Rockers Delight", "date(1i)"=>"1979", "date(2i)"=>"9", "date(3i)"=>"3", "description"=>"original press, very few in existence"}}
+  [4;36;1mRecord Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+  [4;35;1mRecord Load (1.2ms)[0m   [0mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRecord Update (0.6ms)[0m   [0mUPDATE `records` SET `description` = 'original press, very few in existence', `updated_at` = '2009-04-30 05:36:37' WHERE `id` = 2[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/records/2
+Completed in 54ms (DB: 4) | 302 Found [http://localhost/records/2]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#show (for 127.0.0.1 at 2009-04-29 22:36:37) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mRecord Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (0.6ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/show
+Completed in 35ms (View: 28, DB: 2) | 200 OK [http://localhost/records/2]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-29 22:36:45) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 51ms (View: 46, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-04-29 22:39:01) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mRecord Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (1.6ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/edit
+Completed in 17ms (View: 9, DB: 3) | 200 OK [http://localhost/records/2/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#show (for 127.0.0.1 at 2009-04-29 22:44:11) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mRecord Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (1.7ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/show
+Completed in 12ms (View: 3, DB: 3) | 200 OK [http://localhost/records/2]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#show (for 127.0.0.1 at 2009-04-29 22:44:16) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mRecord Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (0.7ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/show
+Completed in 11ms (View: 3, DB: 3) | 200 OK [http://localhost/records/2]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-29 22:44:22) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 51ms (View: 45, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-04-29 22:44:24) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mRecord Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (1.9ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/edit
+Completed in 17ms (View: 9, DB: 4) | 200 OK [http://localhost/records/2/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-04-29 22:45:58) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mRecord Columns (2.6ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (1.2ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/edit
+Completed in 17ms (View: 8, DB: 4) | 200 OK [http://localhost/records/2/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-04-29 22:48:00) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mRecord Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (1.7ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/edit
+Completed in 17ms (View: 9, DB: 3) | 200 OK [http://localhost/records/2/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-04-29 22:48:26) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mRecord Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (1.2ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/edit
+Completed in 18ms (View: 11, DB: 3) | 200 OK [http://localhost/records/2/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-04-29 22:48:37) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mRecord Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (1.5ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/edit
+Completed in 17ms (View: 9, DB: 3) | 200 OK [http://localhost/records/2/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-04-29 22:49:58) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mRecord Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (1.7ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/edit
+Completed in 16ms (View: 9, DB: 3) | 200 OK [http://localhost/records/2/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-04-29 22:50:20) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mRecord Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (1.3ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/edit
+Completed in 57ms (View: 50, DB: 3) | 200 OK [http://localhost/records/2/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-04-29 23:02:13) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mRecord Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (1.3ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/edit
+Completed in 20ms (View: 12, DB: 3) | 200 OK [http://localhost/records/2/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-04-29 23:02:30) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mRecord Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (1.6ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/edit
+Completed in 19ms (View: 12, DB: 3) | 200 OK [http://localhost/records/2/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-04-29 23:05:27) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mRecord Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (1.4ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/edit
+Completed in 58ms (View: 51, DB: 3) | 200 OK [http://localhost/records/2/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-04-29 23:05:40) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mRecord Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (1.5ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/edit
+Completed in 17ms (View: 9, DB: 3) | 200 OK [http://localhost/records/2/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-04-29 23:07:22) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mRecord Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (2.0ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/edit
+Completed in 20ms (View: 12, DB: 4) | 200 OK [http://localhost/records/2/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-04-29 23:10:10) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mRecord Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (1.3ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/edit
+Completed in 20ms (View: 12, DB: 3) | 200 OK [http://localhost/records/2/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-04-29 23:13:00) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mRecord Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (1.5ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/edit
+Completed in 17ms (View: 9, DB: 4) | 200 OK [http://localhost/records/2/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-29 23:13:24) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 12ms (View: 6, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-29 23:13:34) [GET]
+  [4;35;1mRecord Load (0.6ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 14ms (View: 5, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-04-29 23:13:37) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mRecord Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (1.9ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/edit
+Completed in 56ms (View: 48, DB: 4) | 200 OK [http://localhost/records/2/edit]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-04-29 23:14:02) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mRecord Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (1.1ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/edit
+Completed in 22ms (View: 12, DB: 3) | 200 OK [http://localhost/records/2/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-04-29 23:14:03) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mRecord Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (1.7ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/edit
+Completed in 17ms (View: 9, DB: 3) | 200 OK [http://localhost/records/2/edit]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-04-29 23:14:11) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mRecord Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (1.7ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/edit
+Completed in 17ms (View: 9, DB: 3) | 200 OK [http://localhost/records/2/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-04-29 23:15:02) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mRecord Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (1.5ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/edit
+Completed in 17ms (View: 10, DB: 3) | 200 OK [http://localhost/records/2/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-04-29 23:15:39) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mRecord Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (1.6ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/edit
+Completed in 16ms (View: 9, DB: 3) | 200 OK [http://localhost/records/2/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-04-29 23:18:05) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mRecord Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (1.8ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/edit
+Completed in 22ms (View: 13, DB: 3) | 200 OK [http://localhost/records/2/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-04-29 23:18:24) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mRecord Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (1.5ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/edit
+Completed in 18ms (View: 9, DB: 3) | 200 OK [http://localhost/records/2/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-04-29 23:18:24) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mRecord Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (1.8ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/edit
+Completed in 16ms (View: 9, DB: 3) | 200 OK [http://localhost/records/2/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-04-29 23:22:04) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mRecord Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (1.9ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/edit
+Completed in 17ms (View: 9, DB: 4) | 200 OK [http://localhost/records/2/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-04-29 23:22:42) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mRecord Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mRecord Load (2.1ms)[0m   [0;1mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/edit
+Completed in 58ms (View: 50, DB: 4) | 200 OK [http://localhost/records/2/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-29 23:23:37) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 13ms (View: 6, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-29 23:24:18) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 12ms (View: 5, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-29 23:24:50) [GET]
+  [4;35;1mRecord Load (1.4ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 18ms (View: 11, DB: 3) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-29 23:25:26) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 12ms (View: 5, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-29 23:25:27) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 12ms (View: 5, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-29 23:25:51) [GET]
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 11ms (View: 5, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:09:12) [GET]
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Completed in 44ms (View: 37, DB: 3) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:15:34) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Completed in 11ms (View: 5, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:15:36) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Completed in 12ms (View: 5, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:15:57) [GET]
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Completed in 17ms (View: 10, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:16:41) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Completed in 16ms (View: 10, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:18:06) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Completed in 11ms (View: 5, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (3.6ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:20:18) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Completed in 12ms (View: 6, DB: 6) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:20:19) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Completed in 11ms (View: 5, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:20:27) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Completed in 11ms (View: 5, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:21:00) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Completed in 10ms (View: 5, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:22:15) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Completed in 16ms (View: 9, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:23:05) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Completed in 14ms (View: 5, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:23:17) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Completed in 17ms (View: 11, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:25:44) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Completed in 14ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (44.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:25:45) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Completed in 11ms (View: 5, DB: 46) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:26:19) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Completed in 16ms (View: 10, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:27:31) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Completed in 15ms (View: 9, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:27:32) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Completed in 52ms (View: 47, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#new (for 127.0.0.1 at 2009-04-30 22:27:35) [GET]
+  [4;36;1mRecord Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Rendering template within layouts/records
+Rendering records/new
+Completed in 158ms (View: 152, DB: 2) | 200 OK [http://localhost/records/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:29:01) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 59ms (View: 6, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:29:57) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 12ms (View: 5, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:30:39) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 13ms (View: 5, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:30:53) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 12ms (View: 5, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:37:00) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 15ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:38:20) [GET]
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 12ms (View: 6, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:39:21) [GET]
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 16ms (View: 10, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:42:32) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 10ms (View: 5, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:43:20) [GET]
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 11ms (View: 5, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:43:58) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 11ms (View: 5, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:44:20) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 85ms (View: 6, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:45:45) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 13ms (View: 6, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (1.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:45:45) [GET]
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 12ms (View: 6, DB: 3) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:46:13) [GET]
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 12ms (View: 5, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:46:14) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 12ms (View: 5, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:47:02) [GET]
+  [4;35;1mRecord Load (2.5ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (3.6ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 19ms (View: 6, DB: 6) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:47:06) [GET]
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 14ms (View: 7, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:47:54) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 11ms (View: 5, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:48:24) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 11ms (View: 5, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:48:25) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 12ms (View: 5, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-04-30 22:51:13) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 11ms (View: 5, DB: 3) | 200 OK [http://localhost/records]
+/!\ FAILSAFE /!\  Sat May 02 15:45:46 -0700 2009
+  Status: 500 Internal Server Error
+  Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/connection_adapters/mysql_adapter.rb:576:in `real_connect'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/connection_adapters/mysql_adapter.rb:576:in `connect'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/connection_adapters/mysql_adapter.rb:204:in `initialize'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/connection_adapters/mysql_adapter.rb:76:in `new'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/connection_adapters/mysql_adapter.rb:76:in `mysql_connection'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `send'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `new_connection'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/connection_adapters/abstract/connection_pool.rb:245:in `checkout_new_connection'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/connection_adapters/abstract/connection_pool.rb:188:in `checkout'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `loop'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `checkout'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/connection_adapters/abstract/connection_pool.rb:183:in `checkout'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/connection_adapters/abstract/connection_pool.rb:98:in `connection'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/connection_adapters/abstract/connection_pool.rb:326:in `retrieve_connection'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/connection_adapters/abstract/connection_specification.rb:123:in `retrieve_connection'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/connection_adapters/abstract/connection_specification.rb:115:in `connection'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/query_cache.rb:9:in `cache'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/query_cache.rb:28:in `call'
+    /Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/head.rb:9:in `call'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/methodoverride.rb:24:in `call'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/params_parser.rb:15:in `call'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/rewindable_input.rb:25:in `call'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/session/cookie_store.rb:93:in `call'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/reloader.rb:9:in `call'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/failsafe.rb:11:in `call'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/lock.rb:11:in `call'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/lock.rb:11:in `synchronize'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/lock.rb:11:in `call'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/dispatcher.rb:106:in `call'
+    /Library/Ruby/Gems/1.8/gems/rails-2.3.2/lib/rails/rack/static.rb:31:in `call'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/urlmap.rb:46:in `call'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/urlmap.rb:40:in `each'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/urlmap.rb:40:in `call'
+    /Library/Ruby/Gems/1.8/gems/rails-2.3.2/lib/rails/rack/log_tailer.rb:17:in `call'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/content_length.rb:13:in `call'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/chunked.rb:15:in `call'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/handler/mongrel.rb:61:in `process'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:159:in `process_client'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:158:in `each'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:158:in `process_client'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `initialize'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `new'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `initialize'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `new'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `run'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/handler/mongrel.rb:34:in `run'
+    /Library/Ruby/Gems/1.8/gems/rails-2.3.2/lib/commands/server.rb:111
+    /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+  [4;36;1mSQL (36.8ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-05-02 15:46:40) [GET]
+  [4;36;1mRecord Load (80.2ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Completed in 189ms (View: 102, DB: 119) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-05-02 15:46:51) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mRecord Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+  [4;35;1mRecord Load (24.0ms)[0m   [0mSELECT * FROM `records` WHERE (`records`.`id` = 2) [0m
+Rendering template within layouts/records
+Rendering records/edit
+Completed in 59ms (View: 28, DB: 26) | 200 OK [http://localhost/records/2/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-05-02 15:46:55) [GET]
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Completed in 12ms (View: 6, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#new (for 127.0.0.1 at 2009-05-02 15:46:57) [GET]
+  [4;36;1mRecord Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Rendering template within layouts/records
+Rendering records/new
+Completed in 174ms (View: 169, DB: 2) | 200 OK [http://localhost/records/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-05-02 15:46:58) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Completed in 11ms (View: 5, DB: 2) | 200 OK [http://localhost/records]

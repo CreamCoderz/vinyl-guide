@@ -11,19 +11,19 @@ class RecordsViewTest <  ActionController::TestCase
     get :index
     record_count = 0
     count = 0
-    assert_select 'tr' do |table_rows|
-      table_rows.each do |row|
-        record = Record.find(record_count+1)
-        assert_select row, 'td' do |cells_in_row|
-          cells_in_row.each do |cell|
-            record_field_value = record[RECORD_DISPLAY_FIELDS[count]]
+    assert_select 'li' do |records|
+      records.each do |record|
+        expected_record = Record.find(record_count+1)
+        assert_select record, 'p span' do |record_field|
+          record_field.each do |record_value|
+            expected_value = expected_record[RECORD_DISPLAY_FIELDS[count]]
             if count < RECORD_DISPLAY_FIELDS.length
-              cell_value = cell.children.to_s
+              actual_value = record_value.children.to_s
               begin
-                cell_value = Date.parse(cell_value)
+                actual_value = Date.parse(actual_value)
               rescue ArgumentError
               end
-              assert_equal record_field_value, cell_value
+              assert_equal expected_value, actual_value
               count += 1
             end
           end

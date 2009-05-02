@@ -1,24 +1,32 @@
-<h1>Editing record</h1>
+<div class="container">
+    <h1>Editing
+        <% @record.name %></h1>
+    <% form_for(@record) do |f| %>
 
-<% form_for(@record) do |f| %>
-  <%= f.error_messages %>
+        <%= f.error_messages %>
 
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </p>
-  <p>
-    <%= f.label :date %><br />
-    <%= f.date_select :date %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
+        <p>
+            <%= f.label :name %><br/>
+            <%= f.text_field :name %>
+        </p>
 
-<%= link_to 'Show', @record %> |
-<%= link_to 'Back', records_path %>
+        <p>
+            <%= f.label :description %><br/>
+            <%= f.text_field :description %>
+        </p>
+
+        <p>
+            <%= f.label :date %><br/>
+            <%= f.date_select :date %>
+        </p>
+
+        <p>
+            <%= f.submit 'Update', "class" => "button" %>
+        </p>
+    <% end %>
+
+    <span class="controls">
+        <%= link_to 'Show', @record %> |
+        <%= link_to 'Back', records_path %>
+    </span>
+</div>
