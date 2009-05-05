@@ -32,6 +32,7 @@ class RecordsControllerTest < ActionController::TestCase
     assert_equal("The Heart of the Congoes", record.name)
   end
 
+  #TODO: test fields available for edit
   def test_should_get_edit
     get :edit, :id => records(:one).to_param
     assert_response :success

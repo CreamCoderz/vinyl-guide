@@ -2,12 +2,26 @@
 
 one:
   id: 1
+  artist: The Congoes
   name: The Heart of the Congoes
   description: The epic roots masterpiece produced by Lee Perry
   date: 1977-07-02
+  img_src: http://www.ebay.com/the_congos
+  producer: Lee Perry
+  band: Upsetters
+  engineer: Errol Thompson
+  studio: Black Ark
+
+  
 
 two:
   id: 2
+  artist: Prince Jazzbo 
   name: Natty Pass Thru
   description: Price Jazzbos original Black Ark materpiece
   date: 1977-03-28
+  img_src: http://www.ebay.com/prince_jazzbo
+  producer: Lee Scratch Perry
+  band: The Upsetters
+  engineer: Scientist
+  studio: The Black Ark

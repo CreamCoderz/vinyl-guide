@@ -1,8 +1,7 @@
-
 class RecordsViewTest <  ActionController::TestCase
 
-  RECORD_DISPLAY_FIELDS = ['name', 'description', 'date']
-  
+  RECORD_DISPLAY_FIELDS = ['artist', 'name', 'description', 'date', 'img_src', 'producer', 'band', 'engineer', 'studio']
+
   def setup()
     @controller = RecordsController.new
   end

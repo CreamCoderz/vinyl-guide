@@ -1,22 +1,44 @@
 <div class="container">
-    <h1>Vinyl Results</h1>
+    <h3>Vinyl Results</h3>
 
     <ul>
         <% @records.each do |record| %>
             <li class="recordItem">
                 <p>
+                    <label>Artist</label>
+                    <span><%= h record.artist %></span>
+                </p>
+                <p>
                     <label>Name</label>
                     <span><%= h record.name %></span>
                 </p>
-
                 <p>
                     <label>Description</label>
                     <span><%= h record.description %></span>
                 </p>
-
                 <p>
                     <label>Date</label>
                     <span><%= h record.date %></span>
+                </p>
+                <p>
+                    <label>Image</label>
+                    <span><%= h record.img_src %></span>
+                </p>
+                <p>
+                    <label>Producer</label>
+                    <span><%= h record.producer %></span>
+                </p>
+                <p>
+                    <label>Band</label>
+                    <span><%= h record.band %></span>
+                </p>
+                <p>
+                    <label>Engineer</label>
+                    <span><%= h record.engineer %></span>
+                </p>
+                <p>
+                    <label>Studio</label>
+                    <span><%= h record.studio %></span>
                 </p>
                 <span class="controls">
                     <span><%= link_to 'View', record %>|</span>
@@ -28,5 +50,5 @@
     </ul>
     <br/>
 
-    <span class="new"><%= link_to 'New Record', new_record_path %></span>
+    <span class="new"><%= link_to '* New Record', new_record_path %></span>
 </div>

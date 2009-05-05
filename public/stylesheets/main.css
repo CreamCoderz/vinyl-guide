@@ -38,22 +38,22 @@ input, select {
     text-decoration: none;
 }
 
-.new a:link {
+a:link {
     color: #000;
     text-decoration: none;
 }
 
-.new a:visited {
+a:visited {
     color: #000;
     text-decoration: none;
 }
 
-.new a:hover {
+a:hover {
     color: #000;
     text-decoration: underline;
 }
 
-.new a:active {
+a:active {
     color: #000;
     text-decoration: none;
 }
@@ -77,6 +77,13 @@ input, select {
 
 .container {
     margin: 10px;
-    float: left;
+}
+
+.header {
+    border: 2px solid #000;
+}
+
+.footer {
+    border: 2px solid #000;
 }
 
