@@ -4,6 +4,11 @@
     <% form_for(@record) do |f| %>
 
         <%= f.error_messages %>
+        <p>
+            <%= f.label :artist %><br/>
+            <%= f.text_field :artist %>
+        </p>
+
 
         <p>
             <%= f.label :name %><br/>
@@ -18,6 +23,32 @@
         <p>
             <%= f.label :date %><br/>
             <%= f.date_select :date %>
+        </p>
+
+        <p>
+            <%= f.label :img_src %><br/>
+            <%= f.text_field :img_src %>
+        </p>
+
+
+        <p>
+            <%= f.label :producer %><br/>
+            <%= f.text_field :producer %>
+        </p>
+
+        <p>
+            <%= f.label :band %><br/>
+            <%= f.text_field :band %>
+        </p>
+
+        <p>
+            <%= f.label :engineer %><br/>
+            <%= f.text_field :engineer %>
+        </p>
+
+        <p>
+            <%= f.label :studio %><br/>
+            <%= f.text_field :studio %>
         </p>
 
         <p>

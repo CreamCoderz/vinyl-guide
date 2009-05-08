@@ -15,7 +15,6 @@ label {
 
 input, select {
     border: 1px solid #000;
-    background: #ffc;
 }
 
 .controls a:link {

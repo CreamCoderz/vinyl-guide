@@ -32,7 +32,6 @@ class RecordsControllerTest < ActionController::TestCase
     assert_equal("The Heart of the Congoes", record.name)
   end
 
-  #TODO: test fields available for edit
   def test_should_get_edit
     get :edit, :id => records(:one).to_param
     assert_response :success
@@ -40,11 +39,11 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   def test_should_update_record
-    updatedName = "roots of david"
-    put :update, :id => records(:one).to_param, :record => {:name => updatedName}
+    updated_name = "roots of david"
+    put :update, :id => records(:one).to_param, :record => {:name => updated_name}
     record = assigns(:record)
     assert_redirected_to record_path(record)
-    assert_equal(updatedName, record.name)
+    assert_equal(updated_name, record.name)
   end
 
   def test_should_destroy_record
