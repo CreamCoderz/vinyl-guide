@@ -1,12 +1,21 @@
 body {
-    color: #000000;
-    font-family: Verdana, sans-serif;
-    font-size: 11px;
+    color: #990000;
+    font-family: Courier, sans-serif;
+    font-size: 16px;
     text-align: left;
 }
 
+h1 {
+    display: inline;
+}
+
 h2 {
-    color: red;
+    color: #990000;
+}
+
+h3 {
+    color: #006600;
+    font-size: 20px;
 }
 
 label {
@@ -18,22 +27,22 @@ input, select {
 }
 
 .controls a:link {
-    color: #fff;
+    color: #006600;
     text-decoration: none;
 }
 
 .controls a:visited {
-    color: #fff;
+    color: #006600;
     text-decoration: none;
 }
 
 .controls a:hover {
-    color: #fff;
+    color: #006600;
     text-decoration: underline;
 }
 
 .controls a:active {
-    color: #fff;
+    color: #006600;
     text-decoration: none;
 }
 
@@ -58,9 +67,7 @@ a:active {
 }
 
 .controls {
-    color: #fff;
-    background-color: #000;
-    border: 2px solid #000;
+    color: #006600;
 }
 
 .button {
@@ -70,7 +77,6 @@ a:active {
 
 .recordItem {
     margin: 2px;
-    border: 2px solid #000;
     list-style: none;
 }
 
@@ -78,11 +84,76 @@ a:active {
     margin: 10px;
 }
 
+.container ul {
+    padding: 0;
+}
+
+.container hr {
+    margin-left:0;
+    height: 3px;
+    background-color: #006600;
+    color: #990000;
+    border: 0;
+    width:1200px;
+}
+
 .header {
-    border: 2px solid #000;
+    width: 1200px;
+    height: 45px;
+    background-color: #FF9900;
+}
+
+.nav {
+    float: right;
+    left: 278px;
+    width: 922px;
+    height: 100%;
+    background-color: #006600;
+    font-size: 20px;    
+}
+
+.nav div {
+    margin-left: 7px;
+    margin-top: 12px;
+}
+
+.nav a:link {
+    color: #FF9900;
+    text-decoration: none;
+}
+
+.nav a:visited {
+    color: #FF9900;
+    text-decoration: none;
+}
+
+.nav a:hover {
+    color: #FF9900;
+    text-decoration: underline;
+}
+
+.nav a:active {
+    text-decoration: none;
+}
+
+.logo {
+    font-weight: bold;
+    margin-top: 8px;
+    margin-left: 12px;
+    float: left;
+    width: 255px;
+    height: 100%;
+    font-size: 25px;
 }
 
 .footer {
-    border: 2px solid #000;
+    background-color: #FF9900;
+    width: 1200px;
+    height: 45px;
+}
+
+.footer div {
+    margin-top: 8px;
+    margin-left: 12px;
 }
 
