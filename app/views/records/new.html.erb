@@ -1,23 +1,47 @@
 <h1>New record</h1>
 
-<% form_for(@record) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </p>
-  <p>
-    <%= f.label :date %><br />
-    <%= f.date_select :date %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
+<% form_for(@record) do |record| %>
+    <%= record.error_messages %>
+    <p>
+        <%= record.label :artist %><br/>
+        <%= record.text_field :artist %>
+    </p>
+    <p>
+        <%= record.label :name %><br/>
+        <%= record.text_field :name %>
+    </p>
+    <p>
+        <%= record.label :description %><br/>
+        <%= record.text_field :description %>
+    </p>
+    <p>
+        <%= record.label :date %><br/>
+        <%= record.date_select :date %>
+    </p>
+    <p>
+        <%= record.label :img_src %><br/>
+        <%= record.text_field :img_src %>
+    </p>
+    <p>
+        <%= record.label :producer %><br/>
+        <%= record.text_field :producer %>
+    </p>
+    <p>
+        <%= record.label :band %><br/>
+        <%= record.text_field :band %>
+    </p>
+    <p>
+        <%= record.label :engineer %><br/>
+        <%= record.text_field :engineer %>
+    </p>
+    <p>
+        <%= record.label :studio %><br/>
+        <%= record.text_field :studio %>
+    </p>
+    <p>
+        <%= record.submit 'Create', "class" => "button",
+                "onmouseover" => "setClass(this, 'buttonHover');", "onmouseout" => "setClass(this, 'button');" %>
+    </p>
 <% end %>
 
 <%= link_to 'Back', records_path %>

@@ -23,7 +23,9 @@ label {
 }
 
 input, select {
-    border: 1px solid #000;
+    font-family: Courier, sans-serif;
+    font-size: 16px;
+    border: 2px solid #006600;
 }
 
 .controls a:link {
@@ -47,22 +49,22 @@ input, select {
 }
 
 a:link {
-    color: #000;
+    color: #006600;
     text-decoration: none;
 }
 
 a:visited {
-    color: #000;
+    color: #006600;
     text-decoration: none;
 }
 
 a:hover {
-    color: #000;
+    color: #006600;
     text-decoration: underline;
 }
 
 a:active {
-    color: #000;
+    color: #006600;
     text-decoration: none;
 }
 
@@ -71,8 +73,13 @@ a:active {
 }
 
 .button {
-    border: 1px solid #000;
-    background: #999;
+    color: #990000;
+    background: #FF9900;
+}
+
+.buttonHover {
+    color: #FF9900;
+    background: #990000;    
 }
 
 .recordItem {
@@ -133,6 +140,7 @@ a:active {
 }
 
 .nav a:active {
+    color: #FF9900;
     text-decoration: none;
 }
 

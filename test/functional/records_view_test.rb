@@ -1,11 +1,37 @@
 class RecordsViewTest <  ActionController::TestCase
 
   RECORD_DISPLAY_FIELDS = ['artist', 'name', 'description', 'date', 'img_src', 'producer', 'band', 'engineer', 'studio']
-
+  RECORD_INPUT_TYPE_FIELDS = Array.new(RECORD_DISPLAY_FIELDS);
+  RECORD_INPUT_TYPE_FIELDS.delete('date')
+  
   def setup
     @controller = RecordsController.new
   end
 
+  #TODO: test date fields
+  def test_edit_view
+    expected_record = records(:one)
+    get :edit, :id => expected_record.to_param
+    check_record_fields 'form p input[type=text]', RECORD_INPUT_TYPE_FIELDS,
+            [Proc.new {|field, expected_value| assert_select field, '[name=?]', 'record[' + expected_value + ']'},
+                    Proc.new {|field, expected_value| assert_select field, '[value=?]', expected_record[expected_value]}]
+  end
+
+  #TODO: test date fields
+  def test_create_view
+    get :new
+    check_record_fields 'form p input[type=text]', RECORD_INPUT_TYPE_FIELDS,
+            [Proc.new {|field, expected_value| assert_select field, '[name=?]', 'record[' + expected_value + ']'}]
+  end
+
+  def test_show_view
+    expected_record = records(:one)
+    get :show, :id => expected_record.to_param
+    check_record_fields 'div.recordData p span', RECORD_DISPLAY_FIELDS,
+            [Proc.new {|field, expected_value| assert_equal field.children.to_s, expected_record[expected_value].to_s}]
+  end
+
+  #TODO: this function is ugly so i moved it to the bottom
   def test_index_view
     get :index
     record_count = 0
@@ -33,23 +59,18 @@ class RecordsViewTest <  ActionController::TestCase
     end
   end
 
-  #TODO: test date fields
-  def test_edit_view
-    record_input_type_fields = Array.new(RECORD_DISPLAY_FIELDS)
-    record_input_type_fields.delete('date')
-    get :edit, :id => records(:one).to_param
-    field_count = 0
+  def check_record_fields selector_path, record_input_type_fields, assertions
     count = 0
-    assert_select 'form p input[type=text]' do |input_fields|
+    assert_select selector_path do |input_fields|
+      assert_equal input_fields.length, record_input_type_fields.length      
       input_fields.each do |input_field|
-        puts input_field
-        puts 'count ' + count.to_s
-        puts 'expected ' + record_input_type_fields[count]
         expected_name = record_input_type_fields[count]
-        assert_select input_field, '[name=?]', 'record[' + expected_name + ']'
+        assertions.each do |assertion|
+          assertion.call(input_field, expected_name)
+        end
         count += 1
       end
-      puts input_fields.length
     end
   end
+
 end
