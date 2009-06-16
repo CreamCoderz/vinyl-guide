@@ -4737,3 +4737,55 @@ Rendering records/index
 Rendered partials/_header (0.1ms)
 Rendered partials/_footer (0.1ms)
 Completed in 20ms (View: 10, DB: 6) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (25.7ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-01 21:03:03) [GET]
+  [4;36;1mRecord Load (74.4ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (12.5ms)
+Rendered partials/_footer (12.9ms)
+Completed in 239ms (View: 158, DB: 102) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-06-01 22:41:43) [GET]
+
+ActionController::RoutingError (No route matches "/search" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#show (for 127.0.0.1 at 2009-06-01 22:41:53) [GET]
+  Parameters: {"id"=>"search"}
+  [4;36;1mRecord Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+  [4;35;1mRecord Load (1.1ms)[0m   [0mSELECT * FROM `records` WHERE (`records`.`id` = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Record with ID=search):
+  app/controllers/records_controller.rb:15:in `show'
+
+Rendered rescues/_trace (82.4ms)
+Rendered rescues/_request_and_response (1.5ms)
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#show (for 127.0.0.1 at 2009-06-01 22:42:13) [GET]
+  Parameters: {"id"=>"search", "query"=>nil}
+  [4;36;1mRecord Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` WHERE (`records`.`id` = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Record with ID=search):
+  app/controllers/records_controller.rb:15:in `show'
+
+Rendered rescues/_trace (38.7ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (not_found)

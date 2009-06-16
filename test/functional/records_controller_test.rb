@@ -7,7 +7,7 @@ class RecordsControllerTest < ActionController::TestCase
     assert_response :success
     records = assigns(:records)
     assert_not_nil records
-    assert_equal(2, records.length)
+    assert_equal(5, records.length)
   end
 
   def test_should_get_new
@@ -46,7 +46,7 @@ class RecordsControllerTest < ActionController::TestCase
     assert_equal(updated_name, record.name)
   end
 
-  def test_should_destroy_record
+  def test_should_delete_record
     assert_difference('Record.count', -1) do
       delete :destroy, :id => records(:one).to_param
     end
@@ -54,4 +54,10 @@ class RecordsControllerTest < ActionController::TestCase
     assert_redirected_to records_path
   end
 
+  def test_should_search_for_records
+    get :search, :query => 'lee perry'
+    assert_response :success
+    records = assigns(:records)
+    assert_equal(4, records.length)
+  end
 end

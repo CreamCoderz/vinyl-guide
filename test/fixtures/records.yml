@@ -25,3 +25,40 @@ two:
   band: The Upsetters
   engineer: Scientist
   studio: The Black Ark
+
+
+three:
+  id: 3
+  artist: King Perry
+  name: Natty Pass Thru
+  description: Ska King at Studio One
+  date: 1968-04-21
+  img_src: http://www.ebay.com/king_perry
+  producer: King Perry
+  band: Soul Defenders
+  engineer: Coxsone Dodd
+  studio: Studio One
+
+four:
+  id: 4
+  artist: Prince Far I & The Arabs
+  name: Cry Tuff Dub Encounter Chapter 1
+  description: Massive dub set by the man called Prince Far I
+  date: 1978-05-20
+  img_src: http://www.ebay.com/king_perry
+  producer: Prince Jammy
+  band: The Arabs
+  engineer: Coxsone Dodd
+  studio: Channel One
+
+five:
+  id: 5
+  artist: Johnny Clarke
+  name: None Shall Escape the Judgement
+  description: Flyers style with Johhny Clarke, produced by Striker
+  date: 1979-03-12
+  img_src: http://www.ebay.com/king_perry
+  producer: Bunny Lee
+  band: The Revolutionaries
+  engineer: King Tubby
+  studio: Harry J's

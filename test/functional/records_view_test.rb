@@ -1,9 +1,8 @@
+require 'test_helper'
+include 'RECORD_FIELD_DATA'
+
 class RecordsViewTest <  ActionController::TestCase
 
-  RECORD_DISPLAY_FIELDS = ['artist', 'name', 'description', 'date', 'img_src', 'producer', 'band', 'engineer', 'studio']
-  RECORD_INPUT_TYPE_FIELDS = Array.new(RECORD_DISPLAY_FIELDS);
-  RECORD_INPUT_TYPE_FIELDS.delete('date')
-  
   def setup
     @controller = RecordsController.new
   end
@@ -44,9 +43,11 @@ class RecordsViewTest <  ActionController::TestCase
             expected_value = expected_record[RECORD_DISPLAY_FIELDS[count]]
             if count < RECORD_DISPLAY_FIELDS.length
               actual_value = record_value.children.to_s
+              #TODO: there should be a better way to infer a Date type
               begin
                 actual_value = Date.parse(actual_value)
               rescue ArgumentError
+                expected_value = CGI.escapeHTML(expected_value)
               end
               assert_equal expected_value, actual_value
               count += 1
