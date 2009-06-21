@@ -1,5 +1,5 @@
 require 'test_helper'
-include 'RECORD_FIELD_DATA'
+include BaseTestCase
 
 class RecordsViewTest <  ActionController::TestCase
 
@@ -8,6 +8,7 @@ class RecordsViewTest <  ActionController::TestCase
   end
 
   #TODO: test date fields
+
   def test_edit_view
     expected_record = records(:one)
     get :edit, :id => expected_record.to_param
@@ -17,6 +18,7 @@ class RecordsViewTest <  ActionController::TestCase
   end
 
   #TODO: test date fields
+
   def test_create_view
     get :new
     check_record_fields 'form p input[type=text]', RECORD_INPUT_TYPE_FIELDS,
@@ -30,7 +32,23 @@ class RecordsViewTest <  ActionController::TestCase
             [Proc.new {|field, expected_value| assert_equal field.children.to_s, expected_record[expected_value].to_s}]
   end
 
+  def test_should_diplay_search_form
+    get :index
+    assert_select 'form[name=search]' do |search_form|
+      search_form_attributes = search_form[0].attributes
+      assert_equal search_form_attributes['action'], '/search'
+      assert_equal search_form_attributes['method'], 'get'
+      assert_select 'input' do |input_field|
+        input_field_attributes = input_field[0].attributes
+        assert_equal input_field_attributes['name'], 'query'
+        input_field_attributes = input_field[1].attributes
+        assert_equal input_field_attributes['type'], 'submit'
+      end
+    end
+  end
+
   #TODO: this function is ugly so i moved it to the bottom
+
   def test_index_view
     get :index
     record_count = 0
@@ -60,18 +78,6 @@ class RecordsViewTest <  ActionController::TestCase
     end
   end
 
-  def check_record_fields selector_path, record_input_type_fields, assertions
-    count = 0
-    assert_select selector_path do |input_fields|
-      assert_equal input_fields.length, record_input_type_fields.length      
-      input_fields.each do |input_field|
-        expected_name = record_input_type_fields[count]
-        assertions.each do |assertion|
-          assertion.call(input_field, expected_name)
-        end
-        count += 1
-      end
-    end
-  end
+
 
 end

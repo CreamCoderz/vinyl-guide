@@ -4789,3 +4789,1805 @@ ActiveRecord::RecordNotFound (Couldn't find Record with ID=search):
 Rendered rescues/_trace (38.7ms)
 Rendered rescues/_request_and_response (0.4ms)
 Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:02:09) [GET]
+  [4;36;1mRecord Load (26.1ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (16.0ms)
+Rendered partials/_footer (15.6ms)
+Completed in 140ms (View: 107, DB: 28) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-06-18 22:02:17) [GET]
+  Parameters: {"query"=>"fdafdaf"}
+
+ActionController::RoutingError (No route matches "/search" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:05:13) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 14ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:06:27) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.0ms)
+Completed in 13ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:06:27) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 14ms (View: 9, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:06:28) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 13ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:07:35) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.9ms)
+Rendered partials/_footer (0.1ms)
+Completed in 18ms (View: 11, DB: 3) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:08:11) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 13ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:08:52) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 14ms (View: 8, DB: 3) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:11:44) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.9ms)
+Rendered partials/_footer (0.1ms)
+Completed in 16ms (View: 10, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:11:46) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.0ms)
+Completed in 14ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:12:32) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (1.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 17ms (View: 11, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:13:25) [GET]
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (60.4ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 74ms (View: 8, DB: 61) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:14:07) [GET]
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (1.0ms)
+Rendered partials/_footer (0.1ms)
+Completed in 17ms (View: 11, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:14:28) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 14ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:15:25) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.9ms)
+Rendered partials/_footer (0.1ms)
+Completed in 16ms (View: 10, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:15:45) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (350.8ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.9ms)
+Rendered partials/_footer (0.1ms)
+Completed in 366ms (View: 11, DB: 351) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:16:05) [GET]
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.8ms)
+Rendered partials/_footer (0.5ms)
+Completed in 19ms (View: 12, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:21:22) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 13ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#search (for 127.0.0.1 at 2009-06-18 22:21:30) [GET]
+  Parameters: {"query"=>"fdafdaf"}
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` WHERE (artist like '%fdafdaf%' OR name like '%fdafdaf%' OR description like '%fdafdaf%' OR producer like '%fdafdaf%' OR band like '%fdafdaf%' OR engineer like '%fdafdaf%' OR studio like '%fdafdaf%') [0m
+Rendering template within layouts/records
+Rendering records/search
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 8ms (View: 4, DB: 1) | 200 OK [http://localhost/search?query=fdafdaf]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:29:36) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 13ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-18 22:29:42) [GET]
+  Parameters: {"query"=>"test"}
+
+NoMethodError (undefined method `append_or' for #<SearchController:0x19261d8>):
+  app/controllers/search_controller.rb:10:in `search'
+  app/controllers/search_controller.rb:9:in `each'
+  app/controllers/search_controller.rb:9:in `search'
+
+Rendered rescues/_trace (35.0ms)
+Rendered rescues/_request_and_response (1.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-18 22:30:40) [GET]
+  Parameters: {"query"=>"test"}
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` WHERE (artist like '%test%' OR name like '%test%' OR description like '%test%' OR producer like '%test%' OR band like '%test%' OR engineer like '%test%' OR studio like '%test%') [0m
+Rendering search/search
+Completed in 9ms (View: 5, DB: 1) | 200 OK [http://localhost/search?query=test]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#show (for 127.0.0.1 at 2009-06-18 22:32:43) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mRecord Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+  [4;35;1mRecord Load (1.4ms)[0m   [0mSELECT * FROM `records` WHERE (`records`.`id` = 1) [0m
+Rendering template within layouts/records
+Rendering records/show
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 15ms (View: 8, DB: 3) | 200 OK [http://localhost/records/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:32:47) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 14ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#show (for 127.0.0.1 at 2009-06-18 22:32:50) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mRecord Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+  [4;35;1mRecord Load (1.3ms)[0m   [0mSELECT * FROM `records` WHERE (`records`.`id` = 1) [0m
+Rendering template within layouts/records
+Rendering records/show
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 12ms (View: 4, DB: 3) | 200 OK [http://localhost/records/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:33:02) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 14ms (View: 9, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:38:30) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.empty?) in app/views/partials/_record.html.erb:
+
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:469:in `scan'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:525:in `compile'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:692:in `initialize'
+    app/views/records/index.html.erb:7
+    app/views/records/index.html.erb:5:in `each'
+    app/views/records/index.html.erb:5
+    app/controllers/records_controller.rb:6:in `index'
+
+Rendered rescues/_trace (58.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:41:33) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+
+ActionView::TemplateError (wrong number of arguments (2 for 1)) on line #7 of app/views/records/index.html.erb:
+4:     <ul>
+5:         <% @records.each do |record| %>
+6:             <li class="recordItem">
+7:                 <%= render_partial "partials/record", record %>
+8:                 <span class="controls">
+9:                     <span><%= link_to 'View', record %>|</span>
+10:                     <span><%= link_to 'Edit', edit_record_path(record) %>|</span>
+
+    app/views/records/index.html.erb:7:in `render_partial'
+    app/views/records/index.html.erb:7
+    app/views/records/index.html.erb:5:in `each'
+    app/views/records/index.html.erb:5
+    app/controllers/records_controller.rb:6:in `index'
+
+Rendered rescues/_trace (46.0ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:43:35) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+
+ActionView::TemplateError (wrong number of arguments (2 for 1)) on line #7 of app/views/records/index.html.erb:
+4:     <ul>
+5:         <% @records.each do |record| %>
+6:             <li class="recordItem">
+7:                 <%= render_partial "partials/record", record %>
+8:                 <span class="controls">
+9:                     <span><%= link_to 'View', record %>|</span>
+10:                     <span><%= link_to 'Edit', edit_record_path(record) %>|</span>
+
+    app/views/records/index.html.erb:7:in `render_partial'
+    app/views/records/index.html.erb:7
+    app/views/records/index.html.erb:5:in `each'
+    app/views/records/index.html.erb:5
+    app/controllers/records_controller.rb:6:in `index'
+
+Rendered rescues/_trace (45.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:47:47) [GET]
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.empty?) in app/views/partials/_record.html.erb:
+
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:469:in `scan'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:525:in `compile'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:692:in `initialize'
+    app/views/records/index.html.erb:7
+    app/views/records/index.html.erb:5:in `each'
+    app/views/records/index.html.erb:5
+    app/controllers/records_controller.rb:6:in `index'
+
+Rendered rescues/_trace (101.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:49:01) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.empty?) in app/views/partials/_record.html.erb:
+
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:469:in `scan'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:525:in `compile'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:692:in `initialize'
+    app/views/records/index.html.erb:7
+    app/views/records/index.html.erb:5:in `each'
+    app/views/records/index.html.erb:5
+    app/controllers/records_controller.rb:6:in `index'
+
+Rendered rescues/_trace (55.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:51:26) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+
+ActionView::TemplateError (wrong number of arguments (3 for 2)) on line #7 of app/views/records/index.html.erb:
+4:     <ul>
+5:         <% @records.each do |record| %>
+6:             <li class="recordItem">
+7:                 <%= render :partial, "partials/record", record  %>
+8:                 <span class="controls">
+9:                     <span><%= link_to 'View', record %>|</span>
+10:                     <span><%= link_to 'Edit', edit_record_path(record) %>|</span>
+
+    app/views/records/index.html.erb:7:in `render'
+    app/views/records/index.html.erb:7
+    app/views/records/index.html.erb:5:in `each'
+    app/views/records/index.html.erb:5
+    app/controllers/records_controller.rb:6:in `index'
+
+Rendered rescues/_trace (46.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:51:53) [GET]
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+
+ActionView::TemplateError (undefined method `include?' for :partial:Symbol) on line #7 of app/views/records/index.html.erb:
+4:     <ul>
+5:         <% @records.each do |record| %>
+6:             <li class="recordItem">
+7:                 <%= render :partial, "partials/record"  %>
+8:                 <span class="controls">
+9:                     <span><%= link_to 'View', record %>|</span>
+10:                     <span><%= link_to 'Edit', edit_record_path(record) %>|</span>
+
+    app/views/records/index.html.erb:7
+    app/views/records/index.html.erb:5:in `each'
+    app/views/records/index.html.erb:5
+    app/controllers/records_controller.rb:6:in `index'
+
+Rendered rescues/_trace (115.0ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:54:00) [GET]
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+
+ActionView::TemplateError (undefined method `include?' for :partial:Symbol) on line #7 of app/views/records/index.html.erb:
+4:     <ul>
+5:         <% @records.each do |record| %>
+6:             <li class="recordItem">
+7:                 <%= render :partial, "../partials/record"  %>
+8:                 <span class="controls">
+9:                     <span><%= link_to 'View', record %>|</span>
+10:                     <span><%= link_to 'Edit', edit_record_path(record) %>|</span>
+
+    app/views/records/index.html.erb:7
+    app/views/records/index.html.erb:5:in `each'
+    app/views/records/index.html.erb:5
+    app/controllers/records_controller.rb:6:in `index'
+
+Rendered rescues/_trace (222.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:54:02) [GET]
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+
+ActionView::TemplateError (undefined method `include?' for :partial:Symbol) on line #7 of app/views/records/index.html.erb:
+4:     <ul>
+5:         <% @records.each do |record| %>
+6:             <li class="recordItem">
+7:                 <%= render :partial, "../partials/record"  %>
+8:                 <span class="controls">
+9:                     <span><%= link_to 'View', record %>|</span>
+10:                     <span><%= link_to 'Edit', edit_record_path(record) %>|</span>
+
+    app/views/records/index.html.erb:7
+    app/views/records/index.html.erb:5:in `each'
+    app/views/records/index.html.erb:5
+    app/controllers/records_controller.rb:6:in `index'
+
+Rendered rescues/_trace (46.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:54:22) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+
+ActionView::TemplateError (Missing template ../partials/_record in view path app/views) on line #7 of app/views/records/index.html.erb:
+4:     <ul>
+5:         <% @records.each do |record| %>
+6:             <li class="recordItem">
+7:                 <%= render :partial => "../partials/record", record => record %>
+8:                 <span class="controls">
+9:                     <span><%= link_to 'View', record %>|</span>
+10:                     <span><%= link_to 'Edit', edit_record_path(record) %>|</span>
+
+    app/views/records/index.html.erb:7
+    app/views/records/index.html.erb:5:in `each'
+    app/views/records/index.html.erb:5
+    app/controllers/records_controller.rb:6:in `index'
+
+Rendered rescues/_trace (58.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:54:36) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (3.7ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.empty?) in app/views/partials/_record.html.erb:
+
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:469:in `scan'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:525:in `compile'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:692:in `initialize'
+    app/views/records/index.html.erb:7
+    app/views/records/index.html.erb:5:in `each'
+    app/views/records/index.html.erb:5
+    app/controllers/records_controller.rb:6:in `index'
+
+Rendered rescues/_trace (102.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:56:50) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.empty?) in app/views/partials/_record.html.erb:
+
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:469:in `scan'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:525:in `compile'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:692:in `initialize'
+    app/views/records/index.html.erb:7
+    app/views/records/index.html.erb:5:in `each'
+    app/views/records/index.html.erb:5
+    app/controllers/records_controller.rb:6:in `index'
+
+Rendered rescues/_trace (54.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:56:51) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.empty?) in app/views/partials/_record.html.erb:
+
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:469:in `scan'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:525:in `compile'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:692:in `initialize'
+    app/views/records/index.html.erb:7
+    app/views/records/index.html.erb:5:in `each'
+    app/views/records/index.html.erb:5
+    app/controllers/records_controller.rb:6:in `index'
+
+Rendered rescues/_trace (101.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:57:06) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.empty?) in app/views/partials/_record.html.erb:
+
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:469:in `scan'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:525:in `compile'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:692:in `initialize'
+    app/views/records/index.html.erb:7
+    app/views/records/index.html.erb:5:in `each'
+    app/views/records/index.html.erb:5
+    app/controllers/records_controller.rb:6:in `index'
+
+Rendered rescues/_trace (55.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 22:57:08) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.empty?) in app/views/partials/_record.html.erb:
+
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:469:in `scan'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:525:in `compile'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:692:in `initialize'
+    app/views/records/index.html.erb:7
+    app/views/records/index.html.erb:5:in `each'
+    app/views/records/index.html.erb:5
+    app/controllers/records_controller.rb:6:in `index'
+
+Rendered rescues/_trace (99.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:02:26) [GET]
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+
+ActionView::TemplateError (Missing template records/_record.erb in view path app/views) on line #7 of app/views/records/index.html.erb:
+4:     <ul>
+5:         <% @records.each do |record| %>
+6:             <li class="recordItem">
+7:                 <%= render :partial => "record", :locals => {:record => record} %>
+8:                 <span class="controls">
+9:                     <span><%= link_to 'View', record %>|</span>
+10:                     <span><%= link_to 'Edit', edit_record_path(record) %>|</span>
+
+    app/views/records/index.html.erb:7
+    app/views/records/index.html.erb:5:in `each'
+    app/views/records/index.html.erb:5
+    app/controllers/records_controller.rb:6:in `index'
+
+Rendered rescues/_trace (95.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:08:31) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+
+ActionView::TemplateError (Missing template records/_record.erb in view path app/views) on line #7 of app/views/records/index.html.erb:
+4:     <ul>
+5:         <% @records.each do |record| %>
+6:             <li class="recordItem">
+7:                 <%= render :partial => "record", :locals => {:record => record} %>
+8:                 <span class="controls">
+9:                     <span><%= link_to 'View', record %>|</span>
+10:                     <span><%= link_to 'Edit', edit_record_path(record) %>|</span>
+
+    app/views/records/index.html.erb:7
+    app/views/records/index.html.erb:5:in `each'
+    app/views/records/index.html.erb:5
+    app/controllers/records_controller.rb:6:in `index'
+
+Rendered rescues/_trace (47.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:08:48) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.empty?) in app/views/partials/_record.html.erb:
+
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:469:in `scan'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:525:in `compile'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:692:in `initialize'
+    app/views/records/index.html.erb:7
+    app/views/records/index.html.erb:5:in `each'
+    app/views/records/index.html.erb:5
+    app/controllers/records_controller.rb:6:in `index'
+
+Rendered rescues/_trace (136.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (3.7ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:10:44) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.empty?) in app/views/partials/_record.html.erb:
+
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:469:in `scan'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:525:in `compile'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:692:in `initialize'
+    app/views/records/index.html.erb:7
+    app/views/records/index.html.erb:5:in `each'
+    app/views/records/index.html.erb:5
+    app/controllers/records_controller.rb:6:in `index'
+
+Rendered rescues/_trace (59.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:13:59) [GET]
+  [4;35;1mRecord Load (0.6ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.empty?) in app/views/partials/_record.html.erb:
+
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:469:in `scan'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:525:in `compile'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:692:in `initialize'
+    app/views/records/index.html.erb:7
+    app/views/records/index.html.erb:5:in `each'
+    app/views/records/index.html.erb:5
+    app/controllers/records_controller.rb:6:in `index'
+
+Rendered rescues/_trace (96.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:14:12) [GET]
+  [4;36;1mRecord Load (15.7ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+Rendered partials/_header (0.1ms)
+  [4;35;1mRecord Columns (15.5ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 60ms (View: 24, DB: 31) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:14:43) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.empty?) in app/views/partials/_record.html.erb:
+
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:469:in `scan'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:525:in `compile'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:692:in `initialize'
+    app/views/records/index.html.erb:7
+    app/views/records/index.html.erb:5:in `each'
+    app/views/records/index.html.erb:5
+    app/controllers/records_controller.rb:6:in `index'
+
+Rendered rescues/_trace (101.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:15:25) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+Rendered partials/_footer (0.1ms)
+  [4;36;1mRecord Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Rendered partials/_footer (0.1ms)
+Rendered partials/_footer (0.1ms)
+Rendered partials/_footer (0.0ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.0ms)
+Completed in 16ms (View: 9, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:16:28) [GET]
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+Rendered partials/_footer (0.1ms)
+  [4;36;1mRecord Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Rendered partials/_footer (0.2ms)
+Rendered partials/_footer (0.1ms)
+Rendered partials/_footer (0.1ms)
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.empty?) in app/views/partials/_record.html.erb:
+
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:469:in `scan'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:525:in `compile'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:692:in `initialize'
+    app/views/layouts/records.html.erb:15
+    app/controllers/records_controller.rb:6:in `index'
+
+Rendered rescues/_trace (54.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (3.9ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:17:25) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.empty?) in app/views/partials/_somethingelse.html.erb:
+
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:469:in `scan'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:525:in `compile'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:692:in `initialize'
+    app/views/records/index.html.erb:7
+    app/views/records/index.html.erb:5:in `each'
+    app/views/records/index.html.erb:5
+    app/controllers/records_controller.rb:6:in `index'
+
+Rendered rescues/_trace (101.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (3.5ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:17:37) [GET]
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+Rendered partials/_header (0.1ms)
+  [4;35;1mRecord Columns (13.3ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 34ms (View: 12, DB: 17) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:19:20) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+Rendered partials/_header (0.1ms)
+  [4;35;1mRecord Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 15ms (View: 9, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:33:02) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+Rendered partials/_header (0.1ms)
+  [4;35;1mRecord Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 14ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#show (for 127.0.0.1 at 2009-06-18 23:33:11) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mRecord Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` WHERE (`records`.`id` = 1) [0m
+Rendering template within layouts/records
+Rendering records/show
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 11ms (View: 4, DB: 2) | 200 OK [http://localhost/records/show/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:35:14) [GET]
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.empty?) in app/views/partials/_somethingelse.html.erb:
+
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:469:in `scan'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:525:in `compile'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/erb.rb:692:in `initialize'
+    app/views/records/index.html.erb:7
+    app/views/records/index.html.erb:5:in `each'
+    app/views/records/index.html.erb:5
+    app/controllers/records_controller.rb:6:in `index'
+
+Rendered rescues/_trace (54.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:36:23) [GET]
+  [4;35;1mRecord Load (0.5ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (169.0ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 187ms (View: 13, DB: 170) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:38:22) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 13ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-18 23:38:26) [GET]
+  Parameters: {"query"=>"test"}
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` WHERE (artist like '%test%' OR name like '%test%' OR description like '%test%' OR producer like '%test%' OR band like '%test%' OR engineer like '%test%' OR studio like '%test%') [0m
+Rendering template within layouts/search
+Rendering search/search
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 15ms (View: 11, DB: 1) | 200 OK [http://localhost/search?query=test]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-18 23:38:31) [GET]
+  Parameters: {"query"=>"perry"}
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` WHERE (artist like '%perry%' OR name like '%perry%' OR description like '%perry%' OR producer like '%perry%' OR band like '%perry%' OR engineer like '%perry%' OR studio like '%perry%') [0m
+Rendering template within layouts/search
+Rendering search/search
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 7ms (View: 2, DB: 1) | 200 OK [http://localhost/search?query=perry]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:38:44) [GET]
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 13ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-18 23:38:51) [GET]
+  Parameters: {"query"=>"prince"}
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` WHERE (artist like '%prince%' OR name like '%prince%' OR description like '%prince%' OR producer like '%prince%' OR band like '%prince%' OR engineer like '%prince%' OR studio like '%prince%') [0m
+Rendering template within layouts/search
+Rendering search/search
+  [4;36;1mRecord Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 11ms (View: 5, DB: 2) | 200 OK [http://localhost/search?query=prince]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-18 23:40:12) [GET]
+  Parameters: {"query"=>"prince"}
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` WHERE (artist like '%prince%' OR name like '%prince%' OR description like '%prince%' OR producer like '%prince%' OR band like '%prince%' OR engineer like '%prince%' OR studio like '%prince%') [0m
+Rendering template within layouts/search
+Rendering search/search
+  [4;36;1mRecord Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 16ms (View: 10, DB: 2) | 200 OK [http://localhost/search?query=prince]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:40:36) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 13ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-18 23:40:55) [GET]
+  Parameters: {"query"=>"roots"}
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` WHERE (artist like '%roots%' OR name like '%roots%' OR description like '%roots%' OR producer like '%roots%' OR band like '%roots%' OR engineer like '%roots%' OR studio like '%roots%') [0m
+Rendering template within layouts/search
+Rendering search/search
+  [4;36;1mRecord Columns (151.1ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 161ms (View: 6, DB: 152) | 200 OK [http://localhost/search?query=roots]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:41:03) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 13ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-18 23:43:26) [GET]
+  Parameters: {"query"=>"a"}
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` WHERE (artist like '%a%' OR name like '%a%' OR description like '%a%' OR producer like '%a%' OR band like '%a%' OR engineer like '%a%' OR studio like '%a%') [0m
+Rendering template within layouts/search
+Rendering search/search
+  [4;36;1mRecord Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 15ms (View: 8, DB: 3) | 200 OK [http://localhost/search?query=a]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:45:27) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 14ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:52:25) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (1.4ms)
+Rendered partials/_footer (0.1ms)
+Completed in 18ms (View: 11, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-18 23:52:31) [GET]
+  Parameters: {"query"=>"test"}
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` WHERE (artist like '%test%' OR name like '%test%' OR description like '%test%' OR producer like '%test%' OR band like '%test%' OR engineer like '%test%' OR studio like '%test%') [0m
+Rendering template within layouts/search
+Rendering search/search
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 6ms (View: 2, DB: 1) | 200 OK [http://localhost/search?query=test]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:52:37) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 13ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:54:48) [GET]
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.9ms)
+Rendered partials/_footer (0.1ms)
+Completed in 23ms (View: 16, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:56:25) [GET]
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.2ms)
+Rendered partials/_footer (0.1ms)
+Completed in 15ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:56:59) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.0ms)
+Completed in 15ms (View: 7, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:57:18) [GET]
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (6.2ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (1.4ms)
+Rendered partials/_footer (0.1ms)
+Completed in 26ms (View: 14, DB: 7) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:57:40) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 14ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:58:31) [GET]
+  [4;36;1mRecord Load (0.8ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 21ms (View: 13, DB: 3) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:58:50) [GET]
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 14ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:59:14) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 14ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:59:41) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.8ms)
+Rendered partials/_footer (0.1ms)
+Completed in 17ms (View: 11, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-18 23:59:44) [GET]
+  Parameters: {"query"=>"eafda"}
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` WHERE (artist like '%eafda%' OR name like '%eafda%' OR description like '%eafda%' OR producer like '%eafda%' OR band like '%eafda%' OR engineer like '%eafda%' OR studio like '%eafda%') [0m
+Rendering template within layouts/search
+Rendering search/search
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 8ms (View: 2, DB: 1) | 200 OK [http://localhost/search?query=eafda]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-18 23:59:46) [GET]
+  Parameters: {"query"=>"adfadf"}
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` WHERE (artist like '%adfadf%' OR name like '%adfadf%' OR description like '%adfadf%' OR producer like '%adfadf%' OR band like '%adfadf%' OR engineer like '%adfadf%' OR studio like '%adfadf%') [0m
+Rendering template within layouts/search
+Rendering search/search
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 6ms (View: 2, DB: 1) | 200 OK [http://localhost/search?query=adfadf]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-18 23:59:48) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mRecord Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 14ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-18 23:59:59) [GET]
+  Parameters: {"query"=>"afdaf"}
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` WHERE (artist like '%afdaf%' OR name like '%afdaf%' OR description like '%afdaf%' OR producer like '%afdaf%' OR band like '%afdaf%' OR engineer like '%afdaf%' OR studio like '%afdaf%') [0m
+Rendering template within layouts/search
+Rendering search/search
+Rendered partials/_header (0.7ms)
+Rendered partials/_footer (0.1ms)
+Completed in 9ms (View: 5, DB: 1) | 200 OK [http://localhost/search?query=afdaf]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-19 00:00:01) [GET]
+  Parameters: {"query"=>"fefef"}
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` WHERE (artist like '%fefef%' OR name like '%fefef%' OR description like '%fefef%' OR producer like '%fefef%' OR band like '%fefef%' OR engineer like '%fefef%' OR studio like '%fefef%') [0m
+Rendering template within layouts/search
+Rendering search/search
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 7ms (View: 2, DB: 1) | 200 OK [http://localhost/search?query=fefef]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-19 00:06:18) [GET]
+  Parameters: {"query"=>"fefef"}
+  [4;36;1mRecord Load (0.6ms)[0m   [0;1mSELECT * FROM `records` WHERE (artist like '%fefef%' OR name like '%fefef%' OR description like '%fefef%' OR producer like '%fefef%' OR band like '%fefef%' OR engineer like '%fefef%' OR studio like '%fefef%') [0m
+Rendering template within layouts/search
+Rendering search/search
+Rendered partials/_header (0.7ms)
+Rendered partials/_footer (0.1ms)
+Completed in 10ms (View: 5, DB: 1) | 200 OK [http://localhost/search?query=fefef]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-19 00:06:20) [GET]
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 13ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-19 00:10:29) [GET]
+  Parameters: {"query"=>""}
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/search
+Rendering search/search
+  [4;36;1mRecord Columns (4.1ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 65ms (View: 54, DB: 5) | 200 OK [http://localhost/search?query=]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-19 00:10:31) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 14ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-20 00:32:04) [GET]
+  Parameters: {"query"=>"prince"}
+  [4;35;1mRecord Load (1.1ms)[0m   [0mSELECT * FROM `records` WHERE (artist like '%prince%' OR name like '%prince%' OR description like '%prince%' OR producer like '%prince%' OR band like '%prince%' OR engineer like '%prince%' OR studio like '%prince%') [0m
+Rendering template within layouts/search
+Rendering search/search
+  [4;36;1mRecord Columns (4.9ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 23ms (View: 13, DB: 6) | 200 OK [http://localhost/search?query=prince]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-20 20:17:38) [GET]
+  Parameters: {"query"=>""}
+  [4;35;1mRecord Load (0.5ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/search
+Rendering search/search
+  [4;36;1mRecord Columns (2.8ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 16ms (View: 8, DB: 3) | 200 OK [http://localhost/search?query=]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-20 20:17:44) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 14ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-21 14:39:34) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 44ms (View: 38, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-21 14:39:35) [GET]
+  [4;35;1mRecord Load (0.3ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;36;1mRecord Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 15ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-21 14:39:37) [GET]
+  Parameters: {"query"=>"dfa"}
+  [4;35;1mRecord Load (0.5ms)[0m   [0mSELECT * FROM `records` WHERE (artist like '%dfa%' OR name like '%dfa%' OR description like '%dfa%' OR producer like '%dfa%' OR band like '%dfa%' OR engineer like '%dfa%' OR studio like '%dfa%') [0m
+Rendering search/search
+Completed in 5ms (View: 1, DB: 1) | 200 OK [http://localhost/search?query=dfa]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-21 14:40:02) [GET]
+  Parameters: {"query"=>"dfa"}
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` WHERE (artist like '%dfa%' OR name like '%dfa%' OR description like '%dfa%' OR producer like '%dfa%' OR band like '%dfa%' OR engineer like '%dfa%' OR studio like '%dfa%') [0m
+Rendering search/search
+Completed in 5ms (View: 1, DB: 1) | 200 OK [http://localhost/search?query=dfa]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-21 14:40:03) [GET]
+  Parameters: {"query"=>"dfa"}
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` WHERE (artist like '%dfa%' OR name like '%dfa%' OR description like '%dfa%' OR producer like '%dfa%' OR band like '%dfa%' OR engineer like '%dfa%' OR studio like '%dfa%') [0m
+Rendering search/search
+Completed in 5ms (View: 1, DB: 1) | 200 OK [http://localhost/search?query=dfa]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-21 14:40:04) [GET]
+  Parameters: {"query"=>"dfa"}
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` WHERE (artist like '%dfa%' OR name like '%dfa%' OR description like '%dfa%' OR producer like '%dfa%' OR band like '%dfa%' OR engineer like '%dfa%' OR studio like '%dfa%') [0m
+Rendering search/search
+Completed in 8ms (View: 1, DB: 1) | 200 OK [http://localhost/search?query=dfa]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-21 14:40:56) [GET]
+  Parameters: {"query"=>"dfa"}
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` WHERE (artist like '%dfa%' OR name like '%dfa%' OR description like '%dfa%' OR producer like '%dfa%' OR band like '%dfa%' OR engineer like '%dfa%' OR studio like '%dfa%') [0m
+Rendering search/search
+Completed in 5ms (View: 1, DB: 1) | 200 OK [http://localhost/search?query=dfa]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-21 14:40:58) [GET]
+  Parameters: {"query"=>"dfa"}
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` WHERE (artist like '%dfa%' OR name like '%dfa%' OR description like '%dfa%' OR producer like '%dfa%' OR band like '%dfa%' OR engineer like '%dfa%' OR studio like '%dfa%') [0m
+Rendering search/search
+Completed in 6ms (View: 1, DB: 1) | 200 OK [http://localhost/search?query=dfa]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-21 14:44:17) [GET]
+  Parameters: {"query"=>"dfa"}
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` WHERE (artist like '%dfa%' OR name like '%dfa%' OR description like '%dfa%' OR producer like '%dfa%' OR band like '%dfa%' OR engineer like '%dfa%' OR studio like '%dfa%') [0m
+Rendering template within layouts/application
+Rendering search/search
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 12ms (View: 7, DB: 1) | 200 OK [http://localhost/search?query=dfa]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-21 14:46:34) [GET]
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/application
+Rendering records/index
+  [4;35;1mRecord Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 17ms (View: 10, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-21 14:56:45) [GET]
+  [4;36;1mRecord Load (3.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/application
+Rendering records/index
+  [4;35;1mRecord Columns (119.6ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_record (0.4ms)
+Rendered partials/_footer (0.1ms)
+Completed in 148ms (View: 19, DB: 123) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-21 14:57:21) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/application
+Rendering records/index
+  [4;35;1mRecord Columns (44.3ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 68ms (View: 19, DB: 45) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-21 14:57:22) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/application
+Rendering records/index
+  [4;35;1mRecord Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.0ms)
+Completed in 13ms (View: 8, DB: 2) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-21 14:57:48) [GET]
+  Parameters: {"query"=>"fd"}
+  [4;36;1mRecord Load (0.5ms)[0m   [0;1mSELECT * FROM `records` WHERE (artist like '%fd%' OR name like '%fd%' OR description like '%fd%' OR producer like '%fd%' OR band like '%fd%' OR engineer like '%fd%' OR studio like '%fd%') [0m
+Rendering template within layouts/application
+Rendering search/search
+Rendered partials/_record (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 11ms (View: 7, DB: 1) | 200 OK [http://localhost/search?query=fd]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-21 14:58:48) [GET]
+  Parameters: {"query"=>"fd"}
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` WHERE (artist like '%fd%' OR name like '%fd%' OR description like '%fd%' OR producer like '%fd%' OR band like '%fd%' OR engineer like '%fd%' OR studio like '%fd%') [0m
+Rendering template within layouts/application
+Rendering search/search
+
+ActionView::TemplateError (undefined local variable or method `test_data' for #<ActionView::Base:0x1a98c28>) on line #1 of app/views/partials/_record.html.erb:
+1: TEST!!! <%= test_data %>
+
+    app/views/partials/_record.html.erb:1
+    app/views/search/search.html.erb:3
+
+Rendered rescues/_trace (49.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-21 14:59:20) [GET]
+  Parameters: {"query"=>"fd"}
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` WHERE (artist like '%fd%' OR name like '%fd%' OR description like '%fd%' OR producer like '%fd%' OR band like '%fd%' OR engineer like '%fd%' OR studio like '%fd%') [0m
+Rendering template within layouts/application
+Rendering search/search
+
+ActionView::TemplateError (undefined local variable or method `test_data' for #<ActionView::Base:0x1131d38>) on line #1 of app/views/partials/_record.html.erb:
+1: TEST!!! <%= test_data %>
+
+    app/views/partials/_record.html.erb:1
+    app/views/search/search.html.erb:3
+
+Rendered rescues/_trace (60.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-21 14:59:35) [GET]
+  Parameters: {"query"=>"fd"}
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` WHERE (artist like '%fd%' OR name like '%fd%' OR description like '%fd%' OR producer like '%fd%' OR band like '%fd%' OR engineer like '%fd%' OR studio like '%fd%') [0m
+Rendering template within layouts/application
+Rendering search/search
+
+ActionView::TemplateError (undefined local variable or method `test_data' for #<ActionView::Base:0x122b068>) on line #1 of app/views/partials/_record.html.erb:
+1: TEST!!! <%= test_data %>
+
+    app/views/partials/_record.html.erb:1
+    app/views/search/search.html.erb:3
+
+Rendered rescues/_trace (51.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-21 15:00:15) [GET]
+  Parameters: {"query"=>"fd"}
+  [4;36;1mRecord Load (1.0ms)[0m   [0;1mSELECT * FROM `records` WHERE (artist like '%fd%' OR name like '%fd%' OR description like '%fd%' OR producer like '%fd%' OR band like '%fd%' OR engineer like '%fd%' OR studio like '%fd%') [0m
+Rendering template within layouts/application
+Rendering search/search
+
+ActionView::TemplateError (wrong number of arguments (3 for 2)) on line #3 of app/views/search/search.html.erb:
+1: <div class="container">
+2: 
+3:     <%= render :partial, "partials/record", 'test_data' %>
+4: 
+5:     <h3><%= @records.length %> Vinyl Search Results</h3>
+6: 
+
+    app/views/search/search.html.erb:3:in `render'
+    app/views/search/search.html.erb:3
+
+Rendered rescues/_trace (174.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-21 15:01:37) [GET]
+  Parameters: {"query"=>"fd"}
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` WHERE (artist like '%fd%' OR name like '%fd%' OR description like '%fd%' OR producer like '%fd%' OR band like '%fd%' OR engineer like '%fd%' OR studio like '%fd%') [0m
+Rendering template within layouts/application
+Rendering search/search
+
+ActionView::TemplateError (undefined local variable or method `test_data' for #<ActionView::Base:0x1836e94>) on line #1 of app/views/partials/_record.html.erb:
+1: TEST!!! <%= test_data %>
+
+    app/views/partials/_record.html.erb:1
+    app/views/search/search.html.erb:3
+
+Rendered rescues/_trace (100.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-21 15:02:46) [GET]
+  Parameters: {"query"=>"fd"}
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` WHERE (artist like '%fd%' OR name like '%fd%' OR description like '%fd%' OR producer like '%fd%' OR band like '%fd%' OR engineer like '%fd%' OR studio like '%fd%') [0m
+Rendering template within layouts/application
+Rendering search/search
+
+ActionView::TemplateError (undefined local variable or method `test_data' for #<ActionView::Base:0x18c8da8>) on line #1 of app/views/partials/_record.html.erb:
+1: TEST!!! <%= test_data %>
+
+    app/views/partials/_record.html.erb:1
+    app/views/search/search.html.erb:3
+
+Rendered rescues/_trace (95.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-21 15:09:00) [GET]
+  Parameters: {"query"=>"fd"}
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` WHERE (artist like '%fd%' OR name like '%fd%' OR description like '%fd%' OR producer like '%fd%' OR band like '%fd%' OR engineer like '%fd%' OR studio like '%fd%') [0m
+Rendering template within layouts/application
+Rendering search/search
+Rendered partials/_record (0.2ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 11ms (View: 7, DB: 1) | 200 OK [http://localhost/search?query=fd]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-21 15:10:51) [GET]
+  Parameters: {"query"=>"d"}
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` WHERE (artist like '%d%' OR name like '%d%' OR description like '%d%' OR producer like '%d%' OR band like '%d%' OR engineer like '%d%' OR studio like '%d%') [0m
+Rendering template within layouts/application
+Rendering search/search
+  [4;35;1mRecord Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_record (6.8ms)
+Rendered partials/_record (0.9ms)
+Rendered partials/_record (0.8ms)
+Rendered partials/_record (0.8ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.0ms)
+Completed in 21ms (View: 15, DB: 2) | 200 OK [http://localhost/search?query=d]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-21 15:14:37) [GET]
+  [4;36;1mRecord Load (18.2ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/application
+Rendering records/index
+  [4;35;1mRecord Columns (12.3ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_record (35.6ms)
+Rendered partials/_record (0.8ms)
+Rendered partials/_record (0.8ms)
+Rendered partials/_record (0.8ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.2ms)
+Completed in 69ms (View: 31, DB: 31) | 200 OK [http://localhost/records]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#show (for 127.0.0.1 at 2009-06-21 15:14:41) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mRecord Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+  [4;35;1mRecord Load (1.7ms)[0m   [0mSELECT * FROM `records` WHERE (`records`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering records/show
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 12ms (View: 4, DB: 3) | 200 OK [http://localhost/records/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#edit (for 127.0.0.1 at 2009-06-21 15:14:44) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mRecord Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+  [4;35;1mRecord Load (1.6ms)[0m   [0mSELECT * FROM `records` WHERE (`records`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering records/edit
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.0ms)
+Completed in 64ms (View: 56, DB: 4) | 200 OK [http://localhost/records/1/edit]

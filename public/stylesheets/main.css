@@ -79,7 +79,7 @@ a:active {
 
 .buttonHover {
     color: #FF9900;
-    background: #990000;    
+    background: #990000;
 }
 
 .recordItem {
@@ -96,12 +96,12 @@ a:active {
 }
 
 .container hr {
-    margin-left:0;
+    margin-left: 0;
     height: 3px;
     background-color: #006600;
     color: #990000;
     border: 0;
-    width:1200px;
+    width: 1200px;
 }
 
 .header {
@@ -116,7 +116,22 @@ a:active {
     width: 922px;
     height: 100%;
     background-color: #006600;
+    font-size: 20px;
+}
+
+.nav form {
+    display: inline;
+    width: 100px;
+}
+
+.nav input {
+    display: inline; /*float: right*/
     font-size: 20px;    
+}
+
+.nav input[type=submit] {
+    background-color: #FF9900;
+    color: #990000;
 }
 
 .nav div {
