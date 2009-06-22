@@ -2,7 +2,8 @@ class SearchController < ApplicationController
 
   def search
     searchable_fields = ['artist', 'name', 'description', 'producer', 'band', 'engineer', 'studio']
-    query = params[:query].split
+    raw_query = params[:query]
+    query = raw_query.split
     wild_query = []
     query_exp = ''
     i=0
@@ -18,6 +19,7 @@ class SearchController < ApplicationController
       i += 1
     end
     @records = Record.all(:conditions => query_exp)
+    @query = CGI.escapeHTML(raw_query)
   end
 
   def append_or(query_exp)

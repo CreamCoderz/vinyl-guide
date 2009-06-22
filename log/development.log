@@ -6591,3 +6591,132 @@ Rendering records/edit
 Rendered partials/_header (0.1ms)
 Rendered partials/_footer (0.0ms)
 Completed in 64ms (View: 56, DB: 4) | 200 OK [http://localhost/records/1/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-21 19:02:41) [GET]
+  Parameters: {"query"=>"a"}
+  [4;36;1mRecord Load (1.1ms)[0m   [0;1mSELECT * FROM `records` WHERE (artist like '%a%' OR name like '%a%' OR description like '%a%' OR producer like '%a%' OR band like '%a%' OR engineer like '%a%' OR studio like '%a%') [0m
+Rendering template within layouts/application
+Rendering search/search
+  [4;35;1mRecord Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+Rendered partials/_record (5.1ms)
+Rendered partials/_record (0.8ms)
+Rendered partials/_record (0.8ms)
+Rendered partials/_record (0.8ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 22ms (View: 13, DB: 3) | 200 OK [http://localhost/search?query=a]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (19.8ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (29.6ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (354.1ms)[0m   [0;1mDROP DATABASE IF EXISTS `vinylguide_test2`[0m
+  [4;35;1mSQL (21.7ms)[0m   [0mCREATE DATABASE `vinylguide_test2` DEFAULT CHARACTER SET `utf8`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (2.5ms)[0m   [0mCREATE TABLE `records` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `description` varchar(255), `date` date, `created_at` datetime, `updated_at` datetime, `artist` varchar(255), `img_src` varchar(255), `producer` varchar(255), `band` varchar(255), `engineer` varchar(255), `studio` varchar(255)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (34.6ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (6.2ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM `schema_migrations`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mINSERT INTO `schema_migrations` (version) VALUES ('2')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO `schema_migrations` (version) VALUES ('1')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-21 19:59:35) [GET]
+  Parameters: {"query"=>"dfa"}
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` WHERE (artist like '%dfa%' OR name like '%dfa%' OR description like '%dfa%' OR producer like '%dfa%' OR band like '%dfa%' OR engineer like '%dfa%' OR studio like '%dfa%') [0m
+Rendering template within layouts/application
+Rendering search/search
+Rendered partials/_header (0.2ms)
+Rendered partials/_footer (0.1ms)
+Completed in 11ms (View: 5, DB: 1) | 200 OK [http://localhost/search?query=dfa]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-21 19:59:58) [GET]
+  Parameters: {"query"=>"a"}
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` WHERE (artist like '%a%' OR name like '%a%' OR description like '%a%' OR producer like '%a%' OR band like '%a%' OR engineer like '%a%' OR studio like '%a%') [0m
+Rendering template within layouts/application
+Rendering search/search
+  [4;36;1mRecord Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Rendered partials/_record (5.2ms)
+Rendered partials/_record (0.9ms)
+Rendered partials/_record (0.8ms)
+Rendered partials/_record (0.8ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.0ms)
+Completed in 18ms (View: 11, DB: 2) | 200 OK [http://localhost/search?query=a]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-21 20:07:34) [GET]
+  Parameters: {"query"=>"<img src=\"\"/>"}
+  [4;35;1mRecord Load (0.5ms)[0m   [0mSELECT * FROM `records` WHERE (artist like '%<img%' OR name like '%<img%' OR description like '%<img%' OR producer like '%<img%' OR band like '%<img%' OR engineer like '%<img%' OR studio like '%<img%' OR artist like '%src=""/>%' OR name like '%src=""/>%' OR description like '%src=""/>%' OR producer like '%src=""/>%' OR band like '%src=""/>%' OR engineer like '%src=""/>%' OR studio like '%src=""/>%') [0m
+Rendering template within layouts/application
+Rendering search/search
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 8ms (View: 2, DB: 1) | 200 OK [http://localhost/search?query=%3Cimg+src%3D%22%22%2F%3E]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-21 20:07:34) [GET]
+  Parameters: {"query"=>"<img src=\"\"/>"}
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` WHERE (artist like '%<img%' OR name like '%<img%' OR description like '%<img%' OR producer like '%<img%' OR band like '%<img%' OR engineer like '%<img%' OR studio like '%<img%' OR artist like '%src=""/>%' OR name like '%src=""/>%' OR description like '%src=""/>%' OR producer like '%src=""/>%' OR band like '%src=""/>%' OR engineer like '%src=""/>%' OR studio like '%src=""/>%') [0m
+Rendering template within layouts/application
+Rendering search/search
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 6ms (View: 2, DB: 1) | 200 OK [http://localhost/search?query=%3Cimg+src%3D%22%22%2F%3E]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-21 20:08:03) [GET]
+  Parameters: {"query"=>"<font color=\"red\">test</font>"}
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` WHERE (artist like '%<font%' OR name like '%<font%' OR description like '%<font%' OR producer like '%<font%' OR band like '%<font%' OR engineer like '%<font%' OR studio like '%<font%' OR artist like '%color="red">test</font>%' OR name like '%color="red">test</font>%' OR description like '%color="red">test</font>%' OR producer like '%color="red">test</font>%' OR band like '%color="red">test</font>%' OR engineer like '%color="red">test</font>%' OR studio like '%color="red">test</font>%') [0m
+Rendering template within layouts/application
+Rendering search/search
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 51ms (View: 44, DB: 1) | 200 OK [http://localhost/search?query=%3Cfont+color%3D%22red%22%3Etest%3C%2Ffont%3E]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-06-21 20:16:18) [GET]
+  Parameters: {"query"=>"<font color=\"red\">test</font>"}
+  [4;36;1mRecord Load (0.4ms)[0m   [0;1mSELECT * FROM `records` WHERE (artist like '%<font%' OR name like '%<font%' OR description like '%<font%' OR producer like '%<font%' OR band like '%<font%' OR engineer like '%<font%' OR studio like '%<font%' OR artist like '%color="red">test</font>%' OR name like '%color="red">test</font>%' OR description like '%color="red">test</font>%' OR producer like '%color="red">test</font>%' OR band like '%color="red">test</font>%' OR engineer like '%color="red">test</font>%' OR studio like '%color="red">test</font>%') [0m
+Rendering template within layouts/application
+Rendering search/search
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 6ms (View: 2, DB: 1) | 200 OK [http://localhost/search?query=%3Cfont+color%3D%22red%22%3Etest%3C%2Ffont%3E]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-06-21 20:20:54) [GET]
+  [4;35;1mRecord Load (0.4ms)[0m   [0mSELECT * FROM `records` [0m
+Rendering template within layouts/application
+Rendering records/index
+  [4;36;1mRecord Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `records`[0m
+Rendered partials/_record (5.8ms)
+Rendered partials/_record (0.9ms)
+Rendered partials/_record (0.8ms)
+Rendered partials/_record (0.8ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 18ms (View: 9, DB: 3) | 200 OK [http://localhost/records]
