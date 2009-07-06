@@ -61,10 +61,9 @@ class RecordsViewTest <  ActionController::TestCase
             expected_value = expected_record[RECORD_DISPLAY_FIELDS[count]]
             if count < RECORD_DISPLAY_FIELDS.length
               actual_value = record_value.children.to_s
-              #TODO: there should be a better way to infer a Date type
-              begin
+              if expected_value.kind_of?(Date)
                 actual_value = Date.parse(actual_value)
-              rescue ArgumentError
+              else
                 expected_value = CGI.escapeHTML(expected_value)
               end
               assert_equal expected_value, actual_value

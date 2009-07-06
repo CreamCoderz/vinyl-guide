@@ -8,42 +8,42 @@ describe Crawler do
   URL = "http://rss.example.com/index.html"
   
   it "should make a get request for a given url" do
-    httpClient = SettableHttpClient.new 'unused'
-    expectedResponse = "<?xml version =\"1.0\">\n" +
+    http_client = SettableHttpClient.new 'unused'
+    expected_response = "<?xml version =\"1.0\">\n" +
 			    "<rss version=\"2.0\">\n" +
 			   "</rss>\n"+
 			  "</xml>"
-    httpClient.setResponse(expectedResponse)
-    crawler = Crawler.new(httpClient, URL)
-    actualResponse = crawler.get
-    actualResponse.should == Net::HTTPSuccess 
-    actualResponse.body.should == expectedResponse
-    httpClient.host.should == "rss.example.com"
-    httpClient.port.should == 80
-    httpClient.path.should == "/index.html" 
+    http_client.setResponse(expected_response)
+    crawler = Crawler.new(http_client, URL)
+    actual_response = crawler.get
+    actual_response.should == Net::HTTPSuccess
+    actual_response.body.should == expected_response
+    http_client.host.should == "rss.example.com"
+    http_client.port.should == 80
+    http_client.path.should == "/index.html"
   end
 
   it "should parse request into an array of records" do
-    httpClient = SettableHttpClient.new 'unused'
-    httpClient.setResponse(FeedParserSpec::FEED_HEADER + FeedParserSpec::FEED_FOOTER) 
-    crawler = Crawler.new(httpClient, URL)
-    actualResults = crawler.crawl
-    actualResults.length.should == 0
-    httpClient.setResponse(FeedParserSpec::FEED_WITH_ITEMS)
-    actualResults = crawler.crawl 
-    actualResults.length.should == 2
-    FeedParserSpec.checkFeedItem(actualResults[0], FeedParserSpec::JAZZBO_RECORD) 
-    FeedParserSpec.checkFeedItem(actualResults[1], FeedParserSpec::CONGOS_RECORD) 
+    http_client = SettableHttpClient.new 'unused'
+    http_client.setResponse(FeedParserSpec::FEED_HEADER + FeedParserSpec::FEED_FOOTER)
+    crawler = Crawler.new(http_client, URL)
+    actual_results = crawler.crawl
+    actual_results.length.should == 0
+    http_client.setResponse(FeedParserSpec::FEED_WITH_ITEMS)
+    actual_results = crawler.crawl
+    actual_results.length.should == 2
+    FeedParserSpec.check_feed_item(actual_results[0], FeedParserSpec::JAZZBO_RECORD)
+    FeedParserSpec.check_feed_item(actual_results[1], FeedParserSpec::CONGOS_RECORD)
   end
   
   #TODO: test response failure on crawl, it should raise a CrawlerException
   it "should raise an exception upon unsuccesful response" do
-    httpClient = SettableHttpClient.new 'unused' 
-    httpClient.setResponse("", "4") 
-    crawler = Crawler.new(httpClient, URL)
+    http_client = SettableHttpClient.new 'unused'
+    http_client.setResponse("", "4") 
+    crawler = Crawler.new(http_client, URL)
     crawler.get.should == Net::HTTPClientError
     begin
-      actualResults = crawler.crawl
+      actual_results = crawler.crawl
     rescue Exception => detail
       detail.message.should == "invalid response for url: " + URL  
     end
@@ -69,9 +69,9 @@ describe Crawler do
       yield self
     end
 
-    def setResponse(xml, responseCode="2")
+    def setResponse(xml, response_code="2")
       @xml = xml 
-      @responseCode = responseCode
+      @responseCode = response_code
     end
 
     def get(path)
@@ -91,8 +91,8 @@ describe Crawler do
       @xml
     end
 
-    def == (anotherClass)
-      Net::HTTPResponse::CODE_CLASS_TO_OBJ[@code] == anotherClass
+    def == (another_class)
+      Net::HTTPResponse::CODE_CLASS_TO_OBJ[@code] == another_class
     end
   end
 

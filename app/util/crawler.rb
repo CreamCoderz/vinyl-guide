@@ -4,16 +4,16 @@ require File.dirname(__FILE__) + '/feedparser'
 
 class Crawler 
 
-  def initialize(httpClient, url)
-    @httpClient = httpClient
+  def initialize(http_client, url)
+    @http_client = http_client
     @url = url 
   end
 
   def get 
     @uri = URI.parse(@url)
-    @response = @httpClient.start(@uri.host, @uri.port) { |http|
+    @response = @http_client.start(@uri.host, @uri.port) do |http|
       @response = http.get(@uri.path)
-    }
+    end
   end
 
   def crawl

@@ -45424,3 +45424,595 @@ Processing SearchController#search (for 0.0.0.0 at 2009-06-21 20:13:29) [GET]
 Rendering template within layouts/application
 Rendering search/search
 Completed in 17ms (View: 16, DB: 1) | 200 OK [http://test.host/search?query=prince]
+
+
+Processing SearchController#search (for 0.0.0.0 at 2009-06-22 00:01:26) [GET]
+  Parameters: {"query"=>"<font color=\"red\">test</font>"}
+Rendering template within layouts/application
+Rendering search/search
+Completed in 7ms (View: 5, DB: 6) | 200 OK [http://test.host/search?query=%3Cfont+color%3D%22red%22%3Etest%3C%2Ffont%3E]
+
+
+Processing SearchController#search (for 0.0.0.0 at 2009-06-22 00:01:26) [GET]
+  Parameters: {"query"=>"lee perry"}
+Rendering template within layouts/application
+Rendering search/search
+Completed in 12ms (View: 11, DB: 1) | 200 OK [http://test.host/search?query=lee+perry]
+
+
+Processing RecordsController#new (for 0.0.0.0 at 2009-06-22 00:01:26) [GET]
+Rendering template within layouts/application
+Rendering records/new
+Completed in 92ms (View: 90, DB: 0) | 200 OK [http://test.host/records/new]
+
+
+Processing RecordsController#edit (for 0.0.0.0 at 2009-06-22 00:01:26) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering records/edit
+Completed in 10ms (View: 9, DB: 1) | 200 OK [http://test.host/records/1/edit]
+
+
+Processing RecordsController#index (for 0.0.0.0 at 2009-06-22 00:01:26) [GET]
+Rendering template within layouts/application
+Rendering records/index
+Completed in 9ms (View: 8, DB: 1) | 200 OK [http://test.host/records]
+
+
+Processing RecordsController#index (for 0.0.0.0 at 2009-06-22 00:01:26) [GET]
+Rendering template within layouts/application
+Rendering records/index
+Completed in 8ms (View: 7, DB: 2) | 200 OK [http://test.host/records]
+
+
+Processing RecordsController#show (for 0.0.0.0 at 2009-06-22 00:01:26) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering records/show
+Completed in 6ms (View: 5, DB: 1) | 200 OK [http://test.host/records/1]
+
+
+Processing RecordsController#create (for 0.0.0.0 at 2009-06-22 00:01:26) [POST]
+  Parameters: {"record"=>{"name"=>"testname"}}
+Redirected to http://test.host/records/22
+Completed in 3ms (DB: 2) | 302 Found [http://test.host/records?record%5Bname%5D=testname]
+
+
+Processing RecordsController#destroy (for 0.0.0.0 at 2009-06-22 00:01:26) [DELETE]
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/records
+Completed in 5ms (DB: 5) | 302 Found [http://test.host/records/1]
+
+
+Processing RecordsController#edit (for 0.0.0.0 at 2009-06-22 00:01:26) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering records/edit
+Completed in 7ms (View: 6, DB: 3) | 200 OK [http://test.host/records/1/edit]
+
+
+Processing RecordsController#index (for 0.0.0.0 at 2009-06-22 00:01:26) [GET]
+Rendering template within layouts/application
+Rendering records/index
+Completed in 9ms (View: 8, DB: 0) | 200 OK [http://test.host/records]
+
+
+Processing RecordsController#new (for 0.0.0.0 at 2009-06-22 00:01:26) [GET]
+Rendering template within layouts/application
+Rendering records/new
+Completed in 5ms (View: 5, DB: 0) | 200 OK [http://test.host/records/new]
+
+
+Processing RecordsController#show (for 0.0.0.0 at 2009-06-22 00:01:26) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering records/show
+Completed in 3ms (View: 2, DB: 1) | 200 OK [http://test.host/records/1]
+
+
+Processing RecordsController#update (for 0.0.0.0 at 2009-06-22 00:01:26) [PUT]
+  Parameters: {"id"=>"1", "record"=>{"name"=>"roots of david"}}
+Redirected to http://test.host/records/1
+Completed in 4ms (DB: 2) | 302 Found [http://test.host/records/1?record%5Bname%5D=roots+of+david]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-06-22 00:01:26) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/ui/testrunnermediator.rb:46:in `old_run_suite'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/patch/test/unit/ui/testrunnermediator.rb:41:in `run_suite'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/patch/test/unit/ui/teamcity/testrunner.rb:69:in `start_mediator'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/patch/test/unit/ui/teamcity/testrunner.rb:57:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/ui/testrunnerutilities.rb:29:in `run'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/runner/tunit_in_folder_runner.rb:73
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/runner/tunit_in_folder_runner.rb:61:in `each_object'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/runner/tunit_in_folder_runner.rb:61
+  -e:1:in `load'
+  -e:1
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-06-22 00:01:26) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  (__DELEGATION__):2:in `__send__'
+  (__DELEGATION__):2:in `run_test'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/ui/testrunnermediator.rb:46:in `old_run_suite'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/patch/test/unit/ui/testrunnermediator.rb:41:in `run_suite'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/patch/test/unit/ui/teamcity/testrunner.rb:69:in `start_mediator'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/patch/test/unit/ui/teamcity/testrunner.rb:57:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/ui/testrunnerutilities.rb:29:in `run'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/runner/tunit_in_folder_runner.rb:73
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/runner/tunit_in_folder_runner.rb:61:in `each_object'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/runner/tunit_in_folder_runner.rb:61
+  -e:1:in `load'
+  -e:1
+
+Rendering rescues/layout (not_found)
+
+
+Processing SearchController#search (for 0.0.0.0 at 2009-06-22 00:01:27) [GET]
+  Parameters: {"query"=>"prince"}
+Rendering template within layouts/application
+Rendering search/search
+Completed in 8ms (View: 6, DB: 23) | 200 OK [http://test.host/search?query=prince]
+
+
+Processing SearchController#search (for 0.0.0.0 at 2009-06-22 00:01:27) [GET]
+  Parameters: {"query"=>"prince"}
+Rendering template within layouts/application
+Rendering search/search
+Completed in 5ms (View: 4, DB: 1) | 200 OK [http://test.host/search?query=prince]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-07-03 16:28:29) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/ui/testrunnermediator.rb:46:in `old_run_suite'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/patch/test/unit/ui/testrunnermediator.rb:41:in `run_suite'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/patch/test/unit/ui/teamcity/testrunner.rb:69:in `start_mediator'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/patch/test/unit/ui/teamcity/testrunner.rb:57:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/ui/testrunnerutilities.rb:29:in `run'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/runner/tunit_in_folder_runner.rb:73
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/runner/tunit_in_folder_runner.rb:61:in `each_object'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/runner/tunit_in_folder_runner.rb:61
+  -e:1:in `load'
+  -e:1
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-07-03 16:28:29) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  (__DELEGATION__):2:in `__send__'
+  (__DELEGATION__):2:in `run_test'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/ui/testrunnermediator.rb:46:in `old_run_suite'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/patch/test/unit/ui/testrunnermediator.rb:41:in `run_suite'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/patch/test/unit/ui/teamcity/testrunner.rb:69:in `start_mediator'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/patch/test/unit/ui/teamcity/testrunner.rb:57:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/ui/testrunnerutilities.rb:29:in `run'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/runner/tunit_in_folder_runner.rb:73
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/runner/tunit_in_folder_runner.rb:61:in `each_object'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/runner/tunit_in_folder_runner.rb:61
+  -e:1:in `load'
+  -e:1
+
+Rendering rescues/layout (not_found)
+
+
+Processing SearchController#search (for 0.0.0.0 at 2009-07-03 16:28:30) [GET]
+  Parameters: {"query"=>"prince"}
+Rendering template within layouts/application
+Rendering search/search
+Completed in 10ms (View: 8, DB: 8) | 200 OK [http://test.host/search?query=prince]
+
+
+Processing SearchController#search (for 0.0.0.0 at 2009-07-03 16:28:30) [GET]
+  Parameters: {"query"=>"prince"}
+Rendering template within layouts/application
+Rendering search/search
+Completed in 5ms (View: 4, DB: 1) | 200 OK [http://test.host/search?query=prince]
+
+
+Processing SearchController#search (for 0.0.0.0 at 2009-07-03 16:28:30) [GET]
+  Parameters: {"query"=>"<font color=\"red\">test</font>"}
+Rendering template within layouts/application
+Rendering search/search
+Completed in 4ms (View: 2, DB: 1) | 200 OK [http://test.host/search?query=%3Cfont+color%3D%22red%22%3Etest%3C%2Ffont%3E]
+
+
+Processing SearchController#search (for 0.0.0.0 at 2009-07-03 16:28:30) [GET]
+  Parameters: {"query"=>"lee perry"}
+Rendering template within layouts/application
+Rendering search/search
+Completed in 7ms (View: 5, DB: 1) | 200 OK [http://test.host/search?query=lee+perry]
+
+
+Processing RecordsController#new (for 0.0.0.0 at 2009-07-03 16:28:30) [GET]
+Rendering template within layouts/application
+Rendering records/new
+Completed in 105ms (View: 103, DB: 0) | 200 OK [http://test.host/records/new]
+
+
+Processing RecordsController#edit (for 0.0.0.0 at 2009-07-03 16:28:30) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering records/edit
+Completed in 10ms (View: 9, DB: 1) | 200 OK [http://test.host/records/1/edit]
+
+
+Processing RecordsController#index (for 0.0.0.0 at 2009-07-03 16:28:30) [GET]
+Rendering template within layouts/application
+Rendering records/index
+Completed in 11ms (View: 8, DB: 1) | 200 OK [http://test.host/records]
+
+
+Processing RecordsController#index (for 0.0.0.0 at 2009-07-03 16:28:30) [GET]
+Rendering template within layouts/application
+Rendering records/index
+Completed in 9ms (View: 8, DB: 2) | 200 OK [http://test.host/records]
+
+
+Processing RecordsController#show (for 0.0.0.0 at 2009-07-03 16:28:30) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering records/show
+Completed in 8ms (View: 6, DB: 1) | 200 OK [http://test.host/records/1]
+
+
+Processing RecordsController#create (for 0.0.0.0 at 2009-07-03 16:28:30) [POST]
+  Parameters: {"record"=>{"name"=>"testname"}}
+Redirected to http://test.host/records/25
+Completed in 7ms (DB: 4) | 302 Found [http://test.host/records?record%5Bname%5D=testname]
+
+
+Processing RecordsController#destroy (for 0.0.0.0 at 2009-07-03 16:28:30) [DELETE]
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/records
+Completed in 2ms (DB: 34) | 302 Found [http://test.host/records/1]
+
+
+Processing RecordsController#edit (for 0.0.0.0 at 2009-07-03 16:28:30) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering records/edit
+Completed in 8ms (View: 7, DB: 8) | 200 OK [http://test.host/records/1/edit]
+
+
+Processing RecordsController#index (for 0.0.0.0 at 2009-07-03 16:28:30) [GET]
+Rendering template within layouts/application
+Rendering records/index
+Completed in 8ms (View: 7, DB: 1) | 200 OK [http://test.host/records]
+
+
+Processing RecordsController#new (for 0.0.0.0 at 2009-07-03 16:28:30) [GET]
+Rendering template within layouts/application
+Rendering records/new
+Completed in 6ms (View: 5, DB: 0) | 200 OK [http://test.host/records/new]
+
+
+Processing RecordsController#show (for 0.0.0.0 at 2009-07-03 16:28:30) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering records/show
+Completed in 3ms (View: 2, DB: 4) | 200 OK [http://test.host/records/1]
+
+
+Processing RecordsController#update (for 0.0.0.0 at 2009-07-03 16:28:30) [PUT]
+  Parameters: {"id"=>"1", "record"=>{"name"=>"roots of david"}}
+Redirected to http://test.host/records/1
+Completed in 5ms (DB: 4) | 302 Found [http://test.host/records/1?record%5Bname%5D=roots+of+david]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-07-05 14:21:52) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/ui/testrunnermediator.rb:46:in `old_run_suite'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/patch/test/unit/ui/testrunnermediator.rb:41:in `run_suite'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/patch/test/unit/ui/teamcity/testrunner.rb:69:in `start_mediator'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/patch/test/unit/ui/teamcity/testrunner.rb:57:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/ui/testrunnerutilities.rb:29:in `run'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/runner/tunit_in_folder_runner.rb:73
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/runner/tunit_in_folder_runner.rb:61:in `each_object'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/runner/tunit_in_folder_runner.rb:61
+  -e:1:in `load'
+  -e:1
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-07-05 14:21:52) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  (__DELEGATION__):2:in `__send__'
+  (__DELEGATION__):2:in `run_test'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/ui/testrunnermediator.rb:46:in `old_run_suite'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/patch/test/unit/ui/testrunnermediator.rb:41:in `run_suite'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/patch/test/unit/ui/teamcity/testrunner.rb:69:in `start_mediator'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/patch/test/unit/ui/teamcity/testrunner.rb:57:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/ui/testrunnerutilities.rb:29:in `run'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/runner/tunit_in_folder_runner.rb:73
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/runner/tunit_in_folder_runner.rb:61:in `each_object'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/runner/tunit_in_folder_runner.rb:61
+  -e:1:in `load'
+  -e:1
+
+Rendering rescues/layout (not_found)
+
+
+Processing SearchController#search (for 0.0.0.0 at 2009-07-05 14:21:53) [GET]
+  Parameters: {"query"=>"prince"}
+Rendering template within layouts/application
+Rendering search/search
+Completed in 12ms (View: 8, DB: 40) | 200 OK [http://test.host/search?query=prince]
+
+
+Processing SearchController#search (for 0.0.0.0 at 2009-07-05 14:21:53) [GET]
+  Parameters: {"query"=>"prince"}
+Rendering template within layouts/application
+Rendering search/search
+Completed in 9ms (View: 4, DB: 8) | 200 OK [http://test.host/search?query=prince]
+
+
+Processing SearchController#search (for 0.0.0.0 at 2009-07-05 14:21:53) [GET]
+  Parameters: {"query"=>"<font color=\"red\">test</font>"}
+Rendering template within layouts/application
+Rendering search/search
+Completed in 4ms (View: 2, DB: 1) | 200 OK [http://test.host/search?query=%3Cfont+color%3D%22red%22%3Etest%3C%2Ffont%3E]
+
+
+Processing SearchController#search (for 0.0.0.0 at 2009-07-05 14:21:53) [GET]
+  Parameters: {"query"=>"lee perry"}
+Rendering template within layouts/application
+Rendering search/search
+Completed in 12ms (View: 7, DB: 5) | 200 OK [http://test.host/search?query=lee+perry]
+
+
+Processing RecordsController#new (for 0.0.0.0 at 2009-07-05 14:21:53) [GET]
+Rendering template within layouts/application
+Rendering records/new
+Completed in 118ms (View: 113, DB: 0) | 200 OK [http://test.host/records/new]
+
+
+Processing RecordsController#edit (for 0.0.0.0 at 2009-07-05 14:21:53) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering records/edit
+Completed in 16ms (View: 15, DB: 3) | 200 OK [http://test.host/records/1/edit]
+
+
+Processing RecordsController#index (for 0.0.0.0 at 2009-07-05 14:21:53) [GET]
+Rendering template within layouts/application
+Rendering records/index
+Completed in 19ms (View: 18, DB: 1) | 200 OK [http://test.host/records]
+
+
+Processing RecordsController#index (for 0.0.0.0 at 2009-07-05 14:21:53) [GET]
+Rendering template within layouts/application
+Rendering records/index
+Completed in 20ms (View: 19, DB: 2) | 200 OK [http://test.host/records]
+
+
+Processing RecordsController#show (for 0.0.0.0 at 2009-07-05 14:21:53) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering records/show
+Completed in 6ms (View: 4, DB: 1) | 200 OK [http://test.host/records/1]
+
+
+Processing RecordsController#create (for 0.0.0.0 at 2009-07-05 14:21:53) [POST]
+  Parameters: {"record"=>{"name"=>"testname"}}
+Redirected to http://test.host/records/27
+Completed in 31ms (DB: 35) | 302 Found [http://test.host/records?record%5Bname%5D=testname]
+
+
+Processing RecordsController#destroy (for 0.0.0.0 at 2009-07-05 14:21:53) [DELETE]
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/records
+Completed in 2ms (DB: 29) | 302 Found [http://test.host/records/1]
+
+
+Processing RecordsController#edit (for 0.0.0.0 at 2009-07-05 14:21:53) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering records/edit
+Completed in 10ms (View: 9, DB: 1) | 200 OK [http://test.host/records/1/edit]
+
+
+Processing RecordsController#index (for 0.0.0.0 at 2009-07-05 14:21:53) [GET]
+Rendering template within layouts/application
+Rendering records/index
+Completed in 9ms (View: 8, DB: 1) | 200 OK [http://test.host/records]
+
+
+Processing RecordsController#new (for 0.0.0.0 at 2009-07-05 14:21:53) [GET]
+Rendering template within layouts/application
+Rendering records/new
+Completed in 14ms (View: 12, DB: 0) | 200 OK [http://test.host/records/new]
+
+
+Processing RecordsController#show (for 0.0.0.0 at 2009-07-05 14:21:53) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering records/show
+Completed in 3ms (View: 2, DB: 8) | 200 OK [http://test.host/records/1]
+
+
+Processing RecordsController#update (for 0.0.0.0 at 2009-07-05 14:21:53) [PUT]
+  Parameters: {"id"=>"1", "record"=>{"name"=>"roots of david"}}
+Redirected to http://test.host/records/1
+Completed in 6ms (DB: 5) | 302 Found [http://test.host/records/1?record%5Bname%5D=roots+of+david]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-07-05 14:50:07) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/ui/testrunnermediator.rb:46:in `old_run_suite'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/patch/test/unit/ui/testrunnermediator.rb:41:in `run_suite'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/patch/test/unit/ui/teamcity/testrunner.rb:69:in `start_mediator'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/patch/test/unit/ui/teamcity/testrunner.rb:57:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/ui/testrunnerutilities.rb:29:in `run'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/runner/tunit_in_folder_runner.rb:73
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/runner/tunit_in_folder_runner.rb:61:in `each_object'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/runner/tunit_in_folder_runner.rb:61
+  -e:1:in `load'
+  -e:1
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-07-05 14:50:07) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  test/performance/browsing_test.rb:7:in `test_homepage'
+  (__DELEGATION__):2:in `__send__'
+  (__DELEGATION__):2:in `run_test'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/ui/testrunnermediator.rb:46:in `old_run_suite'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/patch/test/unit/ui/testrunnermediator.rb:41:in `run_suite'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/patch/test/unit/ui/teamcity/testrunner.rb:69:in `start_mediator'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/patch/test/unit/ui/teamcity/testrunner.rb:57:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/test/unit/ui/testrunnerutilities.rb:29:in `run'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/runner/tunit_in_folder_runner.rb:73
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/runner/tunit_in_folder_runner.rb:61:in `each_object'
+  /Users/will/Library/Application Support/IntelliJIDEA80/ruby/rb/testing/runner/tunit_in_folder_runner.rb:61
+  -e:1:in `load'
+  -e:1
+
+Rendering rescues/layout (not_found)
+
+
+Processing SearchController#search (for 0.0.0.0 at 2009-07-05 14:50:08) [GET]
+  Parameters: {"query"=>"prince"}
+Rendering template within layouts/application
+Rendering search/search
+Completed in 12ms (View: 10, DB: 14) | 200 OK [http://test.host/search?query=prince]
+
+
+Processing SearchController#search (for 0.0.0.0 at 2009-07-05 14:50:08) [GET]
+  Parameters: {"query"=>"prince"}
+Rendering template within layouts/application
+Rendering search/search
+Completed in 4ms (View: 4, DB: 1) | 200 OK [http://test.host/search?query=prince]
+
+
+Processing SearchController#search (for 0.0.0.0 at 2009-07-05 14:50:08) [GET]
+  Parameters: {"query"=>"<font color=\"red\">test</font>"}
+Rendering template within layouts/application
+Rendering search/search
+Completed in 2ms (View: 2, DB: 1) | 200 OK [http://test.host/search?query=%3Cfont+color%3D%22red%22%3Etest%3C%2Ffont%3E]
+
+
+Processing SearchController#search (for 0.0.0.0 at 2009-07-05 14:50:08) [GET]
+  Parameters: {"query"=>"lee perry"}
+Rendering template within layouts/application
+Rendering search/search
+Completed in 7ms (View: 6, DB: 1) | 200 OK [http://test.host/search?query=lee+perry]
+
+
+Processing RecordsController#new (for 0.0.0.0 at 2009-07-05 14:50:08) [GET]
+Rendering template within layouts/application
+Rendering records/new
+Completed in 44ms (View: 42, DB: 0) | 200 OK [http://test.host/records/new]
+
+
+Processing RecordsController#edit (for 0.0.0.0 at 2009-07-05 14:50:08) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering records/edit
+Completed in 9ms (View: 8, DB: 1) | 200 OK [http://test.host/records/1/edit]
+
+
+Processing RecordsController#index (for 0.0.0.0 at 2009-07-05 14:50:08) [GET]
+Rendering template within layouts/application
+Rendering records/index
+Completed in 9ms (View: 8, DB: 1) | 200 OK [http://test.host/records]
+
+
+Processing RecordsController#index (for 0.0.0.0 at 2009-07-05 14:50:08) [GET]
+Rendering template within layouts/application
+Rendering records/index
+Completed in 12ms (View: 11, DB: 2) | 200 OK [http://test.host/records]
+
+
+Processing RecordsController#show (for 0.0.0.0 at 2009-07-05 14:50:08) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering records/show
+Completed in 5ms (View: 4, DB: 1) | 200 OK [http://test.host/records/1]
+
+
+Processing RecordsController#create (for 0.0.0.0 at 2009-07-05 14:50:08) [POST]
+  Parameters: {"record"=>{"name"=>"testname"}}
+Redirected to http://test.host/records/29
+Completed in 3ms (DB: 1) | 302 Found [http://test.host/records?record%5Bname%5D=testname]
+
+
+Processing RecordsController#destroy (for 0.0.0.0 at 2009-07-05 14:50:08) [DELETE]
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/records
+Completed in 3ms (DB: 3) | 302 Found [http://test.host/records/1]
+
+
+Processing RecordsController#edit (for 0.0.0.0 at 2009-07-05 14:50:08) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering records/edit
+Completed in 9ms (View: 8, DB: 2) | 200 OK [http://test.host/records/1/edit]
+
+
+Processing RecordsController#index (for 0.0.0.0 at 2009-07-05 14:50:08) [GET]
+Rendering template within layouts/application
+Rendering records/index
+Completed in 10ms (View: 8, DB: 1) | 200 OK [http://test.host/records]
+
+
+Processing RecordsController#new (for 0.0.0.0 at 2009-07-05 14:50:08) [GET]
+Rendering template within layouts/application
+Rendering records/new
+Completed in 6ms (View: 6, DB: 1) | 200 OK [http://test.host/records/new]
+
+
+Processing RecordsController#show (for 0.0.0.0 at 2009-07-05 14:50:08) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering records/show
+Completed in 3ms (View: 2, DB: 1) | 200 OK [http://test.host/records/1]
+
+
+Processing RecordsController#update (for 0.0.0.0 at 2009-07-05 14:50:08) [PUT]
+  Parameters: {"id"=>"1", "record"=>{"name"=>"roots of david"}}
+Redirected to http://test.host/records/1
+Completed in 4ms (DB: 2) | 302 Found [http://test.host/records/1?record%5Bname%5D=roots+of+david]
