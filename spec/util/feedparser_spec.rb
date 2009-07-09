@@ -43,7 +43,7 @@ module FeedParserSpec
                 "      <title>" + @congos_title + "</title>\n" +
                 "      <link>" + @congos_link + "</link>\n" +
                 "      <description>" + @congos_description + "</description>\n" +
-                "      <pubDate>" + @congosPubDate + "</pubDate>\n" +
+                "      <pubDate>" + @congos_pub_date + "</pubDate>\n" +
                 "    </item>\n" +
 		FEED_FOOTER
   

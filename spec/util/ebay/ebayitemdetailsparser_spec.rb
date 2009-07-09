@@ -1,6 +1,8 @@
+require 'time'
 require 'spec'
-require File.dirname(__FILE__) + "/../base_spec_case"
-require File.dirname(__FILE__) + '/../../app/util/ebayitemsdetailsparser'
+require 'activesupport'
+require File.dirname(__FILE__) + "/../../base_spec_case"
+require File.dirname(__FILE__) + '/../../../app/util/ebay/ebayitemsdetailsparser'
 
 describe EbayItemDetailsParser do
 
@@ -10,11 +12,11 @@ describe EbayItemDetailsParser do
     actual_tetrack_item = item_detailses[0]
     actual_garnet_silk_item = item_detailses[1]
     check_ebay_item(actual_tetrack_item, CGI.unescapeHTML(BaseSpecCase::TETRACK_DESCRIPTION),
-            BaseSpecCase::TETRACK_ITEMID, BaseSpecCase::TETRACK_ENDTIME, BaseSpecCase::TETRACK_STARTTIME,
+            BaseSpecCase::TETRACK_ITEMID, Time.iso8601(BaseSpecCase::TETRACK_ENDTIME).to_date, Time.iso8601(BaseSpecCase::TETRACK_STARTTIME).to_date,
             BaseSpecCase::TETRACK_URL, BaseSpecCase::TETRACK_GALLERY_IMG, BaseSpecCase::TETRACK_BIDCOUNT,
             BaseSpecCase::TETRACK_PRICE, BaseSpecCase::TETRACK_SELLERID)
     check_ebay_item(actual_garnet_silk_item, CGI.unescapeHTML(BaseSpecCase::GARNET_DESCRIPTION),
-            BaseSpecCase::GARNET_ITEMID, BaseSpecCase::GARNET_ENDTIME, BaseSpecCase::GARNET_STARTTIME,
+            BaseSpecCase::GARNET_ITEMID, Time.iso8601(BaseSpecCase::GARNET_ENDTIME).to_date, Time.iso8601(BaseSpecCase::GARNET_STARTTIME).to_date,
             BaseSpecCase::GARNET_URL, BaseSpecCase::GARNET_GALLERY_IMG, BaseSpecCase::GARNET_BIDCOUNT,
             BaseSpecCase::GARNET_PRICE, BaseSpecCase::GARNET_SELLERID)
   end

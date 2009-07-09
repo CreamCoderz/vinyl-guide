@@ -1,16 +1,6 @@
 module BaseSpecCase
 
-  SAMPLE_FIND_ITEMS_REQUEST = '<?xml version="1.0" encoding="utf-8"?>
-    <FindItemsAdvancedRequest xmlns="urn:ebay:apis:eBLBaseComponents">
-    <MessageID>the message</MessageID>
-    <CategoryID>306</CategoryID>
-    <DescriptionSearch>true</DescriptionSearch>
-    <EndTimeFrom>2009-07-03T01:00:00.000Z</EndTimeFrom>
-    <EndTimeTo>2009-07-04T01:00:00.000Z</EndTimeTo>
-    <MaxEntries>100</MaxEntries>
-    <PageNumber>1</PageNumber>
-    <QueryKeywords>reggae</QueryKeywords>
-  </FindItemsAdvancedRequest>'
+  SAMPLE_FIND_ITEMS_REQUEST = 'http://open.api.ebay.com/shopping?version=517&appid=WillSulz-7420-475d-9a40-2fb8b491a6fd&callname=FindItemsAdvanced&MessageID=the%20message&CategoryID=306&DescriptionSearch=true&EndTimeFrom=2009-07-09T01:00:00.000Z&EndTimeTo=2009-07-10T01:00:00.000Z&MaxEntries=100&PageNumber=1&QueryKeywords=reggae'
 
   SAMPLE_FIND_ITEMS_RESPONSE = '<?xml version="1.0" encoding="UTF-8"?>
 <FindItemsAdvancedResponse xmlns="urn:ebay:apis:eBLBaseComponents">
