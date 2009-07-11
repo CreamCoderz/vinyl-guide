@@ -1,6 +1,23 @@
+require 'ActiveSupport'
+require 'time'
+
 module BaseSpecCase
 
-  SAMPLE_FIND_ITEMS_REQUEST = 'http://open.api.ebay.com/shopping?version=517&appid=WillSulz-7420-475d-9a40-2fb8b491a6fd&callname=FindItemsAdvanced&MessageID=the%20message&CategoryID=306&DescriptionSearch=true&EndTimeFrom=2009-07-09T01:00:00.000Z&EndTimeTo=2009-07-10T01:00:00.000Z&MaxEntries=100&PageNumber=1&QueryKeywords=reggae'
+  SAMPLE_FIND_ITEMS_REQUEST = 'http://open.api.ebay.com/shopping?version=517&appid=WillSulz-7420-475d-9a40-2fb8b491a6fd&callname=FindItemsAdvanced&CategoryID=306&DescriptionSearch=true&EndTimeFrom=2009-07-09T01:00:00.000Z&EndTimeTo=2009-07-10T01:00:00.000Z&MaxEntries=100&PageNumber=1&QueryKeywords=reggae'
+
+  item_1_endtime_utc = '2009-07-03T23:42:25.000Z'
+  item_2_endtime_utc = '2009-07-03T23:46:05.000Z'
+  item_3_endtime_utc = '2009-07-03T23:48:32.000Z'
+  item_4_endtime_utc = '2009-07-03T23:48:32.000Z'
+  item_5_endtime_utc = '2009-07-03T23:49:57.000Z'
+  
+  FOUND_ITEM_1 = [120440899019, Time.iso8601(item_1_endtime_utc).to_date]
+  FOUND_ITEM_2 = [260436558510, Time.iso8601(item_2_endtime_utc).to_date]
+  FOUND_ITEM_3 = [300325824658, Time.iso8601(item_3_endtime_utc).to_date]
+  FOUND_ITEM_4 = [300325824769, Time.iso8601(item_4_endtime_utc).to_date]
+  FOUND_ITEM_5 = [300325824946, Time.iso8601(item_5_endtime_utc).to_date]
+
+  FOUND_ITEMS = [FOUND_ITEM_1, FOUND_ITEM_2]
 
   SAMPLE_FIND_ITEMS_RESPONSE = '<?xml version="1.0" encoding="UTF-8"?>
 <FindItemsAdvancedResponse xmlns="urn:ebay:apis:eBLBaseComponents">
@@ -12,14 +29,14 @@ module BaseSpecCase
   <SearchResult>
     <ItemArray>
       <Item>
-        <ItemID>120440899019</ItemID>
-        <EndTime>2009-07-03T23:42:25.000Z</EndTime>
-        <ViewItemURLForNaturalSearch>http://cgi.ebay.com/THIRD-WORLD-TALK-TO-ME-12-79-reggae-disco-HEAR_W0QQitemZ120440899019QQcategoryZ306QQcmdZViewItem</ViewItemURLForNaturalSearch>
+        <ItemID>' + FOUND_ITEM_1[0].to_s + '</ItemID>
+        <EndTime>' + item_1_endtime_utc + '</EndTime>
+        <ViewItemURLForNaturalSearch>' + 'http://cgi.ebay.com/THIRD-WORLD-TALK-TO-ME-12-79-reggae-disco-HEAR_W0QQitemZ120440899019QQcategoryZ306QQcmdZViewItem' + '</ViewItemURLForNaturalSearch>
         <ListingType>Chinese</ListingType>
-        <GalleryURL>http://thumbs3.ebaystatic.com/pict/1204408990198080_1.jpg</GalleryURL>
+        <GalleryURL>' + 'http://thumbs3.ebaystatic.com/pict/1204408990198080_1.jpg' + '</GalleryURL>
         <PrimaryCategoryID>306</PrimaryCategoryID>
         <PrimaryCategoryName>Music:Records</PrimaryCategoryName>
-        <BidCount>2</BidCount>
+        <BidCount>' + '2' + '</BidCount>
         <ConvertedCurrentPrice currencyID="USD">14.48</ConvertedCurrentPrice>
         <ListingStatus>Active</ListingStatus>
         <TimeLeft>PT20S</TimeLeft>
@@ -30,8 +47,8 @@ module BaseSpecCase
         </ShippingCostSummary>
       </Item>
       <Item>
-        <ItemID>260436558510</ItemID>
-        <EndTime>2009-07-03T23:46:05.000Z</EndTime>
+        <ItemID>' + FOUND_ITEM_2[0].to_s + '</ItemID>
+        <EndTime>' + item_2_endtime_utc + '</EndTime>
         <ViewItemURLForNaturalSearch>http://cgi.ebay.com/BOUNTY-KILLER-NO-ARGUMENT-Reggae-45_W0QQitemZ260436558510QQcategoryZ306QQcmdZViewItem</ViewItemURLForNaturalSearch>
         <ListingType>Chinese</ListingType>
         <GalleryURL>http://thumbs1.ebaystatic.com/pict/2604365585108080_1.jpg</GalleryURL>
@@ -48,8 +65,8 @@ module BaseSpecCase
         </ShippingCostSummary>
       </Item>
       <Item>
-        <ItemID>300325824658</ItemID>
-        <EndTime>2009-07-03T23:47:38.000Z</EndTime>
+        <ItemID>' + FOUND_ITEM_3[0].to_s + '</ItemID>
+        <EndTime>' + item_3_endtime_utc + '</EndTime>
         <ViewItemURLForNaturalSearch>http://cgi.ebay.com/Alton-Ellis-Deliver-Us-Rock-Steady-45-Single_W0QQitemZ300325824658QQcategoryZ306QQcmdZViewItem</ViewItemURLForNaturalSearch>
         <ListingType>Chinese</ListingType>
         <GalleryURL>http://thumbs2.ebaystatic.com/pict/3003258246588080_1.jpg</GalleryURL>
@@ -66,8 +83,8 @@ module BaseSpecCase
         </ShippingCostSummary>
       </Item>
       <Item>
-        <ItemID>300325824769</ItemID>
-        <EndTime>2009-07-03T23:48:32.000Z</EndTime>
+        <ItemID>' + FOUND_ITEM_4[0].to_s + '</ItemID>
+        <EndTime>' + item_4_endtime_utc + '</EndTime>
         <ViewItemURLForNaturalSearch>http://cgi.ebay.com/John-Holt-Time-and-the-River-Reggae-45-Single_W0QQitemZ300325824769QQcategoryZ306QQcmdZViewItem</ViewItemURLForNaturalSearch>
         <ListingType>Chinese</ListingType>
         <GalleryURL>http://thumbs2.ebaystatic.com/pict/3003258247698080_1.jpg</GalleryURL>
@@ -84,8 +101,8 @@ module BaseSpecCase
         </ShippingCostSummary>
       </Item>
       <Item>
-        <ItemID>300325824946</ItemID>
-        <EndTime>2009-07-03T23:49:57.000Z</EndTime>
+        <ItemID>' + FOUND_ITEM_5[0].to_s + '</ItemID>
+        <EndTime>' + item_5_endtime_utc + '</EndTime>
         <ViewItemURLForNaturalSearch>http://cgi.ebay.com/Stranger-Patsy-When-You-Call-My-Name-Ska-45-Single_W0QQitemZ300325824946QQcategoryZ306QQcmdZViewItem</ViewItemURLForNaturalSearch>
         <ListingType>Chinese</ListingType>
         <GalleryURL>http://thumbs2.ebaystatic.com/pict/3003258249468080_1.jpg</GalleryURL>

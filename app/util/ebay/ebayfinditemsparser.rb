@@ -1,6 +1,7 @@
 require 'cobravsmongoose'
+require File.dirname(__FILE__) + "/../dateutil"
 
-class EbayFinderItemsParser
+class EbayFindItemsParser
 
   def initialize(xml)
     parsed_items = CobraVsMongoose.xml_to_hash(xml)
@@ -12,7 +13,7 @@ class EbayFinderItemsParser
       if (0 == item['BidCount']['$'].to_i)
         @num_items_ignored += 1
       else
-        @parsed_items.insert(-1, item['ItemID']['$'].to_i)
+        @parsed_items.insert(-1, [item['ItemID']['$'].to_i, DateUtil.utc_to_date(item['EndTime']['$'])])
       end
     end
   end
