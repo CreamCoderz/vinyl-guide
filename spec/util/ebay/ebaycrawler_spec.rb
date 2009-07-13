@@ -15,14 +15,17 @@ class EbayCrawler
     end_time_from = Date.new
     end_time_to = Date.new.next
     find_items_results = ebay_crawler.find_items(end_time_from, end_time_to)
-
     http_client.path.should == '/shopping?version=517&appid=' + APP_ID +
             '&callname=' + CALL_NAME.to_s + '&CategoryID=306&DescriptionSearch=true' +
             '&EndTimeFrom=' + DateUtil.date_to_utc(end_time_from) + '&EndTimeTo=' + DateUtil.date_to_utc(end_time_to) +
             '&MaxEntries=100' + '&PageNumber=1&QueryKeywords=reggae'
     find_items_results.should == BaseSpecCase::FOUND_ITEMS
+    #TODO: log all other unmarked items
   end
 
+  describe "it should get details for multiple items" do
+      
+  end
 
   #TODO: test crawling errors
   # url
