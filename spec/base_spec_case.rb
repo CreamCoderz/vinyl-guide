@@ -126,16 +126,13 @@ module BaseSpecCase
   <ItemSearchURL>http://search-desc.ebay.com/ws/search/SaleSearch?fts=2&amp;DemandData=1&amp;dfe=20090604&amp;dff=1&amp;dfs=20090603&amp;dfte=2&amp;dfts=2&amp;fsop=32&amp;sacat=306&amp;satitle=reggae</ItemSearchURL>
 </FindItemsAdvancedResponse>'
 
-  SAMPLE_GET_MULTIPLE_ITEMS_REQUEST = '<?xml version="1.0" encoding="utf-8"?>
-    <GetMultipleItemsRequest xmlns="urn:ebay:apis:eBLBaseComponents">
-    <MessageID>get multiple items</MessageID>
-    <IncludeSelector>Details,TextDescription</IncludeSelector>
-    <ItemID>140329666820</ItemID>
-    <ItemID>330340439690</ItemID>
-  </GetMultipleItemsRequest>'
+  TETRACK_ITEMID = 330340439690
+  GARNET_ITEMID = 140329666820
+  MULTIPLE_ITEMS_CALL = 'GetMultipleItems'
+  MULTIPLE_ITEMS_SELECTORS = 'Details,TextDescription'
+  SAMPLE_GET_MULTIPLE_ITEMS_REQUEST = '/shopping?version=517&appid=WillSulz-7420-475d-9a40-2fb8b491a6fd&callname=' + MULTIPLE_ITEMS_CALL + '&IncludeSelector=' + MULTIPLE_ITEMS_SELECTORS + '&ItemID=' + TETRACK_ITEMID.to_s + ',' + GARNET_ITEMID.to_s
 
   TETRACK_DESCRIPTION = 'A1: TETRACK - Let\'s Get Together A2: PABLO ALL STARS - Black Ants Lane Dub B1: JACOB MILLER - Each One Teach One B2: PABLO ALL STARS - Matthew Lane Dub [ROCKERS, JAMAICA] Incredible M- condition copy of this ULTRA RARE and legendary original jamaican Rockers 12". The vocal tracks by Jacob Miller and Tetrack (a version of the Johnny &amp; The Attractions rocksteady classic) are both amazing and so are the two dubs that I have put last in the soundclip below. Listen to this if you don\'t know it! A superb 12" in absolutely AMAZING condition. A-side matrix: A Pabblo 214A B-side matrix: A Pabblo 214B Vinyl condition: M- SOUNDCLIP! Double-click on the "play" button above to listen to SOUND CLIPS of both sides! If the player above doesn\'t work, click HERE to listen to the MP3. Don"t forget to check out my other auctions this week. AIR-MAIL POSTAGE COSTS: 45s: 1-3 45s: $4 to Sweden, $6.50 to Europe, $8 to rest of the world. 4-8 45s: $6 to Sweden, $12 to Europe, $13.50 to rest of the world. 12"s/LPs: 1 LP/12": $6 to Sweden, $13 to Europe, $14 to rest of the world. 2-3 LP/12"s: $8 to Sweden, $21 to Europe, $25 to rest of the world. 4-7 LP/12"s: $11 to Sweden, $32 to Europe, $39 to rest of the world. INSURED/REGISTRRED SHIPPING is available and costs $13 on top of the postage fee quoted above. I know that"s very expensive, but that"s the swedish postal system for you... IMPORTANT! Payment shall be recieved within 10 days. If you can"t pay within that time frame, either contact me so that I know when/if you intend to pay, or DON"T BID if you can"t come up with the money within 10 days after the auction end. PLEASE NOTE! In the unlikely event that it might happen, I can not be held responsible for packages going missing unless you"ve asked to have them sent with insured/registered shipping. Payment is accepted via PayPal. Thanks for looking and good luck bidding!'
-  TETRACK_ITEMID = 330340439690
   TETRACK_ENDTIME = '2009-07-01T13:34:08.000Z'
   TETRACK_STARTTIME = '2009-06-26T13:34:08.000Z'
   TETRACK_URL = 'http://cgi.ebay.com/TETRACK-Lets-Get-Together-JACOB-MILLER-rare-DUB-ROOTS_W0QQitemZ330340439690QQcategoryZ306QQcmdZViewItem'
@@ -145,7 +142,6 @@ module BaseSpecCase
   TETRACK_SELLERID = 'pushkings'
 
   GARNET_DESCRIPTION = '45 RPM. Garnet Silk--Babylon Be Still/Version. Johnny Osbourne--Play Play Girl. Byron Lee &amp; The Dragonaires--Spring Garden on Fire/Instrumental. Gregory Isaacs--Hard Drugs/Version.. Records between VG+ to VG++. Not Mint. Great Records to add to your collection. Thanks for looking. Please see my other auctions for more great items. Happy Bidding!!'
-  GARNET_ITEMID = 140329666820
   GARNET_ENDTIME = '2009-07-03T22:02:53.000Z'
   GARNET_STARTTIME = '2009-06-26T22:02:53.000Z'
   GARNET_URL = 'http://cgi.ebay.com/4-45-RPM-Reggae-Garnet-Silk-Johnny-Osbourne-etc_W0QQitemZ140329666820QQcategoryZ306QQcmdZViewItem'
@@ -155,7 +151,7 @@ module BaseSpecCase
   GARNET_SELLERID = 'ronsuniquerecords'
 
 
-  SAMPLE_GET_MUTIPLE_ITEMS_REQUEST ='<?xml version="1.0" encoding="UTF-8"?>
+  SAMPLE_GET_MULTIPLE_ITEMS_RESPONSE ='<?xml version="1.0" encoding="UTF-8"?>
 <GetMultipleItemsResponse xmlns="urn:ebay:apis:eBLBaseComponents">
   <Timestamp>2009-07-03T23:44:00.302Z</Timestamp>
   <Ack>Success</Ack>

@@ -3,7 +3,7 @@ require 'time'
 require 'activesupport'
 require File.dirname(__FILE__) + "/../../domain/ebayitem"
 
-class EbayItemDetailsParser
+class EbayItemsDetailsParser
 
   DESCRIPTION = 'Description'
   ITEMID = 'ItemID'
