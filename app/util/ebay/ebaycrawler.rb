@@ -7,7 +7,7 @@ class EbayCrawler
   APP_ID = 'WillSulz-7420-475d-9a40-2fb8b491a6fd'
   FIND_ITEMS_CALL = 'FindItemsAdvanced'
   GET_ITEM_DETAILS_CALL = 'GetMultipleItems'
-  BASE_URL = '/shopping?version=517&appid=' + APP_ID + '&callname='
+  BASE_URL = 'http://open.api.ebay.com/shopping?version=517&appid=' + APP_ID + '&callname='
 
   def initialize(web_client)
     @web_client = web_client

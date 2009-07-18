@@ -151,14 +151,7 @@ module BaseSpecCase
   GARNET_SELLERID = 'ronsuniquerecords'
 
 
-  SAMPLE_GET_MULTIPLE_ITEMS_RESPONSE ='<?xml version="1.0" encoding="UTF-8"?>
-<GetMultipleItemsResponse xmlns="urn:ebay:apis:eBLBaseComponents">
-  <Timestamp>2009-07-03T23:44:00.302Z</Timestamp>
-  <Ack>Success</Ack>
-  <Build>e623__Bundled_9520957_R1</Build>
-  <Version>623</Version>
-  <CorrelationID>get multiple items</CorrelationID>
-  <Item>
+  TETRACK_ITEM_XML = '<Item>
     <BestOfferEnabled>false</BestOfferEnabled>
     <Description>' + TETRACK_DESCRIPTION + '</Description>
     <ItemID>'+ TETRACK_ITEMID.to_s + '</ItemID>
@@ -219,8 +212,9 @@ module BaseSpecCase
     <PaymentAllowedSite>US</PaymentAllowedSite>
     <IntegratedMerchantCreditCardEnabled>false</IntegratedMerchantCreditCardEnabled>
     <HandlingTime>3</HandlingTime>
-  </Item>
-  <Item>
+  </Item>'
+
+  GARNET_ITEM_XML = '<Item>
     <BestOfferEnabled>false</BestOfferEnabled>
     <Description>' + GARNET_DESCRIPTION + '</Description>
     <ItemID>' + GARNET_ITEMID.to_s + '</ItemID>
@@ -273,8 +267,6 @@ module BaseSpecCase
     <PaymentAllowedSite>US</PaymentAllowedSite>
     <IntegratedMerchantCreditCardEnabled>false</IntegratedMerchantCreditCardEnabled>
     <HandlingTime>4</HandlingTime>
-  </Item>
-</GetMultipleItemsResponse>'
-
+  </Item>'
 
 end
