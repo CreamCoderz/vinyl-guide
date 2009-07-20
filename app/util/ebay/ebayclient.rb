@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + "/../dateutil"
 require File.dirname(__FILE__) + "/../ebay/ebayfinditemsparser"
 require File.dirname(__FILE__) + "/../ebay/ebayitemsdetailsparser"
 
-class EbayCrawler
+class EbayClient
   APP_ID = 'WillSulz-7420-475d-9a40-2fb8b491a6fd'
   FIND_ITEMS_CALL = 'FindItemsAdvanced'
   GET_ITEM_DETAILS_CALL = 'GetMultipleItems'

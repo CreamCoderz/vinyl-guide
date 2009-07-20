@@ -3,6 +3,15 @@ require 'time'
 
 module BaseSpecCase
 
+  CURRENT_EBAY_TIME = '2009-07-19T23:42:25.000Z'
+
+  SAMPLE_GET_EBAY_TIME_RESPONSE = ' <GeteBayTimeResponse xmlns="urn:ebay:apis:eBLBaseComponents">
+   <Timestamp>' + CURRENT_EBAY_TIME + '</Timestamp>
+   <Ack>Success</Ack>
+   <Build>e625__Bundled_9633847_R1</Build>
+   <Version>625</Version>
+  </GeteBayTimeResponse>'
+
   SAMPLE_FIND_ITEMS_REQUEST = 'http://open.api.ebay.com/shopping?version=517&appid=WillSulz-7420-475d-9a40-2fb8b491a6fd&callname=FindItemsAdvanced&CategoryID=306&DescriptionSearch=true&EndTimeFrom=2009-07-09T01:00:00.000Z&EndTimeTo=2009-07-10T01:00:00.000Z&MaxEntries=100&PageNumber=1&QueryKeywords=reggae'
 
   item_1_endtime_utc = '2009-07-03T23:42:25.000Z'

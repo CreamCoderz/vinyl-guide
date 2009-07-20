@@ -1,24 +1,24 @@
 require 'spec'
 require 'time'
 require File.dirname(__FILE__) + '/../../../app/util/webclient'
-require File.dirname(__FILE__) + '/../../../app/util/ebay/ebaycrawler'
+require File.dirname(__FILE__) + '/../../../app/util/ebay/ebayclient'
 require File.dirname(__FILE__) + '/../settablehttpclient'
 require File.dirname(__FILE__) + "/../../base_spec_case"
 require File.dirname(__FILE__) + '/ebayitemdetailsparser_spec'
 
-describe EbayCrawler do
+describe EbayClient do
 
-  #TODO: stub EbayCrawler.. do not reuse the SettableHttpClient
+  #TODO: stub EbayClient.. do not reuse the SettableHttpClient
   it "should send a request to ebay" do
     #TODO: please get rid of the unused initializtion param
     http_client = SettableHttpClient.new "unused"
     http_client.set_response(BaseSpecCase::SAMPLE_FIND_ITEMS_RESPONSE)
-    ebay_crawler = EbayCrawler.new(WebClient.new(http_client))
+    ebay_client = EbayClient.new(WebClient.new(http_client))
     end_time_from = Date.new
     end_time_to = Date.new.next
-    find_items_results = ebay_crawler.find_items(end_time_from, end_time_to)
-    http_client.path.should == '/shopping?version=517&appid=' + EbayCrawler::APP_ID +
-            '&callname=' + EbayCrawler::FIND_ITEMS_CALL.to_s + '&CategoryID=306&DescriptionSearch=true' +
+    find_items_results = ebay_client.find_items(end_time_from, end_time_to)
+    http_client.path.should == '/shopping?version=517&appid=' + EbayClient::APP_ID +
+            '&callname=' + EbayClient::FIND_ITEMS_CALL.to_s + '&CategoryID=306&DescriptionSearch=true' +
             '&EndTimeFrom=' + DateUtil.date_to_utc(end_time_from) + '&EndTimeTo=' + DateUtil.date_to_utc(end_time_to) +
             '&MaxEntries=100' + '&PageNumber=1&QueryKeywords=reggae'
     http_client.host.should == 'open.api.ebay.com'
@@ -30,8 +30,8 @@ describe EbayCrawler do
     http_client = SettableHttpClient.new "unused"
     multiple_items_response = EbayItemsDetailsParserTest.make_multiple_items_response(BaseSpecCase::TETRACK_ITEM_XML + BaseSpecCase::GARNET_ITEM_XML)
     http_client.set_response(multiple_items_response)
-    ebay_crawler = EbayCrawler.new(WebClient.new(http_client))
-    detailses = ebay_crawler.get_details([BaseSpecCase::TETRACK_ITEMID, BaseSpecCase::GARNET_ITEMID])
+    ebay_client = EbayClient.new(WebClient.new(http_client))
+    detailses = ebay_client.get_details([BaseSpecCase::TETRACK_ITEMID, BaseSpecCase::GARNET_ITEMID])
     http_client.path.should == BaseSpecCase::SAMPLE_GET_MULTIPLE_ITEMS_REQUEST
     http_client.host.should == 'open.api.ebay.com'
     detailses.length.should == 2
