@@ -5,6 +5,8 @@ module BaseSpecCase
 
   CURRENT_EBAY_TIME = '2009-07-19T23:42:25.000Z'
 
+  SAMPLE_GET_EBAY_TIME_REQUEST = '/shopping?version=517&appid=WillSulz-7420-475d-9a40-2fb8b491a6fd&callname=geteBayTime'
+
   SAMPLE_GET_EBAY_TIME_RESPONSE = ' <GeteBayTimeResponse xmlns="urn:ebay:apis:eBLBaseComponents">
    <Timestamp>' + CURRENT_EBAY_TIME + '</Timestamp>
    <Ack>Success</Ack>
@@ -20,11 +22,11 @@ module BaseSpecCase
   item_4_endtime_utc = '2009-07-03T23:48:32.000Z'
   item_5_endtime_utc = '2009-07-03T23:49:57.000Z'
   
-  FOUND_ITEM_1 = [120440899019, Time.iso8601(item_1_endtime_utc).to_date]
-  FOUND_ITEM_2 = [260436558510, Time.iso8601(item_2_endtime_utc).to_date]
-  FOUND_ITEM_3 = [300325824658, Time.iso8601(item_3_endtime_utc).to_date]
-  FOUND_ITEM_4 = [300325824769, Time.iso8601(item_4_endtime_utc).to_date]
-  FOUND_ITEM_5 = [300325824946, Time.iso8601(item_5_endtime_utc).to_date]
+  FOUND_ITEM_1 = [120440899019, Time.iso8601(item_1_endtime_utc)]
+  FOUND_ITEM_2 = [260436558510, Time.iso8601(item_2_endtime_utc)]
+  FOUND_ITEM_3 = [300325824658, Time.iso8601(item_3_endtime_utc)]
+  FOUND_ITEM_4 = [300325824769, Time.iso8601(item_4_endtime_utc)]
+  FOUND_ITEM_5 = [300325824946, Time.iso8601(item_5_endtime_utc)]
 
   FOUND_ITEMS = [FOUND_ITEM_1, FOUND_ITEM_2]
 

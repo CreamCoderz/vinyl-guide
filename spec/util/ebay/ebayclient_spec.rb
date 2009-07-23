@@ -46,8 +46,16 @@ describe EbayClient do
             BaseSpecCase::GARNET_PRICE, BaseSpecCase::GARNET_SELLERID)
   end
 
+  it "should get the current ebay time" do
+    http_client = SettableHttpClient.new "unused"
+    http_client.set_response(BaseSpecCase::SAMPLE_GET_EBAY_TIME_RESPONSE)
+    ebay_client = EbayClient.new(WebClient.new(http_client))
+    current_time = ebay_client.get_current_time
+    http_client.path.should == BaseSpecCase::SAMPLE_GET_EBAY_TIME_REQUEST
+    http_client.host.should == 'open.api.ebay.com'
+    current_time.should == DateUtil.utc_to_date(BaseSpecCase::CURRENT_EBAY_TIME)
+  end
+
   #TODO: test crawling errors
-
-
 
 end

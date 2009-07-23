@@ -8,7 +8,7 @@ class DateUtil
   end
 
   def self.utc_to_date(utc)
-    Time.iso8601(utc).to_date
+    Time.iso8601(utc)
   end
 
 end

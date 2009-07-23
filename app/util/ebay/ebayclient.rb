@@ -2,11 +2,14 @@ require 'ActiveSupport'
 require File.dirname(__FILE__) + "/../dateutil"
 require File.dirname(__FILE__) + "/../ebay/ebayfinditemsparser"
 require File.dirname(__FILE__) + "/../ebay/ebayitemsdetailsparser"
+require File.dirname(__FILE__) + "/../ebay/ebaytimeparser"
 
 class EbayClient
   APP_ID = 'WillSulz-7420-475d-9a40-2fb8b491a6fd'
   FIND_ITEMS_CALL = 'FindItemsAdvanced'
   GET_ITEM_DETAILS_CALL = 'GetMultipleItems'
+  GET_EBAY_TIME = 'geteBayTime'
+
   BASE_URL = 'http://open.api.ebay.com/shopping?version=517&appid=' + APP_ID + '&callname='
 
   def initialize(web_client)
@@ -31,4 +34,10 @@ class EbayClient
             '&IncludeSelector=Details,TextDescription&ItemID=' + item_ids_query)
     EbayItemsDetailsParser.parse(response.body)
   end
+
+  def get_current_time
+    response = @web_client.get(BASE_URL + GET_EBAY_TIME)
+    EbayTimeParser.parse(response.body)
+  end
+
 end
