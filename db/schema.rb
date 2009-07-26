@@ -9,7 +9,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 2) do
+ActiveRecord::Schema.define(:version => 4) do
+
+  create_table "ebay_auctions", :force => true do |t|
+    t.integer "item_id"
+    t.time    "end_time"
+  end
+
+  create_table "ebay_items", :force => true do |t|
+    t.integer "itemid"
+    t.text    "description"
+    t.integer "bidcount"
+    t.float   "price"
+    t.time    "endtime"
+    t.time    "starttime"
+    t.string  "url"
+    t.string  "galleryimg"
+    t.string  "sellerid"
+  end
 
   create_table "records", :force => true do |t|
     t.string   "name"

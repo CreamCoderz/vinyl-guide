@@ -1,5 +1,5 @@
 
-class EbayItem
+class EbayItemData
   attr_reader :description, :itemid, :endtime, :starttime, :url, :galleryimg, :bidcount, :price, :sellerid
 
   def initialize(description, itemid, endtime, starttime, url, galleryimg, bidcount, price, sellerid)

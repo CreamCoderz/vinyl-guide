@@ -1,7 +1,7 @@
 require 'cobravsmongoose'
 require 'time'
 require 'activesupport'
-require File.dirname(__FILE__) + "/../../domain/ebayitem"
+require File.dirname(__FILE__) + "/../../domain/ebayitemdata"
 
 class EbayItemsDetailsParser
 
@@ -27,7 +27,7 @@ class EbayItemsDetailsParser
       items = [items]  
     end
     items.each do |item|
-      ebay_items.insert(-1, EbayItem.new(item[DESCRIPTION][LEAFNODE_CONTENTS],
+      ebay_items.insert(-1, EbayItemData.new(item[DESCRIPTION][LEAFNODE_CONTENTS],
       item[ITEMID][LEAFNODE_CONTENTS].to_i, Time.iso8601(item[ENDTIME][LEAFNODE_CONTENTS]).to_date,
               Time.iso8601(item[STARTTIME][LEAFNODE_CONTENTS]).to_date,
               item[URL][LEAFNODE_CONTENTS],item[IMAGE][LEAFNODE_CONTENTS],
