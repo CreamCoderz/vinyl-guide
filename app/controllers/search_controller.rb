@@ -1,7 +1,7 @@
 class SearchController < ApplicationController
 
   def search
-    searchable_fields = ['artist', 'name', 'description', 'producer', 'band', 'engineer', 'studio']
+    searchable_fields = ['itemid', 'description', 'url', 'galleryimg', 'sellerid']
     raw_query = params[:query]
     query = raw_query.split
     wild_query = []
@@ -18,7 +18,8 @@ class SearchController < ApplicationController
       query_exp += wild_sub_query
       i += 1
     end
-    @records = Record.all(:conditions => query_exp)
+    puts query_exp
+    @ebay_items = EbayItem.all(:conditions => query_exp)
     @query = CGI.escapeHTML(raw_query)
   end
 

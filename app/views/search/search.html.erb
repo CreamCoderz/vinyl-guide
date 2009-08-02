@@ -1,16 +1,16 @@
 <div class="container">
 
 
-    <h3><%= @records.length %> Search Results found for &quot;<%= @query %>&quot;</h3>
+    <h3><%= @ebay_items.length %> Search Results found for &quot;<%= @query %>&quot;</h3>
 
     <ul>
-        <% @records.each do |record| %>
+        <% @ebay_items.each do |ebay_item| %>
             <li class="recordItem">
-                <%= render :partial=> "partials/record", :locals => { :record => record } %>
+                <%= render :partial=> "partials/ebay_item", :locals => { :ebay_item => ebay_item } %>
             </li>
+            <hr/>
         <% end %>
     </ul>
     <br/>
 
-    <span class="new"><%= link_to '* New Record', new_record_path %></span>
 </div>

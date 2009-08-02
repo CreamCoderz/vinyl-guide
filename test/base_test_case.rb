@@ -1,5 +1,6 @@
 module BaseTestCase
   RECORD_DISPLAY_FIELDS = ['artist', 'name', 'description', 'date', 'img_src', 'producer', 'band', 'engineer', 'studio']
+  EBAY_ITEM_DISPLAY_FIELDS = ['itemid', 'description', 'bidcount', 'price', 'endtime', 'starttime', 'url', 'galleryimg', 'sellerid']  
 
   RECORD_INPUT_TYPE_FIELDS = Array.new(RECORD_DISPLAY_FIELDS);
   RECORD_INPUT_TYPE_FIELDS.delete('date')

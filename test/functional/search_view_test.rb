@@ -9,17 +9,17 @@ class SearchViewTest <  ActionController::TestCase
   end
 
   def test_should_display_search_view
-    expected_records = [records(:two), records(:four)]
+    expected_records = [ebay_items(:four), ebay_items(:five)]
     get :search, :query => PRINCE
     assert_response :success
-    records = assigns(:records)
-    assert_select '.recordItem' do |records|
+    ebay_items = assigns(:records)
+    assert_select '.recordItem' do |ebay_items|
       count = 0
-      records.each do |record|
-        assert_select record, 'p span' do |record_fields|
+      ebay_items.each do |ebay_item|
+        assert_select ebay_item, 'p span' do |item_fields|
           expected_record = expected_records[count]
           check_record_field [Proc.new {|field, expected_value| assert_equal CGI.escapeHTML(expected_record[expected_value].to_s), field.children.to_s}],
-                  record_fields, RECORD_DISPLAY_FIELDS
+                  item_fields, EBAY_ITEM_DISPLAY_FIELDS
           count += 1
         end
       end

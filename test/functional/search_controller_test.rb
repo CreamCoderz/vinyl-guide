@@ -2,12 +2,12 @@ require 'test_helper'
 
 class SearchControllerTest < ActionController::TestCase
 
-  def test_should_search_for_records
+  def test_should_search_for_ebay_items
     expected_query = 'lee perry'
     get :search, :query => expected_query
     assert_response :success
-    records = assigns(:records)
-    assert_equal(4, records.length)
+    ebay_items = assigns(:ebay_items)
+    assert_equal(4, ebay_items.length)
     assert_equal expected_query, assigns(:query)
   end
 

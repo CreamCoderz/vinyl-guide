@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + "/../../../config/environment"
 
 class EbayCrawler
 
-  CRAWLING_INTERVAL_SECONDS = 20 * 60
+  CRAWLING_INTERVAL_SECONDS = 20 * 600
 
   def initialize(ebay_client)
     @ebay_client = ebay_client

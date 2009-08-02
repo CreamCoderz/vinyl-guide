@@ -7583,3 +7583,194 @@ Migrating to EditEbayAuctions (6)
   [4;35;1mSQL (1.6ms)[0m   [0mSHOW FIELDS FROM `records`[0m
   [4;36;1mSQL (2.7ms)[0m   [0;1mdescribe `records`[0m
   [4;35;1mSQL (0.6ms)[0m   [0mSHOW KEYS FROM `records`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEbayAuction Load (0.3ms)[0m   [0;1mSELECT * FROM `ebay_auctions` [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEbayAuction Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `ebay_auctions`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mEbayAuction Exists (0.3ms)[0m   [0;1mSELECT `ebay_auctions`.id FROM `ebay_auctions` WHERE (`ebay_auctions`.`item_id` = 120440899019 AND `ebay_auctions`.item_id = 120440899019) LIMIT 1[0m
+  [4;35;1mEbayAuction Create (0.2ms)[0m   [0mINSERT INTO `ebay_auctions` (`item_id`, `end_time`) VALUES(120440899019, '2009-07-03 23:42:25')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mEbayAuction Exists (0.2ms)[0m   [0;1mSELECT `ebay_auctions`.id FROM `ebay_auctions` WHERE (`ebay_auctions`.`item_id` = 260436558510 AND `ebay_auctions`.item_id = 260436558510) LIMIT 1[0m
+  [4;35;1mEbayAuction Create (0.2ms)[0m   [0mINSERT INTO `ebay_auctions` (`item_id`, `end_time`) VALUES(260436558510, '2009-07-03 23:46:05')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEbayAuction Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `ebay_auctions`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mEbayAuction Exists (0.3ms)[0m   [0;1mSELECT `ebay_auctions`.id FROM `ebay_auctions` WHERE (`ebay_auctions`.`item_id` = 120440899019 AND `ebay_auctions`.item_id = 120440899019) LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mEbayAuction Exists (0.2ms)[0m   [0mSELECT `ebay_auctions`.id FROM `ebay_auctions` WHERE (`ebay_auctions`.`item_id` = 260436558510 AND `ebay_auctions`.item_id = 260436558510) LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEbayAuction Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `ebay_auctions`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mEbayAuction Exists (0.3ms)[0m   [0;1mSELECT `ebay_auctions`.id FROM `ebay_auctions` WHERE (`ebay_auctions`.`item_id` = 120440899019 AND `ebay_auctions`.item_id = 120440899019) LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mEbayAuction Exists (0.2ms)[0m   [0mSELECT `ebay_auctions`.id FROM `ebay_auctions` WHERE (`ebay_auctions`.`item_id` = 260436558510 AND `ebay_auctions`.item_id = 260436558510) LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEbayAuction Load (0.2ms)[0m   [0;1mSELECT * FROM `ebay_auctions` [0m
+  [4;35;1mEbayAuction Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `ebay_auctions`[0m
+  [4;36;1mEbayItem Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `ebay_items`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mEbayItem Create (0.5ms)[0m   [0;1mINSERT INTO `ebay_items` (`bidcount`, `endtime`, `price`, `itemid`, `url`, `sellerid`, `description`, `starttime`, `galleryimg`) VALUES(2, '2009-07-03', 14.48, 120440899019, 'http://cgi.ebay.com/THIRD-WORLD-TALK-TO-ME-12-79-reggae-disco-HEAR_W0QQitemZ120440899019QQcategoryZ306QQcmdZViewItem', 'coolluv', 'isnw_ecp THIRD WORLD - TALK TO ME 8:20 / AFRICAN WOMAN 4:20 ISLAND RECORDS ORIGINAL NM US 12\" SINGLE! Released in 1979, this is a nice original pressing in beautiful shape. You can listen to a sample of the A-side (No sound processing). The record vinyl is a little hazy--probably from pressing process--but is blazingly shiny NEAR MINT condition. It plays great. Have a listen! The labels are clean & beautiful with no spindle marks. The cover is die-cut company sleeve with the original cellophane & cello sticker around it and is nice NM. It comes in a white inner sleeve. It&apos;s an awesome copy! You&apos;ll be very happy. A nice addition to any Funky Reggae Disco 12-inch collection! Lots more music stuff also on auction this week! Feel free to email with any questions before you bid. See my other auctions and my ebay store for more cool stuff! AUCTION TERMS: USA Winner prepays, adding $3.99 for USPS Media S&H (if you prefer, $8.00 for Priority shipping) with tracking # (in US only), $8.00 First-Class International to Canada, $11.00 First Class International to Mexico and $15.00 First-Class International everywhere else. I use professional LP mailers. I combine auctions for savings on postage. USA PAYMENT: If you desire insurance, please add $1.75, COOLLUV is not responsible for uninsured items mailed through USPS. VISA/MC/AMEX/DISCOVER through PayPal gets immediate shipping. INTERNATIONAL PAYMENT: Insurance is not available for First-Class International packages. Paypal gets immediate shipping. ITALIAN BIDDERS: Shipping to Italy requires Express Mail with insurance for $40.00. Please wait for the invoice to pay. If this is not agreeable to you, please do not bid!! OFFERENTI ITALIANI: Spedendo in Italia richiede la posta espressa con assicurazione ed è $40.00. Se siete in Italia, aspetti prego la fattura per pagare! Se questo non è gradevole per voi, non faccia un&apos;offerta prego!! I SHIP FAST!! Thanks for looking! CLICK HERE FOR CD&apos;S & MUSIC MEMORABILIA FROM COOLLUV! CLICK HERE FOR VINYL FROM VSRECS!', '2009-06-26', 'http://thumbs3.ebaystatic.com/pict/1204408990198080_1.jpg')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mEbayItem Create (0.2ms)[0m   [0mINSERT INTO `ebay_items` (`bidcount`, `endtime`, `price`, `itemid`, `url`, `sellerid`, `description`, `starttime`, `galleryimg`) VALUES(1, '2009-07-03', 0.99, 260436558510, 'http://cgi.ebay.com/BOUNTY-KILLER-NO-ARGUMENT-Reggae-45_W0QQitemZ260436558510QQcategoryZ306QQcmdZViewItem', 'julian1263', 'GOOD CONDITION I HAVE A LOT OF RECORDS IF YOU DONT SEE A SINGLE OR ALBUM AND YOU WANT IT ASK I MAY HAVE IT', '2009-06-26', 'http://thumbs1.ebaystatic.com/pict/2604365585108080_1.jpg')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEbayAuction Load (0.3ms)[0m   [0;1mSELECT * FROM `ebay_auctions` [0m
+  [4;35;1mEbayAuction Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `ebay_auctions`[0m
+  [4;36;1mEbayItem Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `ebay_items`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mEbayItem Create (0.4ms)[0m   [0;1mINSERT INTO `ebay_items` (`bidcount`, `endtime`, `price`, `itemid`, `url`, `sellerid`, `description`, `starttime`, `galleryimg`) VALUES(2, '2009-07-03', 14.48, 120440899019, 'http://cgi.ebay.com/THIRD-WORLD-TALK-TO-ME-12-79-reggae-disco-HEAR_W0QQitemZ120440899019QQcategoryZ306QQcmdZViewItem', 'coolluv', 'isnw_ecp THIRD WORLD - TALK TO ME 8:20 / AFRICAN WOMAN 4:20 ISLAND RECORDS ORIGINAL NM US 12\" SINGLE! Released in 1979, this is a nice original pressing in beautiful shape. You can listen to a sample of the A-side (No sound processing). The record vinyl is a little hazy--probably from pressing process--but is blazingly shiny NEAR MINT condition. It plays great. Have a listen! The labels are clean & beautiful with no spindle marks. The cover is die-cut company sleeve with the original cellophane & cello sticker around it and is nice NM. It comes in a white inner sleeve. It&apos;s an awesome copy! You&apos;ll be very happy. A nice addition to any Funky Reggae Disco 12-inch collection! Lots more music stuff also on auction this week! Feel free to email with any questions before you bid. See my other auctions and my ebay store for more cool stuff! AUCTION TERMS: USA Winner prepays, adding $3.99 for USPS Media S&H (if you prefer, $8.00 for Priority shipping) with tracking # (in US only), $8.00 First-Class International to Canada, $11.00 First Class International to Mexico and $15.00 First-Class International everywhere else. I use professional LP mailers. I combine auctions for savings on postage. USA PAYMENT: If you desire insurance, please add $1.75, COOLLUV is not responsible for uninsured items mailed through USPS. VISA/MC/AMEX/DISCOVER through PayPal gets immediate shipping. INTERNATIONAL PAYMENT: Insurance is not available for First-Class International packages. Paypal gets immediate shipping. ITALIAN BIDDERS: Shipping to Italy requires Express Mail with insurance for $40.00. Please wait for the invoice to pay. If this is not agreeable to you, please do not bid!! OFFERENTI ITALIANI: Spedendo in Italia richiede la posta espressa con assicurazione ed è $40.00. Se siete in Italia, aspetti prego la fattura per pagare! Se questo non è gradevole per voi, non faccia un&apos;offerta prego!! I SHIP FAST!! Thanks for looking! CLICK HERE FOR CD&apos;S & MUSIC MEMORABILIA FROM COOLLUV! CLICK HERE FOR VINYL FROM VSRECS!', '2009-06-26', 'http://thumbs3.ebaystatic.com/pict/1204408990198080_1.jpg')[0m
+  [4;35;1mSQL (32.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mEbayItem Create (0.2ms)[0m   [0mINSERT INTO `ebay_items` (`bidcount`, `endtime`, `price`, `itemid`, `url`, `sellerid`, `description`, `starttime`, `galleryimg`) VALUES(1, '2009-07-03', 0.99, 260436558510, 'http://cgi.ebay.com/BOUNTY-KILLER-NO-ARGUMENT-Reggae-45_W0QQitemZ260436558510QQcategoryZ306QQcmdZViewItem', 'julian1263', 'GOOD CONDITION I HAVE A LOT OF RECORDS IF YOU DONT SEE A SINGLE OR ALBUM AND YOU WANT IT ASK I MAY HAVE IT', '2009-06-26', 'http://thumbs1.ebaystatic.com/pict/2604365585108080_1.jpg')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-08-02 15:07:37) [GET]
+  [4;36;1mEbayItem Load (0.6ms)[0m   [0;1mSELECT * FROM `ebay_items` [0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;35;1mEbayItem Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item (6.4ms)
+Rendered partials/_ebay_item (0.3ms)
+Rendered partials/_ebay_item (0.4ms)
+Rendered partials/_ebay_item (0.2ms)
+Rendered partials/_header (0.9ms)
+Rendered partials/_footer (0.5ms)
+Completed in 83ms (View: 77, DB: 3) | 200 OK [http://localhost/ebay_items]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-08-02 15:08:23) [GET]
+  [4;36;1mEbayItem Load (0.4ms)[0m   [0;1mSELECT * FROM `ebay_items` [0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;35;1mEbayItem Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item (3.9ms)
+Rendered partials/_ebay_item (0.3ms)
+Rendered partials/_ebay_item (0.3ms)
+Rendered partials/_ebay_item (0.2ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 15ms (View: 9, DB: 2) | 200 OK [http://localhost/ebay_items]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-08-02 15:49:10) [GET]
+  [4;36;1mEbayItem Load (0.4ms)[0m   [0;1mSELECT * FROM `ebay_items` [0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;35;1mEbayItem Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item (3.8ms)
+Rendered partials/_ebay_item (0.3ms)
+Rendered partials/_ebay_item (0.3ms)
+Rendered partials/_ebay_item (0.2ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 11ms (View: 6, DB: 2) | 200 OK [http://localhost/ebay_items]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-08-02 15:49:16) [GET]
+  Parameters: {"query"=>"third"}
+  [4;36;1mEbayItem Load (0.4ms)[0m   [0;1mSELECT * FROM `ebay_items` WHERE (itemid like '%third%' OR description like '%third%' OR url like '%third%' OR galleryimg like '%third%' OR sellerid like '%third%') [0m
+Rendering template within layouts/application
+Rendering search/search
+  [4;35;1mEbayItem Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item (3.9ms)
+Rendered partials/_ebay_item (0.3ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 17ms (View: 10, DB: 2) | 200 OK [http://localhost/search?query=third]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-08-02 15:49:39) [GET]
+  Parameters: {"query"=>"third"}
+  [4;36;1mEbayItem Load (0.4ms)[0m   [0;1mSELECT * FROM `ebay_items` WHERE (itemid like '%third%' OR description like '%third%' OR url like '%third%' OR galleryimg like '%third%' OR sellerid like '%third%') [0m
+Rendering template within layouts/application
+Rendering search/search
+  [4;35;1mEbayItem Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item (3.7ms)
+Rendered partials/_ebay_item (0.3ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 15ms (View: 8, DB: 2) | 200 OK [http://localhost/search?query=third]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-08-02 15:49:56) [GET]
+  Parameters: {"query"=>"talk"}
+  [4;36;1mEbayItem Load (0.5ms)[0m   [0;1mSELECT * FROM `ebay_items` WHERE (itemid like '%talk%' OR description like '%talk%' OR url like '%talk%' OR galleryimg like '%talk%' OR sellerid like '%talk%') [0m
+Rendering template within layouts/application
+Rendering search/search
+  [4;35;1mEbayItem Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item (3.9ms)
+Rendered partials/_ebay_item (0.3ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 13ms (View: 5, DB: 2) | 200 OK [http://localhost/search?query=talk]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-08-02 15:51:33) [GET]
+  Parameters: {"query"=>"talk"}
+  [4;36;1mEbayItem Load (0.5ms)[0m   [0;1mSELECT * FROM `ebay_items` WHERE (itemid like '%talk%' OR description like '%talk%' OR url like '%talk%' OR galleryimg like '%talk%' OR sellerid like '%talk%') [0m
+Rendering template within layouts/application
+Rendering search/search
+  [4;35;1mEbayItem Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item (5.4ms)
+Rendered partials/_ebay_item (0.3ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 15ms (View: 9, DB: 2) | 200 OK [http://localhost/search?query=talk]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-08-02 15:52:16) [GET]
+  [4;36;1mRecord Load (0.3ms)[0m   [0;1mSELECT * FROM `records` [0m
+Rendering template within layouts/application
+Rendering records/index
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 54ms (View: 50, DB: 1) | 200 OK [http://localhost/records]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-08-02 16:25:18) [GET]
+  Parameters: {"query"=>"talk"}
+  [4;35;1mEbayItem Load (0.5ms)[0m   [0mSELECT * FROM `ebay_items` WHERE (itemid like '%talk%' OR description like '%talk%' OR url like '%talk%' OR galleryimg like '%talk%' OR sellerid like '%talk%') [0m
+Rendering template within layouts/application
+Rendering search/search
+  [4;36;1mEbayItem Columns (15.5ms)[0m   [0;1mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item (21.4ms)
+Rendered partials/_ebay_item (0.4ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 34ms (View: 12, DB: 16) | 200 OK [http://localhost/search?query=talk]

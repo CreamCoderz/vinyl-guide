@@ -8,8 +8,8 @@ class EbayItemsDetailsParserTest
   describe EbayItemsDetailsParser do
 
     it "should parse an ebay response for multiple item details" do
-      multiple_items_response = EbayItemsDetailsParserTest.make_multiple_items_response(BaseSpecCase::TETRACK_ITEM_XML + BaseSpecCase::GARNET_ITEM_XML)
-      item_detailses = EbayItemsDetailsParser.parse(multiple_items_response)
+      no_items_response = EbayItemsDetailsParserTest.make_multiple_items_response(BaseSpecCase::TETRACK_ITEM_XML + BaseSpecCase::GARNET_ITEM_XML)
+      item_detailses = EbayItemsDetailsParser.parse(no_items_response)
       item_detailses.length.should == 2
       actual_tetrack_item = item_detailses[0]
       actual_garnet_silk_item = item_detailses[1]
@@ -18,12 +18,17 @@ class EbayItemsDetailsParserTest
     end
 
     it "should parse an item from a response with only 1 item" do
-      puts 'called'
-      multiple_items_response = EbayItemsDetailsParserTest.make_multiple_items_response(BaseSpecCase::TETRACK_ITEM_XML)
-      item_detailses = EbayItemsDetailsParser.parse(multiple_items_response)
+      no_items_response = EbayItemsDetailsParserTest.make_multiple_items_response(BaseSpecCase::TETRACK_ITEM_XML)
+      item_detailses = EbayItemsDetailsParser.parse(no_items_response)
       item_detailses.length.should == 1
       actual_tetrack_item = item_detailses[0]
       EbayItemsDetailsParserTest::check_tetrack_item(actual_tetrack_item)
+    end
+
+    it "should parse a response with no items into an empty list" do
+      no_items_response = EbayItemsDetailsParserTest.make_multiple_items_response("")
+      item_detailses = EbayItemsDetailsParser.parse(no_items_response)
+      item_detailses.length.should == 0 
     end
   end
 
