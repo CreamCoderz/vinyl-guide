@@ -1,6 +1,8 @@
 require 'spec'
 require 'time'
+require 'ActiveRecord'
 require File.dirname(__FILE__) + '/../../../app/util/webclient'
+require File.dirname(__FILE__) + '/../../../app/models/ebay_auction'
 require File.dirname(__FILE__) + '/../../../app/util/ebay/ebayclient'
 require File.dirname(__FILE__) + '/../../../app/util/ebay/ebaycrawler'
 require File.dirname(__FILE__) + '/../settablehttpclient'
@@ -19,14 +21,21 @@ describe EbayCrawler do
     results.should == BaseSpecCase::FOUND_ITEMS
   end
 
-  it "should get item details for known ended auctions" do
+  it "should inject the auction items into the db" do
     ebay_client_mock = mock("ebay_client_mock")
-    item_details_response = EbayItemsDetailsParserTest.make_multiple_items_response(BaseSpecCase::TETRACK_ITEM_XML + BaseSpecCase::GARNET_ITEM_XML)
-    ebay_client_mock.should_receive(:get_details).with([BaseSpecCase::TETRACK_ITEMID, BaseSpecCase::GARNET_ITEMID]).and_return(item_details_response)
+    ebay_client_mock.should_receive(:find_items).and_return(BaseSpecCase::FOUND_ITEMS)    
     ebay_crawler = EbayCrawler.new(ebay_client_mock)
-    results = ebay_crawler.get_items([BaseSpecCase::TETRACK_ITEMID, BaseSpecCase::GARNET_ITEMID])
-    EbayItemsDetailsParserTest::check_tetrack_item(results[0])
-    EbayItemsDetailsParserTest::check_garnet_item(results[1])
+    EbayAuction.should have(2).records
   end
+
+#  it "should get item details for known ended auctions" do
+#    ebay_client_mock = mock("ebay_client_mock")
+#    item_details_response = EbayItemsDetailsParserTest.make_multiple_items_response(BaseSpecCase::TETRACK_ITEM_XML + BaseSpecCase::GARNET_ITEM_XML)
+#    ebay_client_mock.should_receive(:get_details).with([BaseSpecCase::TETRACK_ITEMID, BaseSpecCase::GARNET_ITEMID]).and_return(item_details_response)
+#    ebay_crawler = EbayCrawler.new(ebay_client_mock)
+#    results = ebay_crawler.get_items([BaseSpecCase::TETRACK_ITEMID, BaseSpecCase::GARNET_ITEMID])
+#    EbayItemsDetailsParserTest::check_tetrack_item(results[0])
+#    EbayItemsDetailsParserTest::check_garnet_item(results[1])
+#  end
 
 end

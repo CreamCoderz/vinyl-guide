@@ -48,17 +48,17 @@
   </component>
   <component name="RailsViewFoldersManager">
     <USER_URLS url="file://$MODULE_DIR$/config" />
-    file://$MODULE_DIR$/config
+    file:///Users/will/vinylguide3/config
     <USER_URLS url="file://$MODULE_DIR$/spec" />
-    file://$MODULE_DIR$/spec
+    file:///Users/will/vinylguide3/spec
     <USER_URLS url="file://$MODULE_DIR$/lib" />
-    file://$MODULE_DIR$/lib
+    file:///Users/will/vinylguide3/lib
     <USER_URLS url="file://$MODULE_DIR$/public/javascripts" />
-    file://$MODULE_DIR$/public/javascripts
+    file:///Users/will/vinylguide3/public/javascripts
     <USER_URLS url="file://$MODULE_DIR$/vendor/plugins" />
-    file://$MODULE_DIR$/vendor/plugins
+    file:///Users/will/vinylguide3/vendor/plugins
     <USER_URLS url="file://$MODULE_DIR$/public/stylesheets" />
-    file://$MODULE_DIR$/public/stylesheets
+    file:///Users/will/vinylguide3/public/stylesheets
   </component>
 </module>
 

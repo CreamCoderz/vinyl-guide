@@ -137,6 +137,17 @@ module BaseSpecCase
   <ItemSearchURL>http://search-desc.ebay.com/ws/search/SaleSearch?fts=2&amp;DemandData=1&amp;dfe=20090604&amp;dff=1&amp;dfs=20090603&amp;dfte=2&amp;dfts=2&amp;fsop=32&amp;sacat=306&amp;satitle=reggae</ItemSearchURL>
 </FindItemsAdvancedResponse>'
 
+  EMPTY_FIND_ITEMS_RESPONSE = '<FindItemsAdvancedResponse xmlns="urn:ebay:apis:eBLBaseComponents">
+   <Timestamp>2009-07-29T04:35:42.432Z</Timestamp>
+   <Ack>Success</Ack>
+   <Build>E627_CORE_BUNDLED_9750858_R1</Build>
+   <Version>627</Version>
+   <PageNumber>1</PageNumber>
+   <TotalPages>0</TotalPages>
+   <TotalItems>0</TotalItems>
+   <ItemSearchURL>http://search-desc.ebay.com/ws/search/SaleSearch?fts=2&amp;DemandData=1&amp;dfe=20090629&amp;dff=1&amp;dfs=20090629&amp;dfte=5&amp;dfts=5&amp;fsop=32&amp;sacat=306&amp;satitle=reggae</ItemSearchURL>
+  </FindItemsAdvancedResponse>
+'
   TETRACK_ITEMID = 330340439690
   GARNET_ITEMID = 140329666820
   MULTIPLE_ITEMS_CALL = 'GetMultipleItems'

@@ -9,15 +9,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 4) do
+ActiveRecord::Schema.define(:version => 6) do
 
   create_table "ebay_auctions", :force => true do |t|
-    t.integer "item_id"
+    t.integer "item_id",  :limit => 8
     t.time    "end_time"
   end
 
   create_table "ebay_items", :force => true do |t|
-    t.integer "itemid"
+    t.integer "itemid",      :limit => 8
     t.text    "description"
     t.integer "bidcount"
     t.float   "price"

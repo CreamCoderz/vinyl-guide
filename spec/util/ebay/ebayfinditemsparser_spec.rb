@@ -16,4 +16,11 @@ describe EbayFindItemsParser do
     ebay_item_finder.get_items.should == BaseSpecCase::FOUND_ITEMS
   end
 
+  it "should parse a response with an empty list of results" do
+    ebay_item_finder = EbayFindItemsParser.new(BaseSpecCase::EMPTY_FIND_ITEMS_RESPONSE)
+    ebay_item_finder.get_items.should == []
+    ebay_item_finder.get_num_total_items.should == 0
+    ebay_item_finder.get_num_items_marked.should == 0
+    ebay_item_finder.get_num_items_ignored.should == 0
+  end
 end

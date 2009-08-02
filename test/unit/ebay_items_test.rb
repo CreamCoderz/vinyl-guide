@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class EbayItemsTest < ActiveSupport::TestCase
-  ITEM_ID = 12345
+  ITEM_ID = 12345678901
 
   def test_create_new_ebay_item
     ebay_item = EbayItem.new
@@ -23,6 +23,8 @@ class EbayItemsTest < ActiveSupport::TestCase
     ebay_item.bidcount = 10
     ebay_item.url = "http://www.example.com/1"
     assert ebay_item.save
+    stored_item = EbayItem.find(ebay_item.id)
+    assert_equal stored_item.itemid, ITEM_ID
   end
 
   def test_presense_of_url
