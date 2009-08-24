@@ -18,7 +18,6 @@ class SearchController < ApplicationController
       query_exp += wild_sub_query
       i += 1
     end
-    puts query_exp
     @ebay_items = EbayItem.all(:conditions => query_exp)
     @query = CGI.escapeHTML(raw_query)
   end

@@ -31,8 +31,6 @@ class SettableHttpClient<Net::HTTP
   end
 
   def post(path)
-    puts path
-
   end
 end
 

@@ -3,6 +3,7 @@ require 'spec'
 require 'activesupport'
 require File.dirname(__FILE__) + "/../../base_spec_case"
 require File.dirname(__FILE__) + '/../../../app/util/ebay/ebayitemsdetailsparser'
+include Spec::Matchers
 
 class EbayItemsDetailsParserTest
   describe EbayItemsDetailsParser do
@@ -45,20 +46,14 @@ class EbayItemsDetailsParserTest
   end
 
   def self.check_tetrack_item(actual_tetrack_item)
-    EbayItemsDetailsParserTest.check_ebay_item(actual_tetrack_item, CGI.unescapeHTML(BaseSpecCase::TETRACK_DESCRIPTION),
-            BaseSpecCase::TETRACK_ITEMID, Time.iso8601(BaseSpecCase::TETRACK_ENDTIME).to_date, Time.iso8601(BaseSpecCase::TETRACK_STARTTIME).to_date,
-            BaseSpecCase::TETRACK_URL, BaseSpecCase::TETRACK_GALLERY_IMG, BaseSpecCase::TETRACK_BIDCOUNT,
-            BaseSpecCase::TETRACK_PRICE, BaseSpecCase::TETRACK_SELLERID)
+    EbayItemsDetailsParserTest.check_ebay_item(BaseSpecCase::TETRACK_EBAY_ITEM, actual_tetrack_item)
   end
 
   def self.check_garnet_item(actual_garnet_silk_item)
-    EbayItemsDetailsParserTest.check_ebay_item(actual_garnet_silk_item, CGI.unescapeHTML(BaseSpecCase::GARNET_DESCRIPTION),
-            BaseSpecCase::GARNET_ITEMID, Time.iso8601(BaseSpecCase::GARNET_ENDTIME).to_date, Time.iso8601(BaseSpecCase::GARNET_STARTTIME).to_date,
-            BaseSpecCase::GARNET_URL, BaseSpecCase::GARNET_GALLERY_IMG, BaseSpecCase::GARNET_BIDCOUNT,
-            BaseSpecCase::GARNET_PRICE, BaseSpecCase::GARNET_SELLERID)
+    EbayItemsDetailsParserTest.check_ebay_item(BaseSpecCase::GARNET_EBAY_ITEM, actual_garnet_silk_item)
   end
 
-  def self.check_ebay_item(actual_item, description, itemid, endtime, starttime, url, image, bidcount, price, sellerid)
+  def self.check_ebay_item_data(actual_item, description, itemid, endtime, starttime, url, image, bidcount, price, sellerid)
     actual_item.description.should == description
     actual_item.itemid.should == itemid
     actual_item.endtime.should == endtime
@@ -68,5 +63,9 @@ class EbayItemsDetailsParserTest
     actual_item.bidcount.should == bidcount
     actual_item.price.should == price
     actual_item.sellerid.should == sellerid
+  end
+
+  def self.check_ebay_item(expected_item, actual_item)
+    expected_item.should == actual_item
   end
 end

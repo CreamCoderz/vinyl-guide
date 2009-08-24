@@ -24,6 +24,5 @@ class WebClient
       raise Exception.new('invalid response')
     end
     @result = FeedParser.parse(response.body)
-
   end
 end

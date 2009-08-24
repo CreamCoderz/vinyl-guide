@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + "/../../../config/environment"
 
 class EbayCrawler
 
-  CRAWLING_INTERVAL_SECONDS = 20 * 600
+  CRAWLING_INTERVAL_SECONDS = 20 * 60
 
   def initialize(ebay_client)
     @ebay_client = ebay_client
@@ -37,11 +37,9 @@ class EbayCrawler
 #        ebay_auction.delete
 #      end
     end
-   puts item_ids.to_s
     #TODO: only call out if there are actaul items to fetch
     item_detailses = @ebay_client.get_details(item_ids)
     item_detailses.each do |item_details|
-      puts 'item details: ' + item_details.to_s
       ebay_item = EbayItem.new(:itemid => item_details.itemid, :description => item_details.description, :bidcount => item_details.bidcount,
               :price => item_details.price, :endtime => item_details.endtime, :starttime => item_details.starttime,
               :url => item_details.url, :galleryimg => item_details.galleryimg,

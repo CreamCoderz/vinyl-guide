@@ -1,5 +1,8 @@
-require 'ActiveSupport'
 require 'time'
+require 'cgi'
+require 'activesupport'
+require File.dirname(__FILE__) + "/../app/domain/ebayitemdata"
+require File.dirname(__FILE__) + "/../app/util/dateutil"
 
 module BaseSpecCase
 
@@ -14,14 +17,15 @@ module BaseSpecCase
    <Version>625</Version>
   </GeteBayTimeResponse>'
 
-  SAMPLE_FIND_ITEMS_REQUEST = 'http://open.api.ebay.com/shopping?version=517&appid=WillSulz-7420-475d-9a40-2fb8b491a6fd&callname=FindItemsAdvanced&CategoryID=306&DescriptionSearch=true&EndTimeFrom=2009-07-09T01:00:00.000Z&EndTimeTo=2009-07-10T01:00:00.000Z&MaxEntries=100&PageNumber=1&QueryKeywords=reggae'
+  SAMPLE_BASE_URL = 'http://open.api.ebay.com'
+  SAMPLE_FIND_ITEMS_REQUEST = SAMPLE_BASE_URL + '/shopping?version=517&appid=WillSulz-7420-475d-9a40-2fb8b491a6fd&callname=FindItemsAdvanced&CategoryID=306&DescriptionSearch=true&EndTimeFrom=2009-07-09T01:00:00.000Z&EndTimeTo=2009-07-10T01:00:00.000Z&MaxEntries=100&PageNumber=1&QueryKeywords=reggae'
 
   item_1_endtime_utc = '2009-07-03T23:42:25.000Z'
   item_2_endtime_utc = '2009-07-03T23:46:05.000Z'
   item_3_endtime_utc = '2009-07-03T23:48:32.000Z'
   item_4_endtime_utc = '2009-07-03T23:48:32.000Z'
   item_5_endtime_utc = '2009-07-03T23:49:57.000Z'
-  
+
   FOUND_ITEM_1 = [120440899019, Time.iso8601(item_1_endtime_utc)]
   FOUND_ITEM_2 = [260436558510, Time.iso8601(item_2_endtime_utc)]
   FOUND_ITEM_3 = [300325824658, Time.iso8601(item_3_endtime_utc)]
@@ -152,7 +156,13 @@ module BaseSpecCase
   GARNET_ITEMID = 140329666820
   MULTIPLE_ITEMS_CALL = 'GetMultipleItems'
   MULTIPLE_ITEMS_SELECTORS = 'Details,TextDescription'
-  SAMPLE_GET_MULTIPLE_ITEMS_REQUEST = '/shopping?version=517&appid=WillSulz-7420-475d-9a40-2fb8b491a6fd&callname=' + MULTIPLE_ITEMS_CALL + '&IncludeSelector=' + MULTIPLE_ITEMS_SELECTORS + '&ItemID=' + TETRACK_ITEMID.to_s + ',' + GARNET_ITEMID.to_s
+
+  def self.generate_multiple_items_request(item_ids)
+    item_ids_converted = item_ids.join(",")
+    '/shopping?version=517&appid=WillSulz-7420-475d-9a40-2fb8b491a6fd&callname=' + MULTIPLE_ITEMS_CALL + '&IncludeSelector=' + MULTIPLE_ITEMS_SELECTORS + '&ItemID=' + item_ids_converted
+  end
+  
+  SAMPLE_GET_MULTIPLE_ITEMS_REQUEST = generate_multiple_items_request([TETRACK_ITEMID.to_s, GARNET_ITEMID.to_s])
 
   TETRACK_DESCRIPTION = 'A1: TETRACK - Let\'s Get Together A2: PABLO ALL STARS - Black Ants Lane Dub B1: JACOB MILLER - Each One Teach One B2: PABLO ALL STARS - Matthew Lane Dub [ROCKERS, JAMAICA] Incredible M- condition copy of this ULTRA RARE and legendary original jamaican Rockers 12". The vocal tracks by Jacob Miller and Tetrack (a version of the Johnny &amp; The Attractions rocksteady classic) are both amazing and so are the two dubs that I have put last in the soundclip below. Listen to this if you don\'t know it! A superb 12" in absolutely AMAZING condition. A-side matrix: A Pabblo 214A B-side matrix: A Pabblo 214B Vinyl condition: M- SOUNDCLIP! Double-click on the "play" button above to listen to SOUND CLIPS of both sides! If the player above doesn\'t work, click HERE to listen to the MP3. Don"t forget to check out my other auctions this week. AIR-MAIL POSTAGE COSTS: 45s: 1-3 45s: $4 to Sweden, $6.50 to Europe, $8 to rest of the world. 4-8 45s: $6 to Sweden, $12 to Europe, $13.50 to rest of the world. 12"s/LPs: 1 LP/12": $6 to Sweden, $13 to Europe, $14 to rest of the world. 2-3 LP/12"s: $8 to Sweden, $21 to Europe, $25 to rest of the world. 4-7 LP/12"s: $11 to Sweden, $32 to Europe, $39 to rest of the world. INSURED/REGISTRRED SHIPPING is available and costs $13 on top of the postage fee quoted above. I know that"s very expensive, but that"s the swedish postal system for you... IMPORTANT! Payment shall be recieved within 10 days. If you can"t pay within that time frame, either contact me so that I know when/if you intend to pay, or DON"T BID if you can"t come up with the money within 10 days after the auction end. PLEASE NOTE! In the unlikely event that it might happen, I can not be held responsible for packages going missing unless you"ve asked to have them sent with insured/registered shipping. Payment is accepted via PayPal. Thanks for looking and good luck bidding!'
   TETRACK_ENDTIME = '2009-07-01T13:34:08.000Z'
@@ -172,32 +182,42 @@ module BaseSpecCase
   GARNET_PRICE = 5.0
   GARNET_SELLERID = 'ronsuniquerecords'
 
+  TETRACK_EBAY_ITEM = EbayItemData.new(CGI.unescapeHTML(TETRACK_DESCRIPTION),
+          TETRACK_ITEMID, Time.iso8601(TETRACK_ENDTIME).to_date, Time.iso8601(TETRACK_STARTTIME).to_date,
+          TETRACK_URL, TETRACK_GALLERY_IMG, TETRACK_BIDCOUNT,
+          TETRACK_PRICE, TETRACK_SELLERID)
 
-  TETRACK_ITEM_XML = '<Item>
+  GARNET_EBAY_ITEM = EbayItemData.new(CGI.unescapeHTML(GARNET_DESCRIPTION),
+          GARNET_ITEMID, Time.iso8601(GARNET_ENDTIME).to_date, Time.iso8601(GARNET_STARTTIME).to_date,
+          GARNET_URL, GARNET_GALLERY_IMG, GARNET_BIDCOUNT,
+          GARNET_PRICE, GARNET_SELLERID)
+
+  def self.generate_detail_item_xml_response(ebay_item_data)
+    '<Item>
     <BestOfferEnabled>false</BestOfferEnabled>
-    <Description>' + TETRACK_DESCRIPTION + '</Description>
-    <ItemID>'+ TETRACK_ITEMID.to_s + '</ItemID>
-    <EndTime>'+ TETRACK_ENDTIME + '</EndTime>
-    <StartTime>'+ TETRACK_STARTTIME + '</StartTime>
-    <ViewItemURLForNaturalSearch>' + TETRACK_URL + '</ViewItemURLForNaturalSearch>
+    <Description>' + CGI.escapeHTML(ebay_item_data.description) + '</Description>
+    <ItemID>' + ebay_item_data.itemid.to_s + '</ItemID>
+    <EndTime>'+ DateUtil.date_to_utc(ebay_item_data.endtime) + '</EndTime>
+    <StartTime>'+ DateUtil.date_to_utc(ebay_item_data.starttime) + '</StartTime>
+    <ViewItemURLForNaturalSearch>' + ebay_item_data.url + '</ViewItemURLForNaturalSearch>
     <ListingType>Chinese</ListingType>
     <Location>Malmoe, -</Location>
     <PaymentMethods>PayPal</PaymentMethods>
-    <GalleryURL>' + TETRACK_GALLERY_IMG + '</GalleryURL>
+    <GalleryURL>' + ebay_item_data.galleryimg + '</GalleryURL>
     <PictureURL>http://www.shingaling.com/ebay0906b/jacobmiller-b.jpg</PictureURL>
     <PrimaryCategoryID>306</PrimaryCategoryID>
     <PrimaryCategoryName>Music:Records</PrimaryCategoryName>
     <Quantity>1</Quantity>
     <Seller>
-      <UserID>' + TETRACK_SELLERID + '</UserID>
+      <UserID>' + ebay_item_data.sellerid + '</UserID>
       <FeedbackRatingStar>Red</FeedbackRatingStar>
       <FeedbackScore>3666</FeedbackScore>
       <PositiveFeedbackPercent>100.0</PositiveFeedbackPercent>
     </Seller>
-    <BidCount>' + TETRACK_BIDCOUNT.to_s + '</BidCount>
-    <ConvertedCurrentPrice currencyID="USD">405.0</ConvertedCurrentPrice>
-    <CurrentPrice currencyID="USD">' + TETRACK_PRICE.to_s + '</CurrentPrice>
-    <HighBidder>
+    <BidCount>' + ebay_item_data.bidcount.to_s + '</BidCount>
+    <ConvertedCurrentPrice currencyID="USD">' + ebay_item_data.price.to_s + '</ConvertedCurrentPrice>
+    <CurrentPrice currencyID="USD">' + ebay_item_data.price.to_s + '</CurrentPrice>
+    <HighBidder>                
       <UserID>a***l</UserID>
       <FeedbackPrivate>false</FeedbackPrivate>
       <FeedbackRatingStar>Purple</FeedbackRatingStar>
@@ -235,60 +255,9 @@ module BaseSpecCase
     <IntegratedMerchantCreditCardEnabled>false</IntegratedMerchantCreditCardEnabled>
     <HandlingTime>3</HandlingTime>
   </Item>'
-
-  GARNET_ITEM_XML = '<Item>
-    <BestOfferEnabled>false</BestOfferEnabled>
-    <Description>' + GARNET_DESCRIPTION + '</Description>
-    <ItemID>' + GARNET_ITEMID.to_s + '</ItemID>
-    <EndTime>' + GARNET_ENDTIME + '</EndTime>
-    <StartTime>' + GARNET_STARTTIME + '</StartTime>
-    <ViewItemURLForNaturalSearch>' + GARNET_URL + '</ViewItemURLForNaturalSearch>
-    <ListingType>Chinese</ListingType>
-    <Location>port st lucie, fl</Location>
-    <PaymentMethods>PayPal</PaymentMethods>
-    <GalleryURL>' + GARNET_GALLERY_IMG + '</GalleryURL>
-    <PictureURL>http://i.ebayimg.com/17/!BVNbPJQBmk~$(KGrHgoOKj!EjlLmZDmvBKRURE(oYQ~~_1.JPG?set_id=8800005007</PictureURL>
-    <PostalCode>34953</PostalCode>
-    <PrimaryCategoryID>306</PrimaryCategoryID>
-    <PrimaryCategoryName>Music:Records</PrimaryCategoryName>
-    <Quantity>1</Quantity>
-    <Seller>
-      <UserID>' + GARNET_SELLERID + '</UserID>
-      <FeedbackRatingStar>Turquoise</FeedbackRatingStar>
-      <FeedbackScore>390</FeedbackScore>
-      <PositiveFeedbackPercent>99.7</PositiveFeedbackPercent>
-    </Seller>
-    <BidCount>' + GARNET_BIDCOUNT.to_s + '</BidCount>
-    <ConvertedCurrentPrice currencyID="USD">' + GARNET_PRICE.to_s + '</ConvertedCurrentPrice>
-    <CurrentPrice currencyID="USD">5.0</CurrentPrice>
-    <ListingStatus>Completed</ListingStatus>
-    <QuantitySold>0</QuantitySold>
-    <ReserveMet>true</ReserveMet>
-    <ShipToLocations>Worldwide</ShipToLocations>
-    <Site>US</Site>
-    <TimeLeft>PT0S</TimeLeft>
-    <Title>4--45 RPM--Reggae--Garnet Silk/Johnny Osbourne/etc.</Title>
-    <HitCount>11</HitCount>
-    <PrimaryCategoryIDPath>11233:306</PrimaryCategoryIDPath>
-    <Storefront>
-      <StoreURL>http://stores.ebay.com/id=0</StoreURL>
-      <StoreName>
-      </StoreName>
-    </Storefront>
-    <Country>US</Country>
-    <ReturnPolicy>
-      <Refund>Money Back</Refund>
-      <ReturnsWithin>3 Days</ReturnsWithin>
-      <ReturnsAccepted>Returns Accepted</ReturnsAccepted>
-      <ShippingCostPaidBy>Buyer</ShippingCostPaidBy>
-    </ReturnPolicy>
-    <MinimumToBid currencyID="USD">5.0</MinimumToBid>
-    <AutoPay>false</AutoPay>
-    <PaymentAllowedSite>CanadaFrench</PaymentAllowedSite>
-    <PaymentAllowedSite>Canada</PaymentAllowedSite>
-    <PaymentAllowedSite>US</PaymentAllowedSite>
-    <IntegratedMerchantCreditCardEnabled>false</IntegratedMerchantCreditCardEnabled>
-    <HandlingTime>4</HandlingTime>
-  </Item>'
+  end
+  
+  TETRACK_ITEM_XML = generate_detail_item_xml_response(TETRACK_EBAY_ITEM)
+  GARNET_ITEM_XML = generate_detail_item_xml_response(GARNET_EBAY_ITEM)
 
 end

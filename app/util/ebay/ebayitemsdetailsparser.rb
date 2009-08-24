@@ -20,7 +20,6 @@ class EbayItemsDetailsParser
   ITEM = 'Item'
 
   def self.parse(xml)
-    puts xml
     parsed_items = CobraVsMongoose.xml_to_hash(xml)
     items = parsed_items[GETMULTIPLEITEMSRESPONSE][ITEM]
     ebay_items = []

@@ -13,13 +13,13 @@ class SearchViewTest <  ActionController::TestCase
     get :search, :query => PRINCE
     assert_response :success
     ebay_items = assigns(:records)
-    assert_select '.recordItem' do |ebay_items|
+    assert_select '.recordItem' do |ebay_nodes|
       count = 0
-      ebay_items.each do |ebay_item|
+      ebay_nodes.each do |ebay_item|
         assert_select ebay_item, 'p span' do |item_fields|
           expected_record = expected_records[count]
-          check_record_field [Proc.new {|field, expected_value| assert_equal CGI.escapeHTML(expected_record[expected_value].to_s), field.children.to_s}],
-                  item_fields, EBAY_ITEM_DISPLAY_FIELDS
+          check_record_field_with_extraction [Proc.new {|field, expected_value| assert_equal expected_value, field.children.to_s}],
+                  item_fields, EBAY_ITEM_DISPLAY_FIELDS, expected_record
           count += 1
         end
       end

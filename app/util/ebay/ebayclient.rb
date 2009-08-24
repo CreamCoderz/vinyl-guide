@@ -9,6 +9,7 @@ class EbayClient
   FIND_ITEMS_CALL = 'FindItemsAdvanced'
   GET_ITEM_DETAILS_CALL = 'GetMultipleItems'
   GET_EBAY_TIME = 'geteBayTime'
+  ITEMS_PER_DETAILS_REQ = 20
 
   BASE_URL = 'http://open.api.ebay.com/shopping?version=517&appid=' + APP_ID + '&callname='
 
@@ -29,10 +30,16 @@ class EbayClient
   def get_details(item_ids)
     item_ids_query = '&ItemID='
     first = true
-    item_ids_query = item_ids.join(',')
-    response = @web_client.get(BASE_URL + GET_ITEM_DETAILS_CALL.to_s +
-            '&IncludeSelector=Details,TextDescription&ItemID=' + item_ids_query)
-    EbayItemsDetailsParser.parse(response.body)
+    num_of_requests = (item_ids.length / ITEMS_PER_DETAILS_REQ).ceil
+    detailses = []
+    for i in 0..num_of_requests
+      start_pos = (i * ITEMS_PER_DETAILS_REQ)
+      item_ids_query = item_ids[start_pos..[(start_pos + ITEMS_PER_DETAILS_REQ)-1, item_ids.length].min].join(',')
+      response = @web_client.get(BASE_URL + GET_ITEM_DETAILS_CALL.to_s +
+              '&IncludeSelector=Details,TextDescription&ItemID=' + item_ids_query)
+      detailses.concat(EbayItemsDetailsParser.parse(response.body))
+    end
+    detailses
   end
 
   def get_current_time
