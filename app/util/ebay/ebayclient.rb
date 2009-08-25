@@ -20,11 +20,19 @@ class EbayClient
   def find_items(end_time_from, end_time_to)
     end_time_from_utc = DateUtil.date_to_utc(end_time_from)
     end_time_to_utc = DateUtil.date_to_utc(end_time_to)
-    response = @web_client.get(BASE_URL + FIND_ITEMS_CALL.to_s + '&CategoryID=306&DescriptionSearch=true' +
-            '&EndTimeFrom=' + end_time_from_utc.to_s + '&EndTimeTo=' + end_time_to_utc.to_s +
-            '&MaxEntries=100' + '&PageNumber=1&QueryKeywords=reggae')
-    find_items_parser = EbayFindItemsParser.new(response.body)
-    find_items_parser.get_items
+    is_last_page = false
+    results = []
+    page_num = 1
+    while !is_last_page
+      response = @web_client.get(BASE_URL + FIND_ITEMS_CALL.to_s + '&CategoryID=306&DescriptionSearch=true' +
+              '&EndTimeFrom=' + end_time_from_utc.to_s + '&EndTimeTo=' + end_time_to_utc.to_s +
+              '&MaxEntries=100' + '&PageNumber=' + page_num.to_s + '&QueryKeywords=reggae')
+      find_items_parser = EbayFindItemsParser.new(response.body)
+      results.concat(find_items_parser.get_items)
+      is_last_page = find_items_parser.last_page
+      page_num += 1
+    end
+    results
   end
 
   def get_details(item_ids)

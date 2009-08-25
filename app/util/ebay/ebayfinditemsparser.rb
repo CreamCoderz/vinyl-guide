@@ -18,7 +18,13 @@ class EbayFindItemsParser
           @parsed_items.insert(-1, [item['ItemID']['$'].to_i, DateUtil.utc_to_date(item['EndTime']['$'])])
         end
       end
+      @page_number = parsed_items['FindItemsAdvancedResponse']['PageNumber']['$']
+      @total_pages = parsed_items['FindItemsAdvancedResponse']['TotalPages']['$']
     end
+  end
+
+  def last_page
+    @page_number == @total_pages
   end
 
   def get_items

@@ -9,7 +9,7 @@ require File.dirname(__FILE__) + '/ebayitemdetailsparser_spec'
 describe EbayClient do
 
   #TODO: stub EbayClient.. do not reuse the SettableHttpClient
-  it "should send a request to ebay" do
+  it "should send a find items request to ebay" do
     #TODO: please get rid of the unused initializtion param
     web_client = SettableHttpClient.new "unused"
     web_client.set_response(BaseSpecCase::SAMPLE_FIND_ITEMS_RESPONSE)
@@ -17,13 +17,25 @@ describe EbayClient do
     end_time_from = Date.new
     end_time_to = Date.new.next
     find_items_results = ebay_client.find_items(end_time_from, end_time_to)
-    web_client.path.should == '/shopping?version=517&appid=' + EbayClient::APP_ID +
-            '&callname=' + EbayClient::FIND_ITEMS_CALL.to_s + '&CategoryID=306&DescriptionSearch=true' +
-            '&EndTimeFrom=' + DateUtil.date_to_utc(end_time_from) + '&EndTimeTo=' + DateUtil.date_to_utc(end_time_to) +
-            '&MaxEntries=100' + '&PageNumber=1&QueryKeywords=reggae'
+    web_client.path.should == BaseSpecCase.generate_find_items_request(end_time_from, end_time_to, 1)
     web_client.host.should == 'open.api.ebay.com'
     find_items_results.should == BaseSpecCase::FOUND_ITEMS
     #TODO: log all other unmarked items
+  end
+
+  it "should send request per page for many pages of find items results" do
+    web_client = mock('web_client')
+    end_time_from = Date.new
+    end_time_to = Date.new.next
+    expected_url1 = BaseSpecCase.generate_find_items_request(end_time_from, end_time_to, 1)
+    expected_url2 = BaseSpecCase.generate_find_items_request(end_time_from, end_time_to, 2)
+    response1 = BaseSpecCase.make_success_response(BaseSpecCase.generate_find_items_response(1, 2))
+    response2 = BaseSpecCase.make_success_response(BaseSpecCase.generate_find_items_response(2, 2))
+    web_client.should_receive(:get).ordered.with(BaseSpecCase::SAMPLE_BASE_URL + expected_url1).and_return(response1)
+    web_client.should_receive(:get).ordered.with(BaseSpecCase::SAMPLE_BASE_URL + expected_url2).and_return(response2)
+    ebay_client = EbayClient.new(web_client)
+    find_items_results = ebay_client.find_items(end_time_from, end_time_to)
+    find_items_results.length.should == 4
   end
 
   it "should get details for multiple items" do
@@ -52,10 +64,8 @@ describe EbayClient do
         response_data[1] += BaseSpecCase.generate_detail_item_xml_response(ebay_item)
       end
     end
-    response1 = SettableHTTPSuccessResponse.new("1.1", 2, "UNUSED")
-    response1.body = EbayItemsDetailsParserTest.make_multiple_items_response(response_data[0])
-    response2 = SettableHTTPSuccessResponse.new("1.1", 2, "UNUSED")
-    response2.body = EbayItemsDetailsParserTest.make_multiple_items_response(response_data[1])
+    response1 = BaseSpecCase.make_success_response(EbayItemsDetailsParserTest.make_multiple_items_response(response_data[0]))
+    response2 = BaseSpecCase.make_success_response(EbayItemsDetailsParserTest.make_multiple_items_response(response_data[1]))
     web_client.should_receive(:get).ordered.with(BaseSpecCase::SAMPLE_BASE_URL + BaseSpecCase.generate_multiple_items_request(expected_ebay_items[0..19].map{|ebay_item| ebay_item.itemid.to_s})).and_return(response1)
     web_client.should_receive(:get).ordered.with(BaseSpecCase::SAMPLE_BASE_URL + BaseSpecCase.generate_multiple_items_request(expected_ebay_items[20..29].map{|ebay_item| ebay_item.itemid.to_s})).and_return(response2)
     ebay_client = EbayClient.new(web_client)

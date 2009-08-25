@@ -18,6 +18,13 @@ module BaseSpecCase
   </GeteBayTimeResponse>'
 
   SAMPLE_BASE_URL = 'http://open.api.ebay.com'
+  def self.generate_find_items_request(end_time_from, end_time_to, page_number)
+    '/shopping?version=517&appid=' + EbayClient::APP_ID +
+            '&callname=' + EbayClient::FIND_ITEMS_CALL.to_s + '&CategoryID=306&DescriptionSearch=true' +
+            '&EndTimeFrom=' + DateUtil.date_to_utc(end_time_from) + '&EndTimeTo=' + DateUtil.date_to_utc(end_time_to) +
+            '&MaxEntries=100' + '&PageNumber=' + page_number.to_s+ '&QueryKeywords=reggae'
+  end
+
   SAMPLE_FIND_ITEMS_REQUEST = SAMPLE_BASE_URL + '/shopping?version=517&appid=WillSulz-7420-475d-9a40-2fb8b491a6fd&callname=FindItemsAdvanced&CategoryID=306&DescriptionSearch=true&EndTimeFrom=2009-07-09T01:00:00.000Z&EndTimeTo=2009-07-10T01:00:00.000Z&MaxEntries=100&PageNumber=1&QueryKeywords=reggae'
 
   item_1_endtime_utc = '2009-07-03T23:42:25.000Z'
@@ -34,7 +41,8 @@ module BaseSpecCase
 
   FOUND_ITEMS = [FOUND_ITEM_1, FOUND_ITEM_2]
 
-  SAMPLE_FIND_ITEMS_RESPONSE = '<?xml version="1.0" encoding="UTF-8"?>
+  def self.generate_find_items_response(current_page, end_page)
+    '<?xml version="1.0" encoding="UTF-8"?>
 <FindItemsAdvancedResponse xmlns="urn:ebay:apis:eBLBaseComponents">
   <Timestamp>2009-07-03T23:42:05.299Z</Timestamp>
   <Ack>Success</Ack>
@@ -45,7 +53,7 @@ module BaseSpecCase
     <ItemArray>
       <Item>
         <ItemID>' + FOUND_ITEM_1[0].to_s + '</ItemID>
-        <EndTime>' + item_1_endtime_utc + '</EndTime>
+        <EndTime>' + DateUtil.date_to_utc(FOUND_ITEM_1[1]) + '</EndTime>
         <ViewItemURLForNaturalSearch>' + 'http://cgi.ebay.com/THIRD-WORLD-TALK-TO-ME-12-79-reggae-disco-HEAR_W0QQitemZ120440899019QQcategoryZ306QQcmdZViewItem' + '</ViewItemURLForNaturalSearch>
         <ListingType>Chinese</ListingType>
         <GalleryURL>' + 'http://thumbs3.ebaystatic.com/pict/1204408990198080_1.jpg' + '</GalleryURL>
@@ -63,7 +71,7 @@ module BaseSpecCase
       </Item>
       <Item>
         <ItemID>' + FOUND_ITEM_2[0].to_s + '</ItemID>
-        <EndTime>' + item_2_endtime_utc + '</EndTime>
+        <EndTime>' + DateUtil.date_to_utc(FOUND_ITEM_2[1]) + '</EndTime>
         <ViewItemURLForNaturalSearch>http://cgi.ebay.com/BOUNTY-KILLER-NO-ARGUMENT-Reggae-45_W0QQitemZ260436558510QQcategoryZ306QQcmdZViewItem</ViewItemURLForNaturalSearch>
         <ListingType>Chinese</ListingType>
         <GalleryURL>http://thumbs1.ebaystatic.com/pict/2604365585108080_1.jpg</GalleryURL>
@@ -81,7 +89,7 @@ module BaseSpecCase
       </Item>
       <Item>
         <ItemID>' + FOUND_ITEM_3[0].to_s + '</ItemID>
-        <EndTime>' + item_3_endtime_utc + '</EndTime>
+        <EndTime>' + DateUtil.date_to_utc(FOUND_ITEM_3[1]) + '</EndTime>
         <ViewItemURLForNaturalSearch>http://cgi.ebay.com/Alton-Ellis-Deliver-Us-Rock-Steady-45-Single_W0QQitemZ300325824658QQcategoryZ306QQcmdZViewItem</ViewItemURLForNaturalSearch>
         <ListingType>Chinese</ListingType>
         <GalleryURL>http://thumbs2.ebaystatic.com/pict/3003258246588080_1.jpg</GalleryURL>
@@ -99,7 +107,7 @@ module BaseSpecCase
       </Item>
       <Item>
         <ItemID>' + FOUND_ITEM_4[0].to_s + '</ItemID>
-        <EndTime>' + item_4_endtime_utc + '</EndTime>
+        <EndTime>' + DateUtil.date_to_utc(FOUND_ITEM_4[1]) + '</EndTime>
         <ViewItemURLForNaturalSearch>http://cgi.ebay.com/John-Holt-Time-and-the-River-Reggae-45-Single_W0QQitemZ300325824769QQcategoryZ306QQcmdZViewItem</ViewItemURLForNaturalSearch>
         <ListingType>Chinese</ListingType>
         <GalleryURL>http://thumbs2.ebaystatic.com/pict/3003258247698080_1.jpg</GalleryURL>
@@ -117,7 +125,7 @@ module BaseSpecCase
       </Item>
       <Item>
         <ItemID>' + FOUND_ITEM_5[0].to_s + '</ItemID>
-        <EndTime>' + item_5_endtime_utc + '</EndTime>
+        <EndTime>' + DateUtil.date_to_utc(FOUND_ITEM_5[1]) + '</EndTime>
         <ViewItemURLForNaturalSearch>http://cgi.ebay.com/Stranger-Patsy-When-You-Call-My-Name-Ska-45-Single_W0QQitemZ300325824946QQcategoryZ306QQcmdZViewItem</ViewItemURLForNaturalSearch>
         <ListingType>Chinese</ListingType>
         <GalleryURL>http://thumbs2.ebaystatic.com/pict/3003258249468080_1.jpg</GalleryURL>
@@ -135,11 +143,13 @@ module BaseSpecCase
       </Item>
     </ItemArray>
   </SearchResult>
-  <PageNumber>1</PageNumber>
-  <TotalPages>6</TotalPages>
+  <PageNumber>' + current_page.to_s + '</PageNumber>
+  <TotalPages>' + end_page.to_s + '</TotalPages>
   <TotalItems>29</TotalItems>
   <ItemSearchURL>http://search-desc.ebay.com/ws/search/SaleSearch?fts=2&amp;DemandData=1&amp;dfe=20090604&amp;dff=1&amp;dfs=20090603&amp;dfte=2&amp;dfts=2&amp;fsop=32&amp;sacat=306&amp;satitle=reggae</ItemSearchURL>
 </FindItemsAdvancedResponse>'
+  end
+  SAMPLE_FIND_ITEMS_RESPONSE = generate_find_items_response(1, 1)
 
   EMPTY_FIND_ITEMS_RESPONSE = '<FindItemsAdvancedResponse xmlns="urn:ebay:apis:eBLBaseComponents">
    <Timestamp>2009-07-29T04:35:42.432Z</Timestamp>
@@ -161,7 +171,7 @@ module BaseSpecCase
     item_ids_converted = item_ids.join(",")
     '/shopping?version=517&appid=WillSulz-7420-475d-9a40-2fb8b491a6fd&callname=' + MULTIPLE_ITEMS_CALL + '&IncludeSelector=' + MULTIPLE_ITEMS_SELECTORS + '&ItemID=' + item_ids_converted
   end
-  
+
   SAMPLE_GET_MULTIPLE_ITEMS_REQUEST = generate_multiple_items_request([TETRACK_ITEMID.to_s, GARNET_ITEMID.to_s])
 
   TETRACK_DESCRIPTION = 'A1: TETRACK - Let\'s Get Together A2: PABLO ALL STARS - Black Ants Lane Dub B1: JACOB MILLER - Each One Teach One B2: PABLO ALL STARS - Matthew Lane Dub [ROCKERS, JAMAICA] Incredible M- condition copy of this ULTRA RARE and legendary original jamaican Rockers 12". The vocal tracks by Jacob Miller and Tetrack (a version of the Johnny &amp; The Attractions rocksteady classic) are both amazing and so are the two dubs that I have put last in the soundclip below. Listen to this if you don\'t know it! A superb 12" in absolutely AMAZING condition. A-side matrix: A Pabblo 214A B-side matrix: A Pabblo 214B Vinyl condition: M- SOUNDCLIP! Double-click on the "play" button above to listen to SOUND CLIPS of both sides! If the player above doesn\'t work, click HERE to listen to the MP3. Don"t forget to check out my other auctions this week. AIR-MAIL POSTAGE COSTS: 45s: 1-3 45s: $4 to Sweden, $6.50 to Europe, $8 to rest of the world. 4-8 45s: $6 to Sweden, $12 to Europe, $13.50 to rest of the world. 12"s/LPs: 1 LP/12": $6 to Sweden, $13 to Europe, $14 to rest of the world. 2-3 LP/12"s: $8 to Sweden, $21 to Europe, $25 to rest of the world. 4-7 LP/12"s: $11 to Sweden, $32 to Europe, $39 to rest of the world. INSURED/REGISTRRED SHIPPING is available and costs $13 on top of the postage fee quoted above. I know that"s very expensive, but that"s the swedish postal system for you... IMPORTANT! Payment shall be recieved within 10 days. If you can"t pay within that time frame, either contact me so that I know when/if you intend to pay, or DON"T BID if you can"t come up with the money within 10 days after the auction end. PLEASE NOTE! In the unlikely event that it might happen, I can not be held responsible for packages going missing unless you"ve asked to have them sent with insured/registered shipping. Payment is accepted via PayPal. Thanks for looking and good luck bidding!'
@@ -256,8 +266,15 @@ module BaseSpecCase
     <HandlingTime>3</HandlingTime>
   </Item>'
   end
-  
+
   TETRACK_ITEM_XML = generate_detail_item_xml_response(TETRACK_EBAY_ITEM)
   GARNET_ITEM_XML = generate_detail_item_xml_response(GARNET_EBAY_ITEM)
+
+
+  def self.make_success_response(body)
+    response1 = SettableHTTPSuccessResponse.new("1.1", 2, "UNUSED")
+    response1.body = body
+    return response1
+  end
 
 end

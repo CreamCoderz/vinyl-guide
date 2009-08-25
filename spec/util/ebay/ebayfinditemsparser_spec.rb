@@ -23,4 +23,11 @@ describe EbayFindItemsParser do
     ebay_item_finder.get_num_items_marked.should == 0
     ebay_item_finder.get_num_items_ignored.should == 0
   end
+
+  it "should return a boolean indicating if the requestd page is the last page" do
+    ebay_item_finder = EbayFindItemsParser.new(BaseSpecCase.generate_find_items_response(1, 2))
+    ebay_item_finder.last_page.should be_false
+    ebay_item_finder = EbayFindItemsParser.new(BaseSpecCase.generate_find_items_response(2, 2))
+    ebay_item_finder.last_page.should be_true
+  end
 end

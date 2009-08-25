@@ -9,8 +9,8 @@ class EbayItemsDetailsParserTest
   describe EbayItemsDetailsParser do
 
     it "should parse an ebay response for multiple item details" do
-      no_items_response = EbayItemsDetailsParserTest.make_multiple_items_response(BaseSpecCase::TETRACK_ITEM_XML + BaseSpecCase::GARNET_ITEM_XML)
-      item_detailses = EbayItemsDetailsParser.parse(no_items_response)
+      items_response = EbayItemsDetailsParserTest.make_multiple_items_response(BaseSpecCase::TETRACK_ITEM_XML + BaseSpecCase::GARNET_ITEM_XML)
+      item_detailses = EbayItemsDetailsParser.parse(items_response)
       item_detailses.length.should == 2
       actual_tetrack_item = item_detailses[0]
       actual_garnet_silk_item = item_detailses[1]
