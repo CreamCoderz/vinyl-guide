@@ -12,7 +12,7 @@ class EbayItemsTest < ActiveSupport::TestCase
             :sellerid => "onlyroots")
     assert ebay_item.save
   end
-
+  
   def test_numerical_field_types
     ebay_item = EbayItem.new(:itemid => ITEM_ID)
     ebay_item.price = "teh price"

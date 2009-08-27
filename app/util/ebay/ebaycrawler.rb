@@ -1,4 +1,4 @@
-require 'ActiveRecord'
+require 'activerecord'
 require File.expand_path(File.dirname(__FILE__) + "/../../../config/environment")
 
 class EbayCrawler
@@ -22,7 +22,7 @@ class EbayCrawler
     end
   end
 
-  #TODO: test this method!!
+  #TODO: test this method (in progress in Test::Unit)
 
   def get_items
     item_ids = []
@@ -37,9 +37,11 @@ class EbayCrawler
 #        ebay_auction.delete
 #      end
     end
-    #TODO: only call out if there are actaul items to fetch
+    puts item_ids
+    #TODO: only call out if there are actual items to fetch
     item_detailses = @ebay_client.get_details(item_ids)
     item_detailses.each do |item_details|
+      puts 'create item ' + item_details.itemid.to_s
       ebay_item = EbayItem.new(:itemid => item_details.itemid, :description => item_details.description, :bidcount => item_details.bidcount,
               :price => item_details.price, :endtime => item_details.endtime, :starttime => item_details.starttime,
               :url => item_details.url, :galleryimg => item_details.galleryimg,
