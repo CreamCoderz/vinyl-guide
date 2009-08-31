@@ -43,11 +43,11 @@ describe WebClient do
     http_client.set_response(FeedParserSpec::FEED_HEADER + FeedParserSpec::FEED_FOOTER)
     crawler = WebClient.new(http_client)
     response = crawler.get(URL)
-    actual_results = crawler.crawl(response)
+    actual_results = crawler.get_auctions(response)
     actual_results.length.should == 0
     http_client.set_response(FeedParserSpec::FEED_WITH_ITEMS)
     response = crawler.get(URL)
-    actual_results = crawler.crawl(response)
+    actual_results = crawler.get_auctions(response)
     actual_results.length.should == 2
     FeedParserSpec.check_feed_item(actual_results[0], FeedParserSpec::JAZZBO_RECORD)
     FeedParserSpec.check_feed_item(actual_results[1], FeedParserSpec::CONGOS_RECORD)
@@ -61,7 +61,7 @@ describe WebClient do
     response = crawler.get(URL)
     response.should == Net::HTTPClientError
     begin
-      actual_results = crawler.crawl(response)
+      actual_results = crawler.get_auctions(response)
     rescue Exception => detail
       detail.message.should == "invalid response"
     end

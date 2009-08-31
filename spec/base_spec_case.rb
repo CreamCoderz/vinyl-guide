@@ -33,11 +33,11 @@ module BaseSpecCase
   item_4_endtime_utc = '2009-07-03T23:48:32.000Z'
   item_5_endtime_utc = '2009-07-03T23:49:57.000Z'
 
-  FOUND_ITEM_1 = [120440899019, Time.iso8601(item_1_endtime_utc)]
-  FOUND_ITEM_2 = [260436558510, Time.iso8601(item_2_endtime_utc)]
-  FOUND_ITEM_3 = [300325824658, Time.iso8601(item_3_endtime_utc)]
-  FOUND_ITEM_4 = [300325824769, Time.iso8601(item_4_endtime_utc)]
-  FOUND_ITEM_5 = [300325824946, Time.iso8601(item_5_endtime_utc)]
+  FOUND_ITEM_1 = [120440899019, DateTime.parse(item_1_endtime_utc)]
+  FOUND_ITEM_2 = [260436558510, DateTime.parse(item_2_endtime_utc)]
+  FOUND_ITEM_3 = [300325824658, DateTime.parse(item_3_endtime_utc)]
+  FOUND_ITEM_4 = [300325824769, DateTime.parse(item_4_endtime_utc)]
+  FOUND_ITEM_5 = [300325824946, DateTime.parse(item_5_endtime_utc)]
 
   FOUND_ITEMS = [FOUND_ITEM_1, FOUND_ITEM_2]
 

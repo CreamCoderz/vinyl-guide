@@ -11,14 +11,11 @@ class EbayCrawler
 
   #TODO: test this method (the ActiveRecord part)!!
 
-  def crawl
+  def get_auctions
     current_time = @ebay_client.get_current_time
     auction_items = @ebay_client.find_items(current_time, current_time + EbayCrawler::CRAWLING_INTERVAL_SECONDS)
     auction_items.each do |auction_item|
-      ebay_auction_item = EbayAuction.new
-      ebay_auction_item.item_id = auction_item[0]
-      ebay_auction_item.end_time = auction_item[1]
-      ebay_auction_item.save
+      EbayAuction.new(:item_id => auction_item[0], :end_time => auction_item[1]).save
     end
   end
 
@@ -29,11 +26,10 @@ class EbayCrawler
     if !ebay_auctions.empty?
       item_detailses = @ebay_client.get_details(ebay_auctions.map{ |ebay_auction| ebay_auction.item_id})
       item_detailses.each do |item_details|
-        ebay_item = EbayItem.new(:itemid => item_details.itemid, :description => item_details.description, :bidcount => item_details.bidcount,
+        EbayItem.new(:itemid => item_details.itemid, :description => item_details.description, :bidcount => item_details.bidcount,
                 :price => item_details.price, :endtime => item_details.endtime, :starttime => item_details.starttime,
                 :url => item_details.url, :galleryimg => item_details.galleryimg,
-                :sellerid => item_details.sellerid)
-        ebay_item.save
+                :sellerid => item_details.sellerid).save
       end
     end
   end
