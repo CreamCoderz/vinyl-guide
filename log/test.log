@@ -85367,3 +85367,387 @@ Processing EbayItemsController#index (for 0.0.0.0 at 2009-08-30 20:40:48) [GET]
 Rendering template within layouts/application
 Rendering ebay_items/index
 Completed in 7ms (View: 6, DB: 3) | 200 OK [http://test.host/]
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-08-30 22:37:50) [GET]
+Rendering template within layouts/application
+Rendering ebay_items/index
+Completed in 33ms (View: 31, DB: 72) | 200 OK [http://www.example.com/]
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-08-30 22:37:50) [GET]
+Rendering template within layouts/application
+Rendering ebay_items/index
+Completed in 39ms (View: 34, DB: 1) | 200 OK [http://www.example.com/]
+
+
+Processing SearchController#search (for 0.0.0.0 at 2009-08-30 22:37:52) [GET]
+  Parameters: {"query"=>"prince"}
+Rendering template within layouts/application
+Rendering search/search
+Completed in 9ms (View: 6, DB: 36) | 200 OK [http://test.host/search?query=prince]
+
+
+Processing SearchController#search (for 0.0.0.0 at 2009-08-30 22:37:52) [GET]
+  Parameters: {"query"=>"prince"}
+Rendering template within layouts/application
+Rendering search/search
+Completed in 5ms (View: 4, DB: 1) | 200 OK [http://test.host/search?query=prince]
+
+
+Processing SearchController#search (for 0.0.0.0 at 2009-08-30 22:37:52) [GET]
+  Parameters: {"query"=>"<font color=\"red\">test</font>"}
+Rendering template within layouts/application
+Rendering search/search
+Completed in 3ms (View: 2, DB: 1) | 200 OK [http://test.host/search?query=%3Cfont+color%3D%22red%22%3Etest%3C%2Ffont%3E]
+
+
+Processing SearchController#search (for 0.0.0.0 at 2009-08-30 22:37:52) [GET]
+  Parameters: {"query"=>"lee perry"}
+Rendering template within layouts/application
+Rendering search/search
+Completed in 5ms (View: 4, DB: 1) | 200 OK [http://test.host/search?query=lee+perry]
+
+
+Processing RecordsController#new (for 0.0.0.0 at 2009-08-30 22:37:52) [GET]
+Rendering template within layouts/application
+Rendering records/new
+Completed in 10ms (View: 8, DB: 0) | 200 OK [http://test.host/records/new]
+
+
+Processing RecordsController#edit (for 0.0.0.0 at 2009-08-30 22:37:52) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering records/edit
+Completed in 79ms (View: 78, DB: 1) | 200 OK [http://test.host/records/1/edit]
+
+
+Processing RecordsController#index (for 0.0.0.0 at 2009-08-30 22:37:52) [GET]
+Rendering template within layouts/application
+Rendering records/index
+Completed in 10ms (View: 9, DB: 1) | 200 OK [http://test.host/records]
+
+
+Processing RecordsController#index (for 0.0.0.0 at 2009-08-30 22:37:52) [GET]
+Rendering template within layouts/application
+Rendering records/index
+Completed in 9ms (View: 8, DB: 2) | 200 OK [http://test.host/records]
+
+
+Processing RecordsController#show (for 0.0.0.0 at 2009-08-30 22:37:52) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering records/show
+Completed in 5ms (View: 4, DB: 1) | 200 OK [http://test.host/records/1]
+
+
+Processing RecordsController#create (for 0.0.0.0 at 2009-08-30 22:37:52) [POST]
+  Parameters: {"record"=>{"name"=>"testname"}}
+Redirected to http://test.host/records/25
+Completed in 3ms (DB: 2) | 302 Found [http://test.host/records?record%5Bname%5D=testname]
+
+
+Processing RecordsController#destroy (for 0.0.0.0 at 2009-08-30 22:37:52) [DELETE]
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/records
+Completed in 2ms (DB: 4) | 302 Found [http://test.host/records/1]
+
+
+Processing RecordsController#edit (for 0.0.0.0 at 2009-08-30 22:37:52) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering records/edit
+Completed in 9ms (View: 8, DB: 2) | 200 OK [http://test.host/records/1/edit]
+
+
+Processing RecordsController#index (for 0.0.0.0 at 2009-08-30 22:37:52) [GET]
+Rendering template within layouts/application
+Rendering records/index
+Completed in 8ms (View: 7, DB: 1) | 200 OK [http://test.host/records]
+
+
+Processing RecordsController#new (for 0.0.0.0 at 2009-08-30 22:37:52) [GET]
+Rendering template within layouts/application
+Rendering records/new
+Completed in 6ms (View: 5, DB: 0) | 200 OK [http://test.host/records/new]
+
+
+Processing RecordsController#show (for 0.0.0.0 at 2009-08-30 22:37:52) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering records/show
+Completed in 4ms (View: 3, DB: 1) | 200 OK [http://test.host/records/1]
+
+
+Processing RecordsController#update (for 0.0.0.0 at 2009-08-30 22:37:52) [PUT]
+  Parameters: {"id"=>"1", "record"=>{"name"=>"roots of david"}}
+Redirected to http://test.host/records/1
+Completed in 3ms (DB: 2) | 302 Found [http://test.host/records/1?record%5Bname%5D=roots+of+david]
+
+
+Processing EbayItemsController#index (for 0.0.0.0 at 2009-08-30 22:37:52) [GET]
+Rendering template within layouts/application
+Rendering ebay_items/index
+Completed in 8ms (View: 7, DB: 1) | 200 OK [http://test.host/]
+
+
+Processing EbayItemsController#index (for 0.0.0.0 at 2009-08-30 22:37:52) [GET]
+Rendering template within layouts/application
+Rendering ebay_items/index
+Completed in 7ms (View: 6, DB: 6) | 200 OK [http://test.host/]
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-08-30 22:53:10) [GET]
+Rendering template within layouts/application
+Rendering ebay_items/index
+Completed in 30ms (View: 27, DB: 56) | 200 OK [http://www.example.com/]
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-08-30 22:53:10) [GET]
+Rendering template within layouts/application
+Rendering ebay_items/index
+Completed in 40ms (View: 36, DB: 1) | 200 OK [http://www.example.com/]
+
+
+Processing SearchController#search (for 0.0.0.0 at 2009-08-30 22:53:11) [GET]
+  Parameters: {"query"=>"prince"}
+Rendering template within layouts/application
+Rendering search/search
+Completed in 9ms (View: 6, DB: 37) | 200 OK [http://test.host/search?query=prince]
+
+
+Processing SearchController#search (for 0.0.0.0 at 2009-08-30 22:53:11) [GET]
+  Parameters: {"query"=>"prince"}
+Rendering template within layouts/application
+Rendering search/search
+Completed in 7ms (View: 5, DB: 1) | 200 OK [http://test.host/search?query=prince]
+
+
+Processing SearchController#search (for 0.0.0.0 at 2009-08-30 22:53:11) [GET]
+  Parameters: {"query"=>"<font color=\"red\">test</font>"}
+Rendering template within layouts/application
+Rendering search/search
+Completed in 3ms (View: 2, DB: 1) | 200 OK [http://test.host/search?query=%3Cfont+color%3D%22red%22%3Etest%3C%2Ffont%3E]
+
+
+Processing SearchController#search (for 0.0.0.0 at 2009-08-30 22:53:11) [GET]
+  Parameters: {"query"=>"lee perry"}
+Rendering template within layouts/application
+Rendering search/search
+Completed in 7ms (View: 6, DB: 1) | 200 OK [http://test.host/search?query=lee+perry]
+
+
+Processing RecordsController#new (for 0.0.0.0 at 2009-08-30 22:53:11) [GET]
+Rendering template within layouts/application
+Rendering records/new
+Completed in 11ms (View: 9, DB: 0) | 200 OK [http://test.host/records/new]
+
+
+Processing RecordsController#edit (for 0.0.0.0 at 2009-08-30 22:53:11) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering records/edit
+Completed in 14ms (View: 13, DB: 1) | 200 OK [http://test.host/records/1/edit]
+
+
+Processing RecordsController#index (for 0.0.0.0 at 2009-08-30 22:53:11) [GET]
+Rendering template within layouts/application
+Rendering records/index
+Completed in 10ms (View: 9, DB: 1) | 200 OK [http://test.host/records]
+
+
+Processing RecordsController#index (for 0.0.0.0 at 2009-08-30 22:53:11) [GET]
+Rendering template within layouts/application
+Rendering records/index
+Completed in 9ms (View: 8, DB: 2) | 200 OK [http://test.host/records]
+
+
+Processing RecordsController#show (for 0.0.0.0 at 2009-08-30 22:53:11) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering records/show
+Completed in 5ms (View: 4, DB: 1) | 200 OK [http://test.host/records/1]
+
+
+Processing RecordsController#create (for 0.0.0.0 at 2009-08-30 22:53:11) [POST]
+  Parameters: {"record"=>{"name"=>"testname"}}
+Redirected to http://test.host/records/27
+Completed in 4ms (DB: 1) | 302 Found [http://test.host/records?record%5Bname%5D=testname]
+
+
+Processing RecordsController#destroy (for 0.0.0.0 at 2009-08-30 22:53:11) [DELETE]
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/records
+Completed in 2ms (DB: 2) | 302 Found [http://test.host/records/1]
+
+
+Processing RecordsController#edit (for 0.0.0.0 at 2009-08-30 22:53:11) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering records/edit
+Completed in 9ms (View: 8, DB: 2) | 200 OK [http://test.host/records/1/edit]
+
+
+Processing RecordsController#index (for 0.0.0.0 at 2009-08-30 22:53:11) [GET]
+Rendering template within layouts/application
+Rendering records/index
+Completed in 12ms (View: 11, DB: 1) | 200 OK [http://test.host/records]
+
+
+Processing RecordsController#new (for 0.0.0.0 at 2009-08-30 22:53:11) [GET]
+Rendering template within layouts/application
+Rendering records/new
+Completed in 7ms (View: 6, DB: 0) | 200 OK [http://test.host/records/new]
+
+
+Processing RecordsController#show (for 0.0.0.0 at 2009-08-30 22:53:11) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering records/show
+Completed in 3ms (View: 2, DB: 1) | 200 OK [http://test.host/records/1]
+
+
+Processing RecordsController#update (for 0.0.0.0 at 2009-08-30 22:53:11) [PUT]
+  Parameters: {"id"=>"1", "record"=>{"name"=>"roots of david"}}
+Redirected to http://test.host/records/1
+Completed in 5ms (DB: 2) | 302 Found [http://test.host/records/1?record%5Bname%5D=roots+of+david]
+
+
+Processing EbayItemsController#index (for 0.0.0.0 at 2009-08-30 22:53:11) [GET]
+Rendering template within layouts/application
+Rendering ebay_items/index
+Completed in 6ms (View: 5, DB: 1) | 200 OK [http://test.host/]
+
+
+Processing EbayItemsController#index (for 0.0.0.0 at 2009-08-30 22:53:11) [GET]
+Rendering template within layouts/application
+Rendering ebay_items/index
+Completed in 7ms (View: 6, DB: 10) | 200 OK [http://test.host/]
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-08-30 22:53:46) [GET]
+Rendering template within layouts/application
+Rendering ebay_items/index
+Completed in 26ms (View: 24, DB: 74) | 200 OK [http://www.example.com/]
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-08-30 22:53:46) [GET]
+Rendering template within layouts/application
+Rendering ebay_items/index
+Completed in 40ms (View: 36, DB: 1) | 200 OK [http://www.example.com/]
+
+
+Processing SearchController#search (for 0.0.0.0 at 2009-08-30 22:53:47) [GET]
+  Parameters: {"query"=>"prince"}
+Rendering template within layouts/application
+Rendering search/search
+Completed in 8ms (View: 4, DB: 38) | 200 OK [http://test.host/search?query=prince]
+
+
+Processing SearchController#search (for 0.0.0.0 at 2009-08-30 22:53:47) [GET]
+  Parameters: {"query"=>"prince"}
+Rendering template within layouts/application
+Rendering search/search
+Completed in 6ms (View: 5, DB: 2) | 200 OK [http://test.host/search?query=prince]
+
+
+Processing SearchController#search (for 0.0.0.0 at 2009-08-30 22:53:47) [GET]
+  Parameters: {"query"=>"<font color=\"red\">test</font>"}
+Rendering template within layouts/application
+Rendering search/search
+Completed in 4ms (View: 3, DB: 1) | 200 OK [http://test.host/search?query=%3Cfont+color%3D%22red%22%3Etest%3C%2Ffont%3E]
+
+
+Processing SearchController#search (for 0.0.0.0 at 2009-08-30 22:53:47) [GET]
+  Parameters: {"query"=>"lee perry"}
+Rendering template within layouts/application
+Rendering search/search
+Completed in 9ms (View: 4, DB: 3) | 200 OK [http://test.host/search?query=lee+perry]
+
+
+Processing RecordsController#new (for 0.0.0.0 at 2009-08-30 22:53:47) [GET]
+Rendering template within layouts/application
+Rendering records/new
+Completed in 11ms (View: 9, DB: 1) | 200 OK [http://test.host/records/new]
+
+
+Processing RecordsController#edit (for 0.0.0.0 at 2009-08-30 22:53:47) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering records/edit
+Completed in 12ms (View: 11, DB: 2) | 200 OK [http://test.host/records/1/edit]
+
+
+Processing RecordsController#index (for 0.0.0.0 at 2009-08-30 22:53:47) [GET]
+Rendering template within layouts/application
+Rendering records/index
+Completed in 13ms (View: 12, DB: 1) | 200 OK [http://test.host/records]
+
+
+Processing RecordsController#index (for 0.0.0.0 at 2009-08-30 22:53:47) [GET]
+Rendering template within layouts/application
+Rendering records/index
+Completed in 7ms (View: 6, DB: 2) | 200 OK [http://test.host/records]
+
+
+Processing RecordsController#show (for 0.0.0.0 at 2009-08-30 22:53:47) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering records/show
+Completed in 5ms (View: 4, DB: 1) | 200 OK [http://test.host/records/1]
+
+
+Processing RecordsController#create (for 0.0.0.0 at 2009-08-30 22:53:47) [POST]
+  Parameters: {"record"=>{"name"=>"testname"}}
+Redirected to http://test.host/records/29
+Completed in 3ms (DB: 1) | 302 Found [http://test.host/records?record%5Bname%5D=testname]
+
+
+Processing RecordsController#destroy (for 0.0.0.0 at 2009-08-30 22:53:47) [DELETE]
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/records
+Completed in 2ms (DB: 2) | 302 Found [http://test.host/records/1]
+
+
+Processing RecordsController#edit (for 0.0.0.0 at 2009-08-30 22:53:47) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering records/edit
+Completed in 7ms (View: 6, DB: 2) | 200 OK [http://test.host/records/1/edit]
+
+
+Processing RecordsController#index (for 0.0.0.0 at 2009-08-30 22:53:47) [GET]
+Rendering template within layouts/application
+Rendering records/index
+Completed in 8ms (View: 7, DB: 1) | 200 OK [http://test.host/records]
+
+
+Processing RecordsController#new (for 0.0.0.0 at 2009-08-30 22:53:47) [GET]
+Rendering template within layouts/application
+Rendering records/new
+Completed in 5ms (View: 5, DB: 0) | 200 OK [http://test.host/records/new]
+
+
+Processing RecordsController#show (for 0.0.0.0 at 2009-08-30 22:53:47) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering records/show
+Completed in 5ms (View: 3, DB: 1) | 200 OK [http://test.host/records/1]
+
+
+Processing RecordsController#update (for 0.0.0.0 at 2009-08-30 22:53:47) [PUT]
+  Parameters: {"id"=>"1", "record"=>{"name"=>"roots of david"}}
+Redirected to http://test.host/records/1
+Completed in 3ms (DB: 1) | 302 Found [http://test.host/records/1?record%5Bname%5D=roots+of+david]
+
+
+Processing EbayItemsController#index (for 0.0.0.0 at 2009-08-30 22:53:47) [GET]
+Rendering template within layouts/application
+Rendering ebay_items/index
+Completed in 6ms (View: 5, DB: 1) | 200 OK [http://test.host/]
+
+
+Processing EbayItemsController#index (for 0.0.0.0 at 2009-08-30 22:53:47) [GET]
+Rendering template within layouts/application
+Rendering ebay_items/index
+Completed in 10ms (View: 7, DB: 8) | 200 OK [http://test.host/]

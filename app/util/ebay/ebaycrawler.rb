@@ -9,8 +9,6 @@ class EbayCrawler
     @ebay_client = ebay_client
   end
 
-  #TODO: test this method (the ActiveRecord part)!!
-
   def get_auctions
     current_time = @ebay_client.get_current_time
     auction_items = @ebay_client.find_items(current_time, current_time + EbayCrawler::CRAWLING_INTERVAL_SECONDS)
