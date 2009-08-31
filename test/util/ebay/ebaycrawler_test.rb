@@ -25,7 +25,7 @@ class EbayCrawlerTest < ActiveSupport::TestCase
     ebay_client = NilEbayClientClient.new(DateTime.parse(the_colonial_days))
     ebay_crawler = EbayCrawler.new(ebay_client)
     ebay_crawler.get_items
-    assert_equal false, ebay_client.get_details_called?
+    assert !ebay_client.get_details_called?
   end
 
 

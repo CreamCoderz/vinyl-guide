@@ -2,6 +2,7 @@ require 'cobravsmongoose'
 require 'time'
 require 'activesupport'
 require File.dirname(__FILE__) + "/../../domain/ebayitemdata"
+require File.dirname(__FILE__) + "/../dateutil"
 
 class EbayItemsDetailsParser
 
@@ -29,8 +30,8 @@ class EbayItemsDetailsParser
       end
       items.each do |item|
         ebay_items.insert(-1, EbayItemData.new(item[DESCRIPTION][LEAFNODE_CONTENTS],
-                item[ITEMID][LEAFNODE_CONTENTS].to_i, Time.iso8601(item[ENDTIME][LEAFNODE_CONTENTS]).to_date,
-                Time.iso8601(item[STARTTIME][LEAFNODE_CONTENTS]).to_date,
+                item[ITEMID][LEAFNODE_CONTENTS].to_i, DateUtil.utc_to_date(item[ENDTIME][LEAFNODE_CONTENTS]),
+                DateUtil.utc_to_date(item[STARTTIME][LEAFNODE_CONTENTS]),
                 item[URL][LEAFNODE_CONTENTS], item[IMAGE][LEAFNODE_CONTENTS],
                 item[BIDCOUNT][LEAFNODE_CONTENTS].to_i, item[PRICE][LEAFNODE_CONTENTS].to_f,
                 item[SELLER][USERID][LEAFNODE_CONTENTS]))
