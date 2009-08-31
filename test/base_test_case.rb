@@ -53,4 +53,16 @@ module BaseTestCase
     ebay_item_value
   end
 
+
+  def check_ebay_item_and_data(ebay_item, stored_item)
+    assert_equal ebay_item.description, stored_item.description
+    assert_equal ebay_item.itemid, stored_item.itemid
+    assert_equal ebay_item.endtime, stored_item.endtime
+    assert_equal ebay_item.starttime, stored_item.starttime
+    assert_equal ebay_item.galleryimg, stored_item.galleryimg
+    assert_equal ebay_item.bidcount, stored_item.bidcount
+    assert_equal ebay_item.price, stored_item.price
+    assert_equal ebay_item.sellerid, stored_item.sellerid
+  end
+
 end

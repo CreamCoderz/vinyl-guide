@@ -3,9 +3,6 @@ require 'test_helper'
 class EbayAuctionsTest < ActiveSupport::TestCase
   CURRENT_TIME = Time.parse('2009-07-19T10:20:00+00:00')
 
-  #TODO: must use field type larger than integer
-
-
   def test_create_new_record
     ebay_auction = EbayAuction.new
     assert !ebay_auction.save, "should save with both fields, item_id and end_time"
@@ -18,13 +15,14 @@ class EbayAuctionsTest < ActiveSupport::TestCase
   def test_numerical_validation_of_item_id
     ebay_auction = EbayAuction.new
     ebay_auction.item_id = 'this shoud fail'
-    current_time = Time.parse('2009-07-19T10:20:00+00:00')
+    current_time = DateTime.parse('2009-07-19T10:20:00+00:00')
     ebay_auction.end_time = current_time
     assert !ebay_auction.save, "item_id must be numeric"
     ebay_auction.item_id = 120440899019
     assert ebay_auction.save
     stored_auction_item = EbayAuction.find(ebay_auction.id)
     assert_equal ebay_auction.item_id, stored_auction_item.item_id
+    assert_equal ebay_auction.end_time, stored_auction_item.end_time
   end
 
   #TODO: please make this uniqueness test work.. time to move on for now

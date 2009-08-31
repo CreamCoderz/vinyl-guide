@@ -1,4 +1,6 @@
 require 'test_helper'
+require File.dirname(__FILE__) + '/../../spec/base_spec_case'
+include BaseTestCase
 
 class EbayItemsTest < ActiveSupport::TestCase
   ITEM_ID = 12345678901
@@ -6,11 +8,14 @@ class EbayItemsTest < ActiveSupport::TestCase
   def test_create_new_ebay_item
     ebay_item = EbayItem.new
     assert !ebay_item.save, "should not be able to save without item id"
-    ebay_item = EbayItem.new(:itemid => ITEM_ID, :description => "the description", :bidcount => 10,
-            :price => 55.00, :endtime => Time.new, :starttime => Time.new,
-            :url => "http://www.example.com/1", :galleryimg => "http://imgurl.com/1",
-            :sellerid => "onlyroots")
+    puts BaseSpecCase::TETRACK_DESCRIPTION
+    ebay_item = EbayItem.new(:itemid => BaseSpecCase::TETRACK_EBAY_ITEM.itemid, :description => BaseSpecCase::TETRACK_EBAY_ITEM.description, :bidcount => BaseSpecCase::TETRACK_EBAY_ITEM.bidcount,
+            :price => BaseSpecCase::TETRACK_EBAY_ITEM.price, :endtime => BaseSpecCase::TETRACK_EBAY_ITEM.endtime, :starttime => BaseSpecCase::TETRACK_EBAY_ITEM.starttime,
+            :url => BaseSpecCase::TETRACK_EBAY_ITEM.url, :galleryimg => BaseSpecCase::TETRACK_EBAY_ITEM.galleryimg, :sellerid => BaseSpecCase::TETRACK_EBAY_ITEM.sellerid)
     assert ebay_item.save
+    stored_item = EbayItem.find(ebay_item.id)
+    puts stored_item.description
+    check_ebay_item_and_data(BaseSpecCase::TETRACK_EBAY_ITEM, stored_item)
   end
   
   def test_numerical_field_types

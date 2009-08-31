@@ -193,12 +193,12 @@ module BaseSpecCase
   GARNET_SELLERID = 'ronsuniquerecords'
 
   TETRACK_EBAY_ITEM = EbayItemData.new(CGI.unescapeHTML(TETRACK_DESCRIPTION),
-          TETRACK_ITEMID, Time.iso8601(TETRACK_ENDTIME).to_date, Time.iso8601(TETRACK_STARTTIME).to_date,
+          TETRACK_ITEMID, DateUtil.utc_to_date(TETRACK_ENDTIME), DateUtil.utc_to_date(TETRACK_STARTTIME),
           TETRACK_URL, TETRACK_GALLERY_IMG, TETRACK_BIDCOUNT,
           TETRACK_PRICE, TETRACK_SELLERID)
 
   GARNET_EBAY_ITEM = EbayItemData.new(CGI.unescapeHTML(GARNET_DESCRIPTION),
-          GARNET_ITEMID, Time.iso8601(GARNET_ENDTIME).to_date, Time.iso8601(GARNET_STARTTIME).to_date,
+          GARNET_ITEMID, DateUtil.utc_to_date(GARNET_ENDTIME), DateUtil.utc_to_date(GARNET_STARTTIME),
           GARNET_URL, GARNET_GALLERY_IMG, GARNET_BIDCOUNT,
           GARNET_PRICE, GARNET_SELLERID)
 

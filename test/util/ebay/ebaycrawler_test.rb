@@ -6,34 +6,54 @@ require File.dirname(__FILE__) + '/../../../spec/base_spec_case'
 class EbayCrawlerTest < ActiveSupport::TestCase
 
   def test_get_items
-    future_time = Time.new + 60 * 10
+    base_time = DateTime.new
+    future_time = DateTime.parse('2009-08-21T10:20:00+00:00')
     ebay_auction = EbayAuction.new({:item_id => 120440899019, :end_time => future_time})
     assert ebay_auction.save
-    past_time = Time.new - (60 * 10)
+    past_time =DateTime.parse('2009-08-19T10:20:00+00:00')
     ebay_auction = EbayAuction.new({:item_id => BaseSpecCase::TETRACK_ITEMID, :end_time => past_time})
     assert ebay_auction.save
-    ebay_crawler = EbayCrawler.new(NilEbayClientClient.new)
+    ebay_client = NilEbayClientClient.new(DateTime.parse('2009-08-20T10:20:00+00:00'))
+    ebay_crawler = EbayCrawler.new(ebay_client)
     ebay_crawler.get_items
     actual_ebay_item = EbayItem.find(:first, :conditions => {:itemid => BaseSpecCase::TETRACK_ITEMID})
-    assert_equal BaseSpecCase::TETRACK_EBAY_ITEM.description, actual_ebay_item.description
+    check_ebay_item_and_data(BaseSpecCase::TETRACK_EBAY_ITEM, actual_ebay_item)
   end
 
+  def test_no_get_details_call_made_if_no_items_to_fetch
+    the_colonial_days = '1776-08-20T10:20:00+00:00'
+    ebay_client = NilEbayClientClient.new(DateTime.parse(the_colonial_days))
+    ebay_crawler = EbayCrawler.new(ebay_client)
+    ebay_crawler.get_items
+    assert_equal false, ebay_client.get_details_called?
+  end
+
+
+  #TODO: test for no auctions found
   class NilEbayClientClient < EbayClient
-    def initialize
+
+    def initialize(current_time)
+      @current_time = current_time
+      @called = false
     end
 
     def find_items
     end
 
-    def get_details(item_id)
-#      puts item_id
-#      if item_id == BaseSpecCase::TETRACK_ITEMID
+    def get_details(item_ids)
+      @called = true
+      if item_ids.include? BaseSpecCase::TETRACK_ITEMID
         return [BaseSpecCase::TETRACK_EBAY_ITEM]
-#      end
-#      []
+      end
+      []
+    end
+
+    def get_details_called?
+      @called
     end
 
     def get_current_time
+      @current_time
     end
   end
 end
