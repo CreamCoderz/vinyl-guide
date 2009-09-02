@@ -1,8 +1,8 @@
 
 class EbayItemData
-  attr_reader :description, :itemid, :endtime, :starttime, :url, :galleryimg, :bidcount, :price, :sellerid
+  attr_reader :description, :itemid, :endtime, :starttime, :url, :galleryimg, :bidcount, :price, :sellerid, :title
 
-  def initialize(description, itemid, endtime, starttime, url, galleryimg, bidcount, price, sellerid)
+  def initialize(description, itemid, endtime, starttime, url, galleryimg, bidcount, price, sellerid, title)
     @description = description
     @itemid = itemid
     @endtime = endtime
@@ -12,6 +12,7 @@ class EbayItemData
     @bidcount = bidcount
     @price = price
     @sellerid = sellerid
+    @title = title
   end
 
   def ==(other)
@@ -25,6 +26,7 @@ class EbayItemData
     result = result && self.bidcount == other.bidcount
     result = result && self.price == other.price
     result = result && self.sellerid == other.sellerid
+    result = result && self.title == other.title
   end
 
 

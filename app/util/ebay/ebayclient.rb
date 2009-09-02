@@ -1,4 +1,4 @@
-require 'ActiveSupport'
+require 'activesupport'
 require File.dirname(__FILE__) + "/../dateutil"
 require File.dirname(__FILE__) + "/../ebay/ebayfinditemsparser"
 require File.dirname(__FILE__) + "/../ebay/ebayitemsdetailsparser"
@@ -24,9 +24,10 @@ class EbayClient
     results = []
     page_num = 1
     while !is_last_page
-      response = @web_client.get(BASE_URL + FIND_ITEMS_CALL.to_s + '&CategoryID=306&DescriptionSearch=true' +
+      find_items_url = BASE_URL + FIND_ITEMS_CALL.to_s + '&CategoryID=306&DescriptionSearch=true' +
               '&EndTimeFrom=' + end_time_from_utc.to_s + '&EndTimeTo=' + end_time_to_utc.to_s +
-              '&MaxEntries=100' + '&PageNumber=' + page_num.to_s + '&QueryKeywords=reggae')
+              '&MaxEntries=100' + '&PageNumber=' + page_num.to_s + '&QueryKeywords=reggae'
+      response = @web_client.get(find_items_url)
       find_items_parser = EbayFindItemsParser.new(response.body)
       results.concat(find_items_parser.get_items)
       is_last_page = find_items_parser.last_page
@@ -43,8 +44,10 @@ class EbayClient
     for i in 0..num_of_requests
       start_pos = (i * ITEMS_PER_DETAILS_REQ)
       item_ids_query = item_ids[start_pos..[(start_pos + ITEMS_PER_DETAILS_REQ)-1, item_ids.length].min].join(',')
-      response = @web_client.get(BASE_URL + GET_ITEM_DETAILS_CALL.to_s +
-              '&IncludeSelector=Details,TextDescription&ItemID=' + item_ids_query)
+      item_details_url = BASE_URL + GET_ITEM_DETAILS_CALL.to_s +
+              '&IncludeSelector=Details,TextDescription&ItemID=' + item_ids_query
+      puts item_details_url
+      response = @web_client.get(item_details_url)
       detailses.concat(EbayItemsDetailsParser.parse(response.body))
     end
     detailses

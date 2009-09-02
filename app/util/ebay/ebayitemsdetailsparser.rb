@@ -19,12 +19,14 @@ class EbayItemsDetailsParser
   LEAFNODE_CONTENTS = '$'
   GETMULTIPLEITEMSRESPONSE = 'GetMultipleItemsResponse'
   ITEM = 'Item'
+  TITLE = 'Title'
 
   def self.parse(xml)
     parsed_items = CobraVsMongoose.xml_to_hash(xml)
     items = parsed_items[GETMULTIPLEITEMSRESPONSE][ITEM]
     ebay_items = []
     if (!items.nil?)
+      #TODO: duplicate code in ebayfinditemsparser
       if !items.is_a?(Array)
         items = [items]
       end
@@ -34,7 +36,7 @@ class EbayItemsDetailsParser
                 DateUtil.utc_to_date(item[STARTTIME][LEAFNODE_CONTENTS]),
                 item[URL][LEAFNODE_CONTENTS], item[IMAGE][LEAFNODE_CONTENTS],
                 item[BIDCOUNT][LEAFNODE_CONTENTS].to_i, item[PRICE][LEAFNODE_CONTENTS].to_f,
-                item[SELLER][USERID][LEAFNODE_CONTENTS]))
+                item[SELLER][USERID][LEAFNODE_CONTENTS], item[TITLE][LEAFNODE_CONTENTS]))
       end
     end
     ebay_items

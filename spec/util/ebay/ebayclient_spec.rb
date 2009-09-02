@@ -56,7 +56,7 @@ describe EbayClient do
     expected_ebay_items = []
     response_data = ['', '']
     for i in (1..30)
-      ebay_item = EbayItemData.new("description #{i}", i, Time.new, Time.new, "http://www.ebay.com/#{i}}", "http://img.com/#{i}", i, 10.0 + i, "steve#{i}")
+      ebay_item = EbayItemData.new("description #{i}", i, Time.new, Time.new, "http://www.ebay.com/#{i}}", "http://img.com/#{i}", i, 10.0 + i, "steve#{i}", "title#{i}")
       expected_ebay_items.insert(-1, ebay_item)
       if i < 20
         response_data[0] += BaseSpecCase.generate_detail_item_xml_response(ebay_item)

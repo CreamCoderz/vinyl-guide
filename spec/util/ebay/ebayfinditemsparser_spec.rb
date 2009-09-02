@@ -16,6 +16,11 @@ describe EbayFindItemsParser do
     ebay_item_finder.get_items.should == BaseSpecCase::FOUND_ITEMS
   end
 
+  it "should find one item id from some ebay response xml" do
+    ebay_item_finder = EbayFindItemsParser.new(BaseSpecCase::SINGLE_FIND_ITEMS_RESPONSE)
+    ebay_item_finder.get_items.should == [BaseSpecCase::FOUND_ITEM_1]
+  end
+
   it "should parse a response with an empty list of results" do
     ebay_item_finder = EbayFindItemsParser.new(BaseSpecCase::EMPTY_FIND_ITEMS_RESPONSE)
     ebay_item_finder.get_items.should == []

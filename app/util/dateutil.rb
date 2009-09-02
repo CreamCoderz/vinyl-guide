@@ -1,4 +1,4 @@
-require 'ActiveSupport'
+require 'activesupport'
 require 'time'
 
 class DateUtil

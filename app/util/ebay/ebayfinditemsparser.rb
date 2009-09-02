@@ -10,6 +10,9 @@ class EbayFindItemsParser
     @parsed_items = []
     if !parsed_items['FindItemsAdvancedResponse']['SearchResult'].nil?
       items = parsed_items['FindItemsAdvancedResponse']['SearchResult']['ItemArray']['Item']
+      if !items.is_a?(Array)
+        items = [items]
+      end
       @num_total_items = items.length
       items.each do |item|
         if (0 == item['BidCount']['$'].to_i)

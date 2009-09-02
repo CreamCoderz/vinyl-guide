@@ -41,19 +41,10 @@ module BaseSpecCase
 
   FOUND_ITEMS = [FOUND_ITEM_1, FOUND_ITEM_2]
 
-  def self.generate_find_items_response(current_page, end_page)
-    '<?xml version="1.0" encoding="UTF-8"?>
-<FindItemsAdvancedResponse xmlns="urn:ebay:apis:eBLBaseComponents">
-  <Timestamp>2009-07-03T23:42:05.299Z</Timestamp>
-  <Ack>Success</Ack>
-  <Build>e623__Bundled_9520957_R1</Build>
-  <Version>623</Version>
-  <CorrelationID>the message</CorrelationID>
-  <SearchResult>
-    <ItemArray>
-      <Item>
-        <ItemID>' + FOUND_ITEM_1[0].to_s + '</ItemID>
-        <EndTime>' + DateUtil.date_to_utc(FOUND_ITEM_1[1]) + '</EndTime>
+  def self.generate_auction_item(auction_item)
+    '<Item>
+        <ItemID>' + auction_item[0].to_s + '</ItemID>
+        <EndTime>' + DateUtil.date_to_utc(auction_item[1]) + '</EndTime>
         <ViewItemURLForNaturalSearch>' + 'http://cgi.ebay.com/THIRD-WORLD-TALK-TO-ME-12-79-reggae-disco-HEAR_W0QQitemZ120440899019QQcategoryZ306QQcmdZViewItem' + '</ViewItemURLForNaturalSearch>
         <ListingType>Chinese</ListingType>
         <GalleryURL>' + 'http://thumbs3.ebaystatic.com/pict/1204408990198080_1.jpg' + '</GalleryURL>
@@ -68,8 +59,21 @@ module BaseSpecCase
           <ShippingServiceCost currencyID="USD">3.99</ShippingServiceCost>
           <ShippingType>Flat</ShippingType>
         </ShippingCostSummary>
-      </Item>
-      <Item>
+      </Item>'
+  end
+
+  def self.generate_find_items_response(current_page, end_page)
+    '<?xml version="1.0" encoding="UTF-8"?>
+<FindItemsAdvancedResponse xmlns="urn:ebay:apis:eBLBaseComponents">
+  <Timestamp>2009-07-03T23:42:05.299Z</Timestamp>
+  <Ack>Success</Ack>
+  <Build>e623__Bundled_9520957_R1</Build>
+  <Version>623</Version>
+  <CorrelationID>the message</CorrelationID>
+  <SearchResult>
+    <ItemArray>' +
+            generate_auction_item(FOUND_ITEM_1) +
+            '<Item>
         <ItemID>' + FOUND_ITEM_2[0].to_s + '</ItemID>
         <EndTime>' + DateUtil.date_to_utc(FOUND_ITEM_2[1]) + '</EndTime>
         <ViewItemURLForNaturalSearch>http://cgi.ebay.com/BOUNTY-KILLER-NO-ARGUMENT-Reggae-45_W0QQitemZ260436558510QQcategoryZ306QQcmdZViewItem</ViewItemURLForNaturalSearch>
@@ -160,8 +164,26 @@ module BaseSpecCase
    <TotalPages>0</TotalPages>
    <TotalItems>0</TotalItems>
    <ItemSearchURL>http://search-desc.ebay.com/ws/search/SaleSearch?fts=2&amp;DemandData=1&amp;dfe=20090629&amp;dff=1&amp;dfs=20090629&amp;dfte=5&amp;dfts=5&amp;fsop=32&amp;sacat=306&amp;satitle=reggae</ItemSearchURL>
-  </FindItemsAdvancedResponse>
-'
+  </FindItemsAdvancedResponse>'
+
+  SINGLE_FIND_ITEMS_RESPONSE = '<FindItemsAdvancedResponse xmlns="urn:ebay:apis:eBLBaseComponents">
+  <Timestamp>2009-07-03T23:42:05.299Z</Timestamp>
+  <Ack>Success</Ack>
+  <Build>e623__Bundled_9520957_R1</Build>
+  <Version>623</Version>
+  <CorrelationID>the message</CorrelationID>
+  <SearchResult>
+    <ItemArray>' +
+          generate_auction_item(FOUND_ITEM_1) +
+          '</ItemArray>
+  </SearchResult>
+  <PageNumber>' + 1.to_s + '</PageNumber>
+  <TotalPages>' + 1.to_s + '</TotalPages>
+  <TotalItems>1</TotalItems>
+  <ItemSearchURL>http://search-desc.ebay.com/ws/search/SaleSearch?fts=2&amp;DemandData=1&amp;dfe=20090604&amp;dff=1&amp;dfs=20090603&amp;dfte=2&amp;dfts=2&amp;fsop=32&amp;sacat=306&amp;satitle=reggae</ItemSearchURL>
+</FindItemsAdvancedResponse>'
+
+
   TETRACK_ITEMID = 330340439690
   GARNET_ITEMID = 140329666820
   MULTIPLE_ITEMS_CALL = 'GetMultipleItems'
@@ -182,6 +204,7 @@ module BaseSpecCase
   TETRACK_BIDCOUNT = 7
   TETRACK_PRICE = 405.0
   TETRACK_SELLERID = 'pushkings'
+  TETRACK_TITLE = 'TETRACK Let"s Get Together JACOB MILLER rare DUB ROOTS'
 
   GARNET_DESCRIPTION = '45 RPM. Garnet Silk--Babylon Be Still/Version. Johnny Osbourne--Play Play Girl. Byron Lee &amp; The Dragonaires--Spring Garden on Fire/Instrumental. Gregory Isaacs--Hard Drugs/Version.. Records between VG+ to VG++. Not Mint. Great Records to add to your collection. Thanks for looking. Please see my other auctions for more great items. Happy Bidding!!'
   GARNET_ENDTIME = '2009-07-03T22:02:53.000Z'
@@ -191,16 +214,17 @@ module BaseSpecCase
   GARNET_BIDCOUNT = 1
   GARNET_PRICE = 5.0
   GARNET_SELLERID = 'ronsuniquerecords'
+  GARNET_TITLE = 'Garnet Silk--Babylon Be Still/Version. Johnny Osbourne--Play Play Girl'
 
   TETRACK_EBAY_ITEM = EbayItemData.new(CGI.unescapeHTML(TETRACK_DESCRIPTION),
           TETRACK_ITEMID, DateUtil.utc_to_date(TETRACK_ENDTIME), DateUtil.utc_to_date(TETRACK_STARTTIME),
           TETRACK_URL, TETRACK_GALLERY_IMG, TETRACK_BIDCOUNT,
-          TETRACK_PRICE, TETRACK_SELLERID)
+          TETRACK_PRICE, TETRACK_SELLERID, TETRACK_TITLE)
 
   GARNET_EBAY_ITEM = EbayItemData.new(CGI.unescapeHTML(GARNET_DESCRIPTION),
           GARNET_ITEMID, DateUtil.utc_to_date(GARNET_ENDTIME), DateUtil.utc_to_date(GARNET_STARTTIME),
           GARNET_URL, GARNET_GALLERY_IMG, GARNET_BIDCOUNT,
-          GARNET_PRICE, GARNET_SELLERID)
+          GARNET_PRICE, GARNET_SELLERID, GARNET_TITLE)
 
   def self.generate_detail_item_xml_response(ebay_item_data)
     '<Item>
@@ -239,7 +263,7 @@ module BaseSpecCase
     <ShipToLocations>Worldwide</ShipToLocations>
     <Site>US</Site>
     <TimeLeft>PT0S</TimeLeft>
-    <Title>TETRACK Let"s Get Together JACOB MILLER rare DUB ROOTS</Title>
+    <Title>' + ebay_item_data.title + '</Title>
     <HitCount>193</HitCount>
     <Subtitle>SEE MY OTHER AUCTIONS for more M- roots &amp; dub 12"s/7"s!</Subtitle>
     <PrimaryCategoryIDPath>11233:306</PrimaryCategoryIDPath>

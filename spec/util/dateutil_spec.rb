@@ -1,5 +1,5 @@
 require File.dirname(__FILE__) + "/../../app/util/dateutil"
-require 'ActiveSupport'
+require 'activesupport'
 require 'time'
 require 'spec'
 
