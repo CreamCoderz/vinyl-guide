@@ -227,6 +227,10 @@ module BaseSpecCase
           GARNET_PRICE, GARNET_SELLERID, GARNET_TITLE)
 
   def self.generate_detail_item_xml_response(ebay_item_data)
+    gallery_url = ""
+    if !ebay_item_data.galleryimg.nil?
+      gallery_url = "<GalleryURL>#{ebay_item_data.galleryimg}</GalleryURL>"
+    end
     '<Item>
     <BestOfferEnabled>false</BestOfferEnabled>
     <Description>' + CGI.escapeHTML(ebay_item_data.description) + '</Description>
@@ -236,9 +240,7 @@ module BaseSpecCase
     <ViewItemURLForNaturalSearch>' + ebay_item_data.url + '</ViewItemURLForNaturalSearch>
     <ListingType>Chinese</ListingType>
     <Location>Malmoe, -</Location>
-    <PaymentMethods>PayPal</PaymentMethods>
-    <GalleryURL>' + ebay_item_data.galleryimg + '</GalleryURL>
-    <PictureURL>http://www.shingaling.com/ebay0906b/jacobmiller-b.jpg</PictureURL>
+    <PaymentMethods>PayPal</PaymentMethods>' + gallery_url + '<PictureURL>http://www.shingaling.com/ebay0906b/jacobmiller-b.jpg</PictureURL>
     <PrimaryCategoryID>306</PrimaryCategoryID>
     <PrimaryCategoryName>Music:Records</PrimaryCategoryName>
     <Quantity>1</Quantity>

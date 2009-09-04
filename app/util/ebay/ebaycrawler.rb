@@ -24,11 +24,12 @@ class EbayCrawler
     if !ebay_auctions.empty?
       item_detailses = @ebay_client.get_details(ebay_auctions.map{ |ebay_auction| ebay_auction.item_id})
       item_detailses.each do |item_details|
-        EbayItem.new(:itemid => item_details.itemid, :description => item_details.description, :bidcount => item_details.bidcount,
+        EbayItem.new(:itemid => item_details.itemid, :title => item_details.title, :description => item_details.description, :bidcount => item_details.bidcount,
                 :price => item_details.price, :endtime => item_details.endtime, :starttime => item_details.starttime,
                 :url => item_details.url, :galleryimg => item_details.galleryimg,
                 :sellerid => item_details.sellerid).save
       end
+      ebay_auctions.map { |ebay_auction| ebay_auction.delete }
     end
   end
 end

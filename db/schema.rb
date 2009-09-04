@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 8) do
+ActiveRecord::Schema.define(:version => 9) do
 
   create_table "ebay_auctions", :force => true do |t|
     t.integer  "item_id",  :limit => 8
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 8) do
     t.text     "url"
     t.string   "galleryimg"
     t.string   "sellerid"
+    t.string   "title"
   end
 
   create_table "records", :force => true do |t|

@@ -27,6 +27,7 @@ class EbayCrawlerTest < ActiveSupport::TestCase
     ebay_crawler.get_items
     actual_ebay_item = EbayItem.find(:first, :conditions => {:itemid => BaseSpecCase::TETRACK_ITEMID})
     check_ebay_item_and_data(BaseSpecCase::TETRACK_EBAY_ITEM, actual_ebay_item)
+    assert EbayAuction.find(:first, :conditions => {:item_id => BaseSpecCase::TETRACK_ITEMID}).nil?
   end
 
   def test_no_get_details_call_made_if_no_items_to_fetch

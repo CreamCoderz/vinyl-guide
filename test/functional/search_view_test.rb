@@ -19,7 +19,7 @@ class SearchViewTest <  ActionController::TestCase
         assert_select ebay_item, 'p span' do |item_fields|
           expected_record = expected_records[count]
           check_record_field_with_extraction [Proc.new {|field, expected_value| assert_equal expected_value, field.children.to_s}],
-                  item_fields, EBAY_ITEM_DISPLAY_FIELDS, expected_record
+                  item_fields, EBAY_ITEM_ABBRV_DISPLAY_FIELDS, expected_record
           count += 1
         end
       end

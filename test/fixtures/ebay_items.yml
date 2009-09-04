@@ -55,5 +55,5 @@ five:
   endtime: Time.new
   starttime: Time.new
   url: http://www.ebay.com/5555
-  galleryimg: http://www.roots-archives.com/5
+  galleryimg:
   sellerid: rootsman

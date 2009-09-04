@@ -8,7 +8,7 @@ class EbayItemsTest < ActiveSupport::TestCase
   def test_create_new_ebay_item
     ebay_item = EbayItem.new
     assert !ebay_item.save, "should not be able to save without item id"
-    ebay_item = EbayItem.new(:itemid => BaseSpecCase::TETRACK_EBAY_ITEM.itemid, :description => BaseSpecCase::TETRACK_EBAY_ITEM.description, :bidcount => BaseSpecCase::TETRACK_EBAY_ITEM.bidcount,
+    ebay_item = EbayItem.new(:itemid => BaseSpecCase::TETRACK_EBAY_ITEM.itemid, :title => BaseSpecCase::TETRACK_EBAY_ITEM.title, :description => BaseSpecCase::TETRACK_EBAY_ITEM.description, :bidcount => BaseSpecCase::TETRACK_EBAY_ITEM.bidcount,
             :price => BaseSpecCase::TETRACK_EBAY_ITEM.price, :endtime => BaseSpecCase::TETRACK_EBAY_ITEM.endtime, :starttime => BaseSpecCase::TETRACK_EBAY_ITEM.starttime,
             :url => BaseSpecCase::TETRACK_EBAY_ITEM.url, :galleryimg => BaseSpecCase::TETRACK_EBAY_ITEM.galleryimg, :sellerid => BaseSpecCase::TETRACK_EBAY_ITEM.sellerid)
     assert ebay_item.save

@@ -1,0 +1,12 @@
+<p>
+    <label>Title</label>
+    <span><%= h ebay_item.title %></span>
+</p>
+<p>
+    <label>Price</label>
+    <span><%= h ebay_item.price %></span>
+</p>
+<p>
+    <label>Gallery Image</label>
+    <span><img src="<%= display_gallery_img(ebay_item.galleryimg) %>"/></span>
+</p>

@@ -1,12 +1,20 @@
 module BaseTestCase
   RECORD_DISPLAY_FIELDS = ['artist', 'name', 'description', 'date', 'img_src', 'producer', 'band', 'engineer', 'studio']
   DISPLAY_AS_LINK = lambda {|href| "<a href=\"" + href + "\">" + href + "</a>"}
-  DISPLAY_AS_IMG = lambda {|src| "<img src=\"" + src + "\" />"}
+  DISPLAY_AS_IMG = lambda {|src|
+    if src.nil?
+      DEFAULT_IMG_URL
+    else
+      "<img src=\"#{src}\" />"
+    end
+  }
+  DEFAULT_IMG_URL = '<img src="http://www.rootsvinylguide.com/noimage.jpg" />'
   ESCAPE_HTML = lambda {|html| CGI.escapeHTML(html)}
   TO_S = lambda {|arg| arg.to_s}
   PARSE_TIME = lambda {|time_string| Time.parse(time_string)}
 
-  EBAY_ITEM_DISPLAY_FIELDS = [['itemid', TO_S], ['description', ESCAPE_HTML], ['bidcount', TO_S], ['price', TO_S], ['endtime', TO_S], ['starttime', TO_S], ['url', DISPLAY_AS_LINK], ['galleryimg', DISPLAY_AS_IMG], 'sellerid']
+  EBAY_ITEM_DISPLAY_FIELDS = [['itemid', TO_S], ['title', TO_S], ['description', ESCAPE_HTML], ['bidcount', TO_S], ['price', TO_S], ['endtime', TO_S], ['starttime', TO_S], ['url', DISPLAY_AS_LINK], ['galleryimg', DISPLAY_AS_IMG], ['sellerid', TO_S]]
+  EBAY_ITEM_ABBRV_DISPLAY_FIELDS = [['title', TO_S], ['price', TO_S], ['galleryimg', DISPLAY_AS_IMG]]
 
   RECORD_INPUT_TYPE_FIELDS = Array.new(RECORD_DISPLAY_FIELDS);
   RECORD_INPUT_TYPE_FIELDS.delete('date')
@@ -55,6 +63,7 @@ module BaseTestCase
 
 
   def check_ebay_item_and_data(ebay_item, stored_item)
+    assert_equal ebay_item.title, stored_item.title    
     assert_equal ebay_item.description, stored_item.description
     assert_equal ebay_item.itemid, stored_item.itemid
     assert_equal ebay_item.endtime, stored_item.endtime

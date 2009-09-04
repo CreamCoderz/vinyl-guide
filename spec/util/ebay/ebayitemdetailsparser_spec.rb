@@ -29,7 +29,15 @@ class EbayItemsDetailsParserTest
     it "should parse a response with no items into an empty list" do
       no_items_response = EbayItemsDetailsParserTest.make_multiple_items_response("")
       item_detailses = EbayItemsDetailsParser.parse(no_items_response)
-      item_detailses.length.should == 0 
+      item_detailses.length.should == 0
+    end
+
+    it "should handle parsing missing gallery image node" do
+      expected_item_data = EbayItemData.new("desc", 123435, DateTime.parse('2009-08-21T10:20:00+00:00'), DateTime.parse('2009-08-21T10:20:00+00:00'), "http://ebay.com/121", nil, 10,
+              5.00, "steve", "record with missing gallery image")
+      item_detail_response = BaseSpecCase.generate_detail_item_xml_response(expected_item_data)
+      item_detailses = EbayItemsDetailsParser.parse(EbayItemsDetailsParserTest.make_multiple_items_response(item_detail_response))
+      EbayItemsDetailsParserTest.check_ebay_item(expected_item_data, item_detailses[0])
     end
   end
 
