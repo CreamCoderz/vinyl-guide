@@ -8528,3 +8528,372 @@ Rendering ebay_items/index
 Rendered partials/_header (0.7ms)
 Rendered partials/_footer (0.5ms)
 Completed in 40ms (View: 36, DB: 1) | 200 OK [http://localhost/ebay_items]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEbayAuction Load (0.4ms)[0m   [0;1mSELECT * FROM `ebay_auctions` WHERE (end_time < '2009-09-04 05:06:31') [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-03 22:14:06) [GET]
+  [4;35;1mEbayItem Load (0.4ms)[0m   [0mSELECT * FROM `ebay_items` ORDER BY endtime[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 6ms (View: 2, DB: 1) | 200 OK [http://localhost/ebay_items]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-03 22:14:07) [GET]
+  [4;36;1mEbayItem Load (0.3ms)[0m   [0;1mSELECT * FROM `ebay_items` ORDER BY endtime[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 6ms (View: 2, DB: 1) | 200 OK [http://localhost/ebay_items]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-03 22:14:08) [GET]
+  [4;35;1mEbayItem Load (0.3ms)[0m   [0mSELECT * FROM `ebay_items` ORDER BY endtime[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 6ms (View: 2, DB: 0) | 200 OK [http://localhost/ebay_items]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-03 22:14:44) [GET]
+  [4;36;1mEbayItem Load (0.4ms)[0m   [0;1mSELECT * FROM `ebay_items` ORDER BY endtime[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;35;1mEbayItem Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (5.0ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 13ms (View: 8, DB: 2) | 200 OK [http://localhost/ebay_items]
+/!\ FAILSAFE /!\  Thu Sep 03 22:47:27 -0700 2009
+  Status: 500 Internal Server Error
+  Illegal route: the :controller must be specified!
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/routing/builder.rb:175:in `build'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/routing/route_set.rb:308:in `add_route'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/routing/route_set.rb:19:in `connect'
+    /Users/will/vinylguide3/config/routes.rb:11
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/routing/route_set.rb:226:in `draw'
+    /Users/will/vinylguide3/config/routes.rb:1
+    /Library/Ruby/Gems/1.8/gems/activesupport-2.3.2/lib/active_support/dependencies.rb:145:in `load_without_new_constant_marking'
+    /Library/Ruby/Gems/1.8/gems/activesupport-2.3.2/lib/active_support/dependencies.rb:145:in `load'
+    /Library/Ruby/Gems/1.8/gems/activesupport-2.3.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /Library/Ruby/Gems/1.8/gems/activesupport-2.3.2/lib/active_support/dependencies.rb:145:in `load'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/routing/route_set.rb:286:in `load_routes!'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/routing/route_set.rb:286:in `each'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/routing/route_set.rb:286:in `load_routes!'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/routing/route_set.rb:266:in `load!'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/routing/route_set.rb:281:in `reload'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/dispatcher.rb:59:in `reload_application'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/reloader.rb:8:in `call'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/failsafe.rb:11:in `call'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/lock.rb:11:in `call'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/lock.rb:11:in `synchronize'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/lock.rb:11:in `call'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/dispatcher.rb:106:in `call'
+    /Library/Ruby/Gems/1.8/gems/rails-2.3.2/lib/rails/rack/static.rb:31:in `call'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/urlmap.rb:46:in `call'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/urlmap.rb:40:in `each'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/urlmap.rb:40:in `call'
+    /Library/Ruby/Gems/1.8/gems/rails-2.3.2/lib/rails/rack/log_tailer.rb:17:in `call'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/content_length.rb:13:in `call'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/chunked.rb:15:in `call'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/handler/mongrel.rb:61:in `process'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:159:in `process_client'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:158:in `each'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:158:in `process_client'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `initialize'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `new'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `initialize'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `new'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `run'
+    /Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/handler/mongrel.rb:34:in `run'
+    /Library/Ruby/Gems/1.8/gems/rails-2.3.2/lib/commands/server.rb:111
+    /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-03 22:47:57) [GET]
+  [4;36;1mEbayItem Load (0.4ms)[0m   [0;1mSELECT * FROM `ebay_items` ORDER BY endtime[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;35;1mEbayItem Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (3.4ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 9ms (View: 4, DB: 2) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-03 22:48:09) [GET]
+
+ActionController::RoutingError (No route matches "/index" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-03 22:51:44) [GET]
+  [4;36;1mEbayItem Load (0.4ms)[0m   [0;1mSELECT * FROM `ebay_items` ORDER BY endtime[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;35;1mEbayItem Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (3.5ms)
+Rendered partials/_header (0.7ms)
+Rendered partials/_footer (0.1ms)
+Completed in 13ms (View: 7, DB: 2) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-03 22:51:48) [GET]
+  [4;36;1mEbayItem Load (0.4ms)[0m   [0;1mSELECT * FROM `ebay_items` ORDER BY endtime[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;35;1mEbayItem Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (4.4ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 11ms (View: 5, DB: 3) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-03 22:52:11) [GET]
+  [4;36;1mEbayItem Load (0.4ms)[0m   [0;1mSELECT * FROM `ebay_items` ORDER BY endtime[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;35;1mEbayItem Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (3.3ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 10ms (View: 4, DB: 2) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-03 22:52:14) [GET]
+  [4;36;1mEbayItem Load (0.4ms)[0m   [0;1mSELECT * FROM `ebay_items` ORDER BY endtime[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;35;1mEbayItem Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (3.4ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 10ms (View: 4, DB: 2) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-03 22:57:10) [GET]
+  [4;36;1mEbayItem Load (0.4ms)[0m   [0;1mSELECT * FROM `ebay_items` ORDER BY endtime[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;35;1mEbayItem Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (3.4ms)
+Rendered partials/_ebay_item_abbrv (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 10ms (View: 4, DB: 2) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-03 23:10:56) [GET]
+  [4;36;1mEbayItem Load (0.5ms)[0m   [0;1mSELECT * FROM `ebay_items` ORDER BY endtime[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;35;1mEbayItem Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (3.9ms)
+Rendered partials/_ebay_item_abbrv (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 12ms (View: 7, DB: 2) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-03 23:11:50) [GET]
+  [4;36;1mEbayItem Load (0.4ms)[0m   [0;1mSELECT * FROM `ebay_items` ORDER BY endtime[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;35;1mEbayItem Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (3.5ms)
+Rendered partials/_ebay_item_abbrv (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 10ms (View: 4, DB: 2) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-03 23:11:54) [GET]
+  [4;36;1mEbayItem Load (0.4ms)[0m   [0;1mSELECT * FROM `ebay_items` ORDER BY endtime[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;35;1mEbayItem Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (3.4ms)
+Rendered partials/_ebay_item_abbrv (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 10ms (View: 4, DB: 2) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-03 23:12:42) [GET]
+  [4;36;1mEbayItem Load (0.4ms)[0m   [0;1mSELECT * FROM `ebay_items` ORDER BY endtime[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;35;1mEbayItem Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (4.6ms)
+Rendered partials/_ebay_item_abbrv (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 13ms (View: 7, DB: 2) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-09-03 23:25:33) [GET]
+  Parameters: {"query"=>"t"}
+  [4;36;1mEbayItem Load (0.4ms)[0m   [0;1mSELECT * FROM `ebay_items` WHERE (itemid like '%t%' OR description like '%t%' OR url like '%t%' OR galleryimg like '%t%' OR sellerid like '%t%') [0m
+Rendering template within layouts/application
+Rendering search/search
+  [4;35;1mEbayItem Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (3.5ms)
+Rendered partials/_ebay_item_abbrv (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 15ms (View: 9, DB: 2) | 200 OK [http://localhost/search?query=t]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-03 23:26:06) [GET]
+  [4;36;1mEbayItem Load (0.4ms)[0m   [0;1mSELECT * FROM `ebay_items` ORDER BY endtime[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;35;1mEbayItem Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (3.5ms)
+Rendered partials/_ebay_item_abbrv (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 10ms (View: 4, DB: 2) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#show (for 127.0.0.1 at 2009-09-03 23:45:25) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mEbayItem Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `ebay_items`[0m
+  [4;35;1mEbayItem Load (1.9ms)[0m   [0mSELECT * FROM `ebay_items` WHERE (`ebay_items`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering ebay_items/show
+Rendered partials/_ebay_item (44.3ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 61ms (View: 53, DB: 4) | 200 OK [http://localhost/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#show (for 127.0.0.1 at 2009-09-04 00:02:02) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mEbayItem Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `ebay_items`[0m
+  [4;35;1mEbayItem Load (2.9ms)[0m   [0mSELECT * FROM `ebay_items` WHERE (`ebay_items`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering ebay_items/show
+Rendered partials/_ebay_item (1.7ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 14ms (View: 4, DB: 5) | 200 OK [http://localhost/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-04 00:02:24) [GET]
+  [4;36;1mEbayItem Load (0.5ms)[0m   [0;1mSELECT * FROM `ebay_items` ORDER BY endtime[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;35;1mEbayItem Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (4.7ms)
+Rendered partials/_ebay_item_abbrv (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 15ms (View: 9, DB: 2) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#show (for 127.0.0.1 at 2009-09-04 00:02:31) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mEbayItem Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `ebay_items`[0m
+  [4;35;1mEbayItem Load (1.5ms)[0m   [0mSELECT * FROM `ebay_items` WHERE (`ebay_items`.`id` = 2) [0m
+Rendering template within layouts/application
+Rendering ebay_items/show
+Rendered partials/_ebay_item (1.7ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 12ms (View: 4, DB: 3) | 200 OK [http://localhost/2]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#show (for 127.0.0.1 at 2009-09-04 00:02:39) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mEbayItem Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `ebay_items`[0m
+  [4;35;1mEbayItem Load (1.5ms)[0m   [0mSELECT * FROM `ebay_items` WHERE (`ebay_items`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering ebay_items/show
+Rendered partials/_ebay_item (1.8ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 12ms (View: 5, DB: 3) | 200 OK [http://localhost/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-04 00:05:28) [GET]
+  [4;36;1mEbayItem Load (0.4ms)[0m   [0;1mSELECT * FROM `ebay_items` ORDER BY endtime[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;35;1mEbayItem Columns (7.3ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (11.8ms)
+Rendered partials/_ebay_item_abbrv (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 27ms (View: 16, DB: 8) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-04 00:10:48) [GET]
+  [4;36;1mEbayItem Load (0.4ms)[0m   [0;1mSELECT * FROM `ebay_items` ORDER BY endtime[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;35;1mEbayItem Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (11.4ms)
+Rendered partials/_ebay_item_abbrv (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 39ms (View: 27, DB: 3) | 200 OK [http://localhost/]

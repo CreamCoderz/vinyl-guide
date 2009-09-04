@@ -1,10 +1,10 @@
 <div class="container">
-    <h3>Vinyl Results</h3>
+    <h3><%= @ebay_items.length %> Vinyl Results</h3>
 
     <ul>
         <% @ebay_items.each do |ebay_item| %>
             <li class="recordItem">
-                <%= render :partial=> "partials/ebay_item_abbrv", :locals => { :ebay_item => ebay_item } %>                
+                <%= render :partial=> "partials/ebay_item_abbrv", :locals => { :ebay_item => ebay_item } %>
             </li>
             <hr/>
         <% end %>
