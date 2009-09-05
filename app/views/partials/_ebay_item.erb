@@ -16,7 +16,7 @@
 </p>
 <p>
     <label>Price</label>
-    <span><%= h "$#{ebay_item.price}" %></span>
+    <span><%= h number_to_currency ebay_item.price %></span>
 </p>
 <p>
     <label>End Time</label>

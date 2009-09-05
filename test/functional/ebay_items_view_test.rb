@@ -35,7 +35,7 @@ class EbayItemsViewTest <  ActionController::TestCase
   def test_index_view
     get :index
     sorted_ebay_items = EbayItem.find(:all, :order => "endtime").reverse
-    assert_select "h3", "#{sorted_ebay_items.length} Vinyl Results"
+    assert_select "h3", "#{sorted_ebay_items.length} Latest Vinyl Results"
     check_view_fields(EBAY_ITEM_ABBRV_DISPLAY_FIELDS, sorted_ebay_items)
     count = 0
     assert_select "a.view" do |view_anchors|

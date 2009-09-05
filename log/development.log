@@ -8897,3 +8897,289 @@ Rendered partials/_ebay_item_abbrv (0.1ms)
 Rendered partials/_header (0.1ms)
 Rendered partials/_footer (0.1ms)
 Completed in 39ms (View: 27, DB: 3) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#show (for 127.0.0.1 at 2009-09-05 13:27:18) [GET]
+  Parameters: {"id"=>"ebay_items"}
+  [4;36;1mEbayItem Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `ebay_items`[0m
+  [4;35;1mEbayItem Load (1.2ms)[0m   [0mSELECT * FROM `ebay_items` WHERE (`ebay_items`.`id` = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find EbayItem with ID=ebay_items):
+  app/controllers/ebay_items_controller.rb:8:in `show'
+
+Rendered rescues/_trace (35.2ms)
+Rendered rescues/_request_and_response (1.4ms)
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-05 13:27:28) [GET]
+  [4;36;1mEbayItem Load (0.4ms)[0m   [0;1mSELECT * FROM `ebay_items` ORDER BY endtime[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;35;1mEbayItem Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (3.7ms)
+Rendered partials/_ebay_item_abbrv (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.0ms)
+Completed in 11ms (View: 4, DB: 2) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-05 13:27:34) [GET]
+  [4;36;1mEbayItem Load (0.4ms)[0m   [0;1mSELECT * FROM `ebay_items` ORDER BY endtime[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;35;1mEbayItem Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (3.7ms)
+Rendered partials/_ebay_item_abbrv (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 11ms (View: 5, DB: 2) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#show (for 127.0.0.1 at 2009-09-05 13:27:49) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mEbayItem Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `ebay_items`[0m
+  [4;35;1mEbayItem Load (1.3ms)[0m   [0mSELECT * FROM `ebay_items` WHERE (`ebay_items`.`id` = 2) [0m
+Rendering template within layouts/application
+Rendering ebay_items/show
+
+ActionView::TemplateError (wrong number of arguments (0 for 1)) on line #19 of app/views/partials/_ebay_item.erb:
+16: </p>
+17: <p>
+18:     <label>Price</label>
+19:     <span><%= h number_to_currency {ebay_item.price} %></span>
+20: </p>
+21: <p>
+22:     <label>End Time</label>
+
+    app/views/partials/_ebay_item.erb:19:in `number_to_currency'
+    app/views/partials/_ebay_item.erb:19
+    app/views/ebay_items/show.erb:6
+
+Rendered rescues/_trace (47.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#show (for 127.0.0.1 at 2009-09-05 13:28:02) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mEbayItem Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `ebay_items`[0m
+  [4;35;1mEbayItem Load (1.5ms)[0m   [0mSELECT * FROM `ebay_items` WHERE (`ebay_items`.`id` = 2) [0m
+Rendering template within layouts/application
+Rendering ebay_items/show
+Rendered partials/_ebay_item (6.0ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 17ms (View: 10, DB: 3) | 200 OK [http://localhost/2]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-05 13:33:27) [GET]
+  [4;36;1mEbayItem Load (0.4ms)[0m   [0;1mSELECT * FROM `ebay_items` ORDER BY endtime[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+ERROR: compiling _run_erb_app47views47partials47_ebay_item_abbrv46erb_locals_ebay_item_ebay_item_abbrv_object RAISED compile error
+/Users/will/vinylguide3/app/views/partials/_ebay_item_abbrv.erb:8: unknown regexp option - p
+/Users/will/vinylguide3/app/views/partials/_ebay_item_abbrv.erb:8: syntax error, unexpected $undefined
+@output_buffer.concat "</p>\n"
+                            ^
+/Users/will/vinylguide3/app/views/partials/_ebay_item_abbrv.erb:9: syntax error, unexpected $undefined
+@output_buffer.concat "<p>\n"
+                           ^
+/Users/will/vinylguide3/app/views/partials/_ebay_item_abbrv.erb:10: syntax error, unexpected tCONSTANT, expecting kDO or '{' or '('
+@output_buffer.concat "    <label>Gallery Image</label>\n"
+                                               ^
+/Users/will/vinylguide3/app/views/partials/_ebay_item_abbrv.erb:11: syntax error, unexpected '<'
+...; @output_buffer.concat "\"/></span>\n"
+                              ^
+/Users/will/vinylguide3/app/views/partials/_ebay_item_abbrv.erb:12: unknown regexp option - p
+/Users/will/vinylguide3/app/views/partials/_ebay_item_abbrv.erb:12: syntax error, unexpected $undefined
+@output_buffer.concat "</p>\n"
+                            ^
+/Users/will/vinylguide3/app/views/partials/_ebay_item_abbrv.erb:13: syntax error, unexpected $undefined
+@output_buffer.concat "<p>\n"
+                           ^
+/Users/will/vinylguide3/app/views/partials/_ebay_item_abbrv.erb:14: syntax error, unexpected kCLASS, expecting kDO or '{' or '('
+...ut_buffer.concat "    <a class=\"view\" href=\"/"; @output_b...
+                              ^
+/Users/will/vinylguide3/app/views/partials/_ebay_item_abbrv.erb:16: syntax error, unexpected kENSURE, expecting ')'
+/Users/will/vinylguide3/app/views/partials/_ebay_item_abbrv.erb:18: syntax error, unexpected kEND, expecting ')'
+Function body:           def _run_erb_app47views47partials47_ebay_item_abbrv46erb_locals_ebay_item_ebay_item_abbrv_object(local_assigns)
+            old_output_buffer = output_buffer;ebay_item_abbrv = local_assigns[:ebay_item_abbrv];object = local_assigns[:object];ebay_item = local_assigns[:ebay_item];;@output_buffer = '';  __in_erb_template=true ; @output_buffer.concat "<p>\n"
+@output_buffer.concat "    <label>Title</label>\n"
+@output_buffer.concat "    <span>"; @output_buffer.concat(( h ebay_item.title ).to_s); @output_buffer.concat "</span>\n"
+@output_buffer.concat "</p>\n"
+@output_buffer.concat "<p>\n"
+@output_buffer.concat "    <label>Price</label>\n"
+@output_buffer.concat "    <span>"; @output_buffer.concat(( h number_to_currency ebay_item.price" ).to_s); @output_buffer.concat "</span>\n"
+@output_buffer.concat "</p>\n"
+@output_buffer.concat "<p>\n"
+@output_buffer.concat "    <label>Gallery Image</label>\n"
+@output_buffer.concat "    <span><img src=\""; @output_buffer.concat(( display_gallery_img(ebay_item.galleryimg) ).to_s); @output_buffer.concat "\"/></span>\n"
+@output_buffer.concat "</p>\n"
+@output_buffer.concat "<p>\n"
+@output_buffer.concat "    <a class=\"view\" href=\"/"; @output_buffer.concat(( ebay_item.id ).to_s); @output_buffer.concat "\">View</a>\n"
+@output_buffer.concat "</p>"; @output_buffer
+          ensure
+            self.output_buffer = old_output_buffer
+          end
+Backtrace: /Users/will/vinylguide3/app/views/partials/_ebay_item_abbrv.erb:18:in `compile!'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_view/renderable.rb:61:in `compile'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_view/renderable.rb:28:in `render'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_view/renderable_partial.rb:20:in `render'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/benchmarking.rb:26:in `benchmark'
+/Library/Ruby/Gems/1.8/gems/activesupport-2.3.2/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/Library/Ruby/Gems/1.8/gems/activesupport-2.3.2/lib/active_support/core_ext/benchmark.rb:10:in `realtime'
+/Library/Ruby/Gems/1.8/gems/activesupport-2.3.2/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/benchmarking.rb:26:in `benchmark'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_view/renderable_partial.rb:19:in `render'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_view/template.rb:194:in `render_template'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_view/renderable_partial.rb:44:in `render_partial'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_view/partials.rb:184:in `render_partial'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_view/base.rb:262:in `render'
+/Users/will/vinylguide3/app/views/ebay_items/index.erb:7:in `_run_erb_app47views47ebay_items47index46erb'
+/Users/will/vinylguide3/app/views/ebay_items/index.erb:5:in `each'
+/Users/will/vinylguide3/app/views/ebay_items/index.erb:5:in `_run_erb_app47views47ebay_items47index46erb'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_view/renderable.rb:34:in `send'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_view/renderable.rb:34:in `render'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_view/base.rb:301:in `with_template'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_view/renderable.rb:30:in `render'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_view/template.rb:194:in `render_template'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_view/base.rb:260:in `render'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_view/base.rb:343:in `_render_with_layout'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_view/base.rb:257:in `render'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/base.rb:1241:in `render_for_file'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/base.rb:937:in `render_without_benchmark'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/benchmarking.rb:51:in `render'
+/Library/Ruby/Gems/1.8/gems/activesupport-2.3.2/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/Library/Ruby/Gems/1.8/gems/activesupport-2.3.2/lib/active_support/core_ext/benchmark.rb:10:in `realtime'
+/Library/Ruby/Gems/1.8/gems/activesupport-2.3.2/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/benchmarking.rb:51:in `render'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/base.rb:1317:in `default_render'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/base.rb:1323:in `perform_action_without_filters'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/filters.rb:617:in `call_filters'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/Library/Ruby/Gems/1.8/gems/activesupport-2.3.2/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/Library/Ruby/Gems/1.8/gems/activesupport-2.3.2/lib/active_support/core_ext/benchmark.rb:10:in `realtime'
+/Library/Ruby/Gems/1.8/gems/activesupport-2.3.2/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/flash.rb:141:in `perform_action'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/base.rb:523:in `send'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/base.rb:523:in `process_without_filters'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/filters.rb:606:in `process'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/base.rb:391:in `process'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/base.rb:386:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/routing/route_set.rb:433:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/dispatcher.rb:88:in `dispatch'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/dispatcher.rb:111:in `_call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/dispatcher.rb:82:in `initialize'
+/Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/query_cache.rb:29:in `call'
+/Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/query_cache.rb:29:in `call'
+/Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+/Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/query_cache.rb:9:in `cache'
+/Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/query_cache.rb:28:in `call'
+/Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/head.rb:9:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/methodoverride.rb:24:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/params_parser.rb:15:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/rewindable_input.rb:25:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/session/cookie_store.rb:93:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/reloader.rb:9:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/failsafe.rb:11:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/lock.rb:11:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/lock.rb:11:in `synchronize'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/lock.rb:11:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/dispatcher.rb:106:in `call'
+/Library/Ruby/Gems/1.8/gems/rails-2.3.2/lib/rails/rack/static.rb:31:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/urlmap.rb:46:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/urlmap.rb:40:in `each'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/urlmap.rb:40:in `call'
+/Library/Ruby/Gems/1.8/gems/rails-2.3.2/lib/rails/rack/log_tailer.rb:17:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/content_length.rb:13:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/chunked.rb:15:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/handler/mongrel.rb:61:in `process'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:159:in `process_client'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:158:in `each'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:158:in `process_client'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `run'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `initialize'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `new'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `run'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `initialize'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `new'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `run'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/handler/mongrel.rb:34:in `run'
+/Library/Ruby/Gems/1.8/gems/rails-2.3.2/lib/commands/server.rb:111
+/Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
+script/server:3
+
+ActionView::TemplateError (compile error
+/Users/will/vinylguide3/app/views/partials/_ebay_item_abbrv.erb:8: unknown regexp option - p
+/Users/will/vinylguide3/app/views/partials/_ebay_item_abbrv.erb:8: syntax error, unexpected $undefined
+@output_buffer.concat "</p>\n"
+                            ^
+/Users/will/vinylguide3/app/views/partials/_ebay_item_abbrv.erb:9: syntax error, unexpected $undefined
+@output_buffer.concat "<p>\n"
+                           ^
+/Users/will/vinylguide3/app/views/partials/_ebay_item_abbrv.erb:10: syntax error, unexpected tCONSTANT, expecting kDO or '{' or '('
+@output_buffer.concat "    <label>Gallery Image</label>\n"
+                                               ^
+/Users/will/vinylguide3/app/views/partials/_ebay_item_abbrv.erb:11: syntax error, unexpected '<'
+...; @output_buffer.concat "\"/></span>\n"
+                              ^
+/Users/will/vinylguide3/app/views/partials/_ebay_item_abbrv.erb:12: unknown regexp option - p
+/Users/will/vinylguide3/app/views/partials/_ebay_item_abbrv.erb:12: syntax error, unexpected $undefined
+@output_buffer.concat "</p>\n"
+                            ^
+/Users/will/vinylguide3/app/views/partials/_ebay_item_abbrv.erb:13: syntax error, unexpected $undefined
+@output_buffer.concat "<p>\n"
+                           ^
+/Users/will/vinylguide3/app/views/partials/_ebay_item_abbrv.erb:14: syntax error, unexpected kCLASS, expecting kDO or '{' or '('
+...ut_buffer.concat "    <a class=\"view\" href=\"/"; @output_b...
+                              ^
+/Users/will/vinylguide3/app/views/partials/_ebay_item_abbrv.erb:16: syntax error, unexpected kENSURE, expecting ')'
+/Users/will/vinylguide3/app/views/partials/_ebay_item_abbrv.erb:18: syntax error, unexpected kEND, expecting ')') on line #8 of app/views/partials/_ebay_item_abbrv.erb:
+5: <p>
+6:     <label>Price</label>
+7:     <span><%= h number_to_currency ebay_item.price" %></span>
+8: </p>
+9: <p>
+10:     <label>Gallery Image</label>
+11:     <span><img src="<%= display_gallery_img(ebay_item.galleryimg) %>"/></span>
+
+    app/views/partials/_ebay_item_abbrv.erb:18:in `compile!'
+    app/views/ebay_items/index.erb:7
+    app/views/ebay_items/index.erb:5:in `each'
+    app/views/ebay_items/index.erb:5
+
+Rendered rescues/_trace (109.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-05 13:33:40) [GET]
+  [4;35;1mEbayItem Load (0.4ms)[0m   [0mSELECT * FROM `ebay_items` ORDER BY endtime[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;36;1mEbayItem Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (6.8ms)
+Rendered partials/_ebay_item_abbrv (0.3ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 16ms (View: 10, DB: 2) | 200 OK [http://localhost/]
