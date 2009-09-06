@@ -1,4 +1,6 @@
 # Methods added to this helper will be available to all templates in the application.
+require 'cgi'
+
 module ApplicationHelper
 
   def display_gallery_img(url)
@@ -9,4 +11,8 @@ module ApplicationHelper
     end
   end
 
+  def unescape_html(html)
+    puts CGI.unescapeHTML(html)
+    CGI.unescapeHTML(html)
+  end
 end

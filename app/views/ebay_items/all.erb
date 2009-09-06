@@ -1,5 +1,5 @@
 <div class="container">
-    <h3>Vinyl Results <%= @start %> - <%= @end %> of <%= @total %></h3>
+    <h3>Vinyl Results <%= @start %>-<%= @end %> of <%= @total %></h3>
 
     <ul>
         <% @ebay_items.each do |ebay_item| %>
@@ -13,6 +13,6 @@
         <a class="prev" href="/all/<%= @prev %>">&lt; Prev</a>
     <% end %>
     <% if @next %>
-        <a class="next" href="/all/<%= @next %>">&gt; Next</a>
+        <a class="next" href="/all/<%= @next %>">Next &gt;</a>
     <% end %>
 </div>

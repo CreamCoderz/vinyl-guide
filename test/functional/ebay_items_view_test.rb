@@ -67,7 +67,7 @@ class EbayItemsViewTest <  ActionController::TestCase
       assert_equal "/all/#{assigns(:next)}", elm[0].attributes['href']
     end
     assert css_select(".prev").empty?
-    assert_select "h3", "Vinyl Results #{assigns(:start)} - #{assigns(:end)} of #{assigns(:total)}"
+    assert_select "h3", "Vinyl Results #{assigns(:start)}-#{assigns(:end)} of #{assigns(:total)}"
   end
 
 end
