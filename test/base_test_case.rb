@@ -11,8 +11,8 @@ module BaseTestCase
   DEFAULT_IMG_URL = '<img src="http://www.rootsvinylguide.com/noimage.jpg" />'
   ESCAPE_HTML = lambda {|html| CGI.escapeHTML(html)}
   TO_S = lambda {|arg| arg.to_s}
+  TO_DATE = lambda {|arg| arg.to_s}
   TO_DOLLARS = lambda {|arg| "$#{arg.to_s}0"}
-  PARSE_TIME = lambda {|time_string| Time.parse(time_string)}
 
   EBAY_ITEM_DISPLAY_FIELDS = [['itemid', TO_S], ['title', TO_S], ['description', ESCAPE_HTML], ['bidcount', TO_S], ['price', TO_DOLLARS], ['endtime', TO_S], ['starttime', TO_S], ['url', DISPLAY_AS_LINK], ['galleryimg', DISPLAY_AS_IMG], ['sellerid', TO_S]]
   EBAY_ITEM_ABBRV_DISPLAY_FIELDS = [['title', TO_S], ['endtime', TO_S], ['price', TO_DOLLARS], ['galleryimg', DISPLAY_AS_IMG]]

@@ -219,12 +219,12 @@ module BaseSpecCase
   TETRACK_EBAY_ITEM = EbayItemData.new(CGI.unescapeHTML(TETRACK_DESCRIPTION),
           TETRACK_ITEMID, DateUtil.utc_to_date(TETRACK_ENDTIME), DateUtil.utc_to_date(TETRACK_STARTTIME),
           TETRACK_URL, TETRACK_GALLERY_IMG, TETRACK_BIDCOUNT,
-          TETRACK_PRICE, TETRACK_SELLERID, TETRACK_TITLE)
+          TETRACK_PRICE, TETRACK_SELLERID, CGI.unescapeHTML(TETRACK_TITLE))
 
   GARNET_EBAY_ITEM = EbayItemData.new(CGI.unescapeHTML(GARNET_DESCRIPTION),
           GARNET_ITEMID, DateUtil.utc_to_date(GARNET_ENDTIME), DateUtil.utc_to_date(GARNET_STARTTIME),
           GARNET_URL, GARNET_GALLERY_IMG, GARNET_BIDCOUNT,
-          GARNET_PRICE, GARNET_SELLERID, GARNET_TITLE)
+          GARNET_PRICE, GARNET_SELLERID, CGI.unescapeHTML(GARNET_TITLE))
 
   def self.generate_detail_item_xml_response(ebay_item_data)
     gallery_url = ""

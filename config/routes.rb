@@ -10,6 +10,7 @@ ActionController::Routing::Routes.draw do |map|
   map.search 'search', :controller => 'search', :action => 'search'
   map.connect '/', :controller => 'ebay_items', :action => 'index'
   map.connect '/:id', :controller => 'ebay_items', :action => 'show'
+  map.connect 'all/:id', :controller => 'ebay_items', :action => 'all'
 
   # Sample of named route:
   #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
@@ -23,7 +24,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Sample resource route with sub-resources:
   #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
-  
+
   # Sample resource route with more complex sub-resources
   #   map.resources :products do |products|
   #     products.resources :comments
