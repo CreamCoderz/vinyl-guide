@@ -7,6 +7,7 @@ class EbayCrawler
 
   def initialize(ebay_client)
     @ebay_client = ebay_client
+    @logger = Logger.new(File.dirname(__FILE__) + '/../../../crawler.log')
   end
 
   def get_auctions
@@ -15,6 +16,7 @@ class EbayCrawler
     auction_items.each do |auction_item|
       EbayAuction.new(:item_id => auction_item[0], :end_time => auction_item[1]).save
     end
+    @logger.info("#{Time.new} found #{auction_items.length} new auction items")
   end
 
   def get_items
@@ -31,5 +33,6 @@ class EbayCrawler
       end
       ebay_auctions.map { |ebay_auction| ebay_auction.delete }
     end
+    @logger.info("#{Time.new} added #{ebay_auctions.length} new item details")
   end
 end

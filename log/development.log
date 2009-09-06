@@ -9183,3 +9183,140 @@ Rendered partials/_ebay_item_abbrv (0.3ms)
 Rendered partials/_header (0.1ms)
 Rendered partials/_footer (0.1ms)
 Completed in 16ms (View: 10, DB: 2) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-05 14:59:49) [GET]
+  [4;35;1mEbayItem Load (0.4ms)[0m   [0mSELECT * FROM `ebay_items` ORDER BY endtime LIMIT 20[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;36;1mEbayItem Columns (3.4ms)[0m   [0;1mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (8.8ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 20ms (View: 12, DB: 4) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-05 15:00:15) [GET]
+  [4;35;1mEbayItem Load (0.4ms)[0m   [0mSELECT * FROM `ebay_items` ORDER BY endtime LIMIT 20[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;36;1mEbayItem Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (9.4ms)
+Rendered partials/_ebay_item_abbrv (0.9ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 20ms (View: 14, DB: 3) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEbayAuction Load (0.4ms)[0m   [0;1mSELECT * FROM `ebay_auctions` WHERE (end_time < '2009-09-06 02:02:44') [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-05 19:04:48) [GET]
+  [4;35;1mEbayItem Load (0.5ms)[0m   [0mSELECT * FROM `ebay_items` ORDER BY endtime LIMIT 20[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;36;1mEbayItem Columns (2.7ms)[0m   [0;1mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (7.2ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 15ms (View: 7, DB: 3) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-05 19:04:51) [GET]
+  [4;35;1mEbayItem Load (0.4ms)[0m   [0mSELECT * FROM `ebay_items` ORDER BY endtime LIMIT 20[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;36;1mEbayItem Columns (2.8ms)[0m   [0;1mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (7.2ms)
+Rendered partials/_ebay_item_abbrv (0.5ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 14ms (View: 7, DB: 3) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-05 19:16:08) [GET]
+  [4;35;1mEbayItem Load (0.4ms)[0m   [0mSELECT * FROM `ebay_items` ORDER BY endtime LIMIT 20[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;36;1mEbayItem Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (6.1ms)
+Rendered partials/_ebay_item_abbrv (0.5ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 13ms (View: 7, DB: 2) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-05 19:43:20) [GET]
+  [4;35;1mEbayItem Load (0.4ms)[0m   [0mSELECT * FROM `ebay_items` ORDER BY endtime LIMIT 20[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;36;1mEbayItem Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (6.2ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 13ms (View: 7, DB: 2) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-09-05 19:43:53) [GET]
+  Parameters: {"query"=>"Rastaman"}
+  [4;35;1mEbayItem Load (0.4ms)[0m   [0mSELECT * FROM `ebay_items` WHERE (itemid like '%Rastaman%' OR description like '%Rastaman%' OR url like '%Rastaman%' OR galleryimg like '%Rastaman%' OR sellerid like '%Rastaman%') [0m
+Rendering template within layouts/application
+Rendering search/search
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 6ms (View: 2, DB: 1) | 200 OK [http://localhost/search?query=Rastaman]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-09-05 19:43:57) [GET]
+  Parameters: {"query"=>"Vibration"}
+  [4;36;1mEbayItem Load (0.4ms)[0m   [0;1mSELECT * FROM `ebay_items` WHERE (itemid like '%Vibration%' OR description like '%Vibration%' OR url like '%Vibration%' OR galleryimg like '%Vibration%' OR sellerid like '%Vibration%') [0m
+Rendering template within layouts/application
+Rendering search/search
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 6ms (View: 2, DB: 2) | 200 OK [http://localhost/search?query=Vibration]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-09-05 19:44:15) [GET]
+  Parameters: {"query"=>"Marley"}
+  [4;35;1mEbayItem Load (0.4ms)[0m   [0mSELECT * FROM `ebay_items` WHERE (itemid like '%Marley%' OR description like '%Marley%' OR url like '%Marley%' OR galleryimg like '%Marley%' OR sellerid like '%Marley%') [0m
+Rendering template within layouts/application
+Rendering search/search
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 6ms (View: 2, DB: 1) | 200 OK [http://localhost/search?query=Marley]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-05 19:47:15) [GET]
+  [4;36;1mEbayItem Load (0.5ms)[0m   [0;1mSELECT * FROM `ebay_items` ORDER BY endtime LIMIT 20[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;35;1mEbayItem Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (6.0ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 13ms (View: 7, DB: 2) | 200 OK [http://localhost/]
