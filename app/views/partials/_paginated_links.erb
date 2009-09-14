@@ -1,0 +1,6 @@
+<% if prev_link %>
+    <a class="prev" href="<%= base_url + prev_link.to_s %>">&lt; Prev</a>
+<% end %>
+<% if next_link %>
+    <a class="next" href="<%= base_url + next_link.to_s %>">Next &gt;</a>
+<% end %>

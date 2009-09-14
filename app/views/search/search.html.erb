@@ -1,7 +1,7 @@
 <div class="container">
 
 
-    <h3><%= @ebay_items.length %> Search Results found for &quot;<%= @query %>&quot;</h3>
+    <h3><%= @start %>-<%= @end %> of <%= @total %> Search Results found for &quot;<%= html_escape(@query) %>&quot;</h3>
 
     <ul>
         <% @ebay_items.each do |ebay_item| %>
@@ -11,6 +11,7 @@
             <hr/>
         <% end %>
     </ul>
+    <%= render :partial => "partials/paginated_links", :locals => { :base_url => "/search?query=#{url_escape(@query)}&page=", :next_link => @next, :prev_link => @prev } %>
     <br/>
 
 </div>

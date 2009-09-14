@@ -9,10 +9,5 @@
             <hr/>
         <% end %>
     </ul>
-    <% if @prev %>
-        <a class="prev" href="/all/<%= @prev %>">&lt; Prev</a>
-    <% end %>
-    <% if @next %>
-        <a class="next" href="/all/<%= @next %>">Next &gt;</a>
-    <% end %>
+    <%= render :partial => "partials/paginated_links", :locals => { :base_url => "/all/", :next_link => @next, :prev_link => @prev } %>
 </div>

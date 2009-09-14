@@ -58,7 +58,7 @@ class EbayItemsViewTest <  ActionController::TestCase
   end
 
   def test_all_view_base_case
-    EbayItemsControllerTest.generate_some_ebay_items(25)
+    generate_some_ebay_items(25)
     get :all, :id => 1
     ebay_items = EbayItem.find(:all, :order => "endtime", :limit => EbayItemsController::PAGE_LIMIT).reverse
     #TODO: uncomment this line of coe when check_view_fields is fixed
