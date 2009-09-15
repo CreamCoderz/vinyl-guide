@@ -1,7 +1,9 @@
 <div class="container">
 
-
-    <h3><%= @start %>-<%= @end %> of <%= @total %> Search Results found for &quot;<%= html_escape(@query) %>&quot;</h3>
+    <% if @start && @end %>
+        <% @range = "#{@start}-#{@end} of" %>
+    <% end %>
+    <h3><%= @range %> <%= @total %> Search Results found for &quot;<%= html_escape(@query) %>&quot;</h3>
 
     <ul>
         <% @ebay_items.each do |ebay_item| %>

@@ -51,7 +51,7 @@ class SearchViewTest <  ActionController::TestCase
   def test_input_is_html_escaped
     html_query = '<font color="red">test</font>'
     get :search, :query => html_query
-    assert_select 'h3', "1-0 of 0 Search Results found for #{CGI.escapeHTML("\"" + html_query + "\"")}"
+    assert_select 'h3', "0 Search Results found for #{CGI.escapeHTML("\"" + html_query + "\"")}"
   end
 
 end

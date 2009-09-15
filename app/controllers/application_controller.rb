@@ -15,8 +15,9 @@ class ApplicationController < ActionController::Base
     #TODO: find a better way to calculate the next link
     before_end = items.length != end_index + 1
     next_page_num = (before_end && truncated_items.length >= PAGE_LIMIT) ? page_num + 1 : nil
-    start_from = start_index + 1
-    end_on = start_index + truncated_items.length
+    end_len = start_index + truncated_items.length
+    end_on = end_len == 0 ? nil : end_len
+    start_from = end_on.nil? ? nil : start_index + 1
     total = items.length
     return truncated_items, prev_page_num, next_page_num, start_from, end_on, total
   end
