@@ -7,7 +7,7 @@ class SearchControllerTest < ActionController::TestCase
     get :search, :query => expected_query
     assert_response :success
     ebay_items = assigns(:ebay_items)
-    assert_equal(4, ebay_items.length)
+    assert_equal(3, ebay_items.length)
     assert_equal expected_query, assigns(:query)
   end
 
@@ -21,16 +21,16 @@ class SearchControllerTest < ActionController::TestCase
     assert_equal 2, assigns(:next)
     assert_equal 1, assigns(:start)
     assert_equal 20, assigns(:end)
-    assert_equal 30, assigns(:total)
+    assert_equal 25, assigns(:total)
 
     get :search, :query => ebay_items[0].title, :page => 2
     actual_ebay_items = assigns(:ebay_items)
-    expected_ebay_items = ebay_items[20..24].insert(-1, ebay_items(:five), ebay_items(:four), ebay_items(:three), ebay_items(:two), ebay_items(:one))
+    expected_ebay_items = ebay_items[20..24]
     assert_equal expected_ebay_items, actual_ebay_items
     assert_equal 1, assigns(:prev)
     assert assigns(:next).nil?
     assert_equal 21, assigns(:start)
-    assert_equal 30, assigns(:end)
+    assert_equal 25, assigns(:end)
   end
 
 end

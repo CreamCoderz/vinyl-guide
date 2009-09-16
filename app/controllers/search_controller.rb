@@ -1,27 +1,20 @@
 class SearchController < ApplicationController
 
   def search
-    searchable_fields = ['itemid', 'description', 'url', 'galleryimg', 'sellerid']
+    searchable_fields = ['itemid', 'description', 'title', 'url', 'galleryimg', 'sellerid']
     raw_query = params[:query]
     page = params[:page]
     page_num = page ? page.to_i : 1
     #TODO: query generator needed
-    query = raw_query.split
-    wild_query = []
+    wild_query = "%#{raw_query}%"
     query_exp = ''
-    i=0
-    query.each do |single_query|
-      query_exp = append_or(query_exp)
-      wild_query[i] = '%' + single_query + '%'
-      wild_sub_query = ''
-      searchable_fields.each do |searchable_field|
-        wild_sub_query = append_or(wild_sub_query)
-        wild_sub_query += searchable_field + ' like \'' + wild_query[i] +'\''
-      end
-      query_exp += wild_sub_query
-      i += 1
+    wild_sub_query = ''
+    searchable_fields.each do |searchable_field|
+      wild_sub_query = append_or(wild_sub_query)
+      wild_sub_query += "#{searchable_field} like :wild_query"
     end
-    ebay_items = EbayItem.all(:conditions => query_exp, :order => "id DESC")
+    query_exp += wild_sub_query
+    ebay_items = EbayItem.all(:conditions => [query_exp, {:wild_query => wild_query}], :order => "id DESC")
     @ebay_items, @prev, @next, @start, @end, @total = paginate(page_num, ebay_items)
     @query = raw_query
   end

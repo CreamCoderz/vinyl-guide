@@ -10068,3 +10068,336 @@ Rendered partials/_ebay_item_abbrv (0.4ms)
 Rendered partials/_header (0.1ms)
 Rendered partials/_footer (0.1ms)
 Completed in 23ms (View: 16, DB: 2) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-15 22:19:13) [GET]
+  [4;35;1mEbayItem Load (1.1ms)[0m   [0mSELECT * FROM `ebay_items` ORDER BY id DESC LIMIT 20[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;36;1mEbayItem Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (6.2ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.5ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.5ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.5ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 42ms (View: 33, DB: 3) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-09-15 22:19:17) [GET]
+  Parameters: {"query"=>"lee perry"}
+  [4;35;1mEbayItem Load (35.2ms)[0m   [0mSELECT * FROM `ebay_items` WHERE (itemid like '%lee%' OR description like '%lee%' OR url like '%lee%' OR galleryimg like '%lee%' OR sellerid like '%lee%' OR itemid like '%perry%' OR description like '%perry%' OR url like '%perry%' OR galleryimg like '%perry%' OR sellerid like '%perry%') ORDER BY id DESC[0m
+Rendering template within layouts/application
+Rendering search/search
+  [4;36;1mEbayItem Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (5.9ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_paginated_links (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 64ms (View: 19, DB: 37) | 200 OK [http://localhost/search?query=lee+perry]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-09-15 22:51:24) [GET]
+  Parameters: {"query"=>"lee perry"}
+  [4;35;1mEbayItem Load (1.8ms)[0m   [0mSELECT * FROM `ebay_items` WHERE (description like 'lee perry%') ORDER BY id DESC[0m
+Rendering template within layouts/application
+Rendering search/search
+Rendered partials/_paginated_links (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 8ms (View: 2, DB: 2) | 200 OK [http://localhost/search?query=lee+perry]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-09-15 22:51:27) [GET]
+  Parameters: {"query"=>"perry"}
+  [4;36;1mEbayItem Load (1.8ms)[0m   [0;1mSELECT * FROM `ebay_items` WHERE (description like 'perry%') ORDER BY id DESC[0m
+Rendering template within layouts/application
+Rendering search/search
+Rendered partials/_paginated_links (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 8ms (View: 2, DB: 2) | 200 OK [http://localhost/search?query=perry]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-09-15 22:51:54) [GET]
+  Parameters: {"query"=>"perry"}
+  [4;35;1mEbayItem Load (19.8ms)[0m   [0mSELECT * FROM `ebay_items` WHERE (description like '%perry%') ORDER BY id DESC[0m
+Rendering template within layouts/application
+Rendering search/search
+  [4;36;1mEbayItem Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (6.1ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.5ms)
+Rendered partials/_ebay_item_abbrv (1.2ms)
+Rendered partials/_paginated_links (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 38ms (View: 13, DB: 22) | 200 OK [http://localhost/search?query=perry]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-09-15 22:52:50) [GET]
+  Parameters: {"query"=>"perry"}
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (1 for 2) in: description like ? title like ?):
+  app/controllers/search_controller.rb:27:in `search'
+
+Rendered rescues/_trace (38.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-09-15 22:53:10) [GET]
+  Parameters: {"query"=>"perry"}
+  [4;35;1mEbayItem Load (0.0ms)[0m   [0mMysql::Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'title like '%perry%') ORDER BY id DESC' at line 1: SELECT * FROM `ebay_items` WHERE (description like '%perry%' title like '%perry%') ORDER BY id DESC[0m
+
+ActiveRecord::StatementInvalid (Mysql::Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'title like '%perry%')  ORDER BY id DESC' at line 1: SELECT * FROM `ebay_items` WHERE (description like '%perry%' title like '%perry%')  ORDER BY id DESC):
+  app/controllers/search_controller.rb:27:in `search'
+
+Rendered rescues/_trace (100.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-09-15 22:53:26) [GET]
+  Parameters: {"query"=>"perry"}
+  [4;36;1mEbayItem Load (21.8ms)[0m   [0;1mSELECT * FROM `ebay_items` WHERE (description like '%perry%' AND title like '%perry%') ORDER BY id DESC[0m
+Rendering template within layouts/application
+Rendering search/search
+  [4;35;1mEbayItem Columns (3.2ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (7.9ms)
+Rendered partials/_ebay_item_abbrv (0.5ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_paginated_links (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 40ms (View: 9, DB: 25) | 200 OK [http://localhost/search?query=perry]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-09-15 22:53:35) [GET]
+  Parameters: {"query"=>"perry"}
+  [4;36;1mEbayItem Load (20.9ms)[0m   [0;1mSELECT * FROM `ebay_items` WHERE (description like '%perry%' OR title like '%perry%') ORDER BY id DESC[0m
+Rendering template within layouts/application
+Rendering search/search
+  [4;35;1mEbayItem Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (5.9ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (1.0ms)
+Rendered partials/_ebay_item_abbrv (0.6ms)
+Rendered partials/_ebay_item_abbrv (0.6ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.5ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_paginated_links (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 41ms (View: 14, DB: 23) | 200 OK [http://localhost/search?query=perry]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-09-15 23:04:13) [GET]
+  Parameters: {"query"=>"perry"}
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (5 for 6) in: itemid like ? OR description like ? OR title like ? OR url like ? OR galleryimg like ? OR sellerid like ?):
+  app/controllers/search_controller.rb:27:in `search'
+
+Rendered rescues/_trace (37.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-09-15 23:06:23) [GET]
+  Parameters: {"query"=>"perry"}
+  [4;36;1mEbayItem Load (22.9ms)[0m   [0;1mSELECT * FROM `ebay_items` WHERE (itemid like '%perry%' OR description like '%perry%' OR title like '%perry%' OR url like '%perry%' OR galleryimg like '%perry%' OR sellerid like '%perry%') ORDER BY id DESC[0m
+Rendering template within layouts/application
+Rendering search/search
+  [4;35;1mEbayItem Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (6.0ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (1.1ms)
+Rendered partials/_ebay_item_abbrv (0.6ms)
+Rendered partials/_ebay_item_abbrv (0.5ms)
+Rendered partials/_ebay_item_abbrv (1.5ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.6ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.5ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_paginated_links (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 46ms (View: 16, DB: 25) | 200 OK [http://localhost/search?query=perry]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-09-15 23:06:28) [GET]
+  Parameters: {"query"=>"lee perry"}
+  [4;36;1mEbayItem Load (24.0ms)[0m   [0;1mSELECT * FROM `ebay_items` WHERE (itemid like '%lee perry%' OR description like '%lee perry%' OR title like '%lee perry%' OR url like '%lee perry%' OR galleryimg like '%lee perry%' OR sellerid like '%lee perry%') ORDER BY id DESC[0m
+Rendering template within layouts/application
+Rendering search/search
+  [4;35;1mEbayItem Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (6.7ms)
+Rendered partials/_ebay_item_abbrv (0.6ms)
+Rendered partials/_ebay_item_abbrv (0.5ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.6ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.5ms)
+Rendered partials/_paginated_links (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 42ms (View: 12, DB: 26) | 200 OK [http://localhost/search?query=lee+perry]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-09-15 23:10:26) [GET]
+  Parameters: {"query"=>"lee perry"}
+  [4;36;1mEbayItem Load (0.0ms)[0m   [0;1mMysql::Error: Unknown column 'wild_query' in 'where clause': SELECT * FROM `ebay_items` WHERE (itemid like wild_query OR description like wild_query OR title like wild_query OR url like wild_query OR galleryimg like wild_query OR sellerid like wild_query) ORDER BY id DESC[0m
+
+ActiveRecord::StatementInvalid (Mysql::Error: Unknown column 'wild_query' in 'where clause': SELECT * FROM `ebay_items` WHERE (itemid like wild_query OR description like wild_query OR title like wild_query OR url like wild_query OR galleryimg like wild_query OR sellerid like wild_query)  ORDER BY id DESC):
+  app/controllers/search_controller.rb:27:in `search'
+
+Rendered rescues/_trace (37.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-09-15 23:12:00) [GET]
+  Parameters: {"query"=>"lee perry"}
+  [4;35;1mEbayItem Load (24.1ms)[0m   [0mSELECT * FROM `ebay_items` WHERE (itemid like '%lee perry%' OR description like '%lee perry%' OR title like '%lee perry%' OR url like '%lee perry%' OR galleryimg like '%lee perry%' OR sellerid like '%lee perry%') ORDER BY id DESC[0m
+Rendering template within layouts/application
+Rendering search/search
+  [4;36;1mEbayItem Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (6.4ms)
+Rendered partials/_ebay_item_abbrv (0.6ms)
+Rendered partials/_ebay_item_abbrv (0.5ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_paginated_links (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 42ms (View: 12, DB: 26) | 200 OK [http://localhost/search?query=lee+perry]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-09-15 23:12:06) [GET]
+  Parameters: {"query"=>"\""}
+  [4;35;1mEbayItem Load (19.7ms)[0m   [0mSELECT * FROM `ebay_items` WHERE (itemid like '%\"%' OR description like '%\"%' OR title like '%\"%' OR url like '%\"%' OR galleryimg like '%\"%' OR sellerid like '%\"%') ORDER BY id DESC[0m
+Rendering template within layouts/application
+Rendering search/search
+  [4;36;1mEbayItem Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (6.9ms)
+Rendered partials/_ebay_item_abbrv (0.7ms)
+Rendered partials/_ebay_item_abbrv (0.5ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.5ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_paginated_links (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 50ms (View: 18, DB: 22) | 200 OK [http://localhost/search?query=%22]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchController#search (for 127.0.0.1 at 2009-09-15 23:17:39) [GET]
+  Parameters: {"query"=>"\" OR 1==1"}
+  [4;35;1mEbayItem Load (21.9ms)[0m   [0mSELECT * FROM `ebay_items` WHERE (itemid like '%\" OR 1==1%' OR description like '%\" OR 1==1%' OR title like '%\" OR 1==1%' OR url like '%\" OR 1==1%' OR galleryimg like '%\" OR 1==1%' OR sellerid like '%\" OR 1==1%') ORDER BY id DESC[0m
+Rendering template within layouts/application
+Rendering search/search
+Rendered partials/_paginated_links (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 28ms (View: 2, DB: 22) | 200 OK [http://localhost/search?query=%22+OR+1%3D%3D1]
