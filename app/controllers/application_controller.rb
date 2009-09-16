@@ -9,6 +9,9 @@ class ApplicationController < ActionController::Base
 
   def paginate(page_num, items)
     start_index = (page_num - 1) * PAGE_LIMIT
+    if (start_index >= items.length || page_num == 0)
+      return [], nil, nil, nil, nil, 0
+    end
     end_index = start_index + PAGE_LIMIT - 1
     truncated_items = items[start_index..end_index]
     prev_page_num = (page_num > 1) ? page_num - 1 : nil
