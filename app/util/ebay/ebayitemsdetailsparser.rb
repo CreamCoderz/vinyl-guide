@@ -35,12 +35,15 @@ class EbayItemsDetailsParser
         if !item[IMAGE].nil?
           image = item[IMAGE][LEAFNODE_CONTENTS]
         end
-        ebay_items.insert(-1, EbayItemData.new(item[DESCRIPTION][LEAFNODE_CONTENTS],
-                item[ITEMID][LEAFNODE_CONTENTS].to_i, DateUtil.utc_to_date(item[ENDTIME][LEAFNODE_CONTENTS]),
-                DateUtil.utc_to_date(item[STARTTIME][LEAFNODE_CONTENTS]),
-                item[URL][LEAFNODE_CONTENTS], image,
-                item[BIDCOUNT][LEAFNODE_CONTENTS].to_i, item[PRICE][LEAFNODE_CONTENTS].to_f,
-                item[SELLER][USERID][LEAFNODE_CONTENTS], item[TITLE][LEAFNODE_CONTENTS]))
+
+        if (item['BidCount']['$'].to_i > 0)
+          ebay_items.insert(-1, EbayItemData.new(item[DESCRIPTION][LEAFNODE_CONTENTS],
+                  item[ITEMID][LEAFNODE_CONTENTS].to_i, DateUtil.utc_to_date(item[ENDTIME][LEAFNODE_CONTENTS]),
+                  DateUtil.utc_to_date(item[STARTTIME][LEAFNODE_CONTENTS]),
+                  item[URL][LEAFNODE_CONTENTS], image,
+                  item[BIDCOUNT][LEAFNODE_CONTENTS].to_i, item[PRICE][LEAFNODE_CONTENTS].to_f,
+                  item[SELLER][USERID][LEAFNODE_CONTENTS], item[TITLE][LEAFNODE_CONTENTS]))
+        end
       end
     end
     ebay_items

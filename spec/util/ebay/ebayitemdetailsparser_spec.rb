@@ -39,6 +39,15 @@ class EbayItemsDetailsParserTest
       item_detailses = EbayItemsDetailsParser.parse(EbayItemsDetailsParserTest.make_multiple_items_response(item_detail_response))
       EbayItemsDetailsParserTest.check_ebay_item(expected_item_data, item_detailses[0])
     end
+
+    it "should ignore results with 0 bids" do
+      zero_bid_item = EbayItemData.new("desc", 123435, DateTime.parse('2009-08-21T10:20:00+00:00'), DateTime.parse('2009-08-21T10:20:00+00:00'), "http://ebay.com/121", nil, 0,
+              5.00, "steve", "record with 0 bids")
+      items_response = EbayItemsDetailsParserTest.make_multiple_items_response(BaseSpecCase::TETRACK_ITEM_XML + BaseSpecCase::GARNET_ITEM_XML + BaseSpecCase.generate_detail_item_xml_response(zero_bid_item))
+      item_detailses = EbayItemsDetailsParser.parse(items_response)
+      EbayItemsDetailsParserTest.check_ebay_item([BaseSpecCase::TETRACK_EBAY_ITEM, BaseSpecCase::GARNET_EBAY_ITEM], item_detailses)
+    end
+
   end
 
   def self.make_multiple_items_response(items_xml)

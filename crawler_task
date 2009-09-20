@@ -1,2 +1,2 @@
 #!/bin/bash
-RAILS_ENV=production /home/will/webapps/vinylguide3/script/runner /home/will/webapps/vinylguide3/app/util/ebay/standaloneebayclient.rb
+RAILS_ENV=production /Users/will/vinylguide3/script/runner /Users/will/vinylguide3/app/util/ebay/standaloneebayclient.rb

@@ -6,23 +6,18 @@ class EbayFindItemsParser
   def initialize(xml)
     parsed_items = CobraVsMongoose.xml_to_hash(xml)
     @num_total_items = 0
-    @num_items_ignored = 0
     @parsed_items = []
-    if !parsed_items['FindItemsAdvancedResponse']['SearchResult'].nil?
-      items = parsed_items['FindItemsAdvancedResponse']['SearchResult']['ItemArray']['Item']
+    if !parsed_items['findItemsAdvancedResponse']['searchResult']['item'].nil?
+      items = parsed_items['findItemsAdvancedResponse']['searchResult']['item']
       if !items.is_a?(Array)
         items = [items]
       end
       @num_total_items = items.length
       items.each do |item|
-        if (0 == item['BidCount']['$'].to_i)
-          @num_items_ignored += 1
-        else
-          @parsed_items.insert(-1, [item['ItemID']['$'].to_i, DateUtil.utc_to_date(item['EndTime']['$'])])
-        end
+        @parsed_items.insert(-1, [item['itemId']['$'].to_i, DateUtil.utc_to_date(item['listingInfo']['endTime']['$'])])
       end
-      @page_number = parsed_items['FindItemsAdvancedResponse']['PageNumber']['$']
-      @total_pages = parsed_items['FindItemsAdvancedResponse']['TotalPages']['$']
+      @page_number = parsed_items['findItemsAdvancedResponse']['paginationOutput']['pageNumber']['$']
+      @total_pages = parsed_items['findItemsAdvancedResponse']['paginationOutput']['totalPages']['$']
     end
   end
 
@@ -36,10 +31,6 @@ class EbayFindItemsParser
 
   def get_num_items_marked
     @parsed_items.length
-  end
-
-  def get_num_items_ignored
-    @num_items_ignored
   end
 
   def get_num_total_items

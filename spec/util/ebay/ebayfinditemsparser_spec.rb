@@ -7,8 +7,7 @@ describe EbayFindItemsParser do
   it "should get some stats from ebay response xml" do
     ebay_item_finder = EbayFindItemsParser.new(BaseSpecCase::SAMPLE_FIND_ITEMS_RESPONSE)
     ebay_item_finder.get_num_total_items.should == 5
-    ebay_item_finder.get_num_items_marked.should == 2
-    ebay_item_finder.get_num_items_ignored.should == 3
+    ebay_item_finder.get_num_items_marked.should == 5
   end
 
   it "should find a list of item ids from some ebay response xml" do
@@ -18,6 +17,7 @@ describe EbayFindItemsParser do
 
   it "should find one item id from some ebay response xml" do
     ebay_item_finder = EbayFindItemsParser.new(BaseSpecCase::SINGLE_FIND_ITEMS_RESPONSE)
+    ebay_item_finder.get_items.length.should == 1
     ebay_item_finder.get_items.should == [BaseSpecCase::FOUND_ITEM_1]
   end
 
@@ -26,7 +26,6 @@ describe EbayFindItemsParser do
     ebay_item_finder.get_items.should == []
     ebay_item_finder.get_num_total_items.should == 0
     ebay_item_finder.get_num_items_marked.should == 0
-    ebay_item_finder.get_num_items_ignored.should == 0
   end
 
   it "should return a boolean indicating if the requestd page is the last page" do

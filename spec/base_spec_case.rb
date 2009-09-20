@@ -6,6 +6,7 @@ require File.dirname(__FILE__) + "/../app/util/dateutil"
 
 module BaseSpecCase
 
+  # ---------------- TIME ---------------------------
   CURRENT_EBAY_TIME = '2009-07-19T23:42:25.000Z'
 
   SAMPLE_GET_EBAY_TIME_REQUEST = '/shopping?version=517&appid=WillSulz-7420-475d-9a40-2fb8b491a6fd&callname=geteBayTime'
@@ -17,12 +18,72 @@ module BaseSpecCase
    <Version>625</Version>
   </GeteBayTimeResponse>'
 
+  # ---------------- FINDING -------------------------
   SAMPLE_BASE_URL = 'http://open.api.ebay.com'
-  def self.generate_find_items_request(end_time_from, end_time_to, page_number)
-    '/shopping?version=517&appid=' + EbayClient::APP_ID +
-            '&callname=' + EbayClient::FIND_ITEMS_CALL.to_s + '&CategoryID=306&DescriptionSearch=true' +
-            '&EndTimeFrom=' + DateUtil.date_to_utc(end_time_from) + '&EndTimeTo=' + DateUtil.date_to_utc(end_time_to) +
-            '&MaxEntries=100' + '&PageNumber=' + page_number.to_s+ '&QueryKeywords=reggae'
+  SAMPLE_BASE_FIND_HOST = 'svcs.ebay.com'
+  SAMPLE_BASE_FIND_URL = "http://#{SAMPLE_BASE_FIND_HOST}"
+
+  def self.generate_find_items_request(end_time_from, page_number)
+    "/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=WillSulz-7420-475d-9a40-2fb8b491a6fd&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&categoryId=306&aspectFilter%280%29.aspectName=%22Genre%22&aspectFilter%280%29.aspectValueName=%22Reggae%20%26%20Ska%22&itemFilter.name=EndTimeTo&itemFilter.value=#{DateUtil.date_to_utc(end_time_from)}&paginationInput.pageNumber=#{page_number}"
+  end
+
+  def self.generate_auction_item(auction_item)
+    "<item>
+            <itemId>#{auction_item[0]}</itemId>
+            <title>BOB MARLEY &amp; THE WAILERS EXODUS 180 GRAM VINYL LP NEW</title>
+            <globalId>EBAY-US</globalId>
+            <primaryCategory>
+                <categoryId>306</categoryId>
+                <categoryName>Records</categoryName>
+            </primaryCategory>
+            <galleryURL>http://thumbs2.ebaystatic.com/pict/2505001942428080_1.jpg</galleryURL>
+            <viewItemURL>
+                http://cgi.ebay.com/BOB-MARLEY-THE-WAILERS-EXODUS-180-GRAM-VINYL-LP-NEW_W0QQitemZ250500194242QQcmdZViewItemQQptZMusic_on_Vinyl?hash=item3a52f99fc2
+            </viewItemURL>
+            <paymentMethod>PayPal</paymentMethod>
+            <autoPay>false</autoPay>
+            <postalCode>10707</postalCode>
+            <location>Tuckahoe,NY,USA</location>
+            <country>US</country>
+            <shippingInfo>
+                <shippingServiceCost currencyId=\"USD\">4.0</shippingServiceCost>
+                <shippingType>Flat</shippingType>
+                <shipToLocations>Worldwide</shipToLocations>
+            </shippingInfo>
+            <sellingStatus>
+                <currentPrice currencyId=\"USD\">19.99</currentPrice>
+                <convertedCurrentPrice currencyId=\"USD\">19.99</convertedCurrentPrice>
+                <sellingState>Active</sellingState>
+                <timeLeft>P27DT18H56M6S</timeLeft>
+            </sellingStatus>
+            <listingInfo>
+                <bestOfferEnabled>false</bestOfferEnabled>
+                <buyItNowAvailable>false</buyItNowAvailable>
+                <startTime>2009-09-17T14:25:32.000Z</startTime>
+                <endTime>#{DateUtil.date_to_utc(auction_item[1])}</endTime>
+                <listingType>FixedPrice</listingType>
+                <gift>false</gift>
+            </listingInfo>
+        </item>"
+  end
+
+  AUCTIONS_RESPONSE_HEAD = "<?xml version='1.0' encoding='UTF-8'?>
+<findItemsAdvancedResponse xmlns:ms=\"http://www.ebay.com/marketplace/services\"
+                           xmlns=\"http://www.ebay.com/marketplace/search/v1/services\">
+    <ack>Success</ack>
+    <version>1.0.1</version>
+    <timestamp>2009-09-19T19:34:26.586Z</timestamp>
+    <searchResult count=\"100\">"
+
+  def self.generate_auctions_response_footer(current_page, total_pages)
+    "</searchResult>
+    <paginationOutput>
+        <totalPages>#{total_pages}</totalPages>
+        <totalEntries>763</totalEntries>
+        <pageNumber>#{current_page}</pageNumber>
+        <entriesPerPage>100</entriesPerPage>
+    </paginationOutput>
+    </findItemsAdvancedResponse>"
   end
 
   SAMPLE_FIND_ITEMS_REQUEST = SAMPLE_BASE_URL + '/shopping?version=517&appid=WillSulz-7420-475d-9a40-2fb8b491a6fd&callname=FindItemsAdvanced&CategoryID=306&DescriptionSearch=true&EndTimeFrom=2009-07-09T01:00:00.000Z&EndTimeTo=2009-07-10T01:00:00.000Z&MaxEntries=100&PageNumber=1&QueryKeywords=reggae'
@@ -39,151 +100,40 @@ module BaseSpecCase
   FOUND_ITEM_4 = [300325824769, DateTime.parse(item_4_endtime_utc)]
   FOUND_ITEM_5 = [300325824946, DateTime.parse(item_5_endtime_utc)]
 
-  FOUND_ITEMS = [FOUND_ITEM_1, FOUND_ITEM_2]
-
-  def self.generate_auction_item(auction_item)
-    '<Item>
-        <ItemID>' + auction_item[0].to_s + '</ItemID>
-        <EndTime>' + DateUtil.date_to_utc(auction_item[1]) + '</EndTime>
-        <ViewItemURLForNaturalSearch>' + 'http://cgi.ebay.com/THIRD-WORLD-TALK-TO-ME-12-79-reggae-disco-HEAR_W0QQitemZ120440899019QQcategoryZ306QQcmdZViewItem' + '</ViewItemURLForNaturalSearch>
-        <ListingType>Chinese</ListingType>
-        <GalleryURL>' + 'http://thumbs3.ebaystatic.com/pict/1204408990198080_1.jpg' + '</GalleryURL>
-        <PrimaryCategoryID>306</PrimaryCategoryID>
-        <PrimaryCategoryName>Music:Records</PrimaryCategoryName>
-        <BidCount>' + '2' + '</BidCount>
-        <ConvertedCurrentPrice currencyID="USD">14.48</ConvertedCurrentPrice>
-        <ListingStatus>Active</ListingStatus>
-        <TimeLeft>PT20S</TimeLeft>
-        <Title>THIRD WORLD - TALK TO ME 12"! \'79 reggae disco HEAR</Title>
-        <ShippingCostSummary>
-          <ShippingServiceCost currencyID="USD">3.99</ShippingServiceCost>
-          <ShippingType>Flat</ShippingType>
-        </ShippingCostSummary>
-      </Item>'
-  end
+  FOUND_ITEMS = [FOUND_ITEM_1, FOUND_ITEM_2, FOUND_ITEM_3, FOUND_ITEM_4, FOUND_ITEM_5]
 
   def self.generate_find_items_response(current_page, end_page)
-    '<?xml version="1.0" encoding="UTF-8"?>
-<FindItemsAdvancedResponse xmlns="urn:ebay:apis:eBLBaseComponents">
-  <Timestamp>2009-07-03T23:42:05.299Z</Timestamp>
-  <Ack>Success</Ack>
-  <Build>e623__Bundled_9520957_R1</Build>
-  <Version>623</Version>
-  <CorrelationID>the message</CorrelationID>
-  <SearchResult>
-    <ItemArray>' +
+    AUCTIONS_RESPONSE_HEAD +
             generate_auction_item(FOUND_ITEM_1) +
-            '<Item>
-        <ItemID>' + FOUND_ITEM_2[0].to_s + '</ItemID>
-        <EndTime>' + DateUtil.date_to_utc(FOUND_ITEM_2[1]) + '</EndTime>
-        <ViewItemURLForNaturalSearch>http://cgi.ebay.com/BOUNTY-KILLER-NO-ARGUMENT-Reggae-45_W0QQitemZ260436558510QQcategoryZ306QQcmdZViewItem</ViewItemURLForNaturalSearch>
-        <ListingType>Chinese</ListingType>
-        <GalleryURL>http://thumbs1.ebaystatic.com/pict/2604365585108080_1.jpg</GalleryURL>
-        <PrimaryCategoryID>306</PrimaryCategoryID>
-        <PrimaryCategoryName>Music:Records</PrimaryCategoryName>
-        <BidCount>1</BidCount>
-        <ConvertedCurrentPrice currencyID="USD">0.99</ConvertedCurrentPrice>
-        <ListingStatus>Active</ListingStatus>
-        <TimeLeft>PT4M</TimeLeft>
-        <Title>BOUNTY KILLER-NO ARGUMENT/Reggae 45</Title>
-        <ShippingCostSummary>
-          <ShippingServiceCost currencyID="USD">4.0</ShippingServiceCost>
-          <ShippingType>FlatDomesticCalculatedInternational</ShippingType>
-        </ShippingCostSummary>
-      </Item>
-      <Item>
-        <ItemID>' + FOUND_ITEM_3[0].to_s + '</ItemID>
-        <EndTime>' + DateUtil.date_to_utc(FOUND_ITEM_3[1]) + '</EndTime>
-        <ViewItemURLForNaturalSearch>http://cgi.ebay.com/Alton-Ellis-Deliver-Us-Rock-Steady-45-Single_W0QQitemZ300325824658QQcategoryZ306QQcmdZViewItem</ViewItemURLForNaturalSearch>
-        <ListingType>Chinese</ListingType>
-        <GalleryURL>http://thumbs2.ebaystatic.com/pict/3003258246588080_1.jpg</GalleryURL>
-        <PrimaryCategoryID>306</PrimaryCategoryID>
-        <PrimaryCategoryName>Music:Records</PrimaryCategoryName>
-        <BidCount>0</BidCount>
-        <ConvertedCurrentPrice currencyID="USD">15.99</ConvertedCurrentPrice>
-        <ListingStatus>Active</ListingStatus>
-        <TimeLeft>PT5M33S</TimeLeft>
-        <Title>Alton Ellis: Deliver Us - Rock Steady 45 Single</Title>
-        <ShippingCostSummary>
-          <ShippingServiceCost currencyID="USD">4.0</ShippingServiceCost>
-          <ShippingType>FlatDomesticCalculatedInternational</ShippingType>
-        </ShippingCostSummary>
-      </Item>
-      <Item>
-        <ItemID>' + FOUND_ITEM_4[0].to_s + '</ItemID>
-        <EndTime>' + DateUtil.date_to_utc(FOUND_ITEM_4[1]) + '</EndTime>
-        <ViewItemURLForNaturalSearch>http://cgi.ebay.com/John-Holt-Time-and-the-River-Reggae-45-Single_W0QQitemZ300325824769QQcategoryZ306QQcmdZViewItem</ViewItemURLForNaturalSearch>
-        <ListingType>Chinese</ListingType>
-        <GalleryURL>http://thumbs2.ebaystatic.com/pict/3003258247698080_1.jpg</GalleryURL>
-        <PrimaryCategoryID>306</PrimaryCategoryID>
-        <PrimaryCategoryName>Music:Records</PrimaryCategoryName>
-        <BidCount>0</BidCount>
-        <ConvertedCurrentPrice currencyID="USD">12.99</ConvertedCurrentPrice>
-        <ListingStatus>Active</ListingStatus>
-        <TimeLeft>PT6M27S</TimeLeft>
-        <Title>John Holt- Time and the River -Reggae 45 Single</Title>
-        <ShippingCostSummary>
-          <ShippingServiceCost currencyID="USD">4.0</ShippingServiceCost>
-          <ShippingType>FlatDomesticCalculatedInternational</ShippingType>
-        </ShippingCostSummary>
-      </Item>
-      <Item>
-        <ItemID>' + FOUND_ITEM_5[0].to_s + '</ItemID>
-        <EndTime>' + DateUtil.date_to_utc(FOUND_ITEM_5[1]) + '</EndTime>
-        <ViewItemURLForNaturalSearch>http://cgi.ebay.com/Stranger-Patsy-When-You-Call-My-Name-Ska-45-Single_W0QQitemZ300325824946QQcategoryZ306QQcmdZViewItem</ViewItemURLForNaturalSearch>
-        <ListingType>Chinese</ListingType>
-        <GalleryURL>http://thumbs2.ebaystatic.com/pict/3003258249468080_1.jpg</GalleryURL>
-        <PrimaryCategoryID>306</PrimaryCategoryID>
-        <PrimaryCategoryName>Music:Records</PrimaryCategoryName>
-        <BidCount>0</BidCount>
-        <ConvertedCurrentPrice currencyID="USD">15.99</ConvertedCurrentPrice>
-        <ListingStatus>Active</ListingStatus>
-        <TimeLeft>PT7M52S</TimeLeft>
-        <Title>Stranger &amp; Patsy: When You Call My Name - Ska 45 Single</Title>
-        <ShippingCostSummary>
-          <ShippingServiceCost currencyID="USD">4.0</ShippingServiceCost>
-          <ShippingType>FlatDomesticCalculatedInternational</ShippingType>
-        </ShippingCostSummary>
-      </Item>
-    </ItemArray>
-  </SearchResult>
-  <PageNumber>' + current_page.to_s + '</PageNumber>
-  <TotalPages>' + end_page.to_s + '</TotalPages>
-  <TotalItems>29</TotalItems>
-  <ItemSearchURL>http://search-desc.ebay.com/ws/search/SaleSearch?fts=2&amp;DemandData=1&amp;dfe=20090604&amp;dff=1&amp;dfs=20090603&amp;dfte=2&amp;dfts=2&amp;fsop=32&amp;sacat=306&amp;satitle=reggae</ItemSearchURL>
-</FindItemsAdvancedResponse>'
+            generate_auction_item(FOUND_ITEM_2) +
+            generate_auction_item(FOUND_ITEM_3) +
+            generate_auction_item(FOUND_ITEM_4) +
+            generate_auction_item(FOUND_ITEM_5) +
+            generate_auctions_response_footer(current_page, end_page)
   end
+
   SAMPLE_FIND_ITEMS_RESPONSE = generate_find_items_response(1, 1)
 
-  EMPTY_FIND_ITEMS_RESPONSE = '<FindItemsAdvancedResponse xmlns="urn:ebay:apis:eBLBaseComponents">
-   <Timestamp>2009-07-29T04:35:42.432Z</Timestamp>
-   <Ack>Success</Ack>
-   <Build>E627_CORE_BUNDLED_9750858_R1</Build>
-   <Version>627</Version>
-   <PageNumber>1</PageNumber>
-   <TotalPages>0</TotalPages>
-   <TotalItems>0</TotalItems>
-   <ItemSearchURL>http://search-desc.ebay.com/ws/search/SaleSearch?fts=2&amp;DemandData=1&amp;dfe=20090629&amp;dff=1&amp;dfs=20090629&amp;dfte=5&amp;dfts=5&amp;fsop=32&amp;sacat=306&amp;satitle=reggae</ItemSearchURL>
-  </FindItemsAdvancedResponse>'
+  EMPTY_FIND_ITEMS_RESPONSE = '<?xml version=\'1.0\' encoding=\'UTF-8\'?>
+<findItemsAdvancedResponse xmlns:ms="http://www.ebay.com/marketplace/services"
+                           xmlns="http://www.ebay.com/marketplace/search/v1/services">
+    <ack>Success</ack>
+    <version>1.0.1</version>
+    <timestamp>2009-09-19T21:25:54.384Z</timestamp>
+    <searchResult count="0"/>
+    <paginationOutput>
+        <totalPages>0</totalPages>
+        <totalEntries>0</totalEntries>
+        <pageNumber>0</pageNumber>
+        <entriesPerPage>100</entriesPerPage>
+    </paginationOutput>
+</findItemsAdvancedResponse>'
 
-  SINGLE_FIND_ITEMS_RESPONSE = '<FindItemsAdvancedResponse xmlns="urn:ebay:apis:eBLBaseComponents">
-  <Timestamp>2009-07-03T23:42:05.299Z</Timestamp>
-  <Ack>Success</Ack>
-  <Build>e623__Bundled_9520957_R1</Build>
-  <Version>623</Version>
-  <CorrelationID>the message</CorrelationID>
-  <SearchResult>
-    <ItemArray>' +
+  SINGLE_FIND_ITEMS_RESPONSE = AUCTIONS_RESPONSE_HEAD +
           generate_auction_item(FOUND_ITEM_1) +
-          '</ItemArray>
-  </SearchResult>
-  <PageNumber>' + 1.to_s + '</PageNumber>
-  <TotalPages>' + 1.to_s + '</TotalPages>
-  <TotalItems>1</TotalItems>
-  <ItemSearchURL>http://search-desc.ebay.com/ws/search/SaleSearch?fts=2&amp;DemandData=1&amp;dfe=20090604&amp;dff=1&amp;dfs=20090603&amp;dfte=2&amp;dfts=2&amp;fsop=32&amp;sacat=306&amp;satitle=reggae</ItemSearchURL>
-</FindItemsAdvancedResponse>'
+          generate_auctions_response_footer(1, 1)
 
-
+  # ---------------- DETAILS --------------------------
   TETRACK_ITEMID = 330340439690
   GARNET_ITEMID = 140329666820
   MULTIPLE_ITEMS_CALL = 'GetMultipleItems'

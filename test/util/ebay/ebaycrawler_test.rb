@@ -13,7 +13,7 @@ class EbayCrawlerTest < ActiveSupport::TestCase
     assert_equal BaseSpecCase::FOUND_ITEM_1[0], stored_auction.item_id
     assert_equal BaseSpecCase::FOUND_ITEM_1[1], stored_auction.end_time
   end
-  
+
   def test_get_items
     base_time = DateTime.new
     future_time = DateTime.parse('2009-08-21T10:20:00+00:00')
@@ -47,8 +47,11 @@ class EbayCrawlerTest < ActiveSupport::TestCase
       @called = false
     end
 
-    def find_items(start_time, end_time)
-      [BaseSpecCase::FOUND_ITEM_1]
+    def find_items(end_time_to)
+      if end_time_to == @current_time + 1200
+        return [BaseSpecCase::FOUND_ITEM_1]
+      end
+      nil
     end
 
     def get_details(item_ids)

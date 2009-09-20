@@ -10887,3 +10887,69 @@ Rendered partials/_ebay_item_abbrv (0.4ms)
 Rendered partials/_header (0.1ms)
 Rendered partials/_footer (0.1ms)
 Completed in 23ms (View: 16, DB: 3) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#all (for 127.0.0.1 at 2009-09-16 00:03:46) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mEbayItem Load (17.4ms)[0m   [0mSELECT * FROM `ebay_items` ORDER BY id DESC[0m
+Rendering template within layouts/application
+Rendering ebay_items/all
+  [4;36;1mEbayItem Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (7.1ms)
+Rendered partials/_ebay_item_abbrv (0.5ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.5ms)
+Rendered partials/_ebay_item_abbrv (0.5ms)
+Rendered partials/_ebay_item_abbrv (0.5ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_paginated_links (0.1ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 102ms (View: 18, DB: 19) | 200 OK [http://localhost/all/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing EbayItemsController#index (for 127.0.0.1 at 2009-09-16 00:03:47) [GET]
+  [4;35;1mEbayItem Load (0.9ms)[0m   [0mSELECT * FROM `ebay_items` ORDER BY id DESC LIMIT 20[0m
+Rendering template within layouts/application
+Rendering ebay_items/index
+  [4;36;1mEbayItem Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `ebay_items`[0m
+Rendered partials/_ebay_item_abbrv (6.1ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.5ms)
+Rendered partials/_ebay_item_abbrv (0.5ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_ebay_item_abbrv (0.4ms)
+Rendered partials/_header (0.1ms)
+Rendered partials/_footer (0.1ms)
+Completed in 23ms (View: 17, DB: 3) | 200 OK [http://localhost/]

@@ -12,7 +12,7 @@ class EbayCrawler
 
   def get_auctions
     current_time = @ebay_client.get_current_time
-    auction_items = @ebay_client.find_items(current_time, current_time + EbayCrawler::CRAWLING_INTERVAL_SECONDS)
+    auction_items = @ebay_client.find_items(current_time + EbayCrawler::CRAWLING_INTERVAL_SECONDS)
     auction_items.each do |auction_item|
       EbayAuction.new(:item_id => auction_item[0], :end_time => auction_item[1]).save
     end

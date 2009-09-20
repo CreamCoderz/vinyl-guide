@@ -14,28 +14,26 @@ describe EbayClient do
     web_client = SettableHttpClient.new "unused"
     web_client.set_response(BaseSpecCase::SAMPLE_FIND_ITEMS_RESPONSE)
     ebay_client = EbayClient.new(WebClient.new(web_client))
-    end_time_from = Date.new
     end_time_to = Date.new.next
-    find_items_results = ebay_client.find_items(end_time_from, end_time_to)
-    web_client.path.should == BaseSpecCase.generate_find_items_request(end_time_from, end_time_to, 1)
-    web_client.host.should == 'open.api.ebay.com'
+    find_items_results = ebay_client.find_items(end_time_to)
+    web_client.path.should == BaseSpecCase.generate_find_items_request(end_time_to, 1)
+    web_client.host.should == BaseSpecCase::SAMPLE_BASE_FIND_HOST
     find_items_results.should == BaseSpecCase::FOUND_ITEMS
     #TODO: log all other unmarked items
   end
 
   it "should send request per page for many pages of find items results" do
     web_client = mock('web_client')
-    end_time_from = Date.new
     end_time_to = Date.new.next
-    expected_url1 = BaseSpecCase.generate_find_items_request(end_time_from, end_time_to, 1)
-    expected_url2 = BaseSpecCase.generate_find_items_request(end_time_from, end_time_to, 2)
+    expected_url1 = BaseSpecCase.generate_find_items_request(end_time_to, 1)
+    expected_url2 = BaseSpecCase.generate_find_items_request(end_time_to, 2)
     response1 = BaseSpecCase.make_success_response(BaseSpecCase.generate_find_items_response(1, 2))
     response2 = BaseSpecCase.make_success_response(BaseSpecCase.generate_find_items_response(2, 2))
-    web_client.should_receive(:get).ordered.with(BaseSpecCase::SAMPLE_BASE_URL + expected_url1).and_return(response1)
-    web_client.should_receive(:get).ordered.with(BaseSpecCase::SAMPLE_BASE_URL + expected_url2).and_return(response2)
+    web_client.should_receive(:get).ordered.with(BaseSpecCase::SAMPLE_BASE_FIND_URL + expected_url1).and_return(response1)
+    web_client.should_receive(:get).ordered.with(BaseSpecCase::SAMPLE_BASE_FIND_URL + expected_url2).and_return(response2)
     ebay_client = EbayClient.new(web_client)
-    find_items_results = ebay_client.find_items(end_time_from, end_time_to)
-    find_items_results.length.should == 4
+    find_items_results = ebay_client.find_items(end_time_to)
+    find_items_results.length.should == 10
   end
 
   it "should get details for multiple items" do
