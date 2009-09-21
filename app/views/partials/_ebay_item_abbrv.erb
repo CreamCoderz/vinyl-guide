@@ -1,20 +1,28 @@
-<p>
-    <label>Title</label>
-    <span><%= ebay_item.title %></span>
-</p>
-<p>
-    <label>End Time</label>
-    <span><%= ebay_item.endtime %></span>
-</p>
-<p>
-    <label>Price</label>
-    <span><%= number_to_currency ebay_item.price %></span>
-</p>
-<p>
-    <label>Gallery Image</label>
-    <br/>
-    <span><img src="<%= display_gallery_img(ebay_item.galleryimg) %>"/></span>
-</p>
-<p>
-    <a class="view" href="/<%= ebay_item.id %>">View</a>
-</p>
+<table class="abbrvItem">
+    <tr>
+        <td>
+            <p><span><img src="<%= display_gallery_img(ebay_item.galleryimg) %>"/></span></p>
+        </td>
+        <td>
+            <p>
+                <label>Title</label>
+                <span><%= ebay_item.title %></span>
+            </p>
+
+            <p>
+                <label>End Time</label>
+                <span><%= ebay_item.endtime %></span>
+            </p>
+
+            <p>
+                <label>Price</label>
+                <span><%= number_to_currency ebay_item.price %></span>
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a class="view" href="/<%= ebay_item.id %>">View Details</a>
+        </td>
+    </tr>
+</table>

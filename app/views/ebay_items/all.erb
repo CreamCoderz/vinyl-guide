@@ -1,6 +1,6 @@
 <div class="container">
     <h3>Vinyl Results <%= @start %>-<%= @end %> of <%= @total %></h3>
-
+    <%= render :partial => "partials/paginated_links", :locals => { :base_url => "/all/", :next_link => @next, :prev_link => @prev } %>
     <ul>
         <% @ebay_items.each do |ebay_item| %>
             <li class="recordItem">

@@ -8,20 +8,6 @@ class SearchViewTest <  ActionController::TestCase
     @controller = SearchController.new
   end
 
-  def check_search_results(expected_records)
-    assert_select '.recordItem' do |ebay_nodes|
-      count = 0
-      ebay_nodes.each do |ebay_item|
-        assert_select ebay_item, 'p span' do |item_fields|
-          expected_record = expected_records[count]
-          check_record_field_with_extraction [Proc.new {|field, expected_value| assert_equal expected_value, field.children.to_s}],
-                  item_fields, EBAY_ITEM_ABBRV_DISPLAY_FIELDS, expected_record
-          count += 1
-        end
-      end
-    end
-  end
-
   def test_should_display_search_view
     expected_records = [ebay_items(:five), ebay_items(:four)]
     get :search, :query => PRINCE

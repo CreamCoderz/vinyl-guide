@@ -8,14 +8,14 @@ module BaseTestCase
       "<img src=\"#{src}\" />"
     end
   }
-  DEFAULT_IMG_URL = '<img src="http://www.rootsvinylguide.com/noimage.jpg" />'
+  DEFAULT_IMG_URL = '<img src="/images/noimage.jpg" />'
   ESCAPE_HTML = lambda {|html| CGI.escapeHTML(html)}
   TO_S = lambda {|arg| arg.to_s}
   TO_DATE = lambda {|arg| arg.to_s}
   TO_DOLLARS = lambda {|arg| "$#{arg.to_s}0"}
 
   EBAY_ITEM_DISPLAY_FIELDS = [['itemid', TO_S], ['title', TO_S], ['description', ESCAPE_HTML], ['bidcount', TO_S], ['price', TO_DOLLARS], ['endtime', TO_S], ['starttime', TO_S], ['url', DISPLAY_AS_LINK], ['galleryimg', DISPLAY_AS_IMG], ['sellerid', TO_S]]
-  EBAY_ITEM_ABBRV_DISPLAY_FIELDS = [['title', TO_S], ['endtime', TO_S], ['price', TO_DOLLARS], ['galleryimg', DISPLAY_AS_IMG]]
+  EBAY_ITEM_ABBRV_DISPLAY_FIELDS = [['galleryimg', DISPLAY_AS_IMG], ['title', TO_S], ['endtime', TO_S], ['price', TO_DOLLARS]]
 
   RECORD_INPUT_TYPE_FIELDS = Array.new(RECORD_DISPLAY_FIELDS);
   RECORD_INPUT_TYPE_FIELDS.delete('date')
@@ -25,6 +25,20 @@ module BaseTestCase
   def check_record_fields selector_path, record_input_type_fields, assertions, expected_record=nil
     assert_select selector_path do |input_fields|
       check_record_field(assertions, input_fields, record_input_type_fields, expected_record)
+    end
+  end
+
+  def check_search_results(expected_records)
+    assert_select '.abbrvItem' do |ebay_nodes|
+      count = 0
+      ebay_nodes.each do |ebay_item|
+        assert_select ebay_item, 'p span' do |item_fields|
+          expected_record = expected_records[count]
+          check_record_field_with_extraction [Proc.new {|field, expected_value| assert_equal expected_value, field.children.to_s}],
+                  item_fields, EBAY_ITEM_ABBRV_DISPLAY_FIELDS, expected_record
+          count += 1
+        end
+      end
     end
   end
 

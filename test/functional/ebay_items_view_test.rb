@@ -17,17 +17,13 @@ class EbayItemsViewTest <  ActionController::TestCase
     item_count = 0
     assert_select 'li' do |ebay_items|
       ebay_items.each do |ebay_item|
-        puts 'each'
         expected_record = expected_items[item_count]
         count = 0
         assert_select ebay_item, 'li.recordItem p span' do |item_field|
           item_field.each do |item_value|
-            puts 'count' + count.to_s
             ebay_item_field_name = expected_fields[count]
             expected_value = extract_value(expected_record, ebay_item_field_name)
             actual_value = item_value.children.to_s
-            puts 'actual_val: ' + actual_value.to_s
-            puts 'expected_val: ' + expected_value.to_s
             assert_equal expected_value, CGI.unescapeHTML(actual_value), "field \"#{ebay_item_field_name[0]}\""
             count += 1
           end
@@ -41,8 +37,10 @@ class EbayItemsViewTest <  ActionController::TestCase
   def test_index_view
     get :index
     sorted_ebay_items = EbayItem.find(:all, :order => "endtime").reverse
-    assert_select "h3", "#{sorted_ebay_items.length} Latest Vinyl Results"
-    check_view_fields(EBAY_ITEM_ABBRV_DISPLAY_FIELDS, sorted_ebay_items)
+    # lastest link to record displayed twice
+    sorted_ebay_items.insert(0, sorted_ebay_items[0])
+    check_search_results([sorted_ebay_items[0]])
+
     count = 0
     assert_select "a.view" do |view_anchors|
       view_anchors.each do |view_anchor|

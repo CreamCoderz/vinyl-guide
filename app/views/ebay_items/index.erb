@@ -1,12 +1,36 @@
 <div class="container">
+    <h2>RootsVinylGuide.com is an automated tracker for the results of bidded upon EBay auctions in the category of
+        Reggae &amp; Ska
+        records.</h2>
+    <ul style="margin-left:15px">
+        <li>
+            <h2>To view all items, sorted by latest result, visit the
+                <span class="navLink navBgcolor pad"><a href="/all/1">INDEX</a></span> page</h2>
+        </li>
+        <li>
+            <h2>To search items by keyword, enter a query in the <span class="search padBtn">SEARCH</span> box</h2>
+        </li>
+        <li>
+            <h2>To view item descriptions, bid count, and more, click the
+                <a class="view" href="/<%= @ebay_items[0].id %>">View Details</a> link</h2>
+        </li>
+    </ul>
+    <hr/>
+    <h3>Most Recent Vinyl Result</h3>
+    <%= render :partial=> "partials/ebay_item_abbrv", :locals => { :ebay_item => @ebay_items[0] } %>
+    <hr/>
     <h3><%= @ebay_items.length %> Latest Vinyl Results</h3>
 
-    <ul>
+    <div>
+        <% count = 1 %>
         <% @ebay_items.each do |ebay_item| %>
-            <li class="recordItem">
-                <%= render :partial=> "partials/ebay_item_abbrv", :locals => { :ebay_item => ebay_item } %>
-            </li>
-            <hr/>
+            <a href="/<%= ebay_item.id %>">
+                <img class="view" src="<%= h display_gallery_img(ebay_item.galleryimg) %>" alt="<%= h ebay_item.title %>" title="<%= h ebay_item.title %>"/>
+            </a>
+            <% if count % 5 == 0 %>
+                <br/>
+            <% end %>
+            <% count += 1 %>
         <% end %>
-    </ul>
+    </div>
 </div>

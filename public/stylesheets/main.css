@@ -3,6 +3,7 @@ body {
     font-family: Courier, sans-serif;
     font-size: 16px;
     text-align: left;
+    margin: 8px;
 }
 
 h1 {
@@ -10,12 +11,18 @@ h1 {
 }
 
 h2 {
+    font-size: 20px;
     color: #990000;
 }
 
 h3 {
     color: #006600;
     font-size: 20px;
+}
+
+img {
+    padding: 2px;
+    border: 0
 }
 
 label {
@@ -51,21 +58,26 @@ input, select {
 a:link {
     color: #006600;
     text-decoration: none;
+    font-size: 16px;
 }
 
 a:visited {
     color: #006600;
     text-decoration: none;
+    font-size: 16px;
+    font-weight: normal;
 }
 
 a:hover {
     color: #006600;
     text-decoration: underline;
+    font-size: 16px;
 }
 
 a:active {
     color: #006600;
     text-decoration: none;
+    font-size: 16px;
 }
 
 .controls {
@@ -88,6 +100,7 @@ a:active {
 }
 
 .container {
+    width: 1200px;
     margin: 10px;
 }
 
@@ -105,6 +118,8 @@ a:active {
 }
 
 .header {
+    margin-top: 0;
+    padding: 0;
     width: 1200px;
     height: 45px;
     background-color: #FF9900;
@@ -125,13 +140,15 @@ a:active {
 }
 
 .nav input {
-    display: inline; /*float: right*/
-    font-size: 20px;    
+    display: inline;
+    font-size: 20px;
 }
 
-.nav input[type=submit] {
+.search, .nav input[type=submit] {
     background-color: #FF9900;
     color: #990000;
+    font-weight: normal;
+    padding: 1px 6px;
 }
 
 .nav div {
@@ -139,24 +156,32 @@ a:active {
     margin-top: 12px;
 }
 
-.nav a:link {
+.navLink a:link, .nav a:link {
     color: #FF9900;
     text-decoration: none;
+    font-size: 20px;
 }
 
-.nav a:visited {
+.navLink a:visited, .nav a:visited {
     color: #FF9900;
     text-decoration: none;
+    font-size: 20px;
 }
 
-.nav a:hover {
+.navLink a:hover, .nav a:hover {
     color: #FF9900;
     text-decoration: underline;
+    font-size: 20px;
 }
 
-.nav a:active {
+.navLink a:active, .nav a:active {
     color: #FF9900;
     text-decoration: none;
+    font-size: 20px;
+}
+
+.navBgcolor {
+    background-color: #006600;
 }
 
 .logo {
@@ -180,3 +205,19 @@ a:active {
     margin-left: 12px;
 }
 
+.abbrvItem {
+    border: 0;
+    border-spacing: 2px 0px
+}
+
+.abbrbItem td {
+    padding: 0;
+}
+
+.pad {
+    padding: 2px;
+}
+
+.padBtn {
+    padding: 2px 8px;
+}

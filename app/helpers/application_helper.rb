@@ -5,7 +5,7 @@ module ApplicationHelper
 
   def display_gallery_img(url)
     if url.nil?
-      return "http://www.rootsvinylguide.com/noimage.jpg"
+      return "/images/noimage.jpg"
     else
       return url
     end
