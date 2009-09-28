@@ -151,6 +151,7 @@ module BaseSpecCase
   TETRACK_STARTTIME = '2009-06-26T13:34:08.000Z'
   TETRACK_URL = 'http://cgi.ebay.com/TETRACK-Lets-Get-Together-JACOB-MILLER-rare-DUB-ROOTS_W0QQitemZ330340439690QQcategoryZ306QQcmdZViewItem'
   TETRACK_GALLERY_IMG = 'http://thumbs3.ebaystatic.com/pict/3303404396908080_2.jpg'
+  TETRACK_PICTURE_IMGS = ['http://i.ebayimg.com/17/!BVNbPJQBmk~$%28KGrHgoOKj!EjlLmZDmvBKRURE%28oYQ~~_1.JPG?set_id=8800005007', 'http://i.ebayimg.com/17/!BVNbPJQBmk~$%28KGrHgoOKj!EjlLmZDmvBKRURE%28oYQ~~_1.JPG?set_id=983289022']
   TETRACK_BIDCOUNT = 7
   TETRACK_PRICE = 405.0
   TETRACK_SELLERID = 'pushkings'
@@ -161,6 +162,7 @@ module BaseSpecCase
   GARNET_STARTTIME = '2009-06-26T22:02:53.000Z'
   GARNET_URL = 'http://cgi.ebay.com/4-45-RPM-Reggae-Garnet-Silk-Johnny-Osbourne-etc_W0QQitemZ140329666820QQcategoryZ306QQcmdZViewItem'
   GARNET_GALLERY_IMG = 'http://thumbs3.ebaystatic.com/pict/1403296668208080_1.jpg'
+  GARNET_PICTURE_IMGS = ['http://i.ebayimg.com/17/!BVNbPJQBmk~$%28KGrHgoOKj!EjlLmZDmvBKRURE%28oYQ~~_1.JPG?set_id=321453232', 'http://i.ebayimg.com/17/!BVNbPJQBmk~$%28KGrHgoOKj!EjlLmZDmvBKRURE%28oYQ~~_1.JPG?set_id=643532421']
   GARNET_BIDCOUNT = 1
   GARNET_PRICE = 5.0
   GARNET_SELLERID = 'ronsuniquerecords'
@@ -169,40 +171,46 @@ module BaseSpecCase
   TETRACK_EBAY_ITEM = EbayItemData.new(CGI.unescapeHTML(TETRACK_DESCRIPTION),
           TETRACK_ITEMID, DateUtil.utc_to_date(TETRACK_ENDTIME), DateUtil.utc_to_date(TETRACK_STARTTIME),
           TETRACK_URL, TETRACK_GALLERY_IMG, TETRACK_BIDCOUNT,
-          TETRACK_PRICE, TETRACK_SELLERID, CGI.unescapeHTML(TETRACK_TITLE))
+          TETRACK_PRICE, TETRACK_SELLERID, CGI.unescapeHTML(TETRACK_TITLE), TETRACK_PICTURE_IMGS)
 
   GARNET_EBAY_ITEM = EbayItemData.new(CGI.unescapeHTML(GARNET_DESCRIPTION),
           GARNET_ITEMID, DateUtil.utc_to_date(GARNET_ENDTIME), DateUtil.utc_to_date(GARNET_STARTTIME),
           GARNET_URL, GARNET_GALLERY_IMG, GARNET_BIDCOUNT,
-          GARNET_PRICE, GARNET_SELLERID, CGI.unescapeHTML(GARNET_TITLE))
+          GARNET_PRICE, GARNET_SELLERID, CGI.unescapeHTML(GARNET_TITLE), GARNET_PICTURE_IMGS)
 
   def self.generate_detail_item_xml_response(ebay_item_data)
-    gallery_url = ""
-    if !ebay_item_data.galleryimg.nil?
-      gallery_url = "<GalleryURL>#{ebay_item_data.galleryimg}</GalleryURL>"
+    gallery_node = ""
+    picture_node = ""
+    if ebay_item_data.galleryimg
+      gallery_node = "<GalleryURL>#{ebay_item_data.galleryimg}</GalleryURL>"
     end
-    '<Item>
+    if ebay_item_data.pictureimgs
+      picture_node = ebay_item_data.pictureimgs.map{|picture_img| "<PictureURL>#{picture_img}</PictureURL>"}.join
+    end
+    "<Item>
     <BestOfferEnabled>false</BestOfferEnabled>
-    <Description>' + CGI.escapeHTML(ebay_item_data.description) + '</Description>
-    <ItemID>' + ebay_item_data.itemid.to_s + '</ItemID>
-    <EndTime>'+ DateUtil.date_to_utc(ebay_item_data.endtime) + '</EndTime>
-    <StartTime>'+ DateUtil.date_to_utc(ebay_item_data.starttime) + '</StartTime>
-    <ViewItemURLForNaturalSearch>' + ebay_item_data.url + '</ViewItemURLForNaturalSearch>
+    <Description>#{CGI.escapeHTML(ebay_item_data.description)}</Description>
+    <ItemID>#{ebay_item_data.itemid.to_s}</ItemID>
+    <EndTime>#{DateUtil.date_to_utc(ebay_item_data.endtime)}</EndTime>
+    <StartTime>#{DateUtil.date_to_utc(ebay_item_data.starttime)}</StartTime>
+    <ViewItemURLForNaturalSearch>#{ebay_item_data.url}</ViewItemURLForNaturalSearch>
     <ListingType>Chinese</ListingType>
     <Location>Malmoe, -</Location>
-    <PaymentMethods>PayPal</PaymentMethods>' + gallery_url + '<PictureURL>http://www.shingaling.com/ebay0906b/jacobmiller-b.jpg</PictureURL>
+    <PaymentMethods>PayPal</PaymentMethods>
+    #{gallery_node}
+    #{picture_node}
     <PrimaryCategoryID>306</PrimaryCategoryID>
     <PrimaryCategoryName>Music:Records</PrimaryCategoryName>
     <Quantity>1</Quantity>
     <Seller>
-      <UserID>' + ebay_item_data.sellerid + '</UserID>
+      <UserID>#{ebay_item_data.sellerid}</UserID>
       <FeedbackRatingStar>Red</FeedbackRatingStar>
       <FeedbackScore>3666</FeedbackScore>
       <PositiveFeedbackPercent>100.0</PositiveFeedbackPercent>
     </Seller>
-    <BidCount>' + ebay_item_data.bidcount.to_s + '</BidCount>
-    <ConvertedCurrentPrice currencyID="USD">' + ebay_item_data.price.to_s + '</ConvertedCurrentPrice>
-    <CurrentPrice currencyID="USD">' + ebay_item_data.price.to_s + '</CurrentPrice>
+    <BidCount>#{ebay_item_data.bidcount.to_s}</BidCount>
+    <ConvertedCurrentPrice currencyID=\"USD\">#{ebay_item_data.price.to_s}</ConvertedCurrentPrice>
+    <CurrentPrice currencyID=\"USD\">#{ebay_item_data.price.to_s}</CurrentPrice>
     <HighBidder>                
       <UserID>a***l</UserID>
       <FeedbackPrivate>false</FeedbackPrivate>
@@ -215,9 +223,9 @@ module BaseSpecCase
     <ShipToLocations>Worldwide</ShipToLocations>
     <Site>US</Site>
     <TimeLeft>PT0S</TimeLeft>
-    <Title>' + ebay_item_data.title + '</Title>
+    <Title>#{ebay_item_data.title}</Title>
     <HitCount>193</HitCount>
-    <Subtitle>SEE MY OTHER AUCTIONS for more M- roots &amp; dub 12"s/7"s!</Subtitle>
+    <Subtitle>SEE MY OTHER AUCTIONS for more M- roots &amp; dub 12\"s/7\"s!</Subtitle>
     <PrimaryCategoryIDPath>11233:306</PrimaryCategoryIDPath>
     <Storefront>
       <StoreURL>http://stores.ebay.com/id=0</StoreURL>
@@ -231,7 +239,7 @@ module BaseSpecCase
       <ReturnsAccepted>Returns Accepted</ReturnsAccepted>
       <ShippingCostPaidBy>Buyer</ShippingCostPaidBy>
     </ReturnPolicy>
-    <MinimumToBid currencyID="USD">410.0</MinimumToBid>
+    <MinimumToBid currencyID=\"USD\">410.0</MinimumToBid>
     <AutoPay>false</AutoPay>
     <PaymentAllowedSite>UK</PaymentAllowedSite>
     <PaymentAllowedSite>CanadaFrench</PaymentAllowedSite>
@@ -240,7 +248,7 @@ module BaseSpecCase
     <PaymentAllowedSite>US</PaymentAllowedSite>
     <IntegratedMerchantCreditCardEnabled>false</IntegratedMerchantCreditCardEnabled>
     <HandlingTime>3</HandlingTime>
-  </Item>'
+  </Item>"
   end
 
   TETRACK_ITEM_XML = generate_detail_item_xml_response(TETRACK_EBAY_ITEM)

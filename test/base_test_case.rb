@@ -1,13 +1,17 @@
 module BaseTestCase
   RECORD_DISPLAY_FIELDS = ['artist', 'name', 'description', 'date', 'img_src', 'producer', 'band', 'engineer', 'studio']
   DISPLAY_AS_LINK = lambda {|href| "<a href=\"" + href + "\">" + href + "</a>"}
-  DISPLAY_AS_IMG = lambda {|src|
+  DISPLAY_AS_IMG = lambda do |src|
     if src.nil?
       DEFAULT_IMG_URL
     else
       "<img src=\"#{src}\" />"
     end
-  }
+  end
+#  DISPLAY_PICTURE = lambda do |pictures|
+  #    pictures.each do |picture|
+  #    end
+  #  end
   DEFAULT_IMG_URL = '<img src="/images/noimage.jpg" />'
   ESCAPE_HTML = lambda {|html| CGI.escapeHTML(html)}
   TO_S = lambda {|arg| arg.to_s}
@@ -15,6 +19,7 @@ module BaseTestCase
   TO_DOLLARS = lambda {|arg| "$#{arg.to_s}0"}
 
   EBAY_ITEM_DISPLAY_FIELDS = [['itemid', TO_S], ['title', TO_S], ['description', ESCAPE_HTML], ['bidcount', TO_S], ['price', TO_DOLLARS], ['endtime', TO_S], ['starttime', TO_S], ['url', DISPLAY_AS_LINK], ['galleryimg', DISPLAY_AS_IMG], ['sellerid', TO_S]]
+#  EBAY_ITEM_DISPLAY_FIELDS = [['itemid', TO_S], ['title', TO_S], ['description', ESCAPE_HTML], ['bidcount', TO_S], ['price', TO_DOLLARS], ['endtime', TO_S], ['starttime', TO_S], ['url', DISPLAY_AS_LINK], ['galleryimg', DISPLAY_AS_IMG], ['sellerid', TO_S], ['pictures', DISPLAY_PICTURE]]
   EBAY_ITEM_ABBRV_DISPLAY_FIELDS = [['galleryimg', DISPLAY_AS_IMG], ['title', TO_S], ['endtime', TO_S], ['price', TO_DOLLARS]]
 
   RECORD_INPUT_TYPE_FIELDS = Array.new(RECORD_DISPLAY_FIELDS);
@@ -88,6 +93,14 @@ module BaseTestCase
     assert_equal ebay_item.bidcount, stored_item.bidcount
     assert_equal ebay_item.price, stored_item.price
     assert_equal ebay_item.sellerid, stored_item.sellerid
+    count = 0
+    assert_equal ebay_item.pictureimgs.length, stored_item.pictures.length
+    ebay_item.pictureimgs.each do |pictureimg|
+      picture = stored_item.pictures[count]
+      assert_equal pictureimg, picture.url
+      assert_equal stored_item.id, picture.ebay_item_id
+      count += 1
+    end
   end
 
   def generate_some_ebay_items(num)
