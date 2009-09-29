@@ -10,8 +10,6 @@ class EbayItemsViewTest <  ActionController::TestCase
   end
 
   #TODO: clean this up
-  #TODO: more importantly.. this method is generating some
-  #TODO: nil expectations and nil data.. it is largely ignoring dates.. what's goin on here?
 
   def check_view_fields(expected_fields, expected_items)
     item_count = 0
@@ -52,15 +50,43 @@ class EbayItemsViewTest <  ActionController::TestCase
 
   def test_show_view
     get :show, :id => 1
-    check_view_fields(EBAY_ITEM_DISPLAY_FIELDS, [ebay_items(:one)])
+    expected_ebay_item = ebay_items(:one)
+    assert_select 'li p span' do |ebay_items|
+      assert_equal EBAY_ITEM_DISPLAY_FIELDS.length, ebay_items.length
+      count = 0
+      ebay_items.each do |ebay_item|
+        expected_field_name = EBAY_ITEM_DISPLAY_FIELDS[count][0]
+        expected_value = expected_ebay_item[expected_field_name]
+        mapping_function = EBAY_ITEM_DISPLAY_FIELDS[count][1]
+        expected_extracted_value = mapping_function.call(expected_value)
+        assert_equal expected_extracted_value, ebay_item.children.to_s
+        count += 1
+      end
+    end
+  end
+
+  def test_show_pictures
+    get :show, :id => 1
+    assert_select 'div.pictures span img' do |pictures|
+      count = 0
+      pictures.each do |picture|
+        assert_equal ebay_items(:one).pictures[count].url, picture.attributes['src']
+        count += 1
+      end
+    end
+  end
+
+  def test_no_pictures
+    get :show, :id => 2
+    item_pictures = css_select 'div.pictures'
+    assert item_pictures.empty?
   end
 
   def test_all_view_base_case
     generate_some_ebay_items(25)
     get :all, :id => 1
     ebay_items = EbayItem.find(:all, :order => "endtime", :limit => EbayItemsController::PAGE_LIMIT).reverse
-    #TODO: uncomment this line of coe when check_view_fields is fixed
-    # check_view_fields(EBAY_ITEM_ABBRV_DISPLAY_FIELDS, ebay_items)
+    check_view_fields(EBAY_ITEM_ABBRV_DISPLAY_FIELDS, ebay_items)
     assert_select ".next" do |elm|
       assert_equal "/all/#{assigns(:next)}", elm[0].attributes['href']
     end

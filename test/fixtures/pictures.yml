@@ -1,0 +1,7 @@
+one:
+    ebay_item_id: 1
+    url: http://www.example.com/picture1
+
+two:
+    ebay_item_id: 1
+    url: http://www.example.com/picture2

@@ -1,11 +1,12 @@
 one:
   id: 1
   itemid: 1111
+  title: The Congos - The Heart of the Congoes
   description: The Congoes, The Heart of the Congoes, The epic roots masterpiece produced by Lee Perry
   bidcount: 20
   price: 525.00
-  endtime: Time.new
-  starttime: Time.new
+  endtime: 2020-08-20
+  starttime: 2020-08-10
   url: http://www.ebay.com/1111
   galleryimg: http://www.roots-archives.com/1
   sellerid: lassiant
@@ -16,8 +17,8 @@ two:
   description: Natty Pass Thru, Price Jazzbos original Black Ark materpiece, Lee Perry
   bidcount: 10
   price: 345.00
-  endtime: Time.new
-  starttime: Time.new
+  endtime: 2020-08-21
+  starttime: 2020-08-11
   url: http://www.ebay.com/2222
   galleryimg: http://www.roots-archives.com/2
   sellerid: steve
@@ -28,8 +29,8 @@ three:
   description: Ska King at Studio One, Soul Defenders, Studio One, King Perry
   bidcount: 5
   price: 145.00
-  endtime: Time.new
-  starttime: Time.new
+  endtime: 2020-08-22
+  starttime: 2020-08-12
   url: http://www.ebay.com/3333
   galleryimg: http://www.roots-archives.com/3
   sellerid: onlyroots
@@ -40,8 +41,8 @@ four:
   description: Massive dub set by the man called Prince Far I, similar to Lee Perry
   bidcount: 2
   price: 245.00
-  endtime: Time.new
-  starttime: Time.new
+  endtime: 2020-08-23
+  starttime: 2020-08-13
   url: http://www.ebay.com/4444
   galleryimg: http://www.roots-archives.com/4
   sellerid: onlyroots
@@ -52,8 +53,8 @@ five:
   description: Flyers style with Johhny Clarke, produced by Striker, The Revolutionaries, Prince Jammy
   bidcount: 3
   price: 25.00
-  endtime: Time.new
-  starttime: Time.new
+  endtime: 2020-08-24
+  starttime: 2020-08-14
   url: http://www.ebay.com/5555
   galleryimg:
   sellerid: rootsman

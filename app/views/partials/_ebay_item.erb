@@ -38,3 +38,11 @@
     <label>Seller Id</label>
     <span><%= ebay_item.sellerid %></span>
 </p>
+<% if !ebay_item.pictures.empty? %>
+    <div class="pictures">
+        <label>Pictures</label>
+        <% ebay_item.pictures.each do |picture| %>
+            <span><img src="<%= display_gallery_img(picture.url) %>"/></span>
+        <% end %>
+    </div>
+<% end %>

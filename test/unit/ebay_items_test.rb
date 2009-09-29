@@ -52,11 +52,11 @@ class EbayItemsTest < ActiveSupport::TestCase
   end
 
   def test_set_empty_pictures
-    assert Picture.find(:all).empty?
+    picture_count = Picture.find(:all).length
     ebay_item = make_basic_ebay_item()
     ebay_item.pictures = []
     ebay_item.save()
-    assert Picture.find(:all).empty?
+    assert_equal picture_count, Picture.find(:all).length
   end
 
   def make_basic_ebay_item()
