@@ -21,10 +21,11 @@ module BaseTestCase
   DEFAULT_IMG_URL = '<img src="/images/noimage.jpg" />'
   ESCAPE_HTML = lambda {|html| CGI.escapeHTML(html)}
   TO_S = lambda {|arg| arg.to_s}
-  TO_DATE = lambda {|arg| arg.to_time.strftime("%Y-%m-%d %H:%M:%S UTC")}
+#  TO_DATE = lambda {|arg| arg.to_time.strftime("%Y-%m-%d %H:%M:%S UTC")}
+  TO_DATE = lambda {|arg| arg.to_time.strftime("%B %d, %Y - %I:%M:%S %p")}
   TO_DOLLARS = lambda {|arg| "$#{arg.to_s}0"}
 
-  EBAY_ITEM_DISPLAY_FIELDS = [['itemid', TO_S], ['title', TO_S], ['description', ESCAPE_HTML], ['bidcount', TO_S], ['price', TO_DOLLARS], ['endtime', TO_DATE], ['starttime', TO_DATE], ['url', DISPLAY_AS_LINK], ['galleryimg', DISPLAY_AS_IMG], ['sellerid', TO_S]]
+  EBAY_ITEM_DISPLAY_FIELDS = [['itemid', TO_S], ['title', TO_S], ['description', ESCAPE_HTML], ['bidcount', TO_S], ['price', TO_DOLLARS], ['starttime', TO_DATE], ['endtime', TO_DATE], ['url', DISPLAY_AS_LINK], ['galleryimg', DISPLAY_AS_IMG], ['sellerid', TO_S]]
   EBAY_ITEM_ABBRV_DISPLAY_FIELDS = [['galleryimg', DISPLAY_AS_IMG], ['title', TO_S], ['endtime', TO_DATE], ['price', TO_DOLLARS]]
 
   RECORD_INPUT_TYPE_FIELDS = Array.new(RECORD_DISPLAY_FIELDS);

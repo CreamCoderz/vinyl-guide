@@ -37,4 +37,7 @@ module ApplicationHelper
     return truncated_items, prev_page_num, next_page_num, start_from, end_on, total
   end
 
+  def display_date(date)
+    date.to_time.strftime("%B %d, %Y - %I:%M:%S %p")
+  end
 end

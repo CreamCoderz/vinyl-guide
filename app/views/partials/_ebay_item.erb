@@ -19,19 +19,19 @@
     <span><%= number_to_currency ebay_item.price %></span>
 </p>
 <p>
-    <label>End Time</label>
-    <span><%= ebay_item.endtime %></span>
+    <label>Start Time</label>
+    <span><%= display_date(ebay_item.starttime) %></span>
 </p>
 <p>
-    <label>Start Time</label>
-    <span><%= ebay_item.starttime %></span>
+    <label>End Time</label>
+    <span><%= display_date(ebay_item.endtime) %></span>
 </p>
 <p>
     <label>Link</label>
     <span><a href="<%= ebay_item.url %>"><%= ebay_item.url %></a></span>
 </p>
 <p>
-    <label>Gallery Image</label>
+    <label>Gallery Image</label><br/>
     <span><img src="<%= display_gallery_img(ebay_item.galleryimg) %>"/></span>
 </p>
 <p>
@@ -40,9 +40,9 @@
 </p>
 <% if !ebay_item.pictures.empty? %>
     <div class="pictures">
-        <label>Pictures</label>
+        <label>Pictures</label><br/>
         <% ebay_item.pictures.each do |picture| %>
-            <span><img src="<%= display_gallery_img(picture.url) %>"/></span>
+            <span><img src="<%= display_gallery_img(picture.url) %>"/></span><br/>
         <% end %>
     </div>
 <% end %>
