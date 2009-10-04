@@ -33,7 +33,7 @@ class EbayCrawler
                 :price => item_details.price, :endtime => item_details.endtime, :starttime => item_details.starttime,
                 :url => item_details.url, :galleryimg => item_details.galleryimg,
                 :sellerid => item_details.sellerid)
-        pictures = nil
+        pictures = []
         if item_details.pictureimgs
           pictures = item_details.pictureimgs.map {|pictureimg| Picture.new(:ebay_item_id => ebay_item.id, :url => pictureimg)}
         end

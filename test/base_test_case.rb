@@ -99,13 +99,18 @@ module BaseTestCase
     assert_equal ebay_item.bidcount, stored_item.bidcount
     assert_equal ebay_item.price, stored_item.price
     assert_equal ebay_item.sellerid, stored_item.sellerid
-    count = 0
-    assert_equal ebay_item.pictureimgs.length, stored_item.pictures.length
-    ebay_item.pictureimgs.each do |pictureimg|
-      picture = stored_item.pictures[count]
-      assert_equal pictureimg, picture.url
-      assert_equal stored_item.id, picture.ebay_item_id
-      count += 1
+    stored_item_pictures = stored_item.pictures
+    if ebay_item.pictureimgs
+      assert_equal ebay_item.pictureimgs.length, stored_item_pictures.length
+      count = 0
+      ebay_item.pictureimgs.each do |pictureimg|
+        picture = stored_item_pictures[count]
+        assert_equal pictureimg, picture.url
+        assert_equal stored_item.id, picture.ebay_item_id
+        count += 1
+      end
+    else
+      assert_equal stored_item_pictures.length, 0
     end
   end
 
