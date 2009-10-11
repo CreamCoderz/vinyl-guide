@@ -156,6 +156,11 @@ module BaseSpecCase
   TETRACK_PRICE = 405.0
   TETRACK_SELLERID = 'pushkings'
   TETRACK_TITLE = 'TETRACK Let"s Get Together JACOB MILLER rare DUB ROOTS'
+  TETRACK_SIZE = 'LP (12-Inch)'
+  TETRACK_SUB_GENRE = "Roots"
+  TETRACK_CONDITION = "USED"
+  TETRACK_SPEED = "33 RPM"
+  TETRACK_COUNTRY = "SE"
 
   GARNET_DESCRIPTION = '45 RPM. Garnet Silk--Babylon Be Still/Version. Johnny Osbourne--Play Play Girl. Byron Lee &amp; The Dragonaires--Spring Garden on Fire/Instrumental. Gregory Isaacs--Hard Drugs/Version.. Records between VG+ to VG++. Not Mint. Great Records to add to your collection. Thanks for looking. Please see my other auctions for more great items. Happy Bidding!!'
   GARNET_ENDTIME = '2009-07-03T22:02:53.000Z'
@@ -167,16 +172,23 @@ module BaseSpecCase
   GARNET_PRICE = 5.0
   GARNET_SELLERID = 'ronsuniquerecords'
   GARNET_TITLE = 'Garnet Silk--Babylon Be Still/Version. Johnny Osbourne--Play Play Girl'
+  GARNET_SIZE = '12"'
+  GARNET_SUB_GENRE = "Dub"
+  GARNET_CONDITION = "NEW"
+  GARNET_SPEED = "78 RPM"
+  GARNET_COUNTRY = "FR"
 
   TETRACK_EBAY_ITEM = EbayItemData.new(CGI.unescapeHTML(TETRACK_DESCRIPTION),
           TETRACK_ITEMID, DateUtil.utc_to_date(TETRACK_ENDTIME), DateUtil.utc_to_date(TETRACK_STARTTIME),
           TETRACK_URL, TETRACK_GALLERY_IMG, TETRACK_BIDCOUNT,
-          TETRACK_PRICE, TETRACK_SELLERID, CGI.unescapeHTML(TETRACK_TITLE), TETRACK_PICTURE_IMGS)
+          TETRACK_PRICE, TETRACK_SELLERID, CGI.unescapeHTML(TETRACK_TITLE), TETRACK_PICTURE_IMGS, TETRACK_SIZE,
+          TETRACK_SUB_GENRE, TETRACK_CONDITION, TETRACK_SPEED, TETRACK_COUNTRY)
 
   GARNET_EBAY_ITEM = EbayItemData.new(CGI.unescapeHTML(GARNET_DESCRIPTION),
           GARNET_ITEMID, DateUtil.utc_to_date(GARNET_ENDTIME), DateUtil.utc_to_date(GARNET_STARTTIME),
           GARNET_URL, GARNET_GALLERY_IMG, GARNET_BIDCOUNT,
-          GARNET_PRICE, GARNET_SELLERID, CGI.unescapeHTML(GARNET_TITLE), GARNET_PICTURE_IMGS)
+          GARNET_PRICE, GARNET_SELLERID, CGI.unescapeHTML(GARNET_TITLE), GARNET_PICTURE_IMGS, GARNET_SIZE,
+          GARNET_SUB_GENRE, GARNET_CONDITION, GARNET_SPEED, GARNET_COUNTRY)
 
   def self.generate_detail_item_xml_response(ebay_item_data)
     gallery_node = ""
@@ -225,6 +237,40 @@ module BaseSpecCase
     <TimeLeft>PT0S</TimeLeft>
     <Title>#{ebay_item_data.title}</Title>
     <HitCount>193</HitCount>
+    <ItemSpecifics>
+     <NameValueList>
+      <Name>Return policy details</Name>
+      <Value>ANY ITEM MUST BE RETURNED WITHIN SEVEN WORKING DAYS UK.FOURTEEN DAYS;REST OF THE WORLD.PLEASE EMAIL ME THROUGH CONTACT SELLER TO CONFIRM.UPON RECEIPT YOU WILL BE FULLY REFUNDED AS STATED IN MY WRITE-UP.PLEASE READ. NOT BEFORE ITEM IS RETURNED.THIS GIVES YOU PLENTY OF TIME TO DECIDE WHETHER YOU ARE HAPPY OR NOT.I&apos;M SURE YOU WILL BE.AS I POST AS QUICKLY AS POSSIBLE,IT&apos;S ONLY FAIR FOR RETURN TO BE THE SAME.FAILER TO MEET THESE REQUIREMENTS.REFUND IS NULL AND VOID.IF NOT HAPPY WITH THIS.PLEASE DO NOT BID.</Value>
+     </NameValueList>
+     <NameValueList>
+      <Name>Returns Accepted</Name>
+      <Value>Returns Accepted</Value>
+     </NameValueList>
+     <NameValueList>
+      <Name>Condition</Name>
+      <Value>#{ebay_item_data.condition}</Value>
+     </NameValueList>
+     <NameValueList>
+      <Name>Genre</Name>
+      <Value>Reggae/Ska</Value>
+     </NameValueList>
+     <NameValueList>
+      <Name>Record Size</Name>
+      <Value>#{ebay_item_data.size}</Value>
+     </NameValueList>
+     <NameValueList>
+      <Name>Speed</Name>
+      <Value>#{ebay_item_data.speed}</Value>
+     </NameValueList>
+     <NameValueList>
+      <Name>Sub-Genre</Name>
+      <Value>#{ebay_item_data.sub_genre}</Value>
+     </NameValueList>
+     <NameValueList>
+      <Name>Compilation</Name>
+      <Value></Value>
+     </NameValueList>
+    </ItemSpecifics>
     <Subtitle>SEE MY OTHER AUCTIONS for more M- roots &amp; dub 12\"s/7\"s!</Subtitle>
     <PrimaryCategoryIDPath>11233:306</PrimaryCategoryIDPath>
     <Storefront>
@@ -232,7 +278,7 @@ module BaseSpecCase
       <StoreName>
       </StoreName>
     </Storefront>
-    <Country>SE</Country>
+    <Country>#{ebay_item_data.country}</Country>
     <ReturnPolicy>
       <Refund>Money Back</Refund>
       <ReturnsWithin>14 Days</ReturnsWithin>

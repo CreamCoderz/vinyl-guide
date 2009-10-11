@@ -1,7 +1,7 @@
 class EbayItemData
-  attr_reader :description, :itemid, :endtime, :starttime, :url, :galleryimg, :bidcount, :price, :sellerid, :title, :pictureimgs
+  attr_reader :description, :itemid, :endtime, :starttime, :url, :galleryimg, :bidcount, :price, :sellerid, :title, :pictureimgs, :size, :subgenre, :condition, :speed, :country
 
-  def initialize(description, itemid, endtime, starttime, url, galleryimg, bidcount, price, sellerid, title, pictureimgs)
+  def initialize(description, itemid, endtime, starttime, url, galleryimg, bidcount, price, sellerid, title, pictureimgs, size, subgenre, condition, speed, country)
     @description = description
     @itemid = itemid
     @endtime = endtime
@@ -13,6 +13,11 @@ class EbayItemData
     @sellerid = sellerid
     @title = title
     @pictureimgs = pictureimgs
+    @size = size
+    @subgenre = subgenre
+    @condition = condition
+    @speed = speed
+    @country = country
   end
 
   def ==(other)
@@ -28,6 +33,11 @@ class EbayItemData
     result = result && self.sellerid == other.sellerid
     result = result && self.title == other.title
     result = result && self.pictureimgs == other.pictureimgs
+    result = result && self.size == other.size
+    result = result && self.subgenre == other.sub_genre
+    result = result && self.condition == other.condition
+    result = result && self.speed == other.speed
+    result = result && self.country == other.country
   end
 
 

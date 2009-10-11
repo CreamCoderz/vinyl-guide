@@ -3,24 +3,10 @@ require 'time'
 require 'activesupport'
 require File.dirname(__FILE__) + "/../../domain/ebayitemdata"
 require File.dirname(__FILE__) + "/../dateutil"
+require File.dirname(__FILE__) + "/ebayitemsdetailsparserdata"
 
 class EbayItemsDetailsParser
-
-  DESCRIPTION = 'Description'
-  ITEMID = 'ItemID'
-  ENDTIME = 'EndTime'
-  STARTTIME = 'StartTime'
-  URL = 'ViewItemURLForNaturalSearch'
-  IMAGE = 'GalleryURL'
-  PICTURE = 'PictureURL'
-  BIDCOUNT = 'BidCount'
-  PRICE = 'ConvertedCurrentPrice'
-  SELLER = 'Seller'
-  USERID = 'UserID'
-  LEAFNODE_CONTENTS = '$'
-  GETMULTIPLEITEMSRESPONSE = 'GetMultipleItemsResponse'
-  ITEM = 'Item'
-  TITLE = 'Title'
+  include EbayItemsDetailsParserData
 
   def self.parse(xml)
     parsed_items = CobraVsMongoose.xml_to_hash(xml)
@@ -34,16 +20,19 @@ class EbayItemsDetailsParser
       items.each do |item|
         image = nil
         if item[IMAGE]
-          image = item[IMAGE][LEAFNODE_CONTENTS]
+          image = item[IMAGE][NODE_VALUE]
         end
 
+        parsed_specifics = get_item_specifics(item)
+
         if (item['BidCount']['$'].to_i > 0)
-          ebay_items.insert(-1, EbayItemData.new(item[DESCRIPTION][LEAFNODE_CONTENTS],
-                  item[ITEMID][LEAFNODE_CONTENTS].to_i, DateUtil.utc_to_date(item[ENDTIME][LEAFNODE_CONTENTS]),
-                  DateUtil.utc_to_date(item[STARTTIME][LEAFNODE_CONTENTS]),
-                  item[URL][LEAFNODE_CONTENTS], image,
-                  item[BIDCOUNT][LEAFNODE_CONTENTS].to_i, item[PRICE][LEAFNODE_CONTENTS].to_f,
-                  item[SELLER][USERID][LEAFNODE_CONTENTS], item[TITLE][LEAFNODE_CONTENTS], get_picture_imgs(item)))
+          ebay_items.insert(-1, EbayItemData.new(item[DESCRIPTION][NODE_VALUE],
+                  item[ITEMID][NODE_VALUE].to_i, DateUtil.utc_to_date(item[ENDTIME][NODE_VALUE]),
+                  DateUtil.utc_to_date(item[STARTTIME][NODE_VALUE]),
+                  item[URL][NODE_VALUE], image,
+                  item[BIDCOUNT][NODE_VALUE].to_i, item[PRICE][NODE_VALUE].to_f,
+                  item[SELLER][USERID][NODE_VALUE], item[TITLE][NODE_VALUE], get_picture_imgs(item),
+                  parsed_specifics[RECORDSIZE], parsed_specifics[SUBGENRE], parsed_specifics[CONDITION], parsed_specifics[SPEED], item[COUNTRY][NODE_VALUE]))
         end
       end
     end
@@ -60,10 +49,20 @@ class EbayItemsDetailsParser
         picture_nodes = [picture_nodes]
       end
       pictures = picture_nodes.map do |picture_node|
-        picture_node[LEAFNODE_CONTENTS]
+        picture_node[NODE_VALUE]
       end
     end
     pictures
   end
 
+  def self.get_item_specifics(item)
+    parsed_specifics = {RECORDSIZE => nil, SUBGENRE => nil, CONDITION => nil, SPEED => nil}
+    item_specifics = item[ITEMSPECIFICS][NAMEVALUELIST]
+    item_specifics.each do |item_specific|
+      if parsed_specifics.key? item_specific[NAME][NODE_VALUE]
+        parsed_specifics[item_specific[NAME][NODE_VALUE]] = item_specific[VALUE][NODE_VALUE]
+      end
+    end
+    return parsed_specifics
+  end
 end

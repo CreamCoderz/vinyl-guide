@@ -1,0 +1,28 @@
+module EbayItemsDetailsParserData
+
+  DESCRIPTION = 'Description'
+  ITEMID = 'ItemID'
+  ENDTIME = 'EndTime'
+  STARTTIME = 'StartTime'
+  URL = 'ViewItemURLForNaturalSearch'
+  IMAGE = 'GalleryURL'
+  PICTURE = 'PictureURL'
+  BIDCOUNT = 'BidCount'
+  PRICE = 'ConvertedCurrentPrice'
+  SELLER = 'Seller'
+  USERID = 'UserID'
+  NODE_VALUE = '$'
+  GETMULTIPLEITEMSRESPONSE = 'GetMultipleItemsResponse'
+  ITEM = 'Item'
+  TITLE = 'Title'
+  ITEMSPECIFICS = 'ItemSpecifics'
+  NAMEVALUELIST = 'NameValueList'
+  RECORDSIZE = 'Record Size'
+  SUBGENRE = 'Sub-Genre'
+  NAME = 'Name'
+  VALUE = 'Value'
+  CONDITION = 'Condition'
+  SPEED = 'Speed'
+  COUNTRY = 'Country'
+
+end
