@@ -264,7 +264,7 @@ module BaseSpecCase
      </NameValueList>
      <NameValueList>
       <Name>Sub-Genre</Name>
-      <Value>#{ebay_item_data.sub_genre}</Value>
+      <Value>#{ebay_item_data.subgenre}</Value>
      </NameValueList>
      <NameValueList>
       <Name>Compilation</Name>

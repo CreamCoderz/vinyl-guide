@@ -34,7 +34,7 @@ class EbayItemData
     result = result && self.title == other.title
     result = result && self.pictureimgs == other.pictureimgs
     result = result && self.size == other.size
-    result = result && self.subgenre == other.sub_genre
+    result = result && self.subgenre == other.subgenre
     result = result && self.condition == other.condition
     result = result && self.speed == other.speed
     result = result && self.country == other.country

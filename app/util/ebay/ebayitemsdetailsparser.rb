@@ -3,6 +3,7 @@ require 'time'
 require 'activesupport'
 require File.dirname(__FILE__) + "/../../domain/ebayitemdata"
 require File.dirname(__FILE__) + "/../dateutil"
+require File.dirname(__FILE__) + "/../arrayutil"
 require File.dirname(__FILE__) + "/ebayitemsdetailsparserdata"
 
 class EbayItemsDetailsParser
@@ -13,10 +14,7 @@ class EbayItemsDetailsParser
     items = parsed_items[GETMULTIPLEITEMSRESPONSE][ITEM]
     ebay_items = []
     if (!items.nil?)
-      #TODO: duplicate code in ebayfinditemsparser
-      if !items.is_a?(Array)
-        items = [items]
-      end
+      items = ArrayUtil.arrayifiy(items)
       items.each do |item|
         image = nil
         if item[IMAGE]
