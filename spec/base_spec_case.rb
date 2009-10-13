@@ -137,7 +137,7 @@ module BaseSpecCase
   TETRACK_ITEMID = 330340439690
   GARNET_ITEMID = 140329666820
   MULTIPLE_ITEMS_CALL = 'GetMultipleItems'
-  MULTIPLE_ITEMS_SELECTORS = 'Details,TextDescription'
+  MULTIPLE_ITEMS_SELECTORS = 'Details,TextDescription,ItemSpecifics'
 
   def self.generate_multiple_items_request(item_ids)
     item_ids_converted = item_ids.join(",")

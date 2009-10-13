@@ -21,11 +21,13 @@ module BaseTestCase
   DEFAULT_IMG_URL = '<img src="/images/noimage.jpg" />'
   ESCAPE_HTML = lambda {|html| CGI.escapeHTML(html)}
   TO_S = lambda {|arg| arg.to_s}
-#  TO_DATE = lambda {|arg| arg.to_time.strftime("%Y-%m-%d %H:%M:%S UTC")}
   TO_DATE = lambda {|arg| arg.to_time.strftime("%B %d, %Y - %I:%M:%S %p")}
   TO_DOLLARS = lambda {|arg| "$#{arg.to_s}0"}
 
-  EBAY_ITEM_DISPLAY_FIELDS = [['itemid', TO_S], ['title', TO_S], ['description', ESCAPE_HTML], ['bidcount', TO_S], ['price', TO_DOLLARS], ['starttime', TO_DATE], ['endtime', TO_DATE], ['url', DISPLAY_AS_LINK], ['galleryimg', DISPLAY_AS_IMG], ['sellerid', TO_S]]
+  EBAY_ITEM_DISPLAY_FIELDS = [['url', DISPLAY_AS_LINK], ['itemid', TO_S], ['title', TO_S], ['bidcount', TO_S],
+          ['price', TO_DOLLARS], ['starttime', TO_DATE], ['endtime', TO_DATE],
+          ['country', TO_S], ['subgenre', TO_S], ['size', TO_S], ['speed', TO_S], ['condition', TO_S], ['sellerid', TO_S],
+          ['description', ESCAPE_HTML], ['galleryimg', DISPLAY_AS_IMG]]
   EBAY_ITEM_ABBRV_DISPLAY_FIELDS = [['galleryimg', DISPLAY_AS_IMG], ['title', TO_S], ['endtime', TO_DATE], ['price', TO_DOLLARS]]
 
   RECORD_INPUT_TYPE_FIELDS = Array.new(RECORD_DISPLAY_FIELDS);
@@ -99,6 +101,11 @@ module BaseTestCase
     assert_equal ebay_item.bidcount, stored_item.bidcount
     assert_equal ebay_item.price, stored_item.price
     assert_equal ebay_item.sellerid, stored_item.sellerid
+    assert_equal ebay_item.country, stored_item.country
+    assert_equal ebay_item.size, stored_item.size
+    assert_equal ebay_item.speed, stored_item.speed
+    assert_equal ebay_item.condition, stored_item.condition
+    assert_equal ebay_item.subgenre, stored_item.subgenre
     stored_item_pictures = stored_item.pictures
     if ebay_item.pictureimgs
       assert_equal ebay_item.pictureimgs.length, stored_item_pictures.length

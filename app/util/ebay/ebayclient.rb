@@ -43,7 +43,7 @@ class EbayClient
       start_pos = (i * ITEMS_PER_DETAILS_REQ)
       item_ids_query = item_ids[start_pos..[(start_pos + ITEMS_PER_DETAILS_REQ)-1, item_ids.length].min].join(',')
       item_details_url = BASE_DETAILS_URL + GET_ITEM_DETAILS_CALL.to_s +
-              '&IncludeSelector=Details,TextDescription&ItemID=' + item_ids_query
+              '&IncludeSelector=Details,TextDescription,ItemSpecifics&ItemID=' + item_ids_query
       response = @web_client.get(item_details_url)
       detailses.concat(EbayItemsDetailsParser.parse(response.body))
     end

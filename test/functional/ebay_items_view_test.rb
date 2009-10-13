@@ -59,7 +59,7 @@ class EbayItemsViewTest <  ActionController::TestCase
         expected_value = expected_ebay_item[expected_field_name]
         mapping_function = EBAY_ITEM_DISPLAY_FIELDS[count][1]
         expected_extracted_value = mapping_function.call(expected_value)
-        assert_equal expected_extracted_value, ebay_item.children.to_s
+        assert_equal expected_extracted_value, ebay_item.children.to_s, "error comparing expected field: '#{expected_field_name}'"
         count += 1
       end
     end

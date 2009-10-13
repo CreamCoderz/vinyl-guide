@@ -1,14 +1,14 @@
 <p>
+    <label>Link</label>
+    <span><a href="<%= ebay_item.url %>"><%= ebay_item.url %></a></span>
+</p>
+<p>
     <label>Ebay Item Id</label>
     <span><%= ebay_item.itemid %></span>
 </p>
 <p>
     <label>Title</label>
     <span><%= ebay_item.title %></span>
-</p>
-<p>
-    <label>Description</label>
-    <span><%= ebay_item.description %></span>
 </p>
 <p>
     <label>Bid Count</label>
@@ -27,16 +27,36 @@
     <span><%= display_date(ebay_item.endtime) %></span>
 </p>
 <p>
-    <label>Link</label>
-    <span><a href="<%= ebay_item.url %>"><%= ebay_item.url %></a></span>
+    <label>Country</label>
+    <span><%= ebay_item.country %></span>
 </p>
 <p>
-    <label>Gallery Image</label><br/>
-    <span><img src="<%= display_gallery_img(ebay_item.galleryimg) %>"/></span>
+    <label>Sub-Genre</label>
+    <span><%= ebay_item.subgenre %></span>
+</p>
+<p>
+    <label>Size</label>
+    <span><%= ebay_item.size %></span>
+</p>
+<p>
+    <label>Speed</label>
+    <span><%= ebay_item.speed %></span>
+</p>
+<p>
+    <label>Condition</label>
+    <span><%= ebay_item.condition %></span>
 </p>
 <p>
     <label>Seller Id</label>
     <span><%= ebay_item.sellerid %></span>
+</p>
+<p>
+    <label>Description</label>
+    <span><%= ebay_item.description %></span>
+</p>
+<p>
+    <label>Gallery Image</label><br/>
+    <span><img src="<%= display_gallery_img(ebay_item.galleryimg) %>"/></span>
 </p>
 <% if !ebay_item.pictures.empty? %>
     <div class="pictures">
