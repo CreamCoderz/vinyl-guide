@@ -1,7 +1,7 @@
 class EbayItemData
   attr_reader :description, :itemid, :endtime, :starttime, :url, :galleryimg, :bidcount, :price, :sellerid, :title, :pictureimgs, :size, :subgenre, :condition, :speed, :country
 
-  def initialize(description, itemid, endtime, starttime, url, galleryimg, bidcount, price, sellerid, title, pictureimgs, size, subgenre, condition, speed, country)
+  def initialize(description, itemid, endtime, starttime, url, galleryimg, bidcount, price, sellerid, title, country, pictureimgs, size=nil, subgenre=nil, condition=nil, speed=nil)
     @description = description
     @itemid = itemid
     @endtime = endtime

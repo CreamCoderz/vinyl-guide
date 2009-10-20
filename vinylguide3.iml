@@ -47,18 +47,14 @@
     <RMODULE_SETTINGS_STORAGE_ID NAME="DIR0" VALUE="$MODULE_DIR$" />
   </component>
   <component name="RailsViewFoldersManager">
-    <USER_URLS url="file://$MODULE_DIR$/config" />
-    file:///Users/will/vinylguide3/config
-    <USER_URLS url="file://$MODULE_DIR$/spec" />
-    file:///Users/will/vinylguide3/spec
-    <USER_URLS url="file://$MODULE_DIR$/lib" />
-    file:///Users/will/vinylguide3/lib
     <USER_URLS url="file://$MODULE_DIR$/public/javascripts" />
-    file:///Users/will/vinylguide3/public/javascripts
-    <USER_URLS url="file://$MODULE_DIR$/vendor/plugins" />
-    file:///Users/will/vinylguide3/vendor/plugins
+    file:///Users/will/vinyl-guide/public/javascripts
     <USER_URLS url="file://$MODULE_DIR$/public/stylesheets" />
-    file:///Users/will/vinylguide3/public/stylesheets
+    file:///Users/will/vinyl-guide/public/stylesheets
+    <USER_URLS url="file://$MODULE_DIR$/spec" />
+    file:///Users/will/vinyl-guide/spec
+    <USER_URLS url="file://$MODULE_DIR$/config" />
+    file:///Users/will/vinyl-guide/config
   </component>
 </module>
 

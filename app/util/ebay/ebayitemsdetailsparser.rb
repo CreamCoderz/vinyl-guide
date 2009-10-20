@@ -29,8 +29,8 @@ class EbayItemsDetailsParser
                   DateUtil.utc_to_date(item[STARTTIME][NODE_VALUE]),
                   item[URL][NODE_VALUE], image,
                   item[BIDCOUNT][NODE_VALUE].to_i, item[PRICE][NODE_VALUE].to_f,
-                  item[SELLER][USERID][NODE_VALUE], item[TITLE][NODE_VALUE], get_picture_imgs(item),
-                  parsed_specifics[RECORDSIZE], parsed_specifics[SUBGENRE], parsed_specifics[CONDITION], parsed_specifics[SPEED], item[COUNTRY][NODE_VALUE]))
+                  item[SELLER][USERID][NODE_VALUE], item[TITLE][NODE_VALUE], item[COUNTRY][NODE_VALUE], get_picture_imgs(item),
+                  parsed_specifics[RECORDSIZE], parsed_specifics[SUBGENRE], parsed_specifics[CONDITION], parsed_specifics[SPEED]))
         end
       end
     end
@@ -43,9 +43,7 @@ class EbayItemsDetailsParser
     picture_nodes = item[PICTURE]
     pictures = nil
     if picture_nodes
-      if !picture_nodes.is_a?(Array)
-        picture_nodes = [picture_nodes]
-      end
+      picture_nodes = ArrayUtil.arrayifiy(picture_nodes)
       pictures = picture_nodes.map do |picture_node|
         picture_node[NODE_VALUE]
       end
@@ -56,6 +54,7 @@ class EbayItemsDetailsParser
   def self.get_item_specifics(item)
     parsed_specifics = {RECORDSIZE => nil, SUBGENRE => nil, CONDITION => nil, SPEED => nil}
     item_specifics = item[ITEMSPECIFICS][NAMEVALUELIST]
+    item_specifics = ArrayUtil.arrayifiy(item_specifics)
     item_specifics.each do |item_specific|
       if parsed_specifics.key? item_specific[NAME][NODE_VALUE]
         parsed_specifics[item_specific[NAME][NODE_VALUE]] = item_specific[VALUE][NODE_VALUE]

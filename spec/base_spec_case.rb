@@ -180,17 +180,55 @@ module BaseSpecCase
 
   TETRACK_EBAY_ITEM = EbayItemData.new(CGI.unescapeHTML(TETRACK_DESCRIPTION),
           TETRACK_ITEMID, DateUtil.utc_to_date(TETRACK_ENDTIME), DateUtil.utc_to_date(TETRACK_STARTTIME),
-          TETRACK_URL, TETRACK_GALLERY_IMG, TETRACK_BIDCOUNT,
-          TETRACK_PRICE, TETRACK_SELLERID, CGI.unescapeHTML(TETRACK_TITLE), TETRACK_PICTURE_IMGS, TETRACK_SIZE,
-          TETRACK_SUB_GENRE, TETRACK_CONDITION, TETRACK_SPEED, TETRACK_COUNTRY)
+          TETRACK_URL, TETRACK_GALLERY_IMG, TETRACK_BIDCOUNT, TETRACK_PRICE, TETRACK_SELLERID,
+          CGI.unescapeHTML(TETRACK_TITLE), TETRACK_COUNTRY, TETRACK_PICTURE_IMGS, TETRACK_SIZE,
+          TETRACK_SUB_GENRE, TETRACK_CONDITION, TETRACK_SPEED)
 
   GARNET_EBAY_ITEM = EbayItemData.new(CGI.unescapeHTML(GARNET_DESCRIPTION),
           GARNET_ITEMID, DateUtil.utc_to_date(GARNET_ENDTIME), DateUtil.utc_to_date(GARNET_STARTTIME),
-          GARNET_URL, GARNET_GALLERY_IMG, GARNET_BIDCOUNT,
-          GARNET_PRICE, GARNET_SELLERID, CGI.unescapeHTML(GARNET_TITLE), GARNET_PICTURE_IMGS, GARNET_SIZE,
-          GARNET_SUB_GENRE, GARNET_CONDITION, GARNET_SPEED, GARNET_COUNTRY)
+          GARNET_URL, GARNET_GALLERY_IMG, GARNET_BIDCOUNT, GARNET_PRICE, GARNET_SELLERID,
+          CGI.unescapeHTML(GARNET_TITLE), GARNET_COUNTRY,GARNET_PICTURE_IMGS, 
+          GARNET_SIZE, GARNET_SUB_GENRE, GARNET_CONDITION, GARNET_SPEED)
 
   def self.generate_detail_item_xml_response(ebay_item_data)
+    generate_all_detail_item_xml_response(ebay_item_data,
+            "<ItemSpecifics>
+     <NameValueList>
+      <Name>Return policy details</Name>
+      <Value>ANY ITEM MUST BE RETURNED WITHIN SEVEN WORKING DAYS UK.FOURTEEN DAYS;REST OF THE WORLD.PLEASE EMAIL ME THROUGH CONTACT SELLER TO CONFIRM.UPON RECEIPT YOU WILL BE FULLY REFUNDED AS STATED IN MY WRITE-UP.PLEASE READ. NOT BEFORE ITEM IS RETURNED.THIS GIVES YOU PLENTY OF TIME TO DECIDE WHETHER YOU ARE HAPPY OR NOT.I&apos;M SURE YOU WILL BE.AS I POST AS QUICKLY AS POSSIBLE,IT&apos;S ONLY FAIR FOR RETURN TO BE THE SAME.FAILER TO MEET THESE REQUIREMENTS.REFUND IS NULL AND VOID.IF NOT HAPPY WITH THIS.PLEASE DO NOT BID.</Value>
+     </NameValueList>
+     <NameValueList>
+      <Name>Returns Accepted</Name>
+      <Value>Returns Accepted</Value>
+     </NameValueList>
+     <NameValueList>
+      <Name>Condition</Name>
+      <Value>#{ebay_item_data.condition}</Value>
+     </NameValueList>
+     <NameValueList>
+      <Name>Genre</Name>
+      <Value>Reggae/Ska</Value>
+     </NameValueList>
+     <NameValueList>
+      <Name>Record Size</Name>
+      <Value>#{ebay_item_data.size}</Value>
+     </NameValueList>
+     <NameValueList>
+      <Name>Speed</Name>
+      <Value>#{ebay_item_data.speed}</Value>
+     </NameValueList>
+     <NameValueList>
+      <Name>Sub-Genre</Name>
+      <Value>#{ebay_item_data.subgenre}</Value>
+     </NameValueList>
+     <NameValueList>
+      <Name>Compilation</Name>
+      <Value></Value>
+     </NameValueList>
+    </ItemSpecifics>")
+  end
+
+  def self.generate_all_detail_item_xml_response(ebay_item_data, item_specifics)
     gallery_node = ""
     picture_node = ""
     if ebay_item_data.galleryimg
@@ -237,40 +275,7 @@ module BaseSpecCase
     <TimeLeft>PT0S</TimeLeft>
     <Title>#{ebay_item_data.title}</Title>
     <HitCount>193</HitCount>
-    <ItemSpecifics>
-     <NameValueList>
-      <Name>Return policy details</Name>
-      <Value>ANY ITEM MUST BE RETURNED WITHIN SEVEN WORKING DAYS UK.FOURTEEN DAYS;REST OF THE WORLD.PLEASE EMAIL ME THROUGH CONTACT SELLER TO CONFIRM.UPON RECEIPT YOU WILL BE FULLY REFUNDED AS STATED IN MY WRITE-UP.PLEASE READ. NOT BEFORE ITEM IS RETURNED.THIS GIVES YOU PLENTY OF TIME TO DECIDE WHETHER YOU ARE HAPPY OR NOT.I&apos;M SURE YOU WILL BE.AS I POST AS QUICKLY AS POSSIBLE,IT&apos;S ONLY FAIR FOR RETURN TO BE THE SAME.FAILER TO MEET THESE REQUIREMENTS.REFUND IS NULL AND VOID.IF NOT HAPPY WITH THIS.PLEASE DO NOT BID.</Value>
-     </NameValueList>
-     <NameValueList>
-      <Name>Returns Accepted</Name>
-      <Value>Returns Accepted</Value>
-     </NameValueList>
-     <NameValueList>
-      <Name>Condition</Name>
-      <Value>#{ebay_item_data.condition}</Value>
-     </NameValueList>
-     <NameValueList>
-      <Name>Genre</Name>
-      <Value>Reggae/Ska</Value>
-     </NameValueList>
-     <NameValueList>
-      <Name>Record Size</Name>
-      <Value>#{ebay_item_data.size}</Value>
-     </NameValueList>
-     <NameValueList>
-      <Name>Speed</Name>
-      <Value>#{ebay_item_data.speed}</Value>
-     </NameValueList>
-     <NameValueList>
-      <Name>Sub-Genre</Name>
-      <Value>#{ebay_item_data.subgenre}</Value>
-     </NameValueList>
-     <NameValueList>
-      <Name>Compilation</Name>
-      <Value></Value>
-     </NameValueList>
-    </ItemSpecifics>
+    #{item_specifics}
     <Subtitle>SEE MY OTHER AUCTIONS for more M- roots &amp; dub 12\"s/7\"s!</Subtitle>
     <PrimaryCategoryIDPath>11233:306</PrimaryCategoryIDPath>
     <Storefront>
