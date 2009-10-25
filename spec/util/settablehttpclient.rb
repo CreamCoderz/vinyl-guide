@@ -1,15 +1,10 @@
-class SettableHttpClient<Net::HTTP
+class SettableHttpClient < Net::HTTP
+  attr_reader :host, :port, :path
 
-  def host
-    @host
-  end
-
-  def port
-    @port
-  end
-
-  def path
-    @path
+  #TODO: get rid of unneed init params
+  def initialize(foo, bar=nil)
+    @xml, @response_code, @path = [], [], []
+    @request_count = 0
   end
 
   def start(host, port)
@@ -19,14 +14,15 @@ class SettableHttpClient<Net::HTTP
   end
 
   def set_response(xml, response_code="2")
-    @xml = xml
-    @response_code = response_code
+    @xml.insert(-1, xml)
+    @response_code.insert(-1, response_code)
   end
 
   def get(path)
-    @path = path
-    response = SettableHTTPSuccessResponse.new("1.1", @response_code, "UNUSED")
-    response.body = @xml
+    @path.insert(-1, path)
+    response = SettableHTTPSuccessResponse.new("1.1", @response_code[@request_count], "UNUSED")
+    response.body = @xml[@request_count]
+    @request_count += 1
     response
   end
 
@@ -34,7 +30,7 @@ class SettableHttpClient<Net::HTTP
   end
 end
 
-class SettableHTTPSuccessResponse<Net::HTTPResponse
+class SettableHTTPSuccessResponse < Net::HTTPResponse
   def body= (xml)
     @xml = xml
   end

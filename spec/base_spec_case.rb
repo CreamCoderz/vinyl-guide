@@ -23,8 +23,8 @@ module BaseSpecCase
   SAMPLE_BASE_FIND_HOST = 'svcs.ebay.com'
   SAMPLE_BASE_FIND_URL = "http://#{SAMPLE_BASE_FIND_HOST}"
 
-  def self.generate_find_items_request(end_time_from, page_number)
-    "/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=WillSulz-7420-475d-9a40-2fb8b491a6fd&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&categoryId=306&aspectFilter%280%29.aspectName=%22Genre%22&aspectFilter%280%29.aspectValueName=%22Reggae%20%26%20Ska%22&itemFilter.name=EndTimeTo&itemFilter.value=#{DateUtil.date_to_utc(end_time_from)}&paginationInput.pageNumber=#{page_number}"
+  def self.generate_find_items_request(end_time_from, page_number, global_id='EBAY-US', sub_genre='%22Reggae%20%26%20Ska%22')
+    "/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=WillSulz-7420-475d-9a40-2fb8b491a6fd&GLOBAL-ID=#{global_id}&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&categoryId=306&aspectFilter%280%29.aspectName=%22Genre%22&aspectFilter%280%29.aspectValueName=#{sub_genre}&itemFilter.name=EndTimeTo&itemFilter.value=#{DateUtil.date_to_utc(end_time_from)}&paginationInput.pageNumber=#{page_number}"
   end
 
   def self.generate_auction_item(auction_item)
@@ -94,22 +94,37 @@ module BaseSpecCase
   item_4_endtime_utc = '2009-07-03T23:48:32.000Z'
   item_5_endtime_utc = '2009-07-03T23:49:57.000Z'
 
+  #TODO: these dates are not parsing correctly
   FOUND_ITEM_1 = [120440899019, DateTime.parse(item_1_endtime_utc)]
   FOUND_ITEM_2 = [260436558510, DateTime.parse(item_2_endtime_utc)]
   FOUND_ITEM_3 = [300325824658, DateTime.parse(item_3_endtime_utc)]
   FOUND_ITEM_4 = [300325824769, DateTime.parse(item_4_endtime_utc)]
   FOUND_ITEM_5 = [300325824946, DateTime.parse(item_5_endtime_utc)]
 
+  FOUND_ITEM_6 = [348943784329, DateTime.parse(item_4_endtime_utc)]
+  FOUND_ITEM_7 = [437893478942, DateTime.parse(item_5_endtime_utc)]
+
   FOUND_ITEMS = [FOUND_ITEM_1, FOUND_ITEM_2, FOUND_ITEM_3, FOUND_ITEM_4, FOUND_ITEM_5]
 
   def self.generate_find_items_response(current_page, end_page)
-    AUCTIONS_RESPONSE_HEAD +
-            generate_auction_item(FOUND_ITEM_1) +
-            generate_auction_item(FOUND_ITEM_2) +
-            generate_auction_item(FOUND_ITEM_3) +
-            generate_auction_item(FOUND_ITEM_4) +
-            generate_auction_item(FOUND_ITEM_5) +
-            generate_auctions_response_footer(current_page, end_page)
+    generate_complete_find_items_response(current_page, end_page,
+            "#{generate_auction_item(FOUND_ITEM_1)}\n
+            #{generate_auction_item(FOUND_ITEM_2)}\n
+            #{generate_auction_item(FOUND_ITEM_3)}\n
+            #{generate_auction_item(FOUND_ITEM_4)}\n
+            #{generate_auction_item(FOUND_ITEM_5)}")
+  end
+
+  def self.generate_find_items_response_uk(current_page, end_page)
+    generate_complete_find_items_response(current_page, end_page,
+            "#{generate_auction_item(FOUND_ITEM_6)}\n
+            #{generate_auction_item(FOUND_ITEM_7)}")
+  end
+
+  def self.generate_complete_find_items_response(current_page, end_page, body="")
+    "#{AUCTIONS_RESPONSE_HEAD}\n
+    #{body}\n
+    #{generate_auctions_response_footer(current_page, end_page)}"
   end
 
   SAMPLE_FIND_ITEMS_RESPONSE = generate_find_items_response(1, 1)
@@ -187,7 +202,7 @@ module BaseSpecCase
   GARNET_EBAY_ITEM = EbayItemData.new(CGI.unescapeHTML(GARNET_DESCRIPTION),
           GARNET_ITEMID, DateUtil.utc_to_date(GARNET_ENDTIME), DateUtil.utc_to_date(GARNET_STARTTIME),
           GARNET_URL, GARNET_GALLERY_IMG, GARNET_BIDCOUNT, GARNET_PRICE, GARNET_SELLERID,
-          CGI.unescapeHTML(GARNET_TITLE), GARNET_COUNTRY,GARNET_PICTURE_IMGS, 
+          CGI.unescapeHTML(GARNET_TITLE), GARNET_COUNTRY, GARNET_PICTURE_IMGS,
           GARNET_SIZE, GARNET_SUB_GENRE, GARNET_CONDITION, GARNET_SPEED)
 
   def self.generate_detail_item_xml_response(ebay_item_data)

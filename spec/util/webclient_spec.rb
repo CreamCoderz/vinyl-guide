@@ -21,7 +21,7 @@ describe WebClient do
     actual_response.body.should == expected_response
     http_client.host.should == "rss.example.com"
     http_client.port.should == 80
-    http_client.path.should == "/index.html"
+    http_client.path[0].should == "/index.html"
   end
 
   it "should make a get request with query params if they exist" do
@@ -29,7 +29,7 @@ describe WebClient do
     web_client = WebClient.new(http_client)
     url_with_query = '/somepath?query=thequery'
     web_client.get('http://www.example.com' +url_with_query)
-    http_client.path.should == url_with_query
+    http_client.path[0].should == url_with_query
   end
 
   #TODO: the rest of this functionality will soon be dead, current left for purposes of reference
