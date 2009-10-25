@@ -1,4 +1,4 @@
-class AddFieldsToEbayItems  < ActiveRecord::Migration
+class AddFieldsToEbayItems < ActiveRecord::Migration
 
   def self.up
     add_column(:ebay_items, :size, :string)

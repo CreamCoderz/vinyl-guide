@@ -1,5 +1,7 @@
 module BaseTestCase
   RECORD_DISPLAY_FIELDS = ['artist', 'name', 'description', 'date', 'img_src', 'producer', 'band', 'engineer', 'studio']
+  CURRENCY_SYMBOLS = {'USD' => '$', 'GBP' => '£', 'AUD' => '$', 'CAD' => '$', 'CHF' => '?', 'CNY' => '´' , 'EUR' => 'Û', 'HKD' => '$',
+          'INR' => 'INR', 'MYR' => 'MYR', 'PHP' => 'PHP', 'PLN' => 'PLN', 'SEK' => 'kr', 'SGD' => '$', 'TWD' => '$'}
   DISPLAY_AS_LINK = lambda {|href| "<a href=\"" + href + "\">" + href + "</a>"}
   DISPLAY_AS_IMG = lambda do |src|
     if src.nil?
@@ -22,13 +24,17 @@ module BaseTestCase
   ESCAPE_HTML = lambda {|html| CGI.escapeHTML(html)}
   TO_S = lambda {|arg| arg.to_s}
   TO_DATE = lambda {|arg| arg.to_time.strftime("%B %d, %Y - %I:%M:%S %p")}
-  TO_DOLLARS = lambda {|arg| "$#{arg.to_s}0"}
+  TO_DOLLARS = lambda {|arg| "$#{arg.to_s}0" }
+  TO_CURRENCY = lambda do |value, currency_type|
+    currency_symbol = CURRENCY_SYMBOLS[currency_type]
+    "#{currency_symbol}#{value.to_s}0"
+  end
 
   EBAY_ITEM_DISPLAY_FIELDS = [['url', DISPLAY_AS_LINK], ['itemid', TO_S], ['title', TO_S], ['bidcount', TO_S],
           ['price', TO_DOLLARS], ['starttime', TO_DATE], ['endtime', TO_DATE],
           ['country', TO_S], ['subgenre', TO_S], ['size', TO_S], ['speed', TO_S], ['condition', TO_S], ['sellerid', TO_S],
           ['description', ESCAPE_HTML], ['galleryimg', DISPLAY_AS_IMG]]
-  EBAY_ITEM_ABBRV_DISPLAY_FIELDS = [['galleryimg', DISPLAY_AS_IMG], ['title', TO_S], ['endtime', TO_DATE], ['price', TO_DOLLARS]]
+  EBAY_ITEM_ABBRV_DISPLAY_FIELDS = [['galleryimg', DISPLAY_AS_IMG], ['title', TO_S], ['endtime', TO_DATE], {'price', TO_CURRENCY}]
 
   RECORD_INPUT_TYPE_FIELDS = Array.new(RECORD_DISPLAY_FIELDS);
   RECORD_INPUT_TYPE_FIELDS.delete('date')
@@ -81,9 +87,13 @@ module BaseTestCase
     end
   end
 
+  #TODO: hacked in a hash for special case, price.. depends on multiple ebay_item fields
+
   def extract_value(expected_record, ebay_item_field_name)
     if ebay_item_field_name.is_a? Array
       ebay_item_value = ebay_item_field_name[1].call(expected_record[ebay_item_field_name[0]])
+    elsif ebay_item_field_name.is_a? Hash
+      ebay_item_value = ebay_item_field_name['price'].call(expected_record['price'], expected_record['currencytype'])
     else
       ebay_item_value = expected_record[ebay_item_field_name]
     end
@@ -100,6 +110,7 @@ module BaseTestCase
     assert_equal ebay_item.galleryimg, stored_item.galleryimg
     assert_equal ebay_item.bidcount, stored_item.bidcount
     assert_equal ebay_item.price, stored_item.price
+    assert_equal ebay_item.currencytype, stored_item.currencytype
     assert_equal ebay_item.sellerid, stored_item.sellerid
     assert_equal ebay_item.country, stored_item.country
     assert_equal ebay_item.size, stored_item.size
@@ -125,7 +136,7 @@ module BaseTestCase
     ebay_items = []
     (1..num).each do |i|
       ebay_item = EbayItem.new(:itemid => BaseSpecCase::TETRACK_EBAY_ITEM.itemid + i, :title => BaseSpecCase::TETRACK_EBAY_ITEM.title, :description => CGI.unescapeHTML(BaseSpecCase::TETRACK_EBAY_ITEM.description), :bidcount => BaseSpecCase::TETRACK_EBAY_ITEM.bidcount,
-              :price => BaseSpecCase::TETRACK_EBAY_ITEM.price, :endtime => BaseSpecCase::TETRACK_EBAY_ITEM.endtime, :starttime => BaseSpecCase::TETRACK_EBAY_ITEM.starttime,
+              :price => BaseSpecCase::TETRACK_EBAY_ITEM.price, :currencytype => 'USD', :endtime => BaseSpecCase::TETRACK_EBAY_ITEM.endtime, :starttime => BaseSpecCase::TETRACK_EBAY_ITEM.starttime,
               :url => BaseSpecCase::TETRACK_EBAY_ITEM.url, :galleryimg => BaseSpecCase::TETRACK_EBAY_ITEM.galleryimg, :sellerid => BaseSpecCase::TETRACK_EBAY_ITEM.sellerid)
       ebay_items.insert(-1, ebay_item)
       ebay_item.save

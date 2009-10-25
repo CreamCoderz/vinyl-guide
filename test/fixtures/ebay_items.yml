@@ -5,6 +5,7 @@ one:
   description: The Congoes, The Heart of the Congoes, The epic roots masterpiece produced by Lee Perry
   bidcount: 20
   price: 525.00
+  currencytype: 'USD'
   endtime: 2020-08-20
   starttime: 2020-08-10
   url: http://www.ebay.com/1111
@@ -17,6 +18,7 @@ two:
   description: Natty Pass Thru, Price Jazzbos original Black Ark materpiece, Lee Perry
   bidcount: 10
   price: 345.00
+  currencytype: 'USD'
   endtime: 2020-08-21
   starttime: 2020-08-11
   url: http://www.ebay.com/2222
@@ -29,6 +31,7 @@ three:
   description: Ska King at Studio One, Soul Defenders, Studio One, King Perry
   bidcount: 5
   price: 145.00
+  currencytype: 'GBP'
   endtime: 2020-08-22
   starttime: 2020-08-12
   url: http://www.ebay.com/3333
@@ -41,6 +44,7 @@ four:
   description: Massive dub set by the man called Prince Far I, similar to Lee Perry
   bidcount: 2
   price: 245.00
+  currencytype: 'USD'
   endtime: 2020-08-23
   starttime: 2020-08-13
   url: http://www.ebay.com/4444
@@ -53,6 +57,7 @@ five:
   description: Flyers style with Johhny Clarke, produced by Striker, The Revolutionaries, Prince Jammy
   bidcount: 3
   price: 25.00
+  currencytype: 'USD'    
   endtime: 2020-08-24
   starttime: 2020-08-14
   url: http://www.ebay.com/5555

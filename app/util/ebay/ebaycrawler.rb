@@ -33,7 +33,8 @@ class EbayCrawler
                 :bidcount => item_details.bidcount, :price => item_details.price, :endtime => item_details.endtime,
                 :starttime => item_details.starttime, :url => item_details.url, :galleryimg => item_details.galleryimg,
                 :sellerid => item_details.sellerid, :country => item_details.country, :size => item_details.size,
-                :speed => item_details.speed, :condition => item_details.condition, :subgenre => item_details.subgenre)
+                :speed => item_details.speed, :condition => item_details.condition, :subgenre => item_details.subgenre,
+                :currencytype => item_details.currencytype)
         pictures = []
         if item_details.pictureimgs
           pictures = item_details.pictureimgs.map {|pictureimg| Picture.new(:ebay_item_id => ebay_item.id, :url => pictureimg)}

@@ -38,7 +38,6 @@ class EbayCrawlerTest < ActiveSupport::TestCase
     assert !ebay_client.get_details_called?
   end
 
-
   def test_get_item_with_no_picture
     #TODO: some timing issues.. fix this test.
     the_colonial_days = DateTime.parse('1776-08-20T10:20:00+00:00')
@@ -47,11 +46,13 @@ class EbayCrawlerTest < ActiveSupport::TestCase
     ebay_auction = EbayAuction.new({:item_id => item_id, :end_time => the_colonial_days})
     assert ebay_auction.save
     expected_item_data = EbayItemData.new("desc", item_id, the_colonial_days, DateTime.parse('2009-08-21T10:20:00+00:00'), "http://ebay.com/121", nil, 10,
-            5.00, "steve", "record with missing picture", "FR", nil, "7\"", "Roots", "USED", "45 RPM")
+            5.00, "steve", "record with missing picture", "FR", nil, BaseSpecCase::GBP_CURRENCY, "7\"", "Roots", "USED", "45 RPM")
     ebay_client = NilEbayClientClient.new(current_time, expected_item_data)
     ebay_crawler = EbayCrawler.new(ebay_client)
     ebay_crawler.get_items
     actual_ebay_item = EbayItem.find(:first, :conditions => {:itemid => item_id})
+    puts actual_ebay_item.currencytype
+    puts expected_item_data.currencytype
     check_ebay_item_and_data(expected_item_data, actual_ebay_item)
   end
 

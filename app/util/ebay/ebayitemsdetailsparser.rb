@@ -29,7 +29,7 @@ class EbayItemsDetailsParser
                   DateUtil.utc_to_date(item[STARTTIME][NODE_VALUE]),
                   item[URL][NODE_VALUE], image,
                   item[BIDCOUNT][NODE_VALUE].to_i, item[PRICE][NODE_VALUE].to_f,
-                  item[SELLER][USERID][NODE_VALUE], item[TITLE][NODE_VALUE], item[COUNTRY][NODE_VALUE], get_picture_imgs(item),
+                  item[SELLER][USERID][NODE_VALUE], item[TITLE][NODE_VALUE], item[COUNTRY][NODE_VALUE], get_picture_imgs(item), item[PRICE][CURRENCY_ID],
                   parsed_specifics[RECORDSIZE], parsed_specifics[SUBGENRE], parsed_specifics[CONDITION], parsed_specifics[SPEED]))
         end
       end

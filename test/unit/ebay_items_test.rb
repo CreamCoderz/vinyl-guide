@@ -15,7 +15,8 @@ class EbayItemsTest < ActiveSupport::TestCase
             :galleryimg => BaseSpecCase::TETRACK_EBAY_ITEM.galleryimg, :sellerid => BaseSpecCase::TETRACK_EBAY_ITEM.sellerid,
             :pictures => BaseSpecCase::TETRACK_EBAY_ITEM.pictureimgs.map {|pictureimg| Picture.new(:ebay_item_id => ebay_item.id, :url => pictureimg)},
             :country => BaseSpecCase::TETRACK_EBAY_ITEM.country, :size => BaseSpecCase::TETRACK_EBAY_ITEM.size, :speed => BaseSpecCase::TETRACK_EBAY_ITEM.speed,
-            :condition => BaseSpecCase::TETRACK_EBAY_ITEM.condition, :subgenre => BaseSpecCase::TETRACK_EBAY_ITEM.subgenre)
+            :condition => BaseSpecCase::TETRACK_EBAY_ITEM.condition, :subgenre => BaseSpecCase::TETRACK_EBAY_ITEM.subgenre,
+            :currencytype => BaseSpecCase::TETRACK_EBAY_ITEM.currencytype)
     assert ebay_item.save
     stored_item = EbayItem.find(ebay_item.id)
     check_ebay_item_and_data(BaseSpecCase::TETRACK_EBAY_ITEM, stored_item)

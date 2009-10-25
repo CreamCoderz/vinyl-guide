@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 11) do
+ActiveRecord::Schema.define(:version => 12) do
 
   create_table "ebay_auctions", :force => true do |t|
     t.integer  "item_id",  :limit => 8
@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(:version => 11) do
   end
 
   create_table "ebay_items", :force => true do |t|
-    t.integer  "itemid",      :limit => 8
+    t.integer  "itemid",       :limit => 8
     t.text     "description"
     t.integer  "bidcount"
     t.float    "price"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 11) do
     t.string   "condition"
     t.string   "subgenre"
     t.string   "country"
+    t.string   "currencytype"
   end
 
   create_table "pictures", :force => true do |t|

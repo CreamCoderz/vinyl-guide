@@ -161,6 +161,9 @@ module BaseSpecCase
 
   SAMPLE_GET_MULTIPLE_ITEMS_REQUEST = generate_multiple_items_request([TETRACK_ITEMID.to_s, GARNET_ITEMID.to_s])
 
+  USD_CURRENCY = 'USD'
+  GBP_CURRENCY = 'GBP'
+
   TETRACK_DESCRIPTION = 'A1: TETRACK - Let\'s Get Together A2: PABLO ALL STARS - Black Ants Lane Dub B1: JACOB MILLER - Each One Teach One B2: PABLO ALL STARS - Matthew Lane Dub [ROCKERS, JAMAICA] Incredible M- condition copy of this ULTRA RARE and legendary original jamaican Rockers 12". The vocal tracks by Jacob Miller and Tetrack (a version of the Johnny &amp; The Attractions rocksteady classic) are both amazing and so are the two dubs that I have put last in the soundclip below. Listen to this if you don\'t know it! A superb 12" in absolutely AMAZING condition. A-side matrix: A Pabblo 214A B-side matrix: A Pabblo 214B Vinyl condition: M- SOUNDCLIP! Double-click on the "play" button above to listen to SOUND CLIPS of both sides! If the player above doesn\'t work, click HERE to listen to the MP3. Don"t forget to check out my other auctions this week. AIR-MAIL POSTAGE COSTS: 45s: 1-3 45s: $4 to Sweden, $6.50 to Europe, $8 to rest of the world. 4-8 45s: $6 to Sweden, $12 to Europe, $13.50 to rest of the world. 12"s/LPs: 1 LP/12": $6 to Sweden, $13 to Europe, $14 to rest of the world. 2-3 LP/12"s: $8 to Sweden, $21 to Europe, $25 to rest of the world. 4-7 LP/12"s: $11 to Sweden, $32 to Europe, $39 to rest of the world. INSURED/REGISTRRED SHIPPING is available and costs $13 on top of the postage fee quoted above. I know that"s very expensive, but that"s the swedish postal system for you... IMPORTANT! Payment shall be recieved within 10 days. If you can"t pay within that time frame, either contact me so that I know when/if you intend to pay, or DON"T BID if you can"t come up with the money within 10 days after the auction end. PLEASE NOTE! In the unlikely event that it might happen, I can not be held responsible for packages going missing unless you"ve asked to have them sent with insured/registered shipping. Payment is accepted via PayPal. Thanks for looking and good luck bidding!'
   TETRACK_ENDTIME = '2009-07-01T13:34:08.000Z'
   TETRACK_STARTTIME = '2009-06-26T13:34:08.000Z'
@@ -196,13 +199,13 @@ module BaseSpecCase
   TETRACK_EBAY_ITEM = EbayItemData.new(CGI.unescapeHTML(TETRACK_DESCRIPTION),
           TETRACK_ITEMID, DateUtil.utc_to_date(TETRACK_ENDTIME), DateUtil.utc_to_date(TETRACK_STARTTIME),
           TETRACK_URL, TETRACK_GALLERY_IMG, TETRACK_BIDCOUNT, TETRACK_PRICE, TETRACK_SELLERID,
-          CGI.unescapeHTML(TETRACK_TITLE), TETRACK_COUNTRY, TETRACK_PICTURE_IMGS, TETRACK_SIZE,
+          CGI.unescapeHTML(TETRACK_TITLE), TETRACK_COUNTRY, TETRACK_PICTURE_IMGS, USD_CURRENCY, TETRACK_SIZE,
           TETRACK_SUB_GENRE, TETRACK_CONDITION, TETRACK_SPEED)
 
   GARNET_EBAY_ITEM = EbayItemData.new(CGI.unescapeHTML(GARNET_DESCRIPTION),
           GARNET_ITEMID, DateUtil.utc_to_date(GARNET_ENDTIME), DateUtil.utc_to_date(GARNET_STARTTIME),
           GARNET_URL, GARNET_GALLERY_IMG, GARNET_BIDCOUNT, GARNET_PRICE, GARNET_SELLERID,
-          CGI.unescapeHTML(GARNET_TITLE), GARNET_COUNTRY, GARNET_PICTURE_IMGS,
+          CGI.unescapeHTML(GARNET_TITLE), GARNET_COUNTRY, GARNET_PICTURE_IMGS, USD_CURRENCY,
           GARNET_SIZE, GARNET_SUB_GENRE, GARNET_CONDITION, GARNET_SPEED)
 
   def self.generate_detail_item_xml_response(ebay_item_data)
@@ -274,8 +277,8 @@ module BaseSpecCase
       <PositiveFeedbackPercent>100.0</PositiveFeedbackPercent>
     </Seller>
     <BidCount>#{ebay_item_data.bidcount.to_s}</BidCount>
-    <ConvertedCurrentPrice currencyID=\"USD\">#{ebay_item_data.price.to_s}</ConvertedCurrentPrice>
-    <CurrentPrice currencyID=\"USD\">#{ebay_item_data.price.to_s}</CurrentPrice>
+    <ConvertedCurrentPrice currencyID=\"#{ebay_item_data.currencytype}\">#{ebay_item_data.price.to_s}</ConvertedCurrentPrice>
+    <CurrentPrice currencyID=\"#{ebay_item_data.currencytype}\">#{ebay_item_data.price.to_s}</CurrentPrice>
     <HighBidder>                
       <UserID>a***l</UserID>
       <FeedbackPrivate>false</FeedbackPrivate>
