@@ -2,6 +2,8 @@
 require 'cgi'
 
 module ApplicationHelper
+  CURRENCY_SYMBOLS = {'USD' => '$', 'GBP' => '&pound;', 'AUD' => '$', 'CAD' => '$', 'CHF' => '?', 'CNY' => '&yen;', 'EUR' => '&euro;',
+          'HKD' => '$', 'INR' => 'INR', 'MYR' => 'MYR', 'PHP' => 'PHP', 'PLN' => 'PLN', 'SEK' => 'kr', 'SGD' => '$', 'TWD' => '$'}
 
   def display_gallery_img(url)
     if url.nil?
@@ -39,5 +41,9 @@ module ApplicationHelper
 
   def display_date(date)
     date.to_time.strftime("%B %d, %Y - %I:%M:%S %p")
+  end
+
+  def display_currency_symbol(currency_type)
+    CURRENCY_SYMBOLS[currency_type]
   end
 end

@@ -1,7 +1,7 @@
 module BaseTestCase
   RECORD_DISPLAY_FIELDS = ['artist', 'name', 'description', 'date', 'img_src', 'producer', 'band', 'engineer', 'studio']
-  CURRENCY_SYMBOLS = {'USD' => '$', 'GBP' => '£', 'AUD' => '$', 'CAD' => '$', 'CHF' => '?', 'CNY' => '´' , 'EUR' => 'Û', 'HKD' => '$',
-          'INR' => 'INR', 'MYR' => 'MYR', 'PHP' => 'PHP', 'PLN' => 'PLN', 'SEK' => 'kr', 'SGD' => '$', 'TWD' => '$'}
+  CURRENCY_SYMBOLS = {'USD' => '$', 'GBP' => '&pound;', 'AUD' => '$', 'CAD' => '$', 'CHF' => '?', 'CNY' => '&yen;', 'EUR' => '&euro;',
+          'HKD' => '$', 'INR' => 'INR', 'MYR' => 'MYR', 'PHP' => 'PHP', 'PLN' => 'PLN', 'SEK' => 'kr', 'SGD' => '$', 'TWD' => '$'}
   DISPLAY_AS_LINK = lambda {|href| "<a href=\"" + href + "\">" + href + "</a>"}
   DISPLAY_AS_IMG = lambda do |src|
     if src.nil?
@@ -24,10 +24,10 @@ module BaseTestCase
   ESCAPE_HTML = lambda {|html| CGI.escapeHTML(html)}
   TO_S = lambda {|arg| arg.to_s}
   TO_DATE = lambda {|arg| arg.to_time.strftime("%B %d, %Y - %I:%M:%S %p")}
-  TO_DOLLARS = lambda {|arg| "$#{arg.to_s}0" }
+  TO_DOLLARS = lambda {|arg| "$#{arg.to_s}0 USD" }
   TO_CURRENCY = lambda do |value, currency_type|
     currency_symbol = CURRENCY_SYMBOLS[currency_type]
-    "#{currency_symbol}#{value.to_s}0"
+    "#{currency_symbol}#{value.to_s}0 #{currency_type}"
   end
 
   EBAY_ITEM_DISPLAY_FIELDS = [['url', DISPLAY_AS_LINK], ['itemid', TO_S], ['title', TO_S], ['bidcount', TO_S],
@@ -135,8 +135,9 @@ module BaseTestCase
   def generate_some_ebay_items(num)
     ebay_items = []
     (1..num).each do |i|
+      currency_key_num = i > (CURRENCY_SYMBOLS.keys.length-1) ? i % (CURRENCY_SYMBOLS.keys.length-1) : i
       ebay_item = EbayItem.new(:itemid => BaseSpecCase::TETRACK_EBAY_ITEM.itemid + i, :title => BaseSpecCase::TETRACK_EBAY_ITEM.title, :description => CGI.unescapeHTML(BaseSpecCase::TETRACK_EBAY_ITEM.description), :bidcount => BaseSpecCase::TETRACK_EBAY_ITEM.bidcount,
-              :price => BaseSpecCase::TETRACK_EBAY_ITEM.price, :currencytype => 'USD', :endtime => BaseSpecCase::TETRACK_EBAY_ITEM.endtime, :starttime => BaseSpecCase::TETRACK_EBAY_ITEM.starttime,
+              :price => BaseSpecCase::TETRACK_EBAY_ITEM.price, :currencytype => CURRENCY_SYMBOLS.keys[currency_key_num], :endtime => BaseSpecCase::TETRACK_EBAY_ITEM.endtime + i, :starttime => BaseSpecCase::TETRACK_EBAY_ITEM.starttime + i,
               :url => BaseSpecCase::TETRACK_EBAY_ITEM.url, :galleryimg => BaseSpecCase::TETRACK_EBAY_ITEM.galleryimg, :sellerid => BaseSpecCase::TETRACK_EBAY_ITEM.sellerid)
       ebay_items.insert(-1, ebay_item)
       ebay_item.save

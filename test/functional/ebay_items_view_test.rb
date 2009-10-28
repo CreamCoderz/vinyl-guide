@@ -58,8 +58,6 @@ class EbayItemsViewTest <  ActionController::TestCase
         expected_field_name = EBAY_ITEM_DISPLAY_FIELDS[count][0]
         expected_value = expected_ebay_item[expected_field_name]
         mapping_function = EBAY_ITEM_DISPLAY_FIELDS[count][1]
-        puts EBAY_ITEM_DISPLAY_FIELDS[count]
-        puts mapping_function
         expected_extracted_value = mapping_function.call(expected_value)
         assert_equal expected_extracted_value, ebay_item.children.to_s, "error comparing expected field: '#{expected_field_name}'"
         count += 1
@@ -85,9 +83,8 @@ class EbayItemsViewTest <  ActionController::TestCase
   end
 
   def test_all_view_base_case
-    generate_some_ebay_items(25)
-    get :all, :id => 1
-    ebay_items = EbayItem.find(:all, :order => "endtime", :limit => EbayItemsController::PAGE_LIMIT).reverse
+    ebay_items = generate_some_ebay_items(25).reverse[0..19]
+    response = get :all, :id => 1
     check_view_fields(EBAY_ITEM_ABBRV_DISPLAY_FIELDS, ebay_items)
     assert_select ".next" do |elm|
       assert_equal "/all/#{assigns(:next)}", elm[0].attributes['href']

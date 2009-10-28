@@ -246,7 +246,7 @@ module BaseSpecCase
     </ItemSpecifics>")
   end
 
-  def self.generate_all_detail_item_xml_response(ebay_item_data, item_specifics)
+  def self.generate_all_detail_item_xml_response(ebay_item_data, item_specifics='')
     gallery_node = ""
     picture_node = ""
     if ebay_item_data.galleryimg

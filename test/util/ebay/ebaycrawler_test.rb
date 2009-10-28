@@ -51,8 +51,6 @@ class EbayCrawlerTest < ActiveSupport::TestCase
     ebay_crawler = EbayCrawler.new(ebay_client)
     ebay_crawler.get_items
     actual_ebay_item = EbayItem.find(:first, :conditions => {:itemid => item_id})
-    puts actual_ebay_item.currencytype
-    puts expected_item_data.currencytype
     check_ebay_item_and_data(expected_item_data, actual_ebay_item)
   end
 

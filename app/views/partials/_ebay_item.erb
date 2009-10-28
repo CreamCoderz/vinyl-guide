@@ -16,7 +16,7 @@
 </p>
 <p>
     <label>Price</label>
-    <span><%= number_to_currency ebay_item.price %></span>
+    <span><%= number_to_currency ebay_item.price, :unit => display_currency_symbol(ebay_item.currencytype) %> <%= ebay_item.currencytype %></span>
 </p>
 <p>
     <label>Start Time</label>

@@ -53,11 +53,13 @@ class EbayItemsDetailsParser
 
   def self.get_item_specifics(item)
     parsed_specifics = {RECORDSIZE => nil, SUBGENRE => nil, CONDITION => nil, SPEED => nil}
-    item_specifics = item[ITEMSPECIFICS][NAMEVALUELIST]
-    item_specifics = ArrayUtil.arrayifiy(item_specifics)
-    item_specifics.each do |item_specific|
-      if parsed_specifics.key? item_specific[NAME][NODE_VALUE]
-        parsed_specifics[item_specific[NAME][NODE_VALUE]] = item_specific[VALUE][NODE_VALUE]
+    if item[ITEMSPECIFICS]
+      item_specifics = item[ITEMSPECIFICS][NAMEVALUELIST]
+      item_specifics = ArrayUtil.arrayifiy(item_specifics)
+      item_specifics.each do |item_specific|
+        if parsed_specifics.key? item_specific[NAME][NODE_VALUE]
+          parsed_specifics[item_specific[NAME][NODE_VALUE]] = item_specific[VALUE][NODE_VALUE]
+        end
       end
     end
     return parsed_specifics
