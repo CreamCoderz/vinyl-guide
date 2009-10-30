@@ -14,8 +14,8 @@ class SearchController < ApplicationController
       wild_sub_query += "#{searchable_field} like :wild_query"
     end
     query_exp += wild_sub_query
-    ebay_items = EbayItem.all(:conditions => [query_exp, {:wild_query => wild_query}], :order => "id DESC")
-    @ebay_items, @prev, @next, @start, @end, @total = paginate(page_num, ebay_items)
+    
+    @ebay_items, @prev, @next, @start, @end, @total = paginate(page_num, EbayItem, [query_exp, {:wild_query => wild_query}])
     @query = raw_query
   end
 

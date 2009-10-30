@@ -8,7 +8,7 @@ class ApplicationControllerTest < Test::Unit::TestCase
 
   def test_paginate
     ebay_items = generate_some_ebay_items(30).reverse
-    actual_ebay_items, prev, nexties, start, endies, total = @controller.paginate(1, ebay_items)
+    actual_ebay_items, prev, nexties, start, endies, total = @controller.paginate(1, MockActiveRecord.new(ebay_items, :all, {:order => "id DESC", :limit => [1, 20]}))
 
     assert_equal 20, actual_ebay_items.length
     assert_equal ebay_items[0..19], actual_ebay_items
@@ -18,7 +18,7 @@ class ApplicationControllerTest < Test::Unit::TestCase
     assert_equal 20, endies
     assert_equal 30, total
 
-    actual_ebay_items, prev, nexties, start, endies, total = @controller.paginate(2, ebay_items)
+    actual_ebay_items, prev, nexties, start, endies, total = @controller.paginate(2, MockActiveRecord.new(ebay_items, :all, {:order => "id DESC", :limit => [21, 40]}))
     expected_ebay_items = ebay_items[20..29]
     assert_equal expected_ebay_items, actual_ebay_items
     assert_equal 1, prev
@@ -27,7 +27,7 @@ class ApplicationControllerTest < Test::Unit::TestCase
     assert_equal 30, endies
 
     ebay_items.concat(generate_some_ebay_items(10).reverse)
-    actual_ebay_items, prev, nexties, start, endies, total = @controller.paginate(2, ebay_items)
+    actual_ebay_items, prev, nexties, start, endies, total = @controller.paginate(2, MockActiveRecord.new(ebay_items, :all, {:order => "id DESC", :limit => [21, 40]}))
     assert nexties.nil?
     assert_equal 1, prev
     assert_equal 21, start
@@ -45,18 +45,38 @@ class ApplicationControllerTest < Test::Unit::TestCase
   end
 
   def test_paginate_with_no_results
-    actual_ebay_items, prev, nexties, start, endies, total = @controller.paginate(1, [])
+    actual_ebay_items, prev, nexties, start, endies, total = @controller.paginate(1, MockActiveRecord.new([], :all, {:order => "id DESC", :limit => [21, 40]}))
     check_empty_results(actual_ebay_items, endies, nexties, prev, start, total)
   end
 
   def test_paginate_for_page_out_of_range
-    ebay_items = generate_some_ebay_items(20).reverse
-    actual_ebay_items, prev, nexties, start, endies, total = @controller.paginate(2, ebay_items)
+    actual_ebay_items, prev, nexties, start, endies, total = @controller.paginate(2, MockActiveRecord.new([], :all))
     check_empty_results(actual_ebay_items, endies, nexties, prev, start, total)
-    actual_ebay_items, prev, nexties, start, endies, total = @controller.paginate(3, ebay_items)
+    actual_ebay_items, prev, nexties, start, endies, total = @controller.paginate(3, MockActiveRecord.new([], :all))
     check_empty_results(actual_ebay_items, endies, nexties, prev, start, total)
-    actual_ebay_items, prev, nexties, start, endies, total = @controller.paginate(0, ebay_items)
+    actual_ebay_items, prev, nexties, start, endies, total = @controller.paginate(0, MockActiveRecord.new([], :all))
     check_empty_results(actual_ebay_items, endies, nexties, prev, start, total)
+  end
+
+  class MockActiveRecord
+    def initialize(items, all, expectations=nil)
+      @items = items
+      @expectations = expectations
+      @all = all
+    end
+
+    def find(keyword, conditions=nil)
+      if @items.empty?
+        return []
+      end
+      if conditions[:offset]
+        offset = conditions[:offset]
+        end_index = offset-1 + 20 > @items.length ?  @items.length: offset-1 + 20
+        return @items[(offset)..end_index]
+      end
+      @items
+    end
+
   end
 
 end

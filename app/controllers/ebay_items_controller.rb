@@ -11,7 +11,7 @@ class EbayItemsController < ApplicationController
 
   def all
     page_num = params[:id].to_i
-    all_ebay_items = EbayItem.find(:all, :order => "id DESC")
-    @ebay_items, @prev, @next, @start, @end, @total = paginate(page_num, all_ebay_items)
+#    all_ebay_items = EbayItem.find(:all, :order => "id DESC")
+    @ebay_items, @prev, @next, @start, @end, @total = paginate(page_num, EbayItem)
   end
 end
