@@ -77,6 +77,9 @@ class ApplicationControllerTest < Test::Unit::TestCase
       @items
     end
 
+    def count (keyword, conditions=nil)
+      @items.length
+    end
   end
 
 end

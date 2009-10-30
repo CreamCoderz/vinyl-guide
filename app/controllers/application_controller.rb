@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   PAGE_LIMIT = 20
 
   def paginate(page_num, active_record_class, conditions=nil)
-    item_length = active_record_class.find(:all, :conditions => conditions).length
+    item_length = active_record_class.count(:all, :conditions => conditions)
     start_index = (page_num - 1) * PAGE_LIMIT
     if (start_index >= item_length || page_num == 0)
       return [], nil, nil, nil, nil, 0
