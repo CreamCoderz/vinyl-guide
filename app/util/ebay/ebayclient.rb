@@ -8,7 +8,7 @@ class EbayClient
   APP_ID = 'WillSulz-7420-475d-9a40-2fb8b491a6fd'
   FIND_ITEMS_CALL = 'FindItemsAdvanced'
   FIND_ITEMS_BASE_CALL = 'services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME='
-  FIND_TIME_COUNTRY_DATA = {'EBAY-US' => '%22Reggae%20%26%20Ska%22', 'EBAY-GB' => '%22Reggae%2F+Ska%22'}
+  FIND_TIME_COUNTRY_DATA = {'EBAY-US' => 'Reggae%20%26%20Ska', 'EBAY-GB' => 'Reggae%2F+Ska'}
 
   GET_ITEM_DETAILS_CALL = 'GetMultipleItems'
   GET_EBAY_TIME = 'geteBayTime'
@@ -29,7 +29,7 @@ class EbayClient
       is_last_page = false
       page_num = 1
       while !is_last_page
-        find_items_url = "#{BASE_FIND_URL}#{FIND_ITEMS_BASE_CALL}#{APP_ID}&GLOBAL-ID=#{global_id}&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&categoryId=306&aspectFilter%280%29.aspectName=%22Genre%22&aspectFilter%280%29.aspectValueName=#{sub_genre}&itemFilter.name=EndTimeTo&itemFilter.value=#{end_time_from_utc}&paginationInput.pageNumber=#{page_num}"
+        find_items_url = "#{BASE_FIND_URL}#{FIND_ITEMS_BASE_CALL}#{APP_ID}&GLOBAL-ID=#{global_id}&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&categoryId=306&aspectFilter%280%29.aspectName=Genre&aspectFilter%280%29.aspectValueName=#{sub_genre}&itemFilter.name=EndTimeTo&itemFilter.value=#{end_time_from_utc}&paginationInput.pageNumber=#{page_num}"
         response = @web_client.get(find_items_url)
         find_items_parser = EbayFindItemsParser.new(response.body)
         results.concat(find_items_parser.get_items)

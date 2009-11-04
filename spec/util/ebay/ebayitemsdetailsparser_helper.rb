@@ -12,11 +12,11 @@ module EbayItemsDetailsParserHelper
   end
 
   def check_tetrack_item(actual_tetrack_item)
-    check_ebay_item(BaseSpecCase::TETRACK_EBAY_ITEM, actual_tetrack_item)
+    check_ebay_item(TETRACK_EBAY_ITEM, actual_tetrack_item)
   end
 
   def check_garnet_item(actual_garnet_silk_item)
-    check_ebay_item(BaseSpecCase::GARNET_EBAY_ITEM, actual_garnet_silk_item)
+    check_ebay_item(GARNET_EBAY_ITEM, actual_garnet_silk_item)
   end
 
   def check_ebay_item_data(actual_item, description, itemid, endtime, starttime, url, image, bidcount, price, sellerid)

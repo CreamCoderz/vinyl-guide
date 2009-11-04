@@ -1,5 +1,5 @@
 require 'spec'
-require File.dirname(__FILE__) + "/../../base_spec_case"
+require File.dirname(__FILE__) + "/ebay_base_spec"
 require File.dirname(__FILE__) + '/../../../app/util/ebay/ebayfinditemsparser'
 include BaseSpecCase
 

@@ -1,5 +1,5 @@
 require 'test_helper'
-require File.dirname(__FILE__) + '/../../spec/base_spec_case'
+require File.dirname(__FILE__) + '/../../spec/util/ebay/ebay_base_spec'
 include BaseTestCase
 
 class EbayItemsTest < ActiveSupport::TestCase
@@ -8,18 +8,18 @@ class EbayItemsTest < ActiveSupport::TestCase
   def test_create_new_ebay_item
     ebay_item = EbayItem.new
     assert !ebay_item.save, "should not be able to save without item id"
-    ebay_item = EbayItem.new(:itemid => BaseSpecCase::TETRACK_EBAY_ITEM.itemid, :title => BaseSpecCase::TETRACK_EBAY_ITEM.title,
-            :description => BaseSpecCase::TETRACK_EBAY_ITEM.description, :bidcount => BaseSpecCase::TETRACK_EBAY_ITEM.bidcount,
-            :price => BaseSpecCase::TETRACK_EBAY_ITEM.price, :endtime => BaseSpecCase::TETRACK_EBAY_ITEM.endtime,
-            :starttime => BaseSpecCase::TETRACK_EBAY_ITEM.starttime, :url => BaseSpecCase::TETRACK_EBAY_ITEM.url,
-            :galleryimg => BaseSpecCase::TETRACK_EBAY_ITEM.galleryimg, :sellerid => BaseSpecCase::TETRACK_EBAY_ITEM.sellerid,
-            :pictures => BaseSpecCase::TETRACK_EBAY_ITEM.pictureimgs.map {|pictureimg| Picture.new(:ebay_item_id => ebay_item.id, :url => pictureimg)},
-            :country => BaseSpecCase::TETRACK_EBAY_ITEM.country, :size => BaseSpecCase::TETRACK_EBAY_ITEM.size, :speed => BaseSpecCase::TETRACK_EBAY_ITEM.speed,
-            :condition => BaseSpecCase::TETRACK_EBAY_ITEM.condition, :subgenre => BaseSpecCase::TETRACK_EBAY_ITEM.subgenre,
-            :currencytype => BaseSpecCase::TETRACK_EBAY_ITEM.currencytype)
+    ebay_item = EbayItem.new(:itemid => EbayBaseData::TETRACK_EBAY_ITEM.itemid, :title => EbayBaseData::TETRACK_EBAY_ITEM.title,
+            :description => EbayBaseData::TETRACK_EBAY_ITEM.description, :bidcount => EbayBaseData::TETRACK_EBAY_ITEM.bidcount,
+            :price => EbayBaseData::TETRACK_EBAY_ITEM.price, :endtime => EbayBaseData::TETRACK_EBAY_ITEM.endtime,
+            :starttime => EbayBaseData::TETRACK_EBAY_ITEM.starttime, :url => EbayBaseData::TETRACK_EBAY_ITEM.url,
+            :galleryimg => EbayBaseData::TETRACK_EBAY_ITEM.galleryimg, :sellerid => EbayBaseData::TETRACK_EBAY_ITEM.sellerid,
+            :pictures => EbayBaseData::TETRACK_EBAY_ITEM.pictureimgs.map {|pictureimg| Picture.new(:ebay_item_id => ebay_item.id, :url => pictureimg)},
+            :country => EbayBaseData::TETRACK_EBAY_ITEM.country, :size => EbayBaseData::TETRACK_EBAY_ITEM.size, :speed => EbayBaseData::TETRACK_EBAY_ITEM.speed,
+            :condition => EbayBaseData::TETRACK_EBAY_ITEM.condition, :subgenre => EbayBaseData::TETRACK_EBAY_ITEM.subgenre,
+            :currencytype => EbayBaseData::TETRACK_EBAY_ITEM.currencytype)
     assert ebay_item.save
     stored_item = EbayItem.find(ebay_item.id)
-    check_ebay_item_and_data(BaseSpecCase::TETRACK_EBAY_ITEM, stored_item)
+    check_ebay_item_and_data(EbayBaseData::TETRACK_EBAY_ITEM, stored_item)
   end
 
   def test_numerical_field_types

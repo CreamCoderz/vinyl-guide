@@ -1,17 +1,18 @@
 require 'test_helper'
 require File.dirname(__FILE__) + '/../../../app/util/ebay/ebayclient'
 require File.dirname(__FILE__) + '/../../../app/util/ebay/ebaycrawler'
-require File.dirname(__FILE__) + '/../../../spec/base_spec_case'
+require File.dirname(__FILE__) + '/../../../spec/util/ebay/ebay_base_spec'
+include BaseSpecCase
 
 class EbayCrawlerTest < ActiveSupport::TestCase
 
   def test_get_auctions
-    ebay_client = NilEbayClientClient.new(DateTime.parse('2009-08-30T10:20:00+00:00'), BaseSpecCase::TETRACK_EBAY_ITEM)
+    ebay_client = NilEbayClientClient.new(DateTime.parse('2009-08-30T10:20:00+00:00'), TETRACK_EBAY_ITEM)
     ebay_crawler = EbayCrawler.new(ebay_client)
     ebay_crawler.get_auctions
-    stored_auction = EbayAuction.find(:first, :conditions => {:item_id => BaseSpecCase::FOUND_ITEM_1[0]})
-    assert_equal BaseSpecCase::FOUND_ITEM_1[0], stored_auction.item_id
-    assert_equal BaseSpecCase::FOUND_ITEM_1[1], stored_auction.end_time
+    stored_auction = EbayAuction.find(:first, :conditions => {:item_id => FOUND_ITEM_1[0]})
+    assert_equal FOUND_ITEM_1[0], stored_auction.item_id
+    assert_equal FOUND_ITEM_1[1], stored_auction.end_time
   end
 
   def test_get_items
@@ -20,19 +21,19 @@ class EbayCrawlerTest < ActiveSupport::TestCase
     ebay_auction = EbayAuction.new({:item_id => 120440899019, :end_time => future_time})
     assert ebay_auction.save
     past_time = DateTime.parse('2009-08-19T10:20:00+00:00')
-    ebay_auction = EbayAuction.new({:item_id => BaseSpecCase::TETRACK_ITEMID, :end_time => past_time})
+    ebay_auction = EbayAuction.new({:item_id => TETRACK_ITEMID, :end_time => past_time})
     assert ebay_auction.save
-    ebay_client = NilEbayClientClient.new(DateTime.parse('2009-08-20T10:20:00+00:00'), BaseSpecCase::TETRACK_EBAY_ITEM)
+    ebay_client = NilEbayClientClient.new(DateTime.parse('2009-08-20T10:20:00+00:00'), TETRACK_EBAY_ITEM)
     ebay_crawler = EbayCrawler.new(ebay_client)
     ebay_crawler.get_items
-    actual_ebay_item = EbayItem.find(:first, :conditions => {:itemid => BaseSpecCase::TETRACK_ITEMID})
-    check_ebay_item_and_data(BaseSpecCase::TETRACK_EBAY_ITEM, actual_ebay_item)
-    assert EbayAuction.find(:first, :conditions => {:item_id => BaseSpecCase::TETRACK_ITEMID}).nil?
+    actual_ebay_item = EbayItem.find(:first, :conditions => {:itemid => TETRACK_ITEMID})
+    check_ebay_item_and_data(TETRACK_EBAY_ITEM, actual_ebay_item)
+    assert EbayAuction.find(:first, :conditions => {:item_id => TETRACK_ITEMID}).nil?
   end
 
   def test_no_get_details_call_made_if_no_items_to_fetch
     the_colonial_days = '1776-08-20T10:20:00+00:00'
-    ebay_client = NilEbayClientClient.new(DateTime.parse(the_colonial_days), BaseSpecCase::TETRACK_EBAY_ITEM)
+    ebay_client = NilEbayClientClient.new(DateTime.parse(the_colonial_days), TETRACK_EBAY_ITEM)
     ebay_crawler = EbayCrawler.new(ebay_client)
     ebay_crawler.get_items
     assert !ebay_client.get_details_called?
@@ -46,7 +47,7 @@ class EbayCrawlerTest < ActiveSupport::TestCase
     ebay_auction = EbayAuction.new({:item_id => item_id, :end_time => the_colonial_days})
     assert ebay_auction.save
     expected_item_data = EbayItemData.new("desc", item_id, the_colonial_days, DateTime.parse('2009-08-21T10:20:00+00:00'), "http://ebay.com/121", nil, 10,
-            5.00, "steve", "record with missing picture", "FR", nil, BaseSpecCase::GBP_CURRENCY, "7\"", "Roots", "USED", "45 RPM")
+            5.00, "steve", "record with missing picture", "FR", nil, GBP_CURRENCY, "7\"", "Roots", "USED", "45 RPM")
     ebay_client = NilEbayClientClient.new(current_time, expected_item_data)
     ebay_crawler = EbayCrawler.new(ebay_client)
     ebay_crawler.get_items
@@ -65,7 +66,7 @@ class EbayCrawlerTest < ActiveSupport::TestCase
 
     def find_items(end_time_to)
       if end_time_to == @current_time + 1200
-        return [BaseSpecCase::FOUND_ITEM_1]
+        return [FOUND_ITEM_1]
       end
       nil
     end
