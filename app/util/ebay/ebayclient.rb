@@ -22,14 +22,14 @@ class EbayClient
     @web_client = web_client
   end
 
-  def find_items(end_time_to)
-    end_time_from_utc = DateUtil.date_to_utc(end_time_to)
+  def find_items(end_time_from)
+    end_time_from_utc = DateUtil.date_to_utc(end_time_from)
     results = []
     FIND_TIME_COUNTRY_DATA.each_pair do |global_id, sub_genre|
       is_last_page = false
       page_num = 1
       while !is_last_page
-        find_items_url = "#{BASE_FIND_URL}#{FIND_ITEMS_BASE_CALL}#{APP_ID}&GLOBAL-ID=#{global_id}&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&categoryId=306&aspectFilter%280%29.aspectName=Genre&aspectFilter%280%29.aspectValueName=#{sub_genre}&itemFilter.name=EndTimeTo&itemFilter.value=#{end_time_from_utc}&paginationInput.pageNumber=#{page_num}"
+        find_items_url = generate_find_items_advanced_url(global_id, sub_genre, end_time_from_utc, page_num)
         response = @web_client.get(find_items_url)
         find_items_parser = EbayFindItemsParser.new(response.body)
         results.concat(find_items_parser.get_items)
@@ -48,8 +48,7 @@ class EbayClient
     for i in 0..num_of_requests
       start_pos = (i * ITEMS_PER_DETAILS_REQ)
       item_ids_query = item_ids[start_pos..[(start_pos + ITEMS_PER_DETAILS_REQ)-1, item_ids.length].min].join(',')
-      item_details_url = BASE_DETAILS_URL + GET_ITEM_DETAILS_CALL.to_s +
-              '&IncludeSelector=Details,TextDescription,ItemSpecifics&ItemID=' + item_ids_query
+      item_details_url = generate_get_details_url(item_ids_query)
       response = @web_client.get(item_details_url)
       detailses.concat(EbayItemsDetailsParser.parse(response.body))
     end
@@ -59,6 +58,16 @@ class EbayClient
   def get_current_time
     response = @web_client.get(BASE_DETAILS_URL + GET_EBAY_TIME)
     EbayTimeParser.parse(response.body)
+  end
+
+  private
+
+  def generate_find_items_advanced_url(global_id, sub_genre, end_time, page_num)
+    "#{BASE_FIND_URL}#{FIND_ITEMS_BASE_CALL}#{APP_ID}&GLOBAL-ID=#{global_id}&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&categoryId=306&aspectFilter%280%29.aspectName=Genre&aspectFilter%280%29.aspectValueName=#{sub_genre}&itemFilter.name=EndTimeTo&itemFilter.value=#{end_time}&paginationInput.pageNumber=#{page_num}"
+  end
+
+  def generate_get_details_url(item_ids_query)
+    "#{BASE_DETAILS_URL}#{GET_ITEM_DETAILS_CALL}&IncludeSelector=Details,TextDescription,ItemSpecifics&ItemID=#{item_ids_query}"
   end
 
 end

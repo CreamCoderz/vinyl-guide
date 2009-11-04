@@ -35,15 +35,6 @@ class ApplicationControllerTest < Test::Unit::TestCase
     assert_equal 40, total
   end
 
-  def check_empty_results(actual_ebay_items, endies, nexties, prev, start, total)
-    assert_equal [], actual_ebay_items
-    assert prev.nil?
-    assert nexties.nil?
-    assert start.nil?
-    assert endies.nil?
-    assert_equal 0, total
-  end
-
   def test_paginate_with_no_results
     actual_ebay_items, prev, nexties, start, endies, total = @controller.paginate(1, MockActiveRecord.new([], :all, {:order => "id DESC", :limit => [21, 40]}))
     check_empty_results(actual_ebay_items, endies, nexties, prev, start, total)
@@ -56,6 +47,15 @@ class ApplicationControllerTest < Test::Unit::TestCase
     check_empty_results(actual_ebay_items, endies, nexties, prev, start, total)
     actual_ebay_items, prev, nexties, start, endies, total = @controller.paginate(0, MockActiveRecord.new([], :all))
     check_empty_results(actual_ebay_items, endies, nexties, prev, start, total)
+  end
+  
+  def check_empty_results(actual_ebay_items, endies, nexties, prev, start, total)
+    assert_equal [], actual_ebay_items
+    assert prev.nil?
+    assert nexties.nil?
+    assert start.nil?
+    assert endies.nil?
+    assert_equal 0, total
   end
 
   class MockActiveRecord
