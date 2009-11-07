@@ -2,7 +2,6 @@ require 'cobravsmongoose'
 require 'time'
 require 'activesupport'
 require File.dirname(__FILE__) + "/../../domain/ebayitemdata"
-require File.dirname(__FILE__) + "/../dateutil"
 require File.dirname(__FILE__) + "/../arrayutil"
 require File.dirname(__FILE__) + "/ebayitemsdetailsparserdata"
 
@@ -16,20 +15,15 @@ class EbayItemsDetailsParser
     if (!items.nil?)
       items = ArrayUtil.arrayifiy(items)
       items.each do |item|
-        image = nil
-        if item[IMAGE]
-          image = item[IMAGE][NODE_VALUE]
-        end
-
-        parsed_specifics = get_item_specifics(item)
-
         if (item['BidCount']['$'].to_i > 0)
-          ebay_items.insert(-1, EbayItemData.new(item[DESCRIPTION][NODE_VALUE],
-                  item[ITEMID][NODE_VALUE].to_i, DateUtil.utc_to_date(item[ENDTIME][NODE_VALUE]),
-                  DateUtil.utc_to_date(item[STARTTIME][NODE_VALUE]),
-                  item[URL][NODE_VALUE], image,
-                  item[BIDCOUNT][NODE_VALUE].to_i, item[PRICE][NODE_VALUE].to_f,
-                  item[SELLER][USERID][NODE_VALUE], item[TITLE][NODE_VALUE], item[COUNTRY][NODE_VALUE], get_picture_imgs(item), item[PRICE][CURRENCY_ID],
+          #TODO: create this object iteratively
+          parsed_specifics = extract_value(ITEMSPECIFICS, item)
+          ebay_items.insert(-1, EbayItemData.new(extract_value(DESCRIPTION, item),
+                  extract_value(ITEMID, item), extract_value(ENDTIME, item),
+                  extract_value(STARTTIME, item), extract_value(URL, item), extract_value(IMAGE, item),
+                  extract_value(BIDCOUNT, item), extract_value(PRICE, item),
+                  extract_value(USERID, item[SELLER]), extract_value(TITLE, item),
+                  extract_value(COUNTRY, item), extract_value(PICTURE, item), extract_value(CURRENCY_ID, item[PRICE]),
                   parsed_specifics[RECORDSIZE], parsed_specifics[SUBGENRE], parsed_specifics[CONDITION], parsed_specifics[SPEED]))
         end
       end
@@ -39,29 +33,8 @@ class EbayItemsDetailsParser
 
   private
 
-  def self.get_picture_imgs(item)
-    picture_nodes = item[PICTURE]
-    pictures = nil
-    if picture_nodes
-      picture_nodes = ArrayUtil.arrayifiy(picture_nodes)
-      pictures = picture_nodes.map do |picture_node|
-        picture_node[NODE_VALUE]
-      end
-    end
-    pictures
+  def self.extract_value(field, node)
+    VALUE_EXTRACTOR[field].call(node[field])
   end
 
-  def self.get_item_specifics(item)
-    parsed_specifics = {RECORDSIZE => nil, SUBGENRE => nil, CONDITION => nil, SPEED => nil}
-    if item[ITEMSPECIFICS]
-      item_specifics = item[ITEMSPECIFICS][NAMEVALUELIST]
-      item_specifics = ArrayUtil.arrayifiy(item_specifics)
-      item_specifics.each do |item_specific|
-        if parsed_specifics.key? item_specific[NAME][NODE_VALUE]
-          parsed_specifics[item_specific[NAME][NODE_VALUE]] = item_specific[VALUE][NODE_VALUE]
-        end
-      end
-    end
-    return parsed_specifics
-  end
 end
