@@ -1,4 +1,5 @@
 require File.dirname(__FILE__) + "/../dateutil"
+require 'cgi'
 
 module EbayItemsDetailsParserData
 
@@ -29,11 +30,7 @@ module EbayItemsDetailsParserData
 
   NODE_VALUE = '$'
 
-  RESPONSE_KEYS = [DESCRIPTION, ITEMID,  ENDTIME,  STARTTIME,  URL,  IMAGE,  PICTURE,  BIDCOUNT,  PRICE,  CURRENCY_ID,  SELLER,
-          USERID,  GETMULTIPLEITEMSRESPONSE,  ITEM,  TITLE,  ITEMSPECIFICS,  NAMEVALUELIST,  RECORDSIZE,
-          SUBGENRE,  NAME,  VALUE,  CONDITION,  SPEED,  COUNTRY]
-
-  DEFAULT_STRATEGY = lambda{|node|node[NODE_VALUE]}
+  DEFAULT_STRATEGY = lambda{|node|CGI::unescapeHTML(node[NODE_VALUE]).gsub(/&apos;/, "'")}
   OPTIONAL_NODE_STRATEGY = lambda{|node| node ? node[NODE_VALUE] : nil}
   INTEGER_STRATEGY = lambda{|node|DEFAULT_STRATEGY.call(node).to_i}
   FLOAT_STRATEGY = lambda{|node|DEFAULT_STRATEGY.call(node).to_f}

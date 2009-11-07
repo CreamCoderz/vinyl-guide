@@ -32,6 +32,6 @@ module EbayItemsDetailsParserHelper
   end
 
   def check_ebay_item(expected_item, actual_item)
-    expected_item.should == actual_item
+    actual_item.should == expected_item
   end
 end

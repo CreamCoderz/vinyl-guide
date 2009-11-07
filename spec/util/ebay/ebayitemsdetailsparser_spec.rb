@@ -28,6 +28,18 @@ describe EbayItemsDetailsParser do
     check_tetrack_item(actual_tetrack_item)
   end
 
+  it "should html escape title and description fields" do
+    expected_item_data = EbayItemData.new("unescape&quot;d description", 123435, DateTime.parse('2009-08-21T10:20:00+00:00'), DateTime.parse('2009-08-21T10:20:00+00:00'), "http://ebay.com/121", nil, 10,
+            5.00, "steve", "the unescape&apos;d title", "FR", ['http://blah.com/1', 'http://blah.com/2'], USD_CURRENCY, "12\"", "Roots", "USED", "45 RPM")
+    item_detail_response = BaseSpecCase.generate_detail_item_xml_response(expected_item_data)
+    item_detailses = EbayItemsDetailsParser.parse(make_multiple_items_response(item_detail_response))
+    expected_item_data = EbayItemData.new("unescape\"d description", expected_item_data.itemid, expected_item_data.endtime, expected_item_data.starttime,
+            expected_item_data.url, expected_item_data.galleryimg, expected_item_data.bidcount,
+            expected_item_data.price, expected_item_data.sellerid, "the unescape'd title", expected_item_data.country, expected_item_data.pictureimgs, expected_item_data.currencytype,
+             expected_item_data.size, expected_item_data.subgenre, expected_item_data.condition, expected_item_data.speed)
+    check_ebay_item(expected_item_data, item_detailses[0])
+  end
+
   it "should parse a response with no items into an empty list" do
     no_items_response = make_multiple_items_response("")
     item_detailses = EbayItemsDetailsParser.parse(no_items_response)
