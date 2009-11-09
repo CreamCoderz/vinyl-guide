@@ -45,19 +45,62 @@ class EbayItemsControllerTest < ActionController::TestCase
     actual_ebay_items = assigns(:ebay_items)
     assert_equal 20, actual_ebay_items.length
     assert_equal ebay_items[0..19], actual_ebay_items
-    assert assigns(:prev).nil?
-    assert_equal 2, assigns(:next)
-    assert_equal 1, assigns(:start)
-    assert_equal 20, assigns(:end)
-    assert_equal 30, assigns(:total)
+    check_pagination(nil, 2, 1, 20, 30)
     get :all, :id => 2
     actual_ebay_items = assigns(:ebay_items)
     expected_ebay_items = ebay_items[20..24].insert(-1, ebay_items(:five), ebay_items(:four), ebay_items(:three), ebay_items(:two), ebay_items(:one))
     assert_equal expected_ebay_items, actual_ebay_items
-    assert_equal 1, assigns(:prev)
-    assert assigns(:next).nil?
-    assert_equal 21, assigns(:start)
-    assert_equal 30, assigns(:end)
+    check_pagination(1, nil, 21, 30, 30)
   end
 
+  def test_all_records_by_size
+    ebay_single = generate_ebay_items_with_size(1, "7\"")[0]
+    ebay_ep =  generate_ebay_items_with_size(1, "EP, Maxi (10, 12-Inch)")[0]
+    ebay_lp = generate_ebay_items_with_size(1, "LP (12-Inch)")[0]
+    ebay_single.save
+    ebay_ep.save
+    ebay_lp.save
+    get :singles
+    assert_equal [ebay_single], assigns(:ebay_items)
+    get :eps
+    assert_equal [ebay_ep], assigns(:ebay_items)
+    get :lps
+    assert_equal [ebay_lp], assigns(:ebay_items)
+  end
+
+  def test_all_records_by_size_pagination
+    more_than_a_page = 25
+    ebay_singles = generate_ebay_items_with_size(more_than_a_page, "7\"")
+    ebay_eps =  generate_ebay_items_with_size(more_than_a_page, "10\"")
+    ebay_lps = generate_ebay_items_with_size(more_than_a_page, "LP")
+    other_items = generate_ebay_items_with_size(more_than_a_page, "Other")
+    get :singles
+    actual_ebay_items = assigns(:ebay_items)
+    assert_equal 20, actual_ebay_items.length
+    assert_equal ebay_singles.reverse[0..19], actual_ebay_items
+    check_pagination(nil, 2, 1, 20, ebay_singles.length)
+    get :eps
+    actual_ebay_items = assigns(:ebay_items)
+    assert_equal 20, actual_ebay_items.length
+    assert_equal ebay_eps.reverse[0..19], actual_ebay_items
+    check_pagination(nil, 2, 1, 20, ebay_eps.length)
+    get :lps
+    actual_ebay_items = assigns(:ebay_items)
+    assert_equal 20, actual_ebay_items.length
+    assert_equal ebay_lps.reverse[0..19], actual_ebay_items
+    check_pagination(nil, 2, 1, 20, ebay_lps.length)
+    get :other
+    actual_ebay_items = assigns(:ebay_items)
+    assert_equal 20, actual_ebay_items.length
+    assert_equal other_items.reverse[0..19], actual_ebay_items
+    check_pagination(nil, 2, 1, 20, other_items.length)
+  end
+
+  def check_pagination(prev_page, next_page, start_num, end_num, total)
+    assert_equal prev_page, assigns(:prev)
+    assert_equal next_page, assigns(:next)
+    assert_equal start_num, assigns(:start)
+    assert_equal end_num, assigns(:end)
+    assert_equal total, assigns(:total)
+  end
 end

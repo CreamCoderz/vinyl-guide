@@ -1,4 +1,5 @@
 require 'activesupport'
+require 'pp'
 
 RECORDSIZE = 'size'
 SUBGENRE = 'subgenre'
@@ -18,9 +19,16 @@ end
 
 item_specifics.each do |key, values|
   puts "#{key}:\n"
-  values.uniq!
+  puts "-------------------"
+  grouped_specifics = {}
   values.each do |value|
-   puts "#{value}\n"
+    if grouped_specifics.has_key?(value)
+      grouped_specifics[value] = grouped_specifics[value] += 1
+    else
+      grouped_specifics[value] = 1
+    end
   end
+  grouped_specifics = grouped_specifics.sort {|a,b| b[1]<=>a[1]}
+  pp grouped_specifics
   puts "-------------------"
 end

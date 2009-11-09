@@ -144,4 +144,17 @@ module BaseTestCase
     end
     ebay_items
   end
+
+  #TODO: create DSL in favor of duplication generate functions like this
+  def generate_ebay_items_with_size(num, size)
+    ebay_items = []
+    (1..num).each do |i|
+      ebay_item = EbayItem.new(:itemid => 10000, :title => "single title", :description => CGI.unescapeHTML(EbayBaseData::TETRACK_EBAY_ITEM.description), :bidcount => 5,
+              :price => 101.00, :currencytype => "USD", :endtime => EbayBaseData::TETRACK_EBAY_ITEM.endtime + i, :starttime => EbayBaseData::TETRACK_EBAY_ITEM.starttime + i,
+              :url => "http://singlerecord.com", :galleryimg => "http://www.singleimg.com/", :sellerid => "jahchicken", :size => size)
+      ebay_items.insert(-1, ebay_item)
+      ebay_item.save
+    end
+    ebay_items
+  end
 end
