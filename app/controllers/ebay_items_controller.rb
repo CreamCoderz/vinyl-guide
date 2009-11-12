@@ -14,20 +14,21 @@ class EbayItemsController < ApplicationController
     @ebay_items, @prev, @next, @start, @end, @total = paginate(page_num, EbayItem)
   end
 
+  #TODO: refactor out query builder and reuse query values
+
   def singles
-    @ebay_items, @prev, @next, @start, @end, @total = paginate(1, EbayItem, {:size => '7"'})
+    @ebay_items, @prev, @next, @start, @end, @total = paginate(params[:id].to_i, EbayItem, ["size=? OR size=?", '7"', "Single (7-Inch)"])
   end
 
   def eps
-    @ebay_items, @prev, @next, @start, @end, @total = paginate(1, EbayItem, ["size=? OR size=?", 'EP, Maxi (10, 12-Inch)', '10"'])
+    @ebay_items, @prev, @next, @start, @end, @total = paginate(params[:id].to_i, EbayItem, ["size=? OR size=?", 'EP, Maxi (10, 12-Inch)', '10"'])
   end
 
   def lps
-    @ebay_items, @prev, @next, @start, @end, @total = paginate(1, EbayItem, ["size=? OR size=?", "LP (12-Inch)", "LP"])
+    @ebay_items, @prev, @next, @start, @end, @total = paginate(params[:id].to_i, EbayItem, ["size=? OR size=? OR size=?", "LP (12-Inch)", "LP", '12"'])
   end
 
   def other
-    @ebay_items, @prev, @next, @start, @end, @total = paginate(1, EbayItem, ["size!=? AND size!=? AND size!=? AND size!=? AND size!=?", "LP (12-Inch)", "LP", 'EP, Maxi (10, 12-Inch)', '10"', '7"'])
-
+    @ebay_items, @prev, @next, @start, @end, @total = paginate(params[:id].to_i, EbayItem, ["size!=? AND size!=? AND size!=? AND size!=? AND size!=? AND size!=? AND size!=?", "LP (12-Inch)", "LP", 'EP, Maxi (10, 12-Inch)', '10"', '7"', "Single (7-Inch)", '12"'])
   end
 end

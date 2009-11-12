@@ -32,13 +32,8 @@ class EbayItemsViewTest <  ActionController::TestCase
     end
   end
 
-  def test_index_view
-    get :index
-    sorted_ebay_items = EbayItem.find(:all, :order => "endtime").reverse
-    # lastest link to record displayed twice
-    sorted_ebay_items.insert(0, sorted_ebay_items[0])
-    check_search_results([sorted_ebay_items[0]])
 
+  def check_index_items(sorted_ebay_items)
     count = 0
     assert_select "a.view" do |view_anchors|
       view_anchors.each do |view_anchor|
@@ -46,6 +41,37 @@ class EbayItemsViewTest <  ActionController::TestCase
         count += 1
       end
     end
+  end
+
+  def test_index_view
+    get :index
+    sorted_ebay_items = EbayItem.find(:all, :order => "endtime").reverse
+    # lastest link to record displayed twice
+    sorted_ebay_items.insert(0, sorted_ebay_items[0])
+    check_search_results([sorted_ebay_items[0]])
+
+    check_index_items(sorted_ebay_items)
+  end
+
+  #TODO: test pagination links are correct
+
+  def test_specifics_index_views
+    ebay_singles = generate_ebay_items_with_size(25, "7\"")
+    ebay_singles.map {|ebay_item| ebay_item.save}
+    get :singles, :id => 1
+    check_index_items(ebay_singles.reverse[0..19])
+    ebay_eps =  generate_ebay_items_with_size(25, "10\"")
+    save_ebay_items(ebay_eps)
+    get :eps, :id => 1
+    check_index_items(ebay_eps.reverse[0..19])
+    ebay_lps = generate_ebay_items_with_size(25, "LP")
+    save_ebay_items(ebay_lps)
+    get :lps, :id => 1
+    check_index_items(ebay_lps.reverse[0..19])
+    other_items = generate_ebay_items_with_size(25, "something else")
+    save_ebay_items(other_items)
+    get :other, :id => 1
+    check_index_items(other_items.reverse[0..19])
   end
 
   def test_show_view
