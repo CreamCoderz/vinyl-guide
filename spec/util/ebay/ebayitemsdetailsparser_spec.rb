@@ -4,11 +4,17 @@ require 'activesupport'
 require File.dirname(__FILE__) + "/ebay_base_spec"
 require File.dirname(__FILE__) + "/ebayitemsdetailsparser_helper"
 require File.dirname(__FILE__) + '/../../../app/util/ebay/ebayitemsdetailsparser'
+require File.dirname(__FILE__) + '/../../../app/util/ebay/ebayitemsdetailsparser'
 include Spec::Matchers
 include EbayItemsDetailsParserHelper
 include BaseSpecCase
 
 describe EbayItemsDetailsParser do
+
+  before do
+    @data_builder = EbayItemDataBuilder.new
+    @ebay_item = @data_builder.make
+  end
 
   it "should parse an ebay response for multiple item details" do
     items_response = make_multiple_items_response(TETRACK_ITEM_XML + GARNET_ITEM_XML)
@@ -29,15 +35,15 @@ describe EbayItemsDetailsParser do
   end
 
   it "should html escape title and description fields" do
-    expected_item_data = EbayItemData.new("unescape&quot;d description", 123435, DateTime.parse('2009-08-21T10:20:00+00:00'), DateTime.parse('2009-08-21T10:20:00+00:00'), "http://ebay.com/121", nil, 10,
-            5.00, "steve", "the unescape&apos;d title", "FR", ['http://blah.com/1', 'http://blah.com/2'], USD_CURRENCY, "12\"", "Roots", "USED", "45 RPM")
+    @ebay_item.description = "unescape&quot;d description"
+    @ebay_item.title = "the unescape&apos;d title"
+    expected_item_data = @ebay_item.to_data
     item_detail_response = BaseSpecCase.generate_detail_item_xml_response(expected_item_data)
     item_detailses = EbayItemsDetailsParser.parse(make_multiple_items_response(item_detail_response))
-    expected_item_data = EbayItemData.new("unescape\"d description", expected_item_data.itemid, expected_item_data.endtime, expected_item_data.starttime,
-            expected_item_data.url, expected_item_data.galleryimg, expected_item_data.bidcount,
-            expected_item_data.price, expected_item_data.sellerid, "the unescape'd title", expected_item_data.country, expected_item_data.pictureimgs, expected_item_data.currencytype,
-             expected_item_data.size, expected_item_data.subgenre, expected_item_data.condition, expected_item_data.speed)
-    check_ebay_item(expected_item_data, item_detailses[0])
+
+    @ebay_item.description = "unescape\"d description"
+    @ebay_item.title = "the unescape'd title"
+    check_ebay_item(@ebay_item.to_data, item_detailses[0])
   end
 
   it "should parse a response with no items into an empty list" do
@@ -47,40 +53,40 @@ describe EbayItemsDetailsParser do
   end
 
   it "should handle parsing missing gallery image node" do
-    expected_item_data = EbayItemData.new("desc", 123435, DateTime.parse('2009-08-21T10:20:00+00:00'), DateTime.parse('2009-08-21T10:20:00+00:00'), "http://ebay.com/121", nil, 10,
-            5.00, "steve", "record with missing gallery image", "FR", ['http://blah.com/1', 'http://blah.com/2'], USD_CURRENCY, "12\"", "Roots", "USED", "45 RPM")
+    @ebay_item.galleryimg = nil
+    expected_item_data = @ebay_item.to_data
     item_detail_response = BaseSpecCase.generate_detail_item_xml_response(expected_item_data)
     item_detailses = EbayItemsDetailsParser.parse(make_multiple_items_response(item_detail_response))
     check_ebay_item(expected_item_data, item_detailses[0])
   end
 
   it "should handle parsing missing picture image node" do
-    expected_item_data = EbayItemData.new("desc", 123435, DateTime.parse('2009-08-21T10:20:00+00:00'), DateTime.parse('2009-08-21T10:20:00+00:00'), "http://ebay.com/121", nil, 10,
-            5.00, "steve", "record with missing gallery image", "FR", nil, USD_CURRENCY, "12\"", "Dub", "USED", "45 RPM")
+    @ebay_item.pictureimgs = nil
+    expected_item_data = @ebay_item.to_data
     item_detail_response = BaseSpecCase.generate_detail_item_xml_response(expected_item_data)
     item_detailses = EbayItemsDetailsParser.parse(make_multiple_items_response(item_detail_response))
     check_ebay_item(expected_item_data, item_detailses[0])
   end
 
   it "sould handle parsing one picture image node" do
-    expected_item_data = EbayItemData.new("desc", 123435, DateTime.parse('2009-08-21T10:20:00+00:00'), DateTime.parse('2009-08-21T10:20:00+00:00'), "http://ebay.com/121", nil, 10,
-            5.00, "steve", "record with missing gallery image", "FR", ['http://blah.com/1'], USD_CURRENCY, "12\"", "Ska", "USED", "45 RPM")
+    @ebay_item.pictureimgs = ['http://blah.com/1']
+    expected_item_data = @ebay_item.to_data
     item_detail_response = BaseSpecCase.generate_detail_item_xml_response(expected_item_data)
     item_detailses = EbayItemsDetailsParser.parse(make_multiple_items_response(item_detail_response))
     check_ebay_item(expected_item_data, item_detailses[0])
   end
 
   it "should ignore results with 0 bids" do
-    item_with_no_specifics = EbayItemData.new("desc", 123435, DateTime.parse('2009-08-21T10:20:00+00:00'), DateTime.parse('2009-08-21T10:20:00+00:00'), "http://ebay.com/121", nil, 0,
-            5.00, "steve", "record with 0 bids", "FR", ['http://blah.com/1', 'http://blah.com/2'], USD_CURRENCY, "12\"", "Dancehall", "USED", "45 RPM")
-    items_response = make_multiple_items_response(TETRACK_ITEM_XML + GARNET_ITEM_XML + BaseSpecCase.generate_detail_item_xml_response(item_with_no_specifics))
+    @ebay_item.bidcount = 0
+    expected_item_data = @ebay_item.to_data
+    items_response = make_multiple_items_response(TETRACK_ITEM_XML + GARNET_ITEM_XML + BaseSpecCase.generate_detail_item_xml_response(expected_item_data))
     item_detailses = EbayItemsDetailsParser.parse(items_response)
     check_ebay_item([TETRACK_EBAY_ITEM, GARNET_EBAY_ITEM], item_detailses)
   end
 
   it "should handle missing item specifics" do
-    item_with_no_specifics = EbayItemData.new("desc", 123435, DateTime.parse('2009-08-21T10:20:00+00:00'), DateTime.parse('2009-08-21T10:20:00+00:00'), "http://ebay.com/121", nil, 1,
-            5.00, "steve", "record with bids", "FR", ['http://blah.com/1', 'http://blah.com/2'], USD_CURRENCY)
+    @ebay_item.without_specifics
+    item_with_no_specifics = @ebay_item.to_data
     item_detail_response = BaseSpecCase.generate_all_detail_item_xml_response(item_with_no_specifics,
             "<ItemSpecifics>
               <NameValueList>
@@ -95,8 +101,8 @@ describe EbayItemsDetailsParser do
   end
 
   it "should handle nil item specifics" do
-    item_with_no_specifics = EbayItemData.new("desc", 123435, DateTime.parse('2009-08-21T10:20:00+00:00'), DateTime.parse('2009-08-21T10:20:00+00:00'), "http://ebay.com/121", nil, 1,
-            5.00, "steve", "record with bids", "FR", ['http://blah.com/1', 'http://blah.com/2'], USD_CURRENCY)
+    @ebay_item.without_specifics
+    item_with_no_specifics = @ebay_item.to_data
     items_response = make_multiple_items_response(BaseSpecCase.generate_all_detail_item_xml_response(item_with_no_specifics))
     item_detailses = EbayItemsDetailsParser.parse(items_response)
     item_detailses.length.should == 1
@@ -104,8 +110,8 @@ describe EbayItemsDetailsParser do
   end
 
   it "should handle currency types" do
-    expected_item_data = EbayItemData.new("desc", 123435, DateTime.parse('2009-08-21T10:20:00+00:00'), DateTime.parse('2009-08-21T10:20:00+00:00'), "http://ebay.com/121", nil, 10,
-            5.00, "steve", "record with missing gallery image", "FR", ['http://blah.com/1'], GBP_CURRENCY, "12\"", "Ska", "USED", "45 RPM")
+    @ebay_item.currencytype = "FR"
+    expected_item_data = @ebay_item.to_data
     item_detail_response = BaseSpecCase.generate_detail_item_xml_response(expected_item_data)
     item_detailses = EbayItemsDetailsParser.parse(make_multiple_items_response(item_detail_response))
     check_ebay_item(expected_item_data, item_detailses[0])

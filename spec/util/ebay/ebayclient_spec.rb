@@ -13,6 +13,10 @@ include BaseSpecCase
 
 describe EbayClient do
 
+  before do
+    @data_builder = EbayItemDataBuilder.new
+  end
+
   it "should send a find items request to ebay" do
     web_client = SettableHttpClient.new("unused")
     web_client.set_response(SAMPLE_FIND_ITEMS_RESPONSE)
@@ -63,9 +67,7 @@ describe EbayClient do
     expected_ebay_items = []
     response_data = ['', '']
     for i in (1..30)
-      ebay_item = EbayItemData.new("description #{i}", i, Time.new, Time.new, "http://www.ebay.com/#{i}}",
-              "http://img.com/#{i}", i, 10.0 + i, "steve#{i}", "title#{i}", "FR#{i+1}", ["http://example.com/#{i}",
-                      "http://example.com/#{i+1}"], CURRENT_EBAY_TIME, "#{i+1}\" LP", "Roots #{i+1}", "USED #{i+1}", "#{i+1} RPM")
+      ebay_item = @data_builder.make.to_data
       expected_ebay_items.insert(-1, ebay_item)
       if i < 20
         response_data[0] += BaseSpecCase.generate_detail_item_xml_response(ebay_item)

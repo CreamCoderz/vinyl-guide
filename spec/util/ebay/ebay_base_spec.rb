@@ -2,6 +2,7 @@ require 'time'
 require 'cgi'
 require 'activesupport'
 require File.dirname(__FILE__) + "/../../../app/domain/ebayitemdata"
+require File.dirname(__FILE__) + "/../../../app/domain/ebayitemdatabuilder"
 require File.dirname(__FILE__) + "/../../../app/util/dateutil"
 require File.dirname(__FILE__) + "/ebay_base_data"
 include EbayBaseData

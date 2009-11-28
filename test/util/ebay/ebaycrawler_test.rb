@@ -6,6 +6,10 @@ include BaseSpecCase
 
 class EbayCrawlerTest < ActiveSupport::TestCase
 
+  def setup
+    @data_builder = EbayItemDataBuilder.new
+  end
+
   def test_get_auctions
     ebay_client = NilEbayClientClient.new(DateTime.parse('2009-08-30T10:20:00+00:00'), TETRACK_EBAY_ITEM)
     ebay_crawler = EbayCrawler.new(ebay_client)
@@ -46,8 +50,11 @@ class EbayCrawlerTest < ActiveSupport::TestCase
     item_id = 123435
     ebay_auction = EbayAuction.new({:item_id => item_id, :end_time => the_colonial_days})
     assert ebay_auction.save
-    expected_item_data = EbayItemData.new("desc", item_id, the_colonial_days, DateTime.parse('2009-08-21T10:20:00+00:00'), "http://ebay.com/121", nil, 10,
-            5.00, "steve", "record with missing picture", "FR", nil, GBP_CURRENCY, "7\"", "Roots", "USED", "45 RPM")
+
+    ebay_item = @data_builder.make
+    ebay_item.endtime = the_colonial_days
+    ebay_item.starttime = DateTime.parse('2009-08-21T10:20:00+00:00')
+    expected_item_data = ebay_item.to_data
     ebay_client = NilEbayClientClient.new(current_time, expected_item_data)
     ebay_crawler = EbayCrawler.new(ebay_client)
     ebay_crawler.get_items
