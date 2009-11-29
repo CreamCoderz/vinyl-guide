@@ -53,7 +53,8 @@ class EbayCrawlerTest < ActiveSupport::TestCase
 
     ebay_item = @data_builder.make
     ebay_item.endtime = the_colonial_days
-    ebay_item.starttime = DateTime.parse('2009-08-21T10:20:00+00:00')
+    ebay_item.starttime = the_colonial_days
+    ebay_item.itemid = item_id
     expected_item_data = ebay_item.to_data
     ebay_client = NilEbayClientClient.new(current_time, expected_item_data)
     ebay_crawler = EbayCrawler.new(ebay_client)

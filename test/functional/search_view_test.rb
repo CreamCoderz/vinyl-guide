@@ -15,6 +15,14 @@ class SearchViewTest <  ActionController::TestCase
     check_search_results(expected_records)
   end
 
+  def test_should_display_autocomplete_output
+    expected_records = [ebay_items(:five), ebay_items(:four)]
+    response = get :search_api, :q => PRINCE
+    assert_response :success
+    puts response.body
+    assert_equal "#{expected_records[0].title}\n#{expected_records[1].title}\n", response.body
+  end
+
   def test_pagination
     ebay_items = generate_some_ebay_items(25).reverse
     query = ebay_items[0].title

@@ -15,7 +15,8 @@ one:
 two:
   id: 2
   itemid: 2222
-  description: Natty Pass Thru, Price Jazzbos original Black Ark materpiece, Lee Perry
+  title: Jazzbo - Natty Pass Thru
+  description: Natty Pass Thru, Jazzbos original Black Ark materpiece, Lee Perry
   bidcount: 10
   price: 345.00
   currencytype: 'USD'
@@ -28,6 +29,7 @@ two:
 three:
   id: 3
   itemid: 3333
+  title: King Perry - Studio One
   description: Ska King at Studio One, Soul Defenders, Studio One, King Perry
   bidcount: 5
   price: 145.00
@@ -41,6 +43,7 @@ three:
 four:
   id: 4
   itemid: 4444
+  title: Prince Far I - Cry Tuff Dub Encounter II
   description: Massive dub set by the man called Prince Far I, similar to Lee Perry
   bidcount: 2
   price: 245.00
@@ -54,6 +57,7 @@ four:
 five:
   id: 5
   itemid: 5555
+  title: Johnny Clarke - Natty Dread
   description: Flyers style with Johhny Clarke, produced by Striker, The Revolutionaries, Prince Jammy
   bidcount: 3
   price: 25.00
