@@ -104,6 +104,21 @@ class EbayItemsControllerTest < ActionController::TestCase
     check_pagination(nil, 2, 1, 20, other_items.length)
   end
 
+  def test_should_diplay_search_form
+    get :index
+    assert_select 'form[name=search]' do |search_form|
+      search_form_attributes = search_form[0].attributes
+      assert_equal search_form_attributes['action'], '/search'
+      assert_equal search_form_attributes['method'], 'get'
+      assert_select 'input' do |input_field|
+        input_field_attributes = input_field[0].attributes
+        assert_equal input_field_attributes['name'], 'q'
+        input_field_attributes = input_field[1].attributes
+        assert_equal input_field_attributes['type'], 'submit'
+      end
+    end
+  end
+
   def check_pagination(prev_page, next_page, start_num, end_num, total)
     assert_equal prev_page, assigns(:prev)
     assert_equal next_page, assigns(:next)

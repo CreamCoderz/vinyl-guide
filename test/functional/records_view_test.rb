@@ -32,21 +32,6 @@ class RecordsViewTest <  ActionController::TestCase
             [Proc.new {|field, expected_value| assert_equal field.children.to_s, expected_record[expected_value].to_s}]
   end
 
-  def test_should_diplay_search_form
-    get :index
-    assert_select 'form[name=search]' do |search_form|
-      search_form_attributes = search_form[0].attributes
-      assert_equal search_form_attributes['action'], '/search'
-      assert_equal search_form_attributes['method'], 'get'
-      assert_select 'input' do |input_field|
-        input_field_attributes = input_field[0].attributes
-        assert_equal input_field_attributes['name'], 'query'
-        input_field_attributes = input_field[1].attributes
-        assert_equal input_field_attributes['type'], 'submit'
-      end
-    end
-  end
-
   #TODO: this function is ugly so i moved it to the bottom
 
   def test_index_view

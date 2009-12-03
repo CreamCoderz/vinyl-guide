@@ -3,19 +3,11 @@ require 'test_helper'
 class SearchControllerTest < ActionController::TestCase
 
   def test_should_search_for_ebay_items
-    check_query(:search, :query)
+    check_query(:search, :q)
   end
 
   def test_search_results_are_paginated
-    check_search_pagination(:search, :query)
-  end
-
-  def test_search_api_query
-    check_query(:search_api, :q)
-  end
-
-  def test_search_api
-    check_search_pagination(:search_api, :q)
+    check_search_pagination(:search, :q)
   end
 
   def check_query(method, query_param)

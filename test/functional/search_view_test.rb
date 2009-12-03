@@ -10,23 +10,24 @@ class SearchViewTest <  ActionController::TestCase
 
   def test_should_display_search_view
     expected_records = [ebay_items(:five), ebay_items(:four)]
-    get :search, :query => PRINCE
+    get :search, :q => PRINCE
     assert_response :success
     check_search_results(expected_records)
   end
 
   def test_should_display_autocomplete_output
     expected_records = [ebay_items(:five), ebay_items(:four)]
-    response = get :search_api, :q => PRINCE
+    response = xhr :get, :search, :q => PRINCE
     assert_response :success
-    puts response.body
-    assert_equal "#{expected_records[0].title}\n#{expected_records[1].title}\n", response.body
+    expected_response = [{:title => expected_records[0].title, :id => expected_records[0].id},
+            {:title => expected_records[1].title, :id => expected_records[1].id}]
+    assert_equal expected_response.to_json, response.body
   end
 
   def test_pagination
     ebay_items = generate_some_ebay_items(25).reverse
     query = ebay_items[0].title
-    get :search, :query => query
+    get :search, :q => query
     check_search_results(ebay_items[0..19])
     assert_select ".next" do |elm|
       assert_equal "/search?query=#{CGI.escape(query)}&page=#{assigns(:next)}", elm[0].attributes['href']
@@ -36,7 +37,7 @@ class SearchViewTest <  ActionController::TestCase
   end
 
   def test_should_display_header_data
-    get :search, :query => PRINCE
+    get :search, :q => PRINCE
     assert_select 'h3', CGI.escapeHTML('1-2 of 2 Search Results found for "' + PRINCE + '"')
   end
 
@@ -44,7 +45,7 @@ class SearchViewTest <  ActionController::TestCase
 
   def test_input_is_html_escaped
     html_query = '<font color="red">test</font>'
-    get :search, :query => html_query
+    get :search, :q => html_query
     assert_select 'h3', "0 Search Results found for #{CGI.escapeHTML("\"" + html_query + "\"")}"
   end
 

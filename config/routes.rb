@@ -8,8 +8,6 @@ ActionController::Routing::Routes.draw do |map|
   # Keep in mind you can assign values other than :controller and :action
 
   map.search 'search', :controller => 'search', :action => 'search'
-  #TODO this route should go away in favor of request type recognition by the 'saerch' noun
-  map.search 'search_api', :controller => 'search', :action => 'search_api'
   map.connect '/', :controller => 'ebay_items', :action => 'index'
   map.connect 'singles/:id', :controller => 'ebay_items', :action => 'singles'
   map.connect 'eps/:id', :controller => 'ebay_items', :action => 'eps'

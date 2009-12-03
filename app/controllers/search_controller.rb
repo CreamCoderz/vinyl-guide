@@ -1,19 +1,16 @@
 class SearchController < ApplicationController
 
   def search
-    do_search(params[:query])
-  end
-
-  #TODO this method should go away in favor of request type recognition by the 'saerch' noun  
-
-  def search_api
     do_search(params[:q])
-    ebay_api_items = ""
-    @ebay_items.each do |ebay_item|
-      ebay_api_items += "#{ebay_item.title}|#{ebay_item.id}\n"
+    if request.xml_http_request?
+      ebay_api_items = ""
+      ebay_api_hash = []
+      @ebay_items.each do |ebay_item|
+        ebay_api_items += "#{ebay_item.title}|#{ebay_item.id}\n"
+        ebay_api_hash.insert(-1, {:title => ebay_item.title, :id => ebay_item.id})
+      end
+      render :json => ebay_api_hash
     end
-    puts ebay_api_items
-    render :text => ebay_api_items
   end
 
   private
