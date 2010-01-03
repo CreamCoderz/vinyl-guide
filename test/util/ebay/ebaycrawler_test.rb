@@ -2,7 +2,7 @@ require 'test_helper'
 require File.dirname(__FILE__) + '/../../../app/util/ebay/ebayclient'
 require File.dirname(__FILE__) + '/../../../app/util/ebay/ebaycrawler'
 require File.dirname(__FILE__) + '/../../../spec/util/ebay/ebay_base_spec'
-include BaseSpecCase
+include EbayBaseSpec
 
 class EbayCrawlerTest < ActiveSupport::TestCase
 

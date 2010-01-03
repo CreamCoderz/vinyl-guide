@@ -1,7 +1,7 @@
 require 'spec'
 require File.dirname(__FILE__) + "/ebay_base_spec"
 require File.dirname(__FILE__) + '/../../../app/util/ebay/ebayfinditemsparser'
-include BaseSpecCase
+include EbayBaseSpec
 
 describe EbayFindItemsParser do
 
@@ -30,9 +30,9 @@ describe EbayFindItemsParser do
   end
 
   it "should return a boolean indicating if the requestd page is the last page" do
-    ebay_item_finder = EbayFindItemsParser.new(BaseSpecCase.generate_find_items_response(1, 2))
+    ebay_item_finder = EbayFindItemsParser.new(EbayBaseSpec.generate_find_items_response(1, 2))
     ebay_item_finder.last_page.should be_false
-    ebay_item_finder = EbayFindItemsParser.new(BaseSpecCase.generate_find_items_response(2, 2))
+    ebay_item_finder = EbayFindItemsParser.new(EbayBaseSpec.generate_find_items_response(2, 2))
     ebay_item_finder.last_page.should be_true
   end
 end

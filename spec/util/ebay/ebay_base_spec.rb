@@ -7,7 +7,7 @@ require File.dirname(__FILE__) + "/../../../app/util/dateutil"
 require File.dirname(__FILE__) + "/ebay_base_data"
 include EbayBaseData
 
-module BaseSpecCase
+module EbayBaseSpec
 
   # ---------------- FINDING -------------------------
   def self.generate_find_items_request(end_time_from, page_number, global_id='EBAY-US', sub_genre='Reggae%20%26%20Ska')
@@ -150,7 +150,11 @@ module BaseSpecCase
     end
     "<Item>
     <BestOfferEnabled>false</BestOfferEnabled>
-    <Description>#{CGI.escapeHTML(ebay_item_data.description)}</Description>
+    #{
+            if ebay_item_data.description
+              "<Description>#{CGI.escapeHTML(ebay_item_data.description)}</Description>"
+            end
+    }
     <ItemID>#{ebay_item_data.itemid.to_s}</ItemID>
     <EndTime>#{DateUtil.date_to_utc(ebay_item_data.endtime)}</EndTime>
     <StartTime>#{DateUtil.date_to_utc(ebay_item_data.starttime)}</StartTime>
@@ -215,12 +219,5 @@ module BaseSpecCase
 
   TETRACK_ITEM_XML = generate_detail_item_xml_response(TETRACK_EBAY_ITEM)
   GARNET_ITEM_XML = generate_detail_item_xml_response(GARNET_EBAY_ITEM)
-
-
-  def self.make_success_response(body)
-    response1 = SettableHTTPSuccessResponse.new("1.1", 2, "UNUSED")
-    response1.body = body
-    return response1
-  end
 
 end

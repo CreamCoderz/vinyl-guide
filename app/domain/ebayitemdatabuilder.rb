@@ -14,6 +14,12 @@ class EbayItemDataBuilder
     @ebayitem.subgenre = nil
     @ebayitem.condition = nil
     @ebayitem.speed = nil
+    return self
+  end
+
+  def without_description
+    @ebayitem.description = nil
+    return self
   end
 
   def method_missing(method, *args, &block)

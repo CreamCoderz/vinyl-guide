@@ -7,7 +7,7 @@ require File.dirname(__FILE__) + '/../../../app/util/ebay/ebayitemsdetailsparser
 require File.dirname(__FILE__) + '/../../../app/util/ebay/ebayitemsdetailsparser'
 include Spec::Matchers
 include EbayItemsDetailsParserHelper
-include BaseSpecCase
+include EbayBaseSpec
 
 describe EbayItemsDetailsParser do
 
@@ -38,7 +38,7 @@ describe EbayItemsDetailsParser do
     @ebay_item.description = "unescape&quot;d description"
     @ebay_item.title = "the unescape&apos;d title"
     expected_item_data = @ebay_item.to_data
-    item_detail_response = BaseSpecCase.generate_detail_item_xml_response(expected_item_data)
+    item_detail_response = EbayBaseSpec.generate_detail_item_xml_response(expected_item_data)
     item_detailses = EbayItemsDetailsParser.parse(make_multiple_items_response(item_detail_response))
 
     @ebay_item.description = "unescape\"d description"
@@ -55,7 +55,7 @@ describe EbayItemsDetailsParser do
   it "should handle parsing missing gallery image node" do
     @ebay_item.galleryimg = nil
     expected_item_data = @ebay_item.to_data
-    item_detail_response = BaseSpecCase.generate_detail_item_xml_response(expected_item_data)
+    item_detail_response = EbayBaseSpec.generate_detail_item_xml_response(expected_item_data)
     item_detailses = EbayItemsDetailsParser.parse(make_multiple_items_response(item_detail_response))
     check_ebay_item(expected_item_data, item_detailses[0])
   end
@@ -63,7 +63,7 @@ describe EbayItemsDetailsParser do
   it "should handle parsing missing picture image node" do
     @ebay_item.pictureimgs = nil
     expected_item_data = @ebay_item.to_data
-    item_detail_response = BaseSpecCase.generate_detail_item_xml_response(expected_item_data)
+    item_detail_response = EbayBaseSpec.generate_detail_item_xml_response(expected_item_data)
     item_detailses = EbayItemsDetailsParser.parse(make_multiple_items_response(item_detail_response))
     check_ebay_item(expected_item_data, item_detailses[0])
   end
@@ -71,7 +71,7 @@ describe EbayItemsDetailsParser do
   it "sould handle parsing one picture image node" do
     @ebay_item.pictureimgs = ['http://blah.com/1']
     expected_item_data = @ebay_item.to_data
-    item_detail_response = BaseSpecCase.generate_detail_item_xml_response(expected_item_data)
+    item_detail_response = EbayBaseSpec.generate_detail_item_xml_response(expected_item_data)
     item_detailses = EbayItemsDetailsParser.parse(make_multiple_items_response(item_detail_response))
     check_ebay_item(expected_item_data, item_detailses[0])
   end
@@ -79,7 +79,7 @@ describe EbayItemsDetailsParser do
   it "should ignore results with 0 bids" do
     @ebay_item.bidcount = 0
     expected_item_data = @ebay_item.to_data
-    items_response = make_multiple_items_response(TETRACK_ITEM_XML + GARNET_ITEM_XML + BaseSpecCase.generate_detail_item_xml_response(expected_item_data))
+    items_response = make_multiple_items_response(TETRACK_ITEM_XML + GARNET_ITEM_XML + EbayBaseSpec.generate_detail_item_xml_response(expected_item_data))
     item_detailses = EbayItemsDetailsParser.parse(items_response)
     check_ebay_item([TETRACK_EBAY_ITEM, GARNET_EBAY_ITEM], item_detailses)
   end
@@ -87,7 +87,7 @@ describe EbayItemsDetailsParser do
   it "should handle missing item specifics" do
     @ebay_item.without_specifics
     item_with_no_specifics = @ebay_item.to_data
-    item_detail_response = BaseSpecCase.generate_all_detail_item_xml_response(item_with_no_specifics,
+    item_detail_response = EbayBaseSpec.generate_all_detail_item_xml_response(item_with_no_specifics,
             "<ItemSpecifics>
               <NameValueList>
               <Name>Returns Accepted</Name>
@@ -103,16 +103,25 @@ describe EbayItemsDetailsParser do
   it "should handle nil item specifics" do
     @ebay_item.without_specifics
     item_with_no_specifics = @ebay_item.to_data
-    items_response = make_multiple_items_response(BaseSpecCase.generate_all_detail_item_xml_response(item_with_no_specifics))
+    items_response = make_multiple_items_response(EbayBaseSpec.generate_all_detail_item_xml_response(item_with_no_specifics))
     item_detailses = EbayItemsDetailsParser.parse(items_response)
     item_detailses.length.should == 1
     item_detailses[0].should == item_with_no_specifics
   end
 
+  it "should handle missing item description" do
+    @ebay_item.without_description.without_specifics
+    item_with_no_description = @ebay_item.to_data
+    items_response = make_multiple_items_response(EbayBaseSpec.generate_all_detail_item_xml_response(item_with_no_description))
+    item_detailses = EbayItemsDetailsParser.parse(items_response)
+    item_detailses.length.should == 1
+    item_detailses[0].should == item_with_no_description
+  end
+
   it "should handle currency types" do
     @ebay_item.currencytype = "FR"
     expected_item_data = @ebay_item.to_data
-    item_detail_response = BaseSpecCase.generate_detail_item_xml_response(expected_item_data)
+    item_detail_response = EbayBaseSpec.generate_detail_item_xml_response(expected_item_data)
     item_detailses = EbayItemsDetailsParser.parse(make_multiple_items_response(item_detail_response))
     check_ebay_item(expected_item_data, item_detailses[0])
   end

@@ -33,7 +33,6 @@ describe WebClient do
   end
 
   #TODO: the rest of this functionality will soon be dead, current left for purposes of reference
-  # actually... i think this should stick around.
   #
   #
   it "should parse request into an array of records" do

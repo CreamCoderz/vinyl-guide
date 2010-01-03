@@ -31,7 +31,7 @@ module EbayItemsDetailsParserData
   NODE_VALUE = '$'
 
   DEFAULT_STRATEGY = lambda{|node|CGI::unescapeHTML(node[NODE_VALUE]).gsub(/&apos;/, "'")}
-  OPTIONAL_NODE_STRATEGY = lambda{|node| node ? node[NODE_VALUE] : nil}
+  OPTIONAL_NODE_STRATEGY = lambda{|node| node ? CGI::unescapeHTML(node[NODE_VALUE]) : nil}
   INTEGER_STRATEGY = lambda{|node|DEFAULT_STRATEGY.call(node).to_i}
   FLOAT_STRATEGY = lambda{|node|DEFAULT_STRATEGY.call(node).to_f}
   DATE_STRATEGY = lambda{|node|DateUtil.utc_to_date(node[NODE_VALUE])}
@@ -64,7 +64,7 @@ module EbayItemsDetailsParserData
 
   VALUE_EXTRACTOR = {PICTURE => PICTURE_STRATEGY, ITEMSPECIFICS => ITEMSSPECIFICS_STRATEGY, ITEMID => INTEGER_STRATEGY,
           ENDTIME => DATE_STRATEGY, STARTTIME => DATE_STRATEGY, BIDCOUNT => INTEGER_STRATEGY, PRICE => FLOAT_STRATEGY,
-          CURRENCY_ID => NULL_STRATEGY, IMAGE => OPTIONAL_NODE_STRATEGY}
+          CURRENCY_ID => NULL_STRATEGY, IMAGE => OPTIONAL_NODE_STRATEGY, DESCRIPTION => OPTIONAL_NODE_STRATEGY}
   VALUE_EXTRACTOR.default = DEFAULT_STRATEGY
 
 end

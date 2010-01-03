@@ -4,7 +4,7 @@ function setClass(elm, className) {
 
 /* autocompletion */
 $(document).ready(function() {
-    AutoCompleter.init("query", "/search");
+    AutoCompleter.init("q", "/search");
 });
 
 var AutoCompleter = function() {
