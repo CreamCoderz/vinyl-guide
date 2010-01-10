@@ -17,7 +17,6 @@ class EbayCrawlerTest < ActiveSupport::TestCase
   end
 
   def teardown
-    #TODO: delete all in spec tmp dir
     FileUtils.rm_rf(File.dirname(__FILE__) + "/../../../spec/data/tmp/gallery")
     FileUtils.rm_rf(File.dirname(__FILE__) + "/../../../spec/data/tmp/pictures")
   end
@@ -91,6 +90,26 @@ class EbayCrawlerTest < ActiveSupport::TestCase
     actual_ebay_item = EbayItem.find(:first, :conditions => {:itemid => TETRACK_ITEMID})
     assert !File.exists?(File.dirname(__FILE__) + "/../../../spec/data/tmp/pictures/#{actual_ebay_item.id}_0.jpg")
     assert !File.exists?(File.dirname(__FILE__) + "/../../../spec/data/tmp/gallery/#{actual_ebay_item.id}.jpg")
+  end
+
+  def test_does_not_write_to_existing_file
+    best_dressed = File.new(File.dirname(__FILE__) +"/../../../spec/data/best_dressed.jpg", "r").gets(nil)
+    junk_item_to_guess_next_id = EbayItem.new(:itemid => 1234212, :url => "http://www.junkitem.com/224", :bidcount => 4, :price => 10.00)
+    assert junk_item_to_guess_next_id.save
+    File.new(File.dirname(__FILE__) + "/../../../spec/data/tmp/gallery/#{junk_item_to_guess_next_id.id + 1}.jpg", "w").syswrite(best_dressed)
+    File.new(File.dirname(__FILE__) + "/../../../spec/data/tmp/pictures/#{junk_item_to_guess_next_id.id + 1}_0.jpg", "w").syswrite(best_dressed)
+    past_time = DateTime.parse('2009-08-19T10:20:00+00:00')
+    ebay_auction = EbayAuction.new({:item_id => TETRACK_ITEMID, :end_time => past_time})
+    assert ebay_auction.save
+    ebay_client = NilEbayClientClient.new(DateTime.parse('2009-08-30T10:20:00+00:00'), TETRACK_EBAY_ITEM)
+    image_client = TestableImageClient.new({TETRACK_EBAY_ITEM.galleryimg => best_dressed,
+            TETRACK_EBAY_ITEM.pictureimgs[0] => best_dressed})
+    ebay_crawler = EbayCrawler.new(ebay_client, image_client, Dir.new(File.dirname(__FILE__) + "/../../../spec/data/tmp"))
+    ebay_crawler.get_items
+    actual_ebay_item = EbayItem.find(:first, :conditions => {:itemid => TETRACK_ITEMID})
+    assert_equal junk_item_to_guess_next_id.id + 1, actual_ebay_item.id
+    assert_equal best_dressed, File.new(File.dirname(__FILE__) + "/../../../spec/data/tmp/gallery/#{actual_ebay_item.id}.jpg").gets(nil)
+    assert_equal best_dressed, File.new(File.dirname(__FILE__) + "/../../../spec/data/tmp/pictures/#{actual_ebay_item.id}_0.jpg").gets(nil)
   end
 
   def test_no_get_details_call_made_if_no_items_to_fetch

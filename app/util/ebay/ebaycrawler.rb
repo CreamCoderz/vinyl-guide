@@ -66,14 +66,12 @@ class EbayCrawler
   def inject_images(ebay_item)
     i = 0
     ebay_item.pictures.each do |picture|
-      picture_img_content = @image_client.fetch(picture.url)
       image_name = "/pictures/#{ebay_item.id}_#{i}.jpg"
-      if write_image(image_name, picture_img_content)
+      if write_image(image_name, @image_client.fetch(picture.url))
         i += 1
       end
     end
-    gallery_img_content = @image_client.fetch(ebay_item.galleryimg)
-    write_image("/gallery/#{ebay_item.id}.jpg", gallery_img_content)
+    write_image("/gallery/#{ebay_item.id}.jpg", @image_client.fetch(ebay_item.galleryimg))
   end
 
   def write_image(image_name, image_content)
@@ -86,8 +84,12 @@ class EbayCrawler
   end
 
   def verify_image(image_content)
+    verified = true
     if (image_content)
-      !(DEFAULT_EBAY_IMAGE == image_content)
+      verified = !(DEFAULT_EBAY_IMAGE == image_content)
+    else
+      verified = false
     end
+    verified
   end
 end
