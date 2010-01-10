@@ -8,7 +8,7 @@ class EbayClient
   APP_ID = 'WillSulz-7420-475d-9a40-2fb8b491a6fd'
   FIND_ITEMS_CALL = 'FindItemsAdvanced'
   FIND_ITEMS_BASE_CALL = 'services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME='
-  FIND_TIME_COUNTRY_DATA = {'EBAY-US' => 'Reggae%20%26%20Ska', 'EBAY-GB' => 'Reggae%2F+Ska'}
+  FIND_COUNTRY_DATA = {'EBAY-US' => 'Reggae%20%26%20Ska', 'EBAY-GB' => 'Reggae%2F+Ska'}
 
   GET_ITEM_DETAILS_CALL = 'GetMultipleItems'
   GET_EBAY_TIME = 'geteBayTime'
@@ -25,7 +25,7 @@ class EbayClient
   def find_items(end_time_from)
     end_time_from_utc = DateUtil.date_to_utc(end_time_from)
     results = []
-    FIND_TIME_COUNTRY_DATA.each_pair do |global_id, sub_genre|
+    FIND_COUNTRY_DATA.each_pair do |global_id, sub_genre|
       is_last_page = false
       page_num = 1
       while !is_last_page

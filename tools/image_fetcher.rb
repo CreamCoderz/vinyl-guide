@@ -3,9 +3,9 @@ require File.dirname(__FILE__) + '/../app/util/imageclient'
 require File.dirname(__FILE__) + '/../app/util/webclient'
 
 image_client = ImageClient.new(WebClient.new(Net::HTTP))
-ebay_items = EbayItem.find(:all, :conditions => 'id > 9486')
+ebay_items = EbayItem.find(:all, :conditions => 'id > 35774')
 #TODO: most recent fetched id: 35774
-default_file = File.new(File.dirname(__FILE__) + "/../spec/data/default_ebay_img.jpg", "r")
+default_file = File.new(File.dirname(__FILE__) + "/../app/util/ebay/data/default_ebay_img.jpg", "r")
 default_file_contents = default_file.gets(nil)
 
 def fetch_image(url, id, image_client)
