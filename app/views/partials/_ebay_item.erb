@@ -56,13 +56,22 @@
 </p>
 <p>
     <label>Gallery Image</label><br/>
-    <span><img src="<%= display_gallery_img(ebay_item.galleryimg) %>"/></span>
+    <span><img src="/images/gallery/<%= ebay_item.id %>.jpg"/></span>
 </p>
-<% if !ebay_item.pictures.empty? %>
-    <div class="pictures">
-        <label>Pictures</label><br/>
-        <% ebay_item.pictures.each do |picture| %>
-            <span><img src="<%= display_gallery_img(picture.url) %>"/></span><br/>
+<% imagefound = false %>
+
+<% count = 0 %>
+<% ebay_item.pictures.each do |picture| %>
+    <% if picture.hasimage %>
+        <% if !imagefound %>
+            <div class="pictures">
+                <label>Pictures</label><br/>
+                <% imagefound = true %>
         <% end %>
-    </div>
+        <span><img src="/images/pictures/<%= ebay_item.id %>_<%= count %>.jpg"/></span><br/>
+        <% count += 1 %>
+    <% end %>
+    <% if imagefound %>
+        </div>
+    <% end %>
 <% end %>

@@ -25,7 +25,7 @@
         <% count = 1 %>
         <% @ebay_items.each do |ebay_item| %>
             <a href="/<%= ebay_item.id %>">
-                <img class="view" src="<%= h display_gallery_img(ebay_item.galleryimg) %>" alt="<%= h ebay_item.title %>" title="<%= h ebay_item.title %>"/>
+                <img class="view" src="/images/gallery/<%= ebay_item.id %>.jpg" alt="<%= h ebay_item.title %>" title="<%= h ebay_item.title %>"/>
             </a>
             <% if count % 5 == 0 %>
                 <br/>

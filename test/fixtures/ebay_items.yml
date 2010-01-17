@@ -11,6 +11,7 @@ one:
   url: http://www.ebay.com/1111
   galleryimg: http://www.roots-archives.com/1
   sellerid: lassiant
+  hasimage: true
 
 two:
   id: 2
@@ -25,6 +26,7 @@ two:
   url: http://www.ebay.com/2222
   galleryimg: http://www.roots-archives.com/2
   sellerid: steve
+  hasimage: true
 
 three:
   id: 3
@@ -39,6 +41,7 @@ three:
   url: http://www.ebay.com/3333
   galleryimg: http://www.roots-archives.com/3
   sellerid: onlyroots
+  hasimage: true
 
 four:
   id: 4
@@ -53,6 +56,8 @@ four:
   url: http://www.ebay.com/4444
   galleryimg: http://www.roots-archives.com/4
   sellerid: onlyroots
+  hasimage: true
+
 
 five:
   id: 5
@@ -67,3 +72,4 @@ five:
   url: http://www.ebay.com/5555
   galleryimg:
   sellerid: rootsman
+  hasimage: true

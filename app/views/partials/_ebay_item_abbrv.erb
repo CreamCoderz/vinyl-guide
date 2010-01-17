@@ -1,7 +1,7 @@
 <table class="abbrvItem">
     <tr>
         <td>
-            <p><span><img src="<%= display_gallery_img(ebay_item.galleryimg) %>"/></span></p>
+            <p><span><img src="/images/gallery/<%= ebay_item.id %>.jpg"/></span></p>
         </td>
         <td>
             <p>
@@ -16,7 +16,7 @@
 
             <p>
                 <label>Price</label>
-                <span><%= number_to_currency ebay_item.price, :unit => display_currency_symbol(ebay_item.currencytype)%> <%= ebay_item.currencytype %></span>
+                <span><%= number_to_currency ebay_item.price, :unit => display_currency_symbol(ebay_item.currencytype) %> <%= ebay_item.currencytype %></span>
             </p>
         </td>
     </tr>

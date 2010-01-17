@@ -9,40 +9,6 @@ class EbayItemsViewTest <  ActionController::TestCase
     @controller = EbayItemsController.new
   end
 
-  #TODO: clean this up
-
-  def check_view_fields(expected_fields, expected_items)
-    item_count = 0
-    assert_select 'li' do |ebay_items|
-      ebay_items.each do |ebay_item|
-        expected_record = expected_items[item_count]
-        count = 0
-        assert_select ebay_item, 'li.recordItem p span' do |item_field|
-          item_field.each do |item_value|
-            ebay_item_field_name = expected_fields[count]
-            expected_value = extract_value(expected_record, ebay_item_field_name)
-            actual_value = item_value.children.to_s
-            assert_equal expected_value, CGI.unescapeHTML(actual_value), "field \"#{ebay_item_field_name[0]}\""
-            count += 1
-          end
-          count = 0
-        end
-        item_count += 1
-      end
-    end
-  end
-
-
-  def check_index_items(sorted_ebay_items)
-    count = 0
-    assert_select "a.view" do |view_anchors|
-      view_anchors.each do |view_anchor|
-        assert_equal "/#{sorted_ebay_items[count].id}", view_anchor.attributes['href']
-        count += 1
-      end
-    end
-  end
-
   def test_index_view
     get :index
     sorted_ebay_items = EbayItem.find(:all, :order => "endtime").reverse
@@ -77,35 +43,26 @@ class EbayItemsViewTest <  ActionController::TestCase
   def test_show_view
     get :show, :id => 1
     expected_ebay_item = ebay_items(:one)
-    assert_select 'li p span' do |ebay_items|
-      assert_equal EBAY_ITEM_DISPLAY_FIELDS.length, ebay_items.length
-      count = 0
-      ebay_items.each do |ebay_item|
-        expected_field_name = EBAY_ITEM_DISPLAY_FIELDS[count][0]
-        expected_value = expected_ebay_item[expected_field_name]
-        mapping_function = EBAY_ITEM_DISPLAY_FIELDS[count][1]
-        expected_extracted_value = mapping_function.call(expected_value)
-        assert_equal expected_extracted_value, ebay_item.children.to_s, "error comparing expected field: '#{expected_field_name}'"
-        count += 1
-      end
-    end
+    check_item_result(assert_select('li p span'), ebay_items(:one), EBAY_ITEM_DISPLAY_FIELDS)
   end
 
   def test_show_pictures
     get :show, :id => 1
     assert_select 'div.pictures span img' do |pictures|
       count = 0
+      puts pictures.length
       pictures.each do |picture|
-        assert_equal ebay_items(:one).pictures[count].url, picture.attributes['src']
+        assert_equal "/images/pictures/#{ebay_items(:one).id}_#{count}.jpg", picture.attributes['src']
         count += 1
       end
     end
+    get :show, :id => 2
+    assert css_select('div.pictures').empty?
   end
 
   def test_no_pictures
-    get :show, :id => 2
-    item_pictures = css_select 'div.pictures'
-    assert item_pictures.empty?
+    get :show, :id => 3
+    assert css_select('div.pictures').empty?
   end
 
   def test_all_view_base_case
@@ -117,6 +74,28 @@ class EbayItemsViewTest <  ActionController::TestCase
     end
     assert css_select(".prev").empty?
     assert_select "h3", "Vinyl Results #{assigns(:start)}-#{assigns(:end)} of #{assigns(:total)}"
+  end
+
+  private
+
+  def check_view_fields(expected_fields, expected_items)
+    item_count = 0
+    assert_select 'li' do |ebay_items|
+      ebay_items.each do |ebay_item|
+        check_item_result(assert_select(ebay_item, 'li p span'), expected_items[item_count], expected_fields)
+        item_count += 1
+      end
+    end
+  end
+
+  def check_index_items(sorted_ebay_items)
+    count = 0
+    assert_select "a.view" do |view_anchors|
+      view_anchors.each do |view_anchor|
+        assert_equal "/#{sorted_ebay_items[count].id}", view_anchor.attributes['href']
+        count += 1
+      end
+    end
   end
 
 end

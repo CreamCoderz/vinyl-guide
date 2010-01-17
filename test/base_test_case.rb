@@ -3,22 +3,13 @@ module BaseTestCase
   CURRENCY_SYMBOLS = {'USD' => '$', 'GBP' => '&pound;', 'AUD' => '$', 'CAD' => '$', 'CHF' => '?', 'CNY' => '&yen;', 'EUR' => '&euro;',
           'HKD' => '$', 'INR' => 'INR', 'MYR' => 'MYR', 'PHP' => 'PHP', 'PLN' => 'PLN', 'SEK' => 'kr', 'SGD' => '$', 'TWD' => '$'}
   DISPLAY_AS_LINK = lambda {|href| "<a href=\"" + href + "\">" + href + "</a>"}
-  DISPLAY_AS_IMG = lambda do |src|
-    if src.nil?
-      DEFAULT_IMG_URL
+  DISPLAY_AS_IMG = lambda do |hasimage, id|
+    puts "hasimage: #{hasimage}"
+    if hasimage
+      "<img src=\"/images/gallery/#{id}.jpg\" />"
     else
-      "<img src=\"#{src}\" />"
+      DEFAULT_IMG_URL
     end
-  end
-  DISPLAY_PICTURE = lambda do |pictures|
-    if pictures
-      pictures_html = ""
-      pictures.each do |picture|
-        pictures_html += "<p><img src=\"#{picture.url}\" /></p>"
-      end
-      pictures_html.empty? ? nil : pictures_html
-    end
-    nil
   end
   DEFAULT_IMG_URL = '<img src="/images/noimage.jpg" />'
   ESCAPE_HTML = lambda {|html| CGI.escapeHTML(html)}
@@ -33,8 +24,8 @@ module BaseTestCase
   EBAY_ITEM_DISPLAY_FIELDS = [['url', DISPLAY_AS_LINK], ['itemid', TO_S], ['title', TO_S], ['bidcount', TO_S],
           ['price', TO_DOLLARS], ['starttime', TO_DATE], ['endtime', TO_DATE],
           ['country', TO_S], ['subgenre', TO_S], ['size', TO_S], ['speed', TO_S], ['condition', TO_S], ['sellerid', TO_S],
-          ['description', ESCAPE_HTML], ['galleryimg', DISPLAY_AS_IMG]]
-  EBAY_ITEM_ABBRV_DISPLAY_FIELDS = [['galleryimg', DISPLAY_AS_IMG], ['title', TO_S], ['endtime', TO_DATE], {'price', TO_CURRENCY}]
+          ['description', ESCAPE_HTML], ['hasimage', DISPLAY_AS_IMG]]
+  EBAY_ITEM_ABBRV_DISPLAY_FIELDS = [['hasimage', DISPLAY_AS_IMG], ['title', TO_S], ['endtime', TO_DATE], {'price', TO_CURRENCY}]
 
   RECORD_INPUT_TYPE_FIELDS = Array.new(RECORD_DISPLAY_FIELDS);
   RECORD_INPUT_TYPE_FIELDS.delete('date')
@@ -47,18 +38,26 @@ module BaseTestCase
     end
   end
 
+  #TODO: resolve EBayItem field name from dom field name
+  DISPLAY_FIELDS_TO_ITEM_FIELDS = {'gallery' => 'hasimage'}.default{|key| key}
+
+
   def check_search_results(expected_records)
     assert_select '.abbrvItem' do |ebay_nodes|
       count = 0
       ebay_nodes.each do |ebay_item|
-        assert_select ebay_item, 'p span' do |item_fields|
-          expected_record = expected_records[count]
-          check_record_field_with_extraction [Proc.new {|field, expected_value| assert_equal expected_value, field.children.to_s}],
-                  item_fields, EBAY_ITEM_ABBRV_DISPLAY_FIELDS, expected_record
-          count += 1
-        end
+        expected_record = expected_records[count]
+        item_dom_fields = assert_select(ebay_item, 'p span')
+        check_item_result(item_dom_fields, expected_record, EBAY_ITEM_ABBRV_DISPLAY_FIELDS)
+        count += 1
       end
     end
+  end
+
+  def check_item_result(item_dom_fields, expected_record, expected_ebay_item_fields)
+    assert_equal expected_ebay_item_fields.length, item_dom_fields.length
+    check_record_field_with_extraction [Proc.new {|field, expected_value| assert_equal expected_value, field.children.to_s}],
+            item_dom_fields, expected_ebay_item_fields, expected_record
   end
 
   #TODO: this method should go away once all usages are updated
@@ -88,9 +87,13 @@ module BaseTestCase
   end
 
   #TODO: hacked in a hash for special case, price.. depends on multiple ebay_item fields
+  #TODO: hacked in another case for hasimage, since it need 2 callback params.. very bad
 
   def extract_value(expected_record, ebay_item_field_name)
-    if ebay_item_field_name.is_a? Array
+    @id = expected_record.id
+    if 'hasimage' == ebay_item_field_name[0]
+      ebay_item_value = ebay_item_field_name[1].call(expected_record[ebay_item_field_name[0]], expected_record.id)
+    elsif ebay_item_field_name.is_a? Array
       ebay_item_value = ebay_item_field_name[1].call(expected_record[ebay_item_field_name[0]])
     elsif ebay_item_field_name.is_a? Hash
       ebay_item_value = ebay_item_field_name['price'].call(expected_record['price'], expected_record['currencytype'])
@@ -138,7 +141,7 @@ module BaseTestCase
       currency_key_num = i > (CURRENCY_SYMBOLS.keys.length-1) ? i % (CURRENCY_SYMBOLS.keys.length-1) : i
       ebay_item = EbayItem.new(:itemid => EbayBaseData::TETRACK_EBAY_ITEM.itemid + i, :title => EbayBaseData::TETRACK_EBAY_ITEM.title, :description => CGI.unescapeHTML(EbayBaseData::TETRACK_EBAY_ITEM.description), :bidcount => EbayBaseData::TETRACK_EBAY_ITEM.bidcount,
               :price => EbayBaseData::TETRACK_EBAY_ITEM.price, :currencytype => CURRENCY_SYMBOLS.keys[currency_key_num], :endtime => EbayBaseData::TETRACK_EBAY_ITEM.endtime + i, :starttime => EbayBaseData::TETRACK_EBAY_ITEM.starttime + i,
-              :url => EbayBaseData::TETRACK_EBAY_ITEM.url, :galleryimg => EbayBaseData::TETRACK_EBAY_ITEM.galleryimg, :sellerid => EbayBaseData::TETRACK_EBAY_ITEM.sellerid)
+              :url => EbayBaseData::TETRACK_EBAY_ITEM.url, :galleryimg => EbayBaseData::TETRACK_EBAY_ITEM.galleryimg, :sellerid => EbayBaseData::TETRACK_EBAY_ITEM.sellerid, :hasimage => true)
       ebay_items.insert(-1, ebay_item)
       ebay_item.save
     end

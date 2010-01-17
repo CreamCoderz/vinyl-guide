@@ -85,6 +85,7 @@ xmlns=\"http://www.ebay.com/marketplace/search/v1/services\">
   TETRACK_CONDITION = "USED"
   TETRACK_SPEED = "33 RPM"
   TETRACK_COUNTRY = "SE"
+  TETRACK_HASIMAGE = true
 
   GARNET_DESCRIPTION = '45 RPM. Garnet Silk--Babylon Be Still/Version. Johnny Osbourne--Play Play Girl. Byron Lee &amp; The Dragonaires--Spring Garden on Fire/Instrumental. Gregory Isaacs--Hard Drugs/Version.. Records between VG+ to VG++. Not Mint. Great Records to add to your collection. Thanks for looking. Please see my other auctions for more great items. Happy Bidding!!'
   GARNET_ENDTIME = '2009-07-03T22:02:53.000Z'
@@ -101,6 +102,7 @@ xmlns=\"http://www.ebay.com/marketplace/search/v1/services\">
   GARNET_CONDITION = "NEW"
   GARNET_SPEED = "78 RPM"
   GARNET_COUNTRY = "FR"
+  GARNET_HASIMAGE = true
 
   TETRACK_EBAY_ITEM = EbayItemData.new(CGI.unescapeHTML(TETRACK_DESCRIPTION),
           TETRACK_ITEMID, DateUtil.utc_to_date(TETRACK_ENDTIME), DateUtil.utc_to_date(TETRACK_STARTTIME),

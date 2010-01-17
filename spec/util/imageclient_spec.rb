@@ -37,4 +37,6 @@ describe ImageClient do
     ImageClient.new(@webclient).fetch(IMG_URL).should be_nil
   end
 
+  #TODO catch and log exceptions when fetch images
+
 end

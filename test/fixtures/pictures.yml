@@ -1,7 +1,10 @@
 one:
     ebay_item_id: 1
     url: http://www.example.com/picture1
+    hasimage: true
 
 two:
-    ebay_item_id: 1
+    ebay_item_id: 2
     url: http://www.example.com/picture2
+    hasimage: false
+    
