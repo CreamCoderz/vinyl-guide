@@ -8,6 +8,7 @@ module BaseTestCase
     if hasimage
       "<img src=\"/images/gallery/#{id}.jpg\" />"
     else
+      puts "*************JKLFDHIOFEH*FE*(YFE*(Y*(*((FE*U*(UYFE(Y*FEY(*FEY(*"
       DEFAULT_IMG_URL
     end
   end
@@ -141,7 +142,7 @@ module BaseTestCase
       currency_key_num = i > (CURRENCY_SYMBOLS.keys.length-1) ? i % (CURRENCY_SYMBOLS.keys.length-1) : i
       ebay_item = EbayItem.new(:itemid => EbayBaseData::TETRACK_EBAY_ITEM.itemid + i, :title => EbayBaseData::TETRACK_EBAY_ITEM.title, :description => CGI.unescapeHTML(EbayBaseData::TETRACK_EBAY_ITEM.description), :bidcount => EbayBaseData::TETRACK_EBAY_ITEM.bidcount,
               :price => EbayBaseData::TETRACK_EBAY_ITEM.price, :currencytype => CURRENCY_SYMBOLS.keys[currency_key_num], :endtime => EbayBaseData::TETRACK_EBAY_ITEM.endtime + i, :starttime => EbayBaseData::TETRACK_EBAY_ITEM.starttime + i,
-              :url => EbayBaseData::TETRACK_EBAY_ITEM.url, :galleryimg => EbayBaseData::TETRACK_EBAY_ITEM.galleryimg, :sellerid => EbayBaseData::TETRACK_EBAY_ITEM.sellerid, :hasimage => true)
+              :url => EbayBaseData::TETRACK_EBAY_ITEM.url, :galleryimg => EbayBaseData::TETRACK_EBAY_ITEM.galleryimg, :sellerid => EbayBaseData::TETRACK_EBAY_ITEM.sellerid, :hasimage => false)
       ebay_items.insert(-1, ebay_item)
       ebay_item.save
     end

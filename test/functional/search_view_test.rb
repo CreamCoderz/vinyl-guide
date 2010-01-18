@@ -31,7 +31,7 @@ class SearchViewTest <  ActionController::TestCase
     get :search, :q => query
     check_search_results(ebay_items[0..19])
     assert_select ".next" do |elm|
-      assert_equal "/search?query=#{CGI.escape(query)}&page=#{assigns(:next)}", elm[0].attributes['href']
+      assert_equal "/search?q=#{CGI.escape(query)}&page=#{assigns(:next)}", elm[0].attributes['href']
     end
     assert css_select(".prev").empty?
     assert_select "h3", "#{assigns(:start)}-#{assigns(:end)} of #{assigns(:total)} Search Results found for #{CGI.escapeHTML("\"" + query +"\"")}"

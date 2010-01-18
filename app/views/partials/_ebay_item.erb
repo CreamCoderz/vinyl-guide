@@ -56,7 +56,7 @@
 </p>
 <p>
     <label>Gallery Image</label><br/>
-    <span><img src="/images/gallery/<%= ebay_item.id %>.jpg"/></span>
+    <span><img src="<%= display_gallery_img(ebay_item.id, ebay_item.hasimage) %>"/></span>
 </p>
 <% imagefound = false %>
 

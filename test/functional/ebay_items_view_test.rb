@@ -26,14 +26,17 @@ class EbayItemsViewTest <  ActionController::TestCase
     ebay_singles.map {|ebay_item| ebay_item.save}
     get :singles, :id => 1
     check_index_items(ebay_singles.reverse[0..19])
+
     ebay_eps =  generate_ebay_items_with_size(25, "10\"")
     save_ebay_items(ebay_eps)
     get :eps, :id => 1
     check_index_items(ebay_eps.reverse[0..19])
+
     ebay_lps = generate_ebay_items_with_size(25, "LP")
     save_ebay_items(ebay_lps)
     get :lps, :id => 1
     check_index_items(ebay_lps.reverse[0..19])
+
     other_items = generate_ebay_items_with_size(25, "something else")
     save_ebay_items(other_items)
     get :other, :id => 1
@@ -42,8 +45,10 @@ class EbayItemsViewTest <  ActionController::TestCase
 
   def test_show_view
     get :show, :id => 1
-    expected_ebay_item = ebay_items(:one)
     check_item_result(assert_select('li p span'), ebay_items(:one), EBAY_ITEM_DISPLAY_FIELDS)
+    get :show, :id => 4
+    check_item_result(assert_select('li p span'), ebay_items(:four), EBAY_ITEM_DISPLAY_FIELDS)
+
   end
 
   def test_show_pictures

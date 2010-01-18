@@ -5,11 +5,11 @@ module ApplicationHelper
   CURRENCY_SYMBOLS = {'USD' => '$', 'GBP' => '&pound;', 'AUD' => '$', 'CAD' => '$', 'CHF' => '?', 'CNY' => '&yen;', 'EUR' => '&euro;',
           'HKD' => '$', 'INR' => 'INR', 'MYR' => 'MYR', 'PHP' => 'PHP', 'PLN' => 'PLN', 'SEK' => 'kr', 'SGD' => '$', 'TWD' => '$'}
 
-  def display_gallery_img(url)
-    if url.nil?
-      return "/images/noimage.jpg"
+  def display_gallery_img(id, hasimage)
+    if hasimage
+      return "/images/gallery/#{id}.jpg"
     else
-      return url
+      return "/images/noimage.jpg"
     end
   end
 

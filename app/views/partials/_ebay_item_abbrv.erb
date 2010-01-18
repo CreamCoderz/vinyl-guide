@@ -1,7 +1,8 @@
 <table class="abbrvItem">
     <tr>
         <td>
-            <p><span><img src="/images/gallery/<%= ebay_item.id %>.jpg"/></span></p>
+
+            <p><span><img src="<%= display_gallery_img(ebay_item.id, ebay_item.hasimage) %>"/></span></p>
         </td>
         <td>
             <p>

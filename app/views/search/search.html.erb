@@ -13,7 +13,7 @@
             <hr/>
         <% end %>
     </ul>
-    <%= render :partial => "partials/paginated_links", :locals => { :base_url => "/search?query=#{url_escape(@query)}&page=", :next_link => @next, :prev_link => @prev } %>
+    <%= render :partial => "partials/paginated_links", :locals => { :base_url => "/search?q=#{url_escape(@query)}&page=", :next_link => @next, :prev_link => @prev } %>
     <br/>
 
 </div>

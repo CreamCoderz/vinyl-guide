@@ -41,7 +41,7 @@ three:
   url: http://www.ebay.com/3333
   galleryimg: http://www.roots-archives.com/3
   sellerid: onlyroots
-  hasimage: true
+  hasimage: false
 
 four:
   id: 4
@@ -56,7 +56,7 @@ four:
   url: http://www.ebay.com/4444
   galleryimg: http://www.roots-archives.com/4
   sellerid: onlyroots
-  hasimage: true
+  hasimage: false
 
 
 five:

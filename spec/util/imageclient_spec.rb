@@ -38,5 +38,9 @@ describe ImageClient do
   end
 
   #TODO catch and log exceptions when fetch images
+  it "should log an exception upon error" do
+    @webclient.should_receive(:get).with(IMG_URL).and_raise(Exception.new)
+    ImageClient.new(@webclient).fetch(IMG_URL).should be_nil
+  end
 
 end
