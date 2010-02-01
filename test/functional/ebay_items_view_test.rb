@@ -55,7 +55,6 @@ class EbayItemsViewTest <  ActionController::TestCase
     get :show, :id => 1
     assert_select 'div.pictures span img' do |pictures|
       count = 0
-      puts pictures.length
       pictures.each do |picture|
         assert_equal "/images/pictures/#{ebay_items(:one).id}_#{count}.jpg", picture.attributes['src']
         count += 1

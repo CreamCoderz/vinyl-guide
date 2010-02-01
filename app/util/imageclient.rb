@@ -8,14 +8,16 @@ class ImageClient
   end
 
   def fetch(url)
+    image_content = nil
     begin
       response = @webclient.get(url)
       if response.kind_of?(Net::HTTPSuccess) && response['content-type'] == 'image/jpeg'
-        return response.body
+        image_content = response.body
       end
     rescue Exception => e
       EBAY_CRAWLER_LOGGER.error("#{Time.new} - error fetching image for url: #{url}")
       EBAY_CRAWLER_LOGGER.error(e)
     end
+    image_content
   end
 end

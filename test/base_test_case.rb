@@ -4,11 +4,9 @@ module BaseTestCase
           'HKD' => '$', 'INR' => 'INR', 'MYR' => 'MYR', 'PHP' => 'PHP', 'PLN' => 'PLN', 'SEK' => 'kr', 'SGD' => '$', 'TWD' => '$'}
   DISPLAY_AS_LINK = lambda {|href| "<a href=\"" + href + "\">" + href + "</a>"}
   DISPLAY_AS_IMG = lambda do |hasimage, id|
-    puts "hasimage: #{hasimage}"
     if hasimage
       "<img src=\"/images/gallery/#{id}.jpg\" />"
     else
-      puts "*************JKLFDHIOFEH*FE*(YFE*(Y*(*((FE*U*(UYFE(Y*FEY(*FEY(*"
       DEFAULT_IMG_URL
     end
   end

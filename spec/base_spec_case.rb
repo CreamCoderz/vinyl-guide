@@ -1,5 +1,10 @@
 module BaseSpecCase
 
+  TEMP_DATA_PATH = File.dirname(__FILE__) + "/data/tmp/"
+  TEMP_DATA_DIR = Dir.new(TEMP_DATA_PATH)
+  GALLERY_IMG_PATH = "/../../../spec/data/tmp/gallery/"
+  PICTURE_IMG_PATH = "/../../../spec/data/tmp/pictures/"
+
   def make_success_response(body)
     make_response(body, 2)
   end

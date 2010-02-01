@@ -16,7 +16,6 @@ class EbayItemsDetailsParser
       items = ArrayUtil.arrayifiy(items)
       items.each do |item|
         if (item['BidCount']['$'].to_i > 0)
-          #TODO: create this object iteratively
           parsed_specifics = extract_value(ITEMSPECIFICS, item)
           ebay_items.insert(-1, EbayItemData.new(extract_value(DESCRIPTION, item),
                   extract_value(ITEMID, item), extract_value(ENDTIME, item),

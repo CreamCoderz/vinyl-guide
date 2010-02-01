@@ -29,7 +29,7 @@ class EbayCrawler
     current_time = @ebay_client.get_current_time
     ebay_auctions = EbayAuction.find(:all,
             :conditions => ["end_time < ?", current_time])
-    added_items = 0
+    added_items_count = 0
     total_pictures = 0
     total_gallery = 0
     if !ebay_auctions.empty?
@@ -46,7 +46,7 @@ class EbayCrawler
           pictures = item_details.pictureimgs.map {|pictureimg| Picture.new(:ebay_item_id => ebay_item.id, :url => pictureimg)}
         end
         ebay_item.pictures = pictures
-        added_items = save_item(added_items, ebay_item)
+        added_items_count = save_item(added_items_count, ebay_item)
         if (@image_dir)
           num_pictures, num_gallery = inject_images(ebay_item)
           total_pictures += num_pictures
@@ -55,18 +55,18 @@ class EbayCrawler
       end
       ebay_auctions.map { |ebay_auction| ebay_auction.delete }
     end
-    EBAY_CRAWLER_LOGGER.info("#{Time.new} added #{added_items} of #{ebay_auctions.length} new item details")
+    EBAY_CRAWLER_LOGGER.info("#{Time.new} added #{added_items_count} of #{ebay_auctions.length} new item details")
     EBAY_CRAWLER_LOGGER.info("#{Time.new} added #{total_pictures} new pictures")
     EBAY_CRAWLER_LOGGER.info("#{Time.new} added #{total_gallery} new gallery pictures")
   end
 
   private
 
-  def save_item(added_items, ebay_item)
+  def save_item(added_items_count, ebay_item)
     if ebay_item.save
-      added_items += 1
+      added_items_count += 1
     end
-    return added_items
+    return added_items_count
   end
 
   def inject_images(ebay_item)
@@ -76,10 +76,15 @@ class EbayCrawler
       image_name = "/pictures/#{ebay_item.id}_#{num_pictures}.jpg"
       if write_image(image_name, @image_client.fetch(picture.url))
         num_pictures += 1
+        #TODO: test this
+        picture.hasimage = true
+        picture.save
       end
     end
-    if write_image("/gallery/#{ebay_item.id}.jpg", @image_client.fetch(ebay_item.galleryimg))
+    if ebay_item.galleryimg and write_image("/gallery/#{ebay_item.id}.jpg", @image_client.fetch(ebay_item.galleryimg))
       num_gallery += 1
+      ebay_item.hasimage = true
+      ebay_item.save
     end
     return [num_pictures, num_gallery]
   end
@@ -94,11 +99,9 @@ class EbayCrawler
   end
 
   def verify_image(image_content)
-    verified = true
+    verified = false
     if (image_content)
       verified = !(DEFAULT_EBAY_IMAGE == image_content)
-    else
-      verified = false
     end
     verified
   end

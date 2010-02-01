@@ -11,7 +11,6 @@ class SearchViewTest <  ActionController::TestCase
   def test_should_display_search_view
     expected_records = [ebay_items(:five), ebay_items(:four)]
     response = get :search, :q => PRINCE
-    puts response.body
     assert_response :success
     check_search_results(expected_records)
   end

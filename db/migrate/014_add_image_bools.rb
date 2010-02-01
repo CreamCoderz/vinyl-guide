@@ -2,13 +2,13 @@ require 'pp'
 require 'set'
 
 class AddImageBools < ActiveRecord::Migration
-  PICTURES_PATH = "/Users/will/vinylguide3/public/images/pictures"
-  GALLERY_PATH = "/Users/will/vinylguide3/public/images/gallery"
+  PICTURES_PATH = "/Users/will/all_imgs_tmp/pictures_tmp/"
+  GALLERY_PATH = "/Users/will/all_imgs_tmp/gallery_tmp"
 
   def self.up
     add_column(:ebay_items, :hasimage, :boolean)
     add_column(:pictures, :hasimage, :boolean)
-    picture_filenames = Dir.entries(PICTURES_PATH).map{|filename| filename.split(".")[0]}.to_set
+    picture_filenames = Dir.entries(PICTURES_PATH).map{|filename|filename.split(".")[0]}.to_set
     gallery_filenames = Dir.entries(GALLERY_PATH).map{|filename| filename.split(".")[0]}.to_set
 
     puts "gallery size: #{gallery_filenames.length}"
@@ -35,13 +35,13 @@ class AddImageBools < ActiveRecord::Migration
         begin_time = Time.new
         if picture_filenames.include?("#{ebay_item.id}_#{i}")
           picture.hasimage = true
+          picture.save
           i += 1
           picture_img_count +=1
         end
         picture_lookup_time += Time.new.to_i - begin_time.to_i
       end
       begin_time = Time.new
-      ebay_item.save
       insertion_time += Time.new.to_i - begin_time.to_i
       if count % 100 == 0
         puts "id: #{ebay_item.id}"
