@@ -11,7 +11,7 @@ module EbayItemsDetailsParserData
   IMAGE = 'GalleryURL'
   PICTURE = 'PictureURL'
   BIDCOUNT = 'BidCount'
-  PRICE = 'CurrentPrice'
+  PRICE = 'ConvertedCurrentPrice'
   CURRENCY_ID = '@currencyID'
   SELLER = 'Seller'
   USERID = 'UserID'
