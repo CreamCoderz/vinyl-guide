@@ -40,6 +40,18 @@ class EbayItemDataBuilder
             @ebayitem.currencytype, @ebayitem.size, @ebayitem.subgenre, @ebayitem.condition, @ebayitem.speed)
   end
 
+  #TODO: this in convenient but it does create a dependency to activerecord
+  def to_item
+    ebay_item_data = to_data
+    ebay_item = EbayItem.new(:itemid => ebay_item_data.itemid, :title => ebay_item_data.title, :description => ebay_item_data.description,
+            :bidcount => ebay_item_data.bidcount, :price => ebay_item_data.price, :endtime => ebay_item_data.endtime,
+            :starttime => ebay_item_data.starttime, :url => ebay_item_data.url, :galleryimg => ebay_item_data.galleryimg,
+            :sellerid => ebay_item_data.sellerid, :country => ebay_item_data.country, :size => ebay_item_data.size,
+            :speed => ebay_item_data.speed, :condition => ebay_item_data.condition, :subgenre => ebay_item_data.subgenre,
+            :currencytype => ebay_item_data.currencytype)
+
+  end
+
   class EbayItemDataSubset
     #TODO: pull in this accessor list dynamically from EbayItemData
     attr_accessor :description, :itemid, :endtime, :starttime, :url, :galleryimg, :bidcount, :price, :sellerid, :title,

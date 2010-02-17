@@ -1,7 +1,7 @@
 class SearchController < ApplicationController
 
   def search
-    do_search(params[:q])
+    do_search(params[:q], params[:sort])
     if request.xml_http_request?
       ebay_api_items = ""
       ebay_api_hash = []
@@ -15,21 +15,21 @@ class SearchController < ApplicationController
 
   private
 
-  def do_search(raw_query)
+  def do_search(raw_query, order)
     searchable_fields = ['itemid', 'description', 'title', 'url', 'galleryimg', 'sellerid']
     page = params[:page]
     page_num = page ? page.to_i : 1
     #TODO: query generator needed
     wild_query = "%#{raw_query}%"
-    query_exp = ''
-    wild_sub_query = ''
+    query = ''
     searchable_fields.each do |searchable_field|
-      wild_sub_query = append_or(wild_sub_query)
-      wild_sub_query += "#{searchable_field} like :wild_query"
+      query = append_or(query)
+      query += "#{searchable_field} like :wild_query"
     end
-    query_exp += wild_sub_query
-
-    @ebay_items, @prev, @next, @start, @end, @total = paginate(page_num, EbayItem, [query_exp, {:wild_query => wild_query}])
+    order_query = order.nil? ? "id" : order
+    order_query += " DESC"
+    puts order_query
+    @ebay_items, @prev, @next, @start, @end, @total = paginate(page_num, EbayItem, [query, {:wild_query => wild_query}], order_query)
     @query = raw_query
   end
 

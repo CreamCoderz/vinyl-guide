@@ -12,13 +12,16 @@ puts "found: #{ebay_items.length} items"
 
 web_client = WebClient.new(Net::HTTP)
 ebay_client = EbayClient.new(web_client)
-ebay_item_data = ebay_client.get_details(ebay_items.map{|ebay_item|ebay_item.itemid})
+item_ids = ebay_items.map{|ebay_item|ebay_item.itemid}
+ebay_item_data = ebay_client.get_details(item_ids)
 
-ebay_item_data.each do |item_data|
-  ebay_item = EbayItem.find(:first, :conditions => {:itemid => item_data.itemid})
-  ebay_item.currencytype = item_data.currencytype
-  ebay_item.price = item_data.price
-  unless ebay_item.save
-    puts "couldn't save ebay item id: #{ebay_item.itemid} with app id #{ebay_item.id}"
-  end
-end
+puts "found: #{ebay_item_data.length} ebay item datas"
+
+#ebay_item_data.each do |item_data|
+#  ebay_item = EbayItem.find(:first, :conditions => {:itemid => item_data.itemid})
+#  ebay_item.currencytype = item_data.currencytype
+#  ebay_item.price = item_data.price
+#  unless ebay_item.save
+#    puts "couldn't save ebay item id: #{ebay_item.itemid} with app id #{ebay_item.id}"
+#  end
+#end
