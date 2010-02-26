@@ -1,4 +1,6 @@
 class SearchController < ApplicationController
+  SEARCHABLE_FIELDS = ['itemid', 'description', 'title', 'url', 'galleryimg', 'sellerid']
+  SORTABLE_FIELDS = ['endtime', 'price', 'title']
 
   def search
     do_search(params[:q], params[:sort])
@@ -16,19 +18,20 @@ class SearchController < ApplicationController
   private
 
   def do_search(raw_query, order)
-    searchable_fields = ['itemid', 'description', 'title', 'url', 'galleryimg', 'sellerid']
     page = params[:page]
     page_num = page ? page.to_i : 1
     #TODO: query generator needed
     wild_query = "%#{raw_query}%"
     query = ''
-    searchable_fields.each do |searchable_field|
+    SEARCHABLE_FIELDS.each do |searchable_field|
       query = append_or(query)
       query += "#{searchable_field} like :wild_query"
     end
-    order_query = order.nil? ? "id" : order
+    order_query = SORTABLE_FIELDS[0]
+    if order
+      order_query = order if SORTABLE_FIELDS.include?(order.downcase)
+    end
     order_query += " DESC"
-    puts order_query
     @ebay_items, @prev, @next, @start, @end, @total = paginate(page_num, EbayItem, [query, {:wild_query => wild_query}], order_query)
     @query = raw_query
   end

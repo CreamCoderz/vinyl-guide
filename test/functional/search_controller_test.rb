@@ -2,6 +2,12 @@ require 'test_helper'
 
 class SearchControllerTest < ActionController::TestCase
 
+  ASWAD_TITLE = 'aswad'
+
+  def setup
+    @data_builder = EbayItemDataBuilder.new
+  end
+
   def test_should_search_for_ebay_items
     check_query(:search, :q)
   end
@@ -10,28 +16,47 @@ class SearchControllerTest < ActionController::TestCase
     check_search_pagination(:search, :q)
   end
 
-  def test_sort_param
-    aswad_title = 'aswed'
-    data_builder = EbayItemDataBuilder.new
-    ebay_item_med = data_builder.make
-    ebay_item_med.price = 10.0
-    ebay_item_med.title = aswad_title
-    ebay_item_med = ebay_item_med.to_item
-    ebay_item_cheap = data_builder.make
-    ebay_item_cheap.price = 5.0
-    ebay_item_cheap.title = aswad_title
-    ebay_item_cheap = ebay_item_cheap.to_item
-    ebay_item_expensive = data_builder.make
-    ebay_item_expensive.price = 20.0
-    ebay_item_expensive.title = aswad_title
-    ebay_item_expensive = ebay_item_expensive.to_item
-
+  #TODO: test ASCENDING and DESCENDING orders for all the sort params
+  
+  def test_sort_by_price
+    ebay_item_med, ebay_item_cheap, ebay_item_expensive = @data_builder.to_items(:price=, [10.0, 5.0, 20.0]) {|item| item.title=ASWAD_TITLE}
+    [ebay_item_med, ebay_item_cheap, ebay_item_expensive].each{ |item| item.save}
     expected_items = [ebay_item_expensive, ebay_item_med, ebay_item_cheap]
-    expected_items.each { |expected_item| expected_item.save}
-    get :search, :q => aswad_title, :sort => 'price', :page => 1
-    actual_items = assigns(:ebay_items)
-    assert_equal expected_items, actual_items
+    get :search, :q => ASWAD_TITLE, :sort => 'price', :page => 1
+    assert_equal expected_items, assigns(:ebay_items)
   end
+
+  #TODO: test all sortable fields and order desc and ascending
+
+  def test_sort_by_enddate
+    oldest = DateTime.civil(2008, 1, 2, 1, 55, 10)
+    middle = DateTime.civil(2009, 1, 2, 1, 45, 10)
+    newest = DateTime.civil(2009, 1, 2, 1, 55, 10)
+    middle_item, newest_item, oldest_item = @data_builder.to_items(:endtime=, [middle, newest, oldest]) {|item| item.title=ASWAD_TITLE}
+    [middle_item, newest_item, oldest_item].each{ |item| item.save}
+    expected_items = [newest_item, middle_item, oldest_item]
+    expected_items.each { |expected_item| expected_item.save}
+    get :search, :q => ASWAD_TITLE, :sort => 'endtime', :page => 1
+    assert_equal expected_items, assigns(:ebay_items)
+  end
+
+  def test_sort_by_title
+    ebay_item_linval, ebay_item_esk, ebay_item_sabba = @data_builder.to_items(:title=, ["Linval #{ASWAD_TITLE}", "Eskender #{ASWAD_TITLE}", "Sabba #{ASWAD_TITLE}"])
+    [ebay_item_linval, ebay_item_esk, ebay_item_sabba].each{ |item| item.save}
+    expected_items = [ebay_item_sabba, ebay_item_linval, ebay_item_esk]
+    get :search, :q => ASWAD_TITLE, :sort => 'title', :page => 1
+    assert_equal expected_items, assigns(:ebay_items)
+  end
+
+  #TODO: it really should return a 400 for a bad sort param, but i'll let it default for now
+
+#  def test_bad_sort_param
+#    get :search, :q => ASWAD_TITLE, :sort => 'foobar', :page => 1
+#    assert_response 400
+#  end
+
+  #TODO: don't die on missing query param
+  #TODO: do not bother searching for empty queries
 
   def check_query(method, query_param)
     expected_query = 'lee perry'

@@ -15,4 +15,19 @@
             </form>
         </div>
     </div>
+
+    <% if @sortable_base_url %>
+        <div>
+            <% if @order_param.nil? or 'enddate'.casecmp(@order_param) == 0 %>
+                <span id="enddate">END DATE</span>
+            <% else %>
+                <span id='enddate'><a href="<%= "#{@sortable_base_url}&order=enddate" %>">END DATE</a></span>
+            <% end %>
+            <% if @order_param and 'price'.casecmp(@order_param) == 0 %>
+                <span id='price'>PRICE</span>
+            <% else %>
+                <span id='price'><a href="<%= "#{@sortable_base_url}&order=price" %>">PRICE</a></span>
+            <% end %>
+        </div>
+    <% end %>
 </div>

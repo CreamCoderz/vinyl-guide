@@ -46,4 +46,8 @@ module ApplicationHelper
   def display_currency_symbol(currency_type)
     CURRENCY_SYMBOLS[currency_type]
   end
+
+  def append_href_attr(base_url, attribute, replace=true)
+    base_url.replace()   
+  end
 end

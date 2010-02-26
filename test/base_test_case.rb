@@ -163,4 +163,11 @@ module BaseTestCase
   def save_ebay_items(ebay_items)
     ebay_items.map{|ebay_item| ebay_item.save }
   end
+
+  def bind_erb_file(path, binding)
+    template = ERB.new File.read(path)
+    output = template.result(binding)
+    HTML::Document.new(output).root
+  end
+
 end

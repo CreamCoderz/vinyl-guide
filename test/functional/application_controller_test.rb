@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ApplicationControllerTest < Test::Unit::TestCase
+class ApplicationControllerTest < ActionController::TestCase
 
   def setup
     @controller = ApplicationController.new

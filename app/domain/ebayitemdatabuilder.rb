@@ -25,10 +25,12 @@ class EbayItemDataBuilder
   def method_missing(method, *args, &block)
     if @ebayitem.respond_to?(method)
       @ebayitem.send(method, *args, &block)
+      return self
     else
       raise NoMethodError
     end
   end
+
 
   def to_data
     @num += 1
@@ -41,6 +43,18 @@ class EbayItemDataBuilder
   end
 
   #TODO: this in convenient but it does create a dependency to activerecord
+
+  def to_items(method, args, &block)
+    datas = []
+    args.each do |arg|
+      make
+      self.send(method, arg)
+      yield self if block_given?
+      datas << to_item
+    end
+    datas
+  end
+
   def to_item
     ebay_item_data = to_data
     ebay_item = EbayItem.new(:itemid => ebay_item_data.itemid, :title => ebay_item_data.title, :description => ebay_item_data.description,

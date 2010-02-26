@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
+  before_filter { |controller| @order_param = controller.params["order"] }
+
   PAGE_LIMIT = 20
 
   def paginate(page_num, active_record_class, conditions=nil, order="id DESC")
