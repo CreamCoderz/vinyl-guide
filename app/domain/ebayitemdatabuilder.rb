@@ -31,7 +31,6 @@ class EbayItemDataBuilder
     end
   end
 
-
   def to_data
     @num += 1
     description, itemid, endtime, starttime, url,
@@ -42,9 +41,9 @@ class EbayItemDataBuilder
             @ebayitem.currencytype, @ebayitem.size, @ebayitem.subgenre, @ebayitem.condition, @ebayitem.speed)
   end
 
-  #TODO: this in convenient but it does create a dependency to activerecord
+  #TODO: this is convenient but it creates a dependency to activerecord
 
-  def to_items(method, args, &block)
+  def to_items(method, *args, &block)
     datas = []
     args.each do |arg|
       make
@@ -62,8 +61,17 @@ class EbayItemDataBuilder
             :starttime => ebay_item_data.starttime, :url => ebay_item_data.url, :galleryimg => ebay_item_data.galleryimg,
             :sellerid => ebay_item_data.sellerid, :country => ebay_item_data.country, :size => ebay_item_data.size,
             :speed => ebay_item_data.speed, :condition => ebay_item_data.condition, :subgenre => ebay_item_data.subgenre,
-            :currencytype => ebay_item_data.currencytype)
+            :currencytype => ebay_item_data.currencytype, :hasimage => ebay_item_data.galleryimg != nil)
 
+  end
+
+  def to_many_items(count)
+    datas = []
+    (1..count).each do
+      make
+      datas << to_item
+    end
+    datas
   end
 
   class EbayItemDataSubset
@@ -83,7 +91,7 @@ class EbayItemDataBuilder
       @sellerid = "seller#{num}"
       @title = "title #{num}"
       @pictureimgs = nil
-      @currencytype = "#{num} USD"
+      @currencytype = "USD"
       @size = "#{num} 12\""
       @subgenre = "#{num} Roots"
       @condition = "#{num} Used"

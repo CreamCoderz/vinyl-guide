@@ -3,6 +3,8 @@ include BaseTestCase
 
 class SearchViewTest <  ActionController::TestCase
   PRINCE = 'prince'
+  ENDTIME, PRICE, TITLE = SearchController::SORTABLE_FIELDS
+  DESC, ASC = SearchController::ORDER_FIELDS
 
   def setup
     @controller = SearchController.new
@@ -27,10 +29,11 @@ class SearchViewTest <  ActionController::TestCase
   def test_pagination
     ebay_items = generate_some_ebay_items(25).reverse
     query = ebay_items[0].title
-    get :search, :q => query
+    get :search, :q => query, :sort => ENDTIME, :order => DESC
     check_search_results(ebay_items[0..19])
+    puts @response.body
     assert_select ".next" do |elm|
-      assert_equal "/search?q=#{CGI.escape(query)}&page=#{assigns(:next)}", elm[0].attributes['href']
+      assert_equal "/search?q=#{CGI.escape(query)}&sort=#{ENDTIME}&order=#{DESC}&page=#{assigns(:next)}", elm[0].attributes['href']
     end
     assert css_select(".prev").empty?
     assert_select "h3", "#{assigns(:start)}-#{assigns(:end)} of #{assigns(:total)} Search Results found for #{CGI.escapeHTML("\"" + query +"\"")}"

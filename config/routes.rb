@@ -9,11 +9,11 @@ ActionController::Routing::Routes.draw do |map|
 
   map.search 'search', :controller => 'search', :action => 'search'
   map.connect '/', :controller => 'ebay_items', :action => 'index'
-  map.connect 'singles/:id', :controller => 'ebay_items', :action => 'singles'
-  map.connect 'eps/:id', :controller => 'ebay_items', :action => 'eps'
-  map.connect 'lps/:id', :controller => 'ebay_items', :action => 'lps'
-  map.connect 'other/:id', :controller => 'ebay_items', :action => 'other'
-  map.connect 'all/:id', :controller => 'ebay_items', :action => 'all'
+  map.connect 'singles', :controller => 'ebay_items', :action => 'singles'
+  map.connect 'eps', :controller => 'ebay_items', :action => 'eps'
+  map.connect 'lps', :controller => 'ebay_items', :action => 'lps'
+  map.connect 'other', :controller => 'ebay_items', :action => 'other'
+  map.connect 'all', :controller => 'ebay_items', :action => 'all'
   map.connect '/:id', :controller => 'ebay_items', :action => 'show'
 
   # Sample of named route:

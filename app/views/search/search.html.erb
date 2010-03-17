@@ -4,7 +4,11 @@
         <% @range = "#{@start}-#{@end} of" %>
     <% end %>
     <h3><%= @range %> <%= @total %> Search Results found for &quot;<%= html_escape(@query) %>&quot;</h3>
-    <%= render :partial => "partials/paginated_links", :locals => { :base_url => "/search?q=#{url_escape(@query)}&page=", :next_link => @next, :prev_link => @prev } %>
+    <%= render :partial => "partials/paginated_links", :locals => {
+            :base_url => "/search?q=#{url_escape(@query)}",
+            :sort => @sort_param, :order => @order_param,
+            :next_link => @next, :prev_link => @prev
+    } %>
     <ul>
         <% @ebay_items.each do |ebay_item| %>
             <li class="recordItem">
@@ -13,7 +17,11 @@
             <hr/>
         <% end %>
     </ul>
-    <%= render :partial => "partials/paginated_links", :locals => { :base_url => "/search?q=#{url_escape(@query)}&page=", :next_link => @next, :prev_link => @prev } %>
+    <%= render :partial => "partials/paginated_links", :locals => {
+            :base_url => "/search?q=#{url_escape(@query)}",
+            :sort => @sort_param, :order => @order_param,
+            :next_link => @next, :prev_link => @prev
+    } %>
     <br/>
 
 </div>

@@ -156,28 +156,63 @@ a:active {
     margin-top: 12px;
 }
 
-.navLink a:link, .nav a:link {
-    color: #FF9900;
+.navLink a:link, .nav a:link, .subnav a:link {
     text-decoration: none;
     font-size: 20px;
+    color: #FF9900;
 }
 
-.navLink a:visited, .nav a:visited {
-    color: #FF9900;
+.navLink a:visited, .nav a:visited, .subnav a:visited {
     text-decoration: none;
     font-size: 20px;
+    color: #FF9900;
 }
 
-.navLink a:hover, .nav a:hover {
-    color: #FF9900;
+.navLink a:hover, .nav a:hover, .subnav a:hover {
     text-decoration: underline;
     font-size: 20px;
+    color: #FF9900;
 }
 
-.navLink a:active, .nav a:active {
-    color: #FF9900;
+.navLink a:active, .nav a:active, .subnav a:active {
     text-decoration: none;
     font-size: 20px;
+    color: #FF9900;
+}
+
+.subheader {
+    margin-top: 0;
+    padding: 0;
+    width: 1200px;
+    height: 25px;
+    background-color: #FF9900;
+}
+
+.subnav {
+    float: right;
+    left: 278px;
+    width: 922px;
+    height: 100%;
+    background-color: #006600;
+    font-size: 20px;
+}
+
+.subnav div {
+    margin-left: 7px;
+    margin-top: 0;
+    color: #FFFFFF;
+}
+
+.subnav .selected {
+    font-weight: bold;
+}
+
+.subnav .asc {
+    color: #FF9900;
+}
+
+.subnav .desc {
+    color: #990000;
 }
 
 .navBgcolor {

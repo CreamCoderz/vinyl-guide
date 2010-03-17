@@ -47,7 +47,17 @@ module ApplicationHelper
     CURRENCY_SYMBOLS[currency_type]
   end
 
-  def append_href_attr(base_url, attribute, replace=true)
-    base_url.replace()   
+  def append_query_params(base_url, params)
+    query = ""
+    leading_char = base_url.include?("?") ? "&" : "?"
+    params.each do |key_value_pair|
+      value = key_value_pair[1]
+      if value
+        query += "#{leading_char}#{key_value_pair[0]}=#{value}"
+        leading_char = "&"
+      end
+    end
+    puts base_url + query
+    base_url + query
   end
 end

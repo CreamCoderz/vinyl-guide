@@ -2,12 +2,28 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+  SORTABLE_FIELDS = ['endtime', 'price', 'title']
+  ORDER_FIELDS = ['desc', 'asc']
+
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
-  before_filter { |controller| @order_param = controller.params["order"] }
+  before_filter do |controller|
+#    order = controller.params["order"]
+#    sort = controller.params["sort"]
+#    @sort_param = SORTABLE_FIELDS[0]
+#    @order_param = ORDER_FIELDS[0]
+#    if sort and SORTABLE_FIELDS.include?(sort.downcase)
+#      @sort_param = sort
+#    end
+#    if order and ORDER_FIELDS.include?(order.downcase)
+#      @order_param = order
+#    end
+  end
 
   PAGE_LIMIT = 20
+
+  #TODO: move this into its own class
 
   def paginate(page_num, active_record_class, conditions=nil, order="id DESC")
     item_length = active_record_class.count(:all, :conditions => conditions)

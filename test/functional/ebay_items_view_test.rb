@@ -4,9 +4,13 @@ File.expand_path(File.dirname(__FILE__) + "/ebay_items_controller_test")
 include BaseTestCase
 
 class EbayItemsViewTest <  ActionController::TestCase
+  ENDTIME, PRICE, TITLE = SearchController::SORTABLE_FIELDS
+  DESC, ASC = SearchController::ORDER_FIELDS
 
   def setup
     @controller = EbayItemsController.new
+    @ebay_item_data_builder = EbayItemDataBuilder.new
+    @ebay_items = [ebay_items(:five), ebay_items(:four), ebay_items(:three), ebay_items(:two), ebay_items(:one)]
   end
 
   def test_index_view
@@ -24,23 +28,33 @@ class EbayItemsViewTest <  ActionController::TestCase
   def test_specifics_index_views
     ebay_singles = generate_ebay_items_with_size(25, "7\"")
     ebay_singles.map {|ebay_item| ebay_item.save}
-    get :singles, :id => 1
+    get :singles, :page => 1, :sort => ENDTIME, :order => DESC
     check_index_items(ebay_singles.reverse[0..19])
 
     ebay_eps =  generate_ebay_items_with_size(25, "10\"")
     save_ebay_items(ebay_eps)
-    get :eps, :id => 1
+    get :eps, :page => 1
     check_index_items(ebay_eps.reverse[0..19])
 
     ebay_lps = generate_ebay_items_with_size(25, "LP")
     save_ebay_items(ebay_lps)
-    get :lps, :id => 1
+    get :lps, :page => 1
     check_index_items(ebay_lps.reverse[0..19])
 
     other_items = generate_ebay_items_with_size(25, "something else")
     save_ebay_items(other_items)
-    get :other, :id => 1
+    get :other, :page => 1
     check_index_items(other_items.reverse[0..19])
+  end
+
+  def test_pagination
+    ebay_items = generate_some_ebay_items(25).reverse
+    get :all, :page => 1, :sort_param => ENDTIME, :order_param => DESC
+    assert_select ".next" do |elm|
+      assert_equal "/all?sort=#{ENDTIME}&order=#{DESC}&page=2", elm[0].attributes['href']
+    end
+    assert css_select(".prev").empty?
+    assert_select "h3", "All Vinyl Results #{assigns(:start)}-#{assigns(:end)} of #{assigns(:total)}"
   end
 
   def test_show_view
@@ -65,19 +79,21 @@ class EbayItemsViewTest <  ActionController::TestCase
   end
 
   def test_no_pictures
-    get :show, :id => 3
+    get :show, :page => 3
     assert css_select('div.pictures').empty?
   end
 
   def test_all_view_base_case
-    ebay_items = generate_some_ebay_items(25).reverse[0..19]
-    response = get :all, :id => 1
-    check_view_fields(EBAY_ITEM_ABBRV_DISPLAY_FIELDS, ebay_items)
+    ebay_items = @ebay_item_data_builder.make.to_many_items(25)
+    ebay_items.each { |ebay_item| ebay_item.save}
+    expected_ebay_items = @ebay_items.concat(ebay_items.reverse[0..14])
+    response = get :all, :page => 1
+    check_view_fields(EBAY_ITEM_ABBRV_DISPLAY_FIELDS, expected_ebay_items)
     assert_select ".next" do |elm|
-      assert_equal "/all/#{assigns(:next)}", elm[0].attributes['href']
+      assert_equal "/all?sort=endtime&order=desc&page=#{assigns(:next)}", elm[0].attributes['href']
     end
     assert css_select(".prev").empty?
-    assert_select "h3", "Vinyl Results #{assigns(:start)}-#{assigns(:end)} of #{assigns(:total)}"
+    assert_select "h3", "All Vinyl Results #{assigns(:start)}-#{assigns(:end)} of #{assigns(:total)}"
   end
 
   private

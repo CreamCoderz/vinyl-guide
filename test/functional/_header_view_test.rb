@@ -1,34 +1,119 @@
 require 'test_helper'
 include BaseTestCase
+include ApplicationHelper
+include ERB::Util
 
 class HeaderViewTest <  ActionController::TestCase
 
   TEMPLATE_PATH = File.dirname(__FILE__) + '/../../app/views/partials/_header.html.erb'
+  ENDTIME, PRICE, TITLE = SearchController::SORTABLE_FIELDS
+  DESC, ASC = SearchController::ORDER_FIELDS
+  SORT_PARAM = 'sort'
+  ORDER_PARAM = 'order'
+  Q = "JAH"
 
-  def test_should_populate_correct_order_link
-    q = "JAH"
-    @sortable_base_url = "/search?q=#{q}"
+  def test_sort_links_endtime
+    @sort_param = ENDTIME
+    @order_param = DESC
+    @sortable_base_url = "/search?q=#{Q}"
     @selected = bind_erb_file(TEMPLATE_PATH, binding)
-    assert_select @selected, "#enddate", 'END DATE'
-    assert css_select(@selected, "#enddate a").empty?
-    assert_select @selected, "#price a" do
-      assert_select "[href=?]", "/search?q=#{q}&order=price"
+    assert_select @selected, "##{ENDTIME} a" do
+      assert_select "[href=?]", "#{@sortable_base_url}&amp;#{SORT_PARAM}=#{ENDTIME}&amp;#{ORDER_PARAM}=#{ASC}"
+      assert_select ".asc"
+      assert_select ".selected"
     end
-    @order_param = "price"
+    assert_select @selected, "##{PRICE} a" do
+      assert_select "[href=?]", "#{@sortable_base_url}&amp;#{SORT_PARAM}=#{PRICE}&amp;#{ORDER_PARAM}=#{DESC}"
+      assert_select ".desc"
+      assert css_select(".selected").empty?
+    end
+    assert_select @selected, "##{TITLE} a" do
+      assert_select "[href=?]", "#{@sortable_base_url}&amp;#{SORT_PARAM}=#{TITLE}&amp;#{ORDER_PARAM}=#{DESC}"
+      assert_select ".desc"
+      assert css_select(".selected").empty?
+    end
+
+    @order_param = ASC
     @selected = bind_erb_file(TEMPLATE_PATH, binding)
-    assert_select @selected, "#price", 'PRICE'
-    assert_select @selected, "#enddate a" do
-      assert_select "[href=?]", "/search?q=#{q}&order=enddate"
+    assert_select @selected, "##{ENDTIME} a" do
+      assert_select "[href=?]", "#{@sortable_base_url}&amp;#{SORT_PARAM}=#{ENDTIME}&amp;#{ORDER_PARAM}=#{DESC}"
+      assert_select ".desc"
+      assert_select ".selected"
     end
   end
 
-  #TODO: test all sortable fields SearchController::SORTABLE_FIELDS
-  #TODO: test ordering is set correctly (ascending|descending)
+  def test_sort_links_price
+    @sort_param = PRICE
+    @order_param = DESC
+    @sortable_base_url = "/search?q=#{Q}"
+    @selected = bind_erb_file(TEMPLATE_PATH, binding)
+    assert_select @selected, "##{PRICE} a" do
+      assert_select "[href=?]", "#{@sortable_base_url}&amp;#{SORT_PARAM}=#{PRICE}&amp;#{ORDER_PARAM}=#{ASC}"
+      assert_select ".asc"
+      assert_select ".selected"
+    end
+    assert_select @selected, "##{ENDTIME} a" do
+      assert_select "[href=?]", "#{@sortable_base_url}&amp;#{SORT_PARAM}=#{ENDTIME}&amp;#{ORDER_PARAM}=#{DESC}"
+      assert_select ".desc"
+      assert css_select(".selected").empty?
+    end
+    assert_select @selected, "##{TITLE} a" do
+      assert_select "[href=?]", "#{@sortable_base_url}&amp;#{SORT_PARAM}=#{TITLE}&amp;#{ORDER_PARAM}=#{DESC}"
+      assert_select ".desc"
+      assert css_select(".selected").empty?
+    end
 
-  def test_order_link_appends_query
-    q = "JAH"
-    @sortable_base_url = "/search"
-    @selected = bind_erb_file(TEMPLATE_PATH, self.send(:binding))
+    @order_param = ASC
+    @selected = bind_erb_file(TEMPLATE_PATH, binding)
+    assert_select @selected, "##{PRICE} a" do
+      assert_select "[href=?]", "#{@sortable_base_url}&amp;#{SORT_PARAM}=#{PRICE}&amp;#{ORDER_PARAM}=#{DESC}"
+      assert_select ".desc"
+      assert_select ".selected"
+    end
+  end
+
+  def test_sort_links_title
+    @sort_param = TITLE
+    @order_param = DESC
+    @sortable_base_url = "/search?q=#{Q}"
+    @selected = bind_erb_file(TEMPLATE_PATH, binding)
+    assert_select @selected, "##{PRICE} a" do
+      assert_select "[href=?]", "#{@sortable_base_url}&amp;#{SORT_PARAM}=#{PRICE}&amp;#{ORDER_PARAM}=#{DESC}"
+      assert_select ".desc"
+      assert css_select(".selected").empty?
+    end
+    assert_select @selected, "##{ENDTIME} a" do
+      assert_select "[href=?]", "#{@sortable_base_url}&amp;#{SORT_PARAM}=#{ENDTIME}&amp;#{ORDER_PARAM}=#{DESC}"
+      assert_select ".desc"
+      assert css_select(".selected").empty?
+    end
+    assert_select @selected, "##{TITLE} a" do
+      assert_select "[href=?]", "#{@sortable_base_url}&amp;#{SORT_PARAM}=#{TITLE}&amp;#{ORDER_PARAM}=#{ASC}"
+      assert_select ".asc"
+      assert_select ".selected"
+    end
+
+    @order_param = ASC
+    @selected = bind_erb_file(TEMPLATE_PATH, binding)
+    assert_select @selected, "##{TITLE} a" do
+      assert_select "[href=?]", "#{@sortable_base_url}&amp;#{SORT_PARAM}=#{TITLE}&amp;#{ORDER_PARAM}=#{DESC}"
+    end
+  end
+
+  def test_base_url_without_query_string
+    @sort_param = TITLE
+    @order_param = DESC
+    @sortable_base_url = "/all"
+    @selected = bind_erb_file(TEMPLATE_PATH, binding)
+    assert_select @selected, "##{PRICE} a" do
+      assert_select "[href=?]", "#{@sortable_base_url}?#{SORT_PARAM}=#{PRICE}&amp;#{ORDER_PARAM}=#{DESC}"
+    end
+    assert_select @selected, "##{ENDTIME} a" do
+      assert_select "[href=?]", "#{@sortable_base_url}?#{SORT_PARAM}=#{ENDTIME}&amp;#{ORDER_PARAM}=#{DESC}"
+    end
+    assert_select @selected, "##{TITLE} a" do
+      assert_select "[href=?]", "#{@sortable_base_url}?#{SORT_PARAM}=#{TITLE}&amp;#{ORDER_PARAM}=#{ASC}"
+    end
   end
 
 end

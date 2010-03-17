@@ -1,6 +1,9 @@
 <div class="container">
     <h3><%= header_text %></h3>
-    <%= render :partial => "partials/paginated_links", :locals => { :base_url => base_url, :next_link => @next, :prev_link => @prev } %>
+    <%= render :partial => "partials/paginated_links", :locals => {
+            :base_url => base_url,
+            :sort => @sort_param, :order => @order_param,
+            :next_link => @next, :prev_link => @prev } %>
     <ul>
         <% @ebay_items.each do |ebay_item| %>
             <li class="recordItem">
@@ -9,5 +12,8 @@
             <hr/>
         <% end %>
     </ul>
-    <%= render :partial => "partials/paginated_links", :locals => { :base_url => base_url, :next_link => @next, :prev_link => @prev } %>
+    <%= render :partial => "partials/paginated_links", :locals => {
+            :base_url => base_url,
+            :sort => @sort_param, :order => @order_param,
+            :next_link => @next, :prev_link => @prev } %>
 </div>

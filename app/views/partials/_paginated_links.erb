@@ -1,9 +1,17 @@
 <% if prev_link %>
-    <a class="prev" href="<%= base_url + prev_link.to_s %>">&lt; Prev</a>
+    <a class="prev" href="<%=
+        "#{append_query_params(base_url,
+                [["sort", sort],
+                        ["order", order],
+                        ["page", prev_link]])}" %>">&lt; Prev</a>
 <% end %>
 <% if next_link && prev_link %>
     &nbsp;|&nbsp;
 <% end %>
 <% if next_link %>
-    <a class="next" href="<%= base_url + next_link.to_s %>">Next &gt;</a>
+    <a class="next" href="<%=
+        "#{append_query_params(base_url,
+                [["sort", sort],
+                        ["order", order],
+                        ["page", next_link]])}" %>">Next &gt;</a>
 <% end %>
