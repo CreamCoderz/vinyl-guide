@@ -1,3 +1,5 @@
+require File.expand_path(File.dirname(__FILE__) + "/parsers/params_parser")
+
 class SearchController < ApplicationController
   SEARCHABLE_FIELDS = ['itemid', 'description', 'title', 'url', 'galleryimg', 'sellerid']
 

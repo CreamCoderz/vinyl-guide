@@ -4,7 +4,8 @@ class EbayItemsController < ApplicationController
   PAGE_LIMIT = 20
 
   def index
-    @ebay_items = EbayItem.find(:all, :order => "id DESC", :limit => PAGE_LIMIT)
+    order_query = set_sortable_fields
+    @ebay_items = EbayItem.find(:all, :order => order_query, :limit => PAGE_LIMIT)
   end
 
   def show

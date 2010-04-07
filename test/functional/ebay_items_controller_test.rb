@@ -11,19 +11,12 @@ class EbayItemsControllerTest < ActionController::TestCase
   end
 
   def test_should_get_index
-    added_ebay_items = generate_some_ebay_items(40)
-    get :index
-    assert_response :success
-    actual_ebay_items = assigns(:ebay_items)
-    assert_equal 20, actual_ebay_items.length
-    assert_equal added_ebay_items[20..39].reverse, actual_ebay_items
-  end
-
-  def test_should_limit_results
-    generate_some_ebay_items(25)
+    ebay_items = @ebay_item_builder.make.to_many_items(25).reverse
+    ebay_items.each {|ebay_item| ebay_item.save}
     get :index
     actual_ebay_items = assigns(:ebay_items)
     assert_equal 20, actual_ebay_items.length
+    assert_equal @ebay_items.concat(ebay_items[0..14]), actual_ebay_items
   end
 
   def test_should_display_item_details

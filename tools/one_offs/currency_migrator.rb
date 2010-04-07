@@ -11,7 +11,9 @@ ebay_items = EbayItem.find(:all, :conditions => "currencytype != 'USD'")
 puts "found: #{ebay_items.length} items"
 
 web_client = WebClient.new(Net::HTTP)
-ebay_client = EbayClient.new(web_client)
+
+ebay_client = EbayClient.new(web_client, "USE-A-VALID-API-KEY")
+
 item_ids = ebay_items.map{|ebay_item|ebay_item.itemid}
 ebay_item_data = ebay_client.get_details(item_ids)
 

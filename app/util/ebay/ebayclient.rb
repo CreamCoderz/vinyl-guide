@@ -5,7 +5,6 @@ require File.dirname(__FILE__) + "/../ebay/ebayitemsdetailsparser"
 require File.dirname(__FILE__) + "/../ebay/ebaytimeparser"
 
 class EbayClient
-  APP_ID = 'WillSulz-7420-475d-9a40-2fb8b491a6fd'
   FIND_ITEMS_CALL = 'FindItemsAdvanced'
   FIND_ITEMS_BASE_CALL = 'services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME='
   FIND_COUNTRY_DATA = {'EBAY-US' => 'Reggae%20%26%20Ska', 'EBAY-GB' => 'Reggae%2F+Ska'}
@@ -14,12 +13,12 @@ class EbayClient
   GET_EBAY_TIME = 'geteBayTime'
   ITEMS_PER_DETAILS_REQ = 20
 
-  BASE_DETAILS_URL = 'http://open.api.ebay.com/shopping?version=517&appid=' + APP_ID + '&callname='
   BASE_FIND_URL = 'http://svcs.ebay.com/'
+  BASE_DETAILS_URL = 'http://open.api.ebay.com/'
 
-
-  def initialize(web_client)
+  def initialize(web_client, api_key)
     @web_client = web_client
+    @api_key = api_key
   end
 
   def find_items(end_time_from)
@@ -52,24 +51,27 @@ class EbayClient
       response = @web_client.get(item_details_url)
       new_details = EbayItemsDetailsParser.parse(response.body)
 
-      detailses.concat( new_details)
+      detailses.concat(new_details)
     end
     detailses
   end
 
   def get_current_time
-    response = @web_client.get(BASE_DETAILS_URL + GET_EBAY_TIME)
+    response = @web_client.get(generate_details_base + GET_EBAY_TIME)
     EbayTimeParser.parse(response.body)
   end
 
   private
 
   def generate_find_items_advanced_url(global_id, sub_genre, end_time, page_num)
-    "#{BASE_FIND_URL}#{FIND_ITEMS_BASE_CALL}#{APP_ID}&GLOBAL-ID=#{global_id}&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&categoryId=306&aspectFilter%280%29.aspectName=Genre&aspectFilter%280%29.aspectValueName=#{sub_genre}&itemFilter.name=EndTimeTo&itemFilter.value=#{end_time}&paginationInput.pageNumber=#{page_num}"
+    "#{BASE_FIND_URL}#{FIND_ITEMS_BASE_CALL}#{@api_key}&GLOBAL-ID=#{global_id}&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&categoryId=306&aspectFilter%280%29.aspectName=Genre&aspectFilter%280%29.aspectValueName=#{sub_genre}&itemFilter.name=EndTimeTo&itemFilter.value=#{end_time}&paginationInput.pageNumber=#{page_num}"
   end
 
   def generate_get_details_url(item_ids_query)
-    "#{BASE_DETAILS_URL}#{GET_ITEM_DETAILS_CALL}&IncludeSelector=Details,TextDescription,ItemSpecifics&ItemID=#{item_ids_query}"
+    "#{generate_details_base}#{GET_ITEM_DETAILS_CALL}&IncludeSelector=Details,TextDescription,ItemSpecifics&ItemID=#{item_ids_query}"
   end
 
+  def generate_details_base
+    "#{BASE_DETAILS_URL}shopping?version=517&appid=#{@api_key}&callname="
+  end
 end

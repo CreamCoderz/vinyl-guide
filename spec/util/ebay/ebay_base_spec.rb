@@ -10,8 +10,8 @@ include EbayBaseData
 module EbayBaseSpec
 
   # ---------------- FINDING -------------------------
-  def self.generate_find_items_request(end_time_from, page_number, global_id='EBAY-US', sub_genre='Reggae%20%26%20Ska')
-    "/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=WillSulz-7420-475d-9a40-2fb8b491a6fd&GLOBAL-ID=#{global_id}&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&categoryId=306&aspectFilter%280%29.aspectName=Genre&aspectFilter%280%29.aspectValueName=#{sub_genre}&itemFilter.name=EndTimeTo&itemFilter.value=#{DateUtil.date_to_utc(end_time_from)}&paginationInput.pageNumber=#{page_number}"
+  def self.generate_find_items_request(end_time_from, page_number, global_id='EBAY-US', sub_genre='Reggae%20%26%20Ska', app_id=NIL_API_KEY)
+    "/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=#{app_id}&GLOBAL-ID=#{global_id}&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&categoryId=306&aspectFilter%280%29.aspectName=Genre&aspectFilter%280%29.aspectValueName=#{sub_genre}&itemFilter.name=EndTimeTo&itemFilter.value=#{DateUtil.date_to_utc(end_time_from)}&paginationInput.pageNumber=#{page_number}"
   end
 
   def self.generate_auction_item(auction_item)
@@ -94,9 +94,9 @@ module EbayBaseSpec
 
   # ---------------- DETAILS --------------------------
 
-  def self.generate_multiple_items_request(item_ids)
+  def self.generate_multiple_items_request(item_ids, api_key=NIL_API_KEY)
     item_ids_converted = item_ids.join(",")
-    '/shopping?version=517&appid=WillSulz-7420-475d-9a40-2fb8b491a6fd&callname=' + MULTIPLE_ITEMS_CALL + '&IncludeSelector=' + MULTIPLE_ITEMS_SELECTORS + '&ItemID=' + item_ids_converted
+    "/shopping?version=517&appid=#{api_key}&callname=#{MULTIPLE_ITEMS_CALL}&IncludeSelector=#{MULTIPLE_ITEMS_SELECTORS}&ItemID=#{item_ids_converted}"
   end
 
   SAMPLE_GET_MULTIPLE_ITEMS_REQUEST = generate_multiple_items_request([TETRACK_ITEMID.to_s, GARNET_ITEMID.to_s])
