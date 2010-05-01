@@ -1,3 +1,6 @@
+require File.dirname(__FILE__) + "/../../../app/domain/ebayitemdata"
+include DateUtil
+
 module EbayBaseData
 
   # ---------------- TIME ---------------------------
