@@ -1,24 +1,24 @@
 class EbayItemData
   attr_reader :description, :itemid, :endtime, :starttime, :url, :galleryimg, :bidcount, :price, :sellerid, :title, :pictureimgs, :currencytype, :size, :subgenre, :condition, :speed, :country
 
-  def initialize(description, itemid, endtime, starttime, url, galleryimg, bidcount, price, sellerid, title, country, pictureimgs, currencytype, size=nil, subgenre=nil, condition=nil, speed=nil)
-    @description = description
-    @itemid = itemid
-    @endtime = endtime
-    @starttime = starttime
-    @url = url
-    @galleryimg = galleryimg
-    @bidcount = bidcount
-    @price = price
-    @sellerid = sellerid
-    @title = title
-    @pictureimgs = pictureimgs
-    @size = size
-    @subgenre = subgenre
-    @condition = condition
-    @speed = speed
-    @country = country
-    @currencytype = currencytype
+  def initialize(params)
+    @description = params[:description]
+    @itemid = params[:itemid]
+    @endtime = params[:endtime]
+    @starttime = params[:starttime]
+    @url = params[:url]
+    @galleryimg = params[:galleryimg]
+    @bidcount = params[:bidcount]
+    @price = params[:price]
+    @sellerid = params[:sellerid]
+    @title = params[:title]
+    @pictureimgs = params[:pictureimgs]
+    @size = params[:size]
+    @subgenre = params[:subgenre]
+    @condition = params[:condition]
+    @speed = params[:speed]
+    @country = params[:country]
+    @currencytype = params[:currencytype]
   end
 
   def ==(other)

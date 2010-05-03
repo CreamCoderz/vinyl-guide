@@ -36,9 +36,24 @@ class EbayItemDataBuilder
     description, itemid, endtime, starttime, url,
             galleryimg, bidcount, price, sellerid, title, country, pictureimgs,
             currencytype, size=nil, subgenre=nil, condition=nil, speed=nil
-    EbayItemData.new(@ebayitem.description, @ebayitem.itemid, @ebayitem.endtime, @ebayitem.starttime, @ebayitem.url,
-            @ebayitem.galleryimg, @ebayitem.bidcount, @ebayitem.price, @ebayitem.sellerid, @ebayitem.title, @ebayitem.country, @ebayitem.pictureimgs,
-            @ebayitem.currencytype, @ebayitem.size, @ebayitem.subgenre, @ebayitem.condition, @ebayitem.speed)
+    EbayItemData.new(
+            :description => @ebayitem.description,
+                    :itemid => @ebayitem.itemid,
+                    :endtime => @ebayitem.endtime,
+                    :starttime => @ebayitem.starttime,
+                    :url => @ebayitem.url,
+                    :galleryimg => @ebayitem.galleryimg,
+                    :bidcount => @ebayitem.bidcount,
+                    :price => @ebayitem.price,
+                    :sellerid => @ebayitem.sellerid,
+                    :title => @ebayitem.title,
+                    :country => @ebayitem.country,
+                    :pictureimgs => @ebayitem.pictureimgs,
+                    :currencytype => @ebayitem.currencytype,
+                    :size => @ebayitem.size,
+                    :subgenre => @ebayitem.subgenre,
+                    :condition => @ebayitem.condition,
+                    :speed => @ebayitem.speed)
   end
 
   #TODO: this is convenient but it creates a dependency to activerecord

@@ -109,17 +109,19 @@ xmlns=\"http://www.ebay.com/marketplace/search/v1/services\">
   GARNET_COUNTRY = "FR"
   GARNET_HASIMAGE = true
 
-  TETRACK_EBAY_ITEM = EbayItemData.new(CGI.unescapeHTML(TETRACK_DESCRIPTION),
-          TETRACK_ITEMID, DateUtil.utc_to_date(TETRACK_ENDTIME), DateUtil.utc_to_date(TETRACK_STARTTIME),
-          TETRACK_URL, TETRACK_GALLERY_IMG, TETRACK_BIDCOUNT, TETRACK_PRICE, TETRACK_SELLERID,
-          CGI.unescapeHTML(TETRACK_TITLE), TETRACK_COUNTRY, TETRACK_PICTURE_IMGS, USD_CURRENCY, TETRACK_SIZE,
-          TETRACK_SUB_GENRE, TETRACK_CONDITION, TETRACK_SPEED)
+  TETRACK_EBAY_ITEM = EbayItemData.new(:description => CGI.unescapeHTML(TETRACK_DESCRIPTION),
+          :itemid => TETRACK_ITEMID, :endtime => DateUtil.utc_to_date(TETRACK_ENDTIME), :starttime => DateUtil.utc_to_date(TETRACK_STARTTIME),
+          :url => TETRACK_URL, :galleryimg => TETRACK_GALLERY_IMG, :bidcount => TETRACK_BIDCOUNT, :price => TETRACK_PRICE,
+          :sellerid => TETRACK_SELLERID,
+          :title => CGI.unescapeHTML(TETRACK_TITLE), :country => TETRACK_COUNTRY, :pictureimgs => TETRACK_PICTURE_IMGS, :currencytype => USD_CURRENCY,
+          :size => TETRACK_SIZE,
+          :subgenre => TETRACK_SUB_GENRE, :condition => TETRACK_CONDITION, :speed => TETRACK_SPEED)
 
-  GARNET_EBAY_ITEM = EbayItemData.new(CGI.unescapeHTML(GARNET_DESCRIPTION),
-          GARNET_ITEMID, DateUtil.utc_to_date(GARNET_ENDTIME), DateUtil.utc_to_date(GARNET_STARTTIME),
-          GARNET_URL, GARNET_GALLERY_IMG, GARNET_BIDCOUNT, GARNET_PRICE, GARNET_SELLERID,
-          CGI.unescapeHTML(GARNET_TITLE), GARNET_COUNTRY, GARNET_PICTURE_IMGS, USD_CURRENCY,
-          GARNET_SIZE, GARNET_SUB_GENRE, GARNET_CONDITION, GARNET_SPEED)
+  GARNET_EBAY_ITEM = EbayItemData.new(:description => CGI.unescapeHTML(GARNET_DESCRIPTION),
+          :itemid => GARNET_ITEMID, :endtime => DateUtil.utc_to_date(GARNET_ENDTIME), :starttime => DateUtil.utc_to_date(GARNET_STARTTIME),
+          :url => GARNET_URL, :galleryimg => GARNET_GALLERY_IMG, :bidcount => GARNET_BIDCOUNT, :price => GARNET_PRICE, :sellerid => GARNET_SELLERID,
+          :title => CGI.unescapeHTML(GARNET_TITLE), :country => GARNET_COUNTRY, :pictureimgs => GARNET_PICTURE_IMGS, :currencytype => USD_CURRENCY,
+          :size => GARNET_SIZE, :subgenre => GARNET_SUB_GENRE, :condition => GARNET_CONDITION, :speed => GARNET_SPEED)
 
 
 
