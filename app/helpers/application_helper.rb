@@ -57,7 +57,6 @@ module ApplicationHelper
         leading_char = "&"
       end
     end
-    puts base_url + query
     base_url + query
   end
 end

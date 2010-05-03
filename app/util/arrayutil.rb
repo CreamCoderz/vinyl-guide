@@ -1,9 +1,5 @@
 module ArrayUtil
-
-  def self.arrayifiy(array)
-    if !array.is_a?(Array)
-      array = [array]
-    end
-    array
+  def arrayifiy(array)
+    array.is_a?(Array) ? array : [array]
   end
 end

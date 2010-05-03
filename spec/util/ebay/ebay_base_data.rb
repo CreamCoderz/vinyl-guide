@@ -1,3 +1,6 @@
+require File.dirname(__FILE__) + "/../../../app/domain/ebayitemdata"
+include DateUtil
+
 module EbayBaseData
 
   NIL_API_KEY = "Blah-Blah-Blah-789789-a43df"

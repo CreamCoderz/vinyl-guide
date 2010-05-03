@@ -2,7 +2,7 @@ require 'net/http'
 require 'uri'
 require File.dirname(__FILE__) + '/feedparser'
 
-class WebClient 
+class WebClient
 
   def initialize(http_client)
     @http_client = http_client
@@ -13,16 +13,14 @@ class WebClient
     response = @http_client.start(uri.host, uri.port) do |http|
       path = uri.path
       if !uri.query.nil?
-        path += "?" + uri.query  
+        path += "?" + uri.query
       end
       response = http.get(path)
     end
   end
 
   def crawl(response)
-    if (response != Net::HTTPSuccess)
-      raise Exception.new('invalid response')
-    end
+    raise Exception.new('invalid response') if (response != Net::HTTPSuccess)
     @result = FeedParser.parse(response.body)
   end
 end

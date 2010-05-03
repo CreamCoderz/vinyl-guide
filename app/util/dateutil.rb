@@ -1,13 +1,14 @@
-require 'activesupport'
+require 'rubygems'
+require 'active_support'
 require 'time'
 
-class DateUtil
+module DateUtil
 
-  def self.date_to_utc(date)
+  def date_to_utc(date)
     date.to_time.strftime("%Y-%m-%dT%H:%M:%S.000Z")
   end
 
-  def self.utc_to_date(utc)
+  def utc_to_date(utc)
     Time.iso8601(utc)
   end
 
