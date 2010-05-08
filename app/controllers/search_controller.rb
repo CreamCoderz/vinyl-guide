@@ -4,7 +4,11 @@ class SearchController < ApplicationController
   SEARCHABLE_FIELDS = ['itemid', 'description', 'title', 'url', 'galleryimg', 'sellerid']
 
   def search
-    do_search(params)
+    page_num = ParamsParser.parse_page_param(params)
+    @query = ParamsParser.parse_query_param(params)
+    @sort_param, @order_param = ParamsParser.parse_sort_params(params)
+    @ebay_items, @prev, @next, @start, @end, @total = EbayItem.search(:query => @query, :column => @sort_param, :order => @order_param, :page => page_num)
+    @sortable_base_url = "/search?q=#{@query}&page=#{page_num}"
     if request.xml_http_request?
       render :json => make_json_data(@ebay_items)
     end
@@ -12,6 +16,7 @@ class SearchController < ApplicationController
 
   private
 
+  #TODO: this isn't json.. what happened to the json handling on the client side and code here?
   def make_json_data(ebay_items)
     ebay_api_items = ""
     ebay_api_hash = []
@@ -22,24 +27,4 @@ class SearchController < ApplicationController
     ebay_api_hash
   end
 
-  def do_search(params)
-    page_num = ParamsParser.parse_page_param(params)
-    #TODO: query generator needed
-    raw_query = ParamsParser.parse_query_param(params)
-    wild_query = "%#{raw_query}%"
-    query = ''
-    SEARCHABLE_FIELDS.each do |searchable_field|
-      query = append_or(query)
-      query += "#{searchable_field} like :wild_query"
-    end
-    @sort_param, @order_param = ParamsParser.parse_sort_params(params)
-    order_query = " #{@sort_param} #{@order_param}"
-    @ebay_items, @prev, @next, @start, @end, @total = paginate(page_num, EbayItem, [query, {:wild_query => wild_query}], order_query)
-    @query = raw_query
-    @sortable_base_url = "/search?q=#{@query}&page=#{page_num}"
-  end
-
-  def append_or(query_exp)
-    query_exp.length > 0 ? query_exp += ' OR ' : query_exp
-  end
 end
