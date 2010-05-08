@@ -79,7 +79,7 @@ class EbayItemsViewTest <  ActionController::TestCase
   end
 
   def test_no_pictures
-    get :show, :page => 3
+    get :show, :id => 3
     assert css_select('div.pictures').empty?
   end
 

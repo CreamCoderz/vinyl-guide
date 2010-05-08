@@ -33,13 +33,13 @@ ActiveRecord::Schema.define(:version => 14) do
     t.string   "subgenre"
     t.string   "country"
     t.string   "currencytype"
-    t.boolean  "hasimage"
+    t.boolean  "hasimage",                  :default => false
   end
 
   create_table "pictures", :force => true do |t|
     t.integer "ebay_item_id"
     t.string  "url"
-    t.boolean "hasimage"
+    t.boolean "hasimage",     :default => false
   end
 
   create_table "records", :force => true do |t|

@@ -1,14 +1,15 @@
-require 'test_helper'
+require File.dirname(__FILE__) + '/../spec_helper'
+require File.dirname(__FILE__) + '/../../app/util/paginator'
+require File.dirname(__FILE__) + '/../../test/base_test_case'
+include BaseTestCase
 
-class ApplicationControllerTest < ActionController::TestCase
+describe Paginator do
 
-  def setup
-    @controller = ApplicationController.new
-  end
-
-  def test_paginate
+  it "should paginate" do
+    #TODO: use ebayitemdatabuilder to generate ebay items
     ebay_items = generate_some_ebay_items(30).reverse
-    actual_ebay_items, prev, nexties, start, endies, total = @controller.paginate(1, MockActiveRecord.new(ebay_items, :all, {:order => "id DESC", :limit => [1, 20]}))
+    paginator = Paginator.new(MockActiveRecord.new(ebay_items, :all, {:order => "id DESC", :limit => [1, 20]}))
+    actual_ebay_items, prev, nexties, start, endies, total = paginator.paginate(1)
 
     assert_equal 20, actual_ebay_items.length
     assert_equal ebay_items[0..19], actual_ebay_items
@@ -18,7 +19,8 @@ class ApplicationControllerTest < ActionController::TestCase
     assert_equal 20, endies
     assert_equal 30, total
 
-    actual_ebay_items, prev, nexties, start, endies, total = @controller.paginate(2, MockActiveRecord.new(ebay_items, :all, {:order => "id DESC", :limit => [21, 40]}))
+    paginator = Paginator.new(MockActiveRecord.new(ebay_items, :all, {:order => "id DESC", :limit => [21, 40]}))
+    actual_ebay_items, prev, nexties, start, endies, total = paginator.paginate(2)
     expected_ebay_items = ebay_items[20..29]
     assert_equal expected_ebay_items, actual_ebay_items
     assert_equal 1, prev
@@ -27,7 +29,8 @@ class ApplicationControllerTest < ActionController::TestCase
     assert_equal 30, endies
 
     ebay_items.concat(generate_some_ebay_items(10).reverse)
-    actual_ebay_items, prev, nexties, start, endies, total = @controller.paginate(2, MockActiveRecord.new(ebay_items, :all, {:order => "id DESC", :limit => [21, 40]}))
+    paginator = Paginator.new(MockActiveRecord.new(ebay_items, :all, {:order => "id DESC", :limit => [21, 40]}))
+    actual_ebay_items, prev, nexties, start, endies, total = paginator.paginate(2)
     assert nexties.nil?
     assert_equal 1, prev
     assert_equal 21, start
@@ -35,20 +38,22 @@ class ApplicationControllerTest < ActionController::TestCase
     assert_equal 40, total
   end
 
-  def test_paginate_with_no_results
-    actual_ebay_items, prev, nexties, start, endies, total = @controller.paginate(1, MockActiveRecord.new([], :all, {:order => "id DESC", :limit => [21, 40]}))
+  it "should handle no results" do
+    paginator = Paginator.new(MockActiveRecord.new([], :all, {:order => "id DESC", :limit => [21, 40]}))
+    actual_ebay_items, prev, nexties, start, endies, total = paginator.paginate(1)
     check_empty_results(actual_ebay_items, endies, nexties, prev, start, total)
   end
 
-  def test_paginate_for_page_out_of_range
-    actual_ebay_items, prev, nexties, start, endies, total = @controller.paginate(2, MockActiveRecord.new([], :all))
+  it "should handle a page out of range" do
+    paginator = Paginator.new(MockActiveRecord.new([], :all))
+    actual_ebay_items, prev, nexties, start, endies, total = paginator.paginate(2)
     check_empty_results(actual_ebay_items, endies, nexties, prev, start, total)
-    actual_ebay_items, prev, nexties, start, endies, total = @controller.paginate(3, MockActiveRecord.new([], :all))
+    actual_ebay_items, prev, nexties, start, endies, total = paginator.paginate(3)
     check_empty_results(actual_ebay_items, endies, nexties, prev, start, total)
-    actual_ebay_items, prev, nexties, start, endies, total = @controller.paginate(0, MockActiveRecord.new([], :all))
+    actual_ebay_items, prev, nexties, start, endies, total = paginator.paginate(0)
     check_empty_results(actual_ebay_items, endies, nexties, prev, start, total)
   end
-  
+
   def check_empty_results(actual_ebay_items, endies, nexties, prev, start, total)
     assert_equal [], actual_ebay_items
     assert prev.nil?
@@ -58,6 +63,7 @@ class ApplicationControllerTest < ActionController::TestCase
     assert_equal 0, total
   end
 
+  #TODO: eventually replace this with a mock object. this is an artifact from Test::Unit
   class MockActiveRecord
     def initialize(items, all, expectations=nil)
       @items = items
@@ -71,7 +77,7 @@ class ApplicationControllerTest < ActionController::TestCase
       end
       if conditions[:offset]
         offset = conditions[:offset]
-        end_index = offset-1 + 20 > @items.length ?  @items.length: offset-1 + 20
+        end_index = offset-1 + 20 > @items.length ? @items.length : offset-1 + 20
         return @items[(offset)..end_index]
       end
       @items
