@@ -8,6 +8,25 @@ class EbayItemsController < ApplicationController
     @ebay_items = @release.ebay_items.find(:all)
   end
 
+  def edit
+    @ebay_item = EbayItem.find(params[:id])
+  end
+
+  def update
+    @ebay_item = EbayItem.find(params[:id])
+
+    respond_to do |format|
+      if @ebay_item.update_attributes(params[:ebay_item])
+        flash[:notice] = 'EbayItem was successfully updated.'
+        format.html { redirect_to(@ebay_item) }
+        format.xml { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml { render :xml => @ebay_item.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
   def home
     order_query = set_sortable_fields
     @ebay_items = EbayItem.find(:all, :order => order_query, :limit => PAGE_LIMIT)

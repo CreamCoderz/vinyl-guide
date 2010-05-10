@@ -23,6 +23,9 @@
   <%=h @release.matrix_number %>
 </p>
 
+<p>
+  <%= link_to "Show Ebay Items", release_ebay_items_path(@release) %>
+</p>
 
 <%= link_to 'Edit', edit_release_path(@release) %> |
 <%= link_to 'Back', releases_path %>

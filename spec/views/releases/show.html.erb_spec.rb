@@ -19,5 +19,7 @@ describe "/releases/show.html.erb" do
     response.should have_text(/1978/)
     response.should have_text(/value\ for\ label/)
     response.should have_text(/value\ for\ matrix_number/)
+    response.should have_tag("p a") {|link| link[0].attributes["href"].should == release_ebay_items_path(@release)}
   end
+
 end

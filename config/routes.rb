@@ -3,6 +3,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :records
 
+  map.resources :ebay_items
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
@@ -17,6 +19,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'other', :controller => 'ebay_items', :action => 'other'
   map.connect 'all', :controller => 'ebay_items', :action => 'all'
   map.connect '/:id', :controller => 'ebay_items', :action => 'show'
+  map.connect '/:id/edit', :controller => 'ebay_items', :action => 'edit'
 
   # Sample of named route:
   #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
