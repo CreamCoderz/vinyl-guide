@@ -18,7 +18,7 @@ class RecordsControllerTest < ActionController::TestCase
 
   def test_should_create_record
     assert_difference('Record.count') do
-      post :create, :record => {:name => "testname" }
+      post :create, :record => {:title => "testname" }
     end
 
     record = assigns(:record)
@@ -29,7 +29,7 @@ class RecordsControllerTest < ActionController::TestCase
     get :show, :id => records(:one).to_param
     assert_response :success
     record = assigns(:record)
-    assert_equal("The Heart of the Congoes", record.name)
+    assert_equal("The Heart of the Congoes", record.title)
   end
 
   def test_should_get_edit
@@ -40,10 +40,10 @@ class RecordsControllerTest < ActionController::TestCase
 
   def test_should_update_record
     updated_name = "roots of david"
-    put :update, :id => records(:one).to_param, :record => {:name => updated_name}
+    put :update, :id => records(:one).to_param, :record => {:title => updated_name}
     record = assigns(:record)
     assert_redirected_to record_path(record)
-    assert_equal(updated_name, record.name)
+    assert_equal(updated_name, record.title)
   end
 
   def test_should_delete_record

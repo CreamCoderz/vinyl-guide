@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :releases, :has_many => :ebay_items
+
   map.resources :records
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -8,7 +10,7 @@ ActionController::Routing::Routes.draw do |map|
   # Keep in mind you can assign values other than :controller and :action
 
   map.search 'search', :controller => 'search', :action => 'search'
-  map.connect '/', :controller => 'ebay_items', :action => 'index'
+  map.connect '/', :controller => 'ebay_items', :action => 'home'
   map.connect 'singles', :controller => 'ebay_items', :action => 'singles'
   map.connect 'eps', :controller => 'ebay_items', :action => 'eps'
   map.connect 'lps', :controller => 'ebay_items', :action => 'lps'

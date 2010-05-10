@@ -7,8 +7,8 @@
         <%= record.text_field :artist %>
     </p>
     <p>
-        <%= record.label :name %><br/>
-        <%= record.text_field :name %>
+        <%= record.label :title %><br/>
+        <%= record.text_field :title %>
     </p>
     <p>
         <%= record.label :description %><br/>
@@ -16,7 +16,7 @@
     </p>
     <p>
         <%= record.label :date %><br/>
-        <%= record.date_select :date %>
+        <%= record.date_select :date, :end_year => 1950, :start_year => Time.new.year, :include_blank => true %>
     </p>
     <p>
         <%= record.label :img_src %><br/>

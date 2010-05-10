@@ -13,8 +13,8 @@ class EbayItemsViewTest <  ActionController::TestCase
     @ebay_items = [ebay_items(:five), ebay_items(:four), ebay_items(:three), ebay_items(:two), ebay_items(:one)]
   end
 
-  def test_index_view
-    get :index
+  def test_home_view
+    get :home
     sorted_ebay_items = EbayItem.find(:all, :order => "endtime").reverse
     # lastest link to record displayed twice
     sorted_ebay_items.insert(0, sorted_ebay_items[0])

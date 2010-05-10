@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  artist: MyString
+  year: MyString
+  label: MyString
+  matrix_number: MyString
+
+two:
+  title: MyString
+  artist: MyString
+  year: MyString
+  label: MyString
+  matrix_number: MyString

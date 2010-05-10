@@ -13,7 +13,7 @@ class EbayItemsControllerTest < ActionController::TestCase
   def test_should_get_index
     ebay_items = @ebay_item_builder.make.to_many_items(25).reverse
     ebay_items.each {|ebay_item| ebay_item.save}
-    get :index
+    get :home
     actual_ebay_items = assigns(:ebay_items)
     assert_equal 20, actual_ebay_items.length
     assert_equal @ebay_items.concat(ebay_items[0..14]), actual_ebay_items
@@ -129,7 +129,7 @@ class EbayItemsControllerTest < ActionController::TestCase
   end
 
   def test_should_diplay_search_form
-    get :index
+    get :home
     assert_select 'form[name=search]' do |search_form|
       search_form_attributes = search_form[0].attributes
       assert_equal search_form_attributes['action'], '/search'

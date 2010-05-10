@@ -1,5 +1,5 @@
 module BaseTestCase
-  RECORD_DISPLAY_FIELDS = ['artist', 'name', 'description', 'date', 'img_src', 'producer', 'band', 'engineer', 'studio']
+  RECORD_DISPLAY_FIELDS = ['artist', 'title', 'description', 'date', 'img_src', 'producer', 'band', 'engineer', 'studio']
   CURRENCY_SYMBOLS = {'USD' => '$', 'GBP' => '&pound;', 'AUD' => '$', 'CAD' => '$', 'CHF' => '?', 'CNY' => '&yen;', 'EUR' => '&euro;',
           'HKD' => '$', 'INR' => 'INR', 'MYR' => 'MYR', 'PHP' => 'PHP', 'PLN' => 'PLN', 'SEK' => 'kr', 'SGD' => '$', 'TWD' => '$'}
   DISPLAY_AS_LINK = lambda {|href| "<a href=\"" + href + "\">" + href + "</a>"}
@@ -29,7 +29,7 @@ module BaseTestCase
   RECORD_INPUT_TYPE_FIELDS = Array.new(RECORD_DISPLAY_FIELDS);
   RECORD_INPUT_TYPE_FIELDS.delete('date')
 
-  RECORD_SEARCHABLE_FIELDS = ['artist', 'name', 'description', 'producer', 'band', 'engineer', 'studio'];
+  RECORD_SEARCHABLE_FIELDS = ['artist', 'title', 'description', 'producer', 'band', 'engineer', 'studio'];
 
   def check_record_fields selector_path, record_input_type_fields, assertions, expected_record=nil
     assert_select selector_path do |input_fields|

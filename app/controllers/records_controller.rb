@@ -1,6 +1,4 @@
 class RecordsController < ApplicationController
-  # GET /records
-  # GET /records.xml
   def index
     @records = Record.all
     respond_to do |format|
@@ -8,9 +6,6 @@ class RecordsController < ApplicationController
       format.xml  { render :xml => @records }
     end
   end
-
-  # GET /records/1
-  # GET /records/1.xml
 
   def show
     @record = Record.find(params[:id])
@@ -21,9 +16,6 @@ class RecordsController < ApplicationController
     end
   end
 
-  # GET /records/new
-  # GET /records/new.xml
-
   def new
     @record = Record.new
 
@@ -33,13 +25,9 @@ class RecordsController < ApplicationController
     end
   end
 
-  # GET /records/1/edit
-
   def edit
     @record = Record.find(params[:id])
   end
-
-  # POST /records
 
   def create
     @record = Record.new(params[:record])
@@ -55,8 +43,6 @@ class RecordsController < ApplicationController
     end
   end
 
-  # PUT /records/1
-
   def update
     @record = Record.find(params[:id])
 
@@ -69,8 +55,6 @@ class RecordsController < ApplicationController
       end
     end
   end
-
-  # DELETE /records/1
 
   def destroy
     @record = Record.find(params[:id])

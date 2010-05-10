@@ -1,0 +1,28 @@
+<p>
+  <b>Title:</b>
+  <%=h @release.title %>
+</p>
+
+<p>
+  <b>Artist:</b>
+  <%=h @release.artist %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%=h @release.year %>
+</p>
+
+<p>
+  <b>Label:</b>
+  <%=h @release.label %>
+</p>
+
+<p>
+  <b>Matrix number:</b>
+  <%=h @release.matrix_number %>
+</p>
+
+
+<%= link_to 'Edit', edit_release_path(@release) %> |
+<%= link_to 'Back', releases_path %>

@@ -1,6 +1,6 @@
 <div class="container">
     <h1>Editing
-        <% @record.name %></h1>
+        <% @record.title %></h1>
     <% form_for(@record) do |record| %>
 
         <%= record.error_messages %>
@@ -10,8 +10,8 @@
         </p>
 
         <p>
-            <%= record.label :name %><br/>
-            <%= record.text_field :name %>
+            <%= record.label :title %><br/>
+            <%= record.text_field :title %>
         </p>
 
         <p>

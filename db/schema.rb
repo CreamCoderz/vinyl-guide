@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 14) do
+ActiveRecord::Schema.define(:version => 18) do
 
   create_table "ebay_auctions", :force => true do |t|
     t.integer  "item_id",  :limit => 8
@@ -33,17 +33,18 @@ ActiveRecord::Schema.define(:version => 14) do
     t.string   "subgenre"
     t.string   "country"
     t.string   "currencytype"
-    t.boolean  "hasimage",                  :default => false
+    t.boolean  "hasimage"
+    t.integer  "release_id"
   end
 
   create_table "pictures", :force => true do |t|
     t.integer "ebay_item_id"
     t.string  "url"
-    t.boolean "hasimage",     :default => false
+    t.boolean "hasimage"
   end
 
   create_table "records", :force => true do |t|
-    t.string   "name"
+    t.string   "title"
     t.string   "description"
     t.date     "date"
     t.datetime "created_at"
@@ -54,6 +55,16 @@ ActiveRecord::Schema.define(:version => 14) do
     t.string   "band"
     t.string   "engineer"
     t.string   "studio"
+  end
+
+  create_table "releases", :force => true do |t|
+    t.string   "title"
+    t.string   "artist"
+    t.integer  "year"
+    t.string   "label"
+    t.string   "matrix_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

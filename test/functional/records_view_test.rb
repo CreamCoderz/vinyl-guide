@@ -32,36 +32,38 @@ class RecordsViewTest <  ActionController::TestCase
             [Proc.new {|field, expected_value| assert_equal field.children.to_s, expected_record[expected_value].to_s}]
   end
 
-  #TODO: this function is ugly so i moved it to the bottom
 
   def test_index_view
     get :index
-    record_count = 0
+    record_count = 1
     count = 0
     assert_select 'li' do |records|
       records.each do |record|
-        expected_record = Record.find(record_count+1)
-        assert_select record, 'p span' do |record_field|
-          record_field.each do |record_value|
-            expected_value = expected_record[RECORD_DISPLAY_FIELDS[count]]
-            if count < RECORD_DISPLAY_FIELDS.length
-              actual_value = record_value.children.to_s
-              if expected_value.kind_of?(Date)
-                actual_value = Date.parse(actual_value)
-              else
-                expected_value = CGI.escapeHTML(expected_value)
-              end
-              assert_equal expected_value, actual_value
-              count += 1
-            end
-          end
-          count = 0
-        end
+        check_record_display(count, record, record_count)
         record_count += 1
       end
     end
   end
 
 
+  def check_record_display(count, record, record_id)
+    expected_record = Record.find(record_id)
+    assert_select record, 'p span' do |record_field|
+      record_field.each do |record_value|
+        expected_value = expected_record[RECORD_DISPLAY_FIELDS[count]]
+        if count < RECORD_DISPLAY_FIELDS.length
+          actual_value = record_value.children.to_s
+          if expected_value.kind_of?(Date)
+            actual_value = Date.parse(actual_value)
+          else
+            expected_value = CGI.escapeHTML(expected_value)
+          end
+          assert_equal expected_value, actual_value
+          count += 1
+        end
+      end
+      count = 0
+    end
+  end
 
 end

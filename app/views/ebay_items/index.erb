@@ -1,36 +1,32 @@
 <div class="container">
-    <h2>RootsVinylGuide.com is an automated tracker for the results of bidded upon EBay auctions in the category of
-        Reggae &amp; Ska
-        records.</h2>
-    <ul style="margin-left:15px">
-        <li>
-            <h2>To view all items, sorted by latest result, visit the
-                <span class="navLink navBgcolor pad"><a href="/all/1">ALL</a></span> page</h2>
-        </li>
-        <li>
-            <h2>To search items by keyword, enter a query in the <span class="search padBtn">SEARCH</span> box</h2>
-        </li>
-        <li>
-            <h2>To view item descriptions, bid count, and more, click the
-                <a class="view" href="/<%= @ebay_items[0].id %>">View Details</a> link</h2>
-        </li>
-    </ul>
-    <hr/>
-    <h3>Most Recent Vinyl Result</h3>
-    <%= render :partial=> "partials/ebay_item_abbrv", :locals => { :ebay_item => @ebay_items[0] } %>
-    <hr/>
-    <h3><%= @ebay_items.length %> Latest Vinyl Results</h3>
 
-    <div>
-        <% count = 1 %>
-        <% @ebay_items.each do |ebay_item| %>
-            <a href="/<%= ebay_item.id %>">
-                <img class="view" src="<%= display_gallery_img(ebay_item.id, ebay_item.hasimage) %>" alt="<%= h ebay_item.title %>" title="<%= h ebay_item.title %>"/>
-            </a>
-            <% if count % 5 == 0 %>
-                <br/>
-            <% end %>
-            <% count += 1 %>
-        <% end %>
-    </div>
+  <h3>Listing auctions for release</h3>
+
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Artist</th>
+      <th>Year</th>
+      <th>Label</th>
+      <th>Matrix number</th>
+    </tr>
+
+    <tr>
+      <td><%= h @release.title %></td>
+      <td><%= h @release.artist %></td>
+      <td><%= h @release.year %></td>
+      <td><%= h @release.label %></td>
+      <td><%= h @release.matrix_number %></td>
+      <td><%= link_to 'Show', @release %></td>
+      <td><%= link_to 'Edit', edit_release_path(@release) %></td>
+      <td><%= link_to 'Destroy', @release, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  </table>
+
+  <br/>
+  <%= render :partial => "partials/ebay_item_index", :locals => {
+          :header_text => "<h3>All Vinyl Results #{@start}-#{@end} of #{@total}</h3>",
+          :base_url => "/all"} %>
+
+  <%= link_to 'New release', new_release_path %>
 </div>

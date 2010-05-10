@@ -3,7 +3,7 @@
 one:
   id: 1
   artist: The Congoes
-  name: The Heart of the Congoes
+  title: The Heart of the Congoes
   description: The epic roots masterpiece produced by Lee Perry
   date: 1977-07-02
   img_src: http://www.ebay.com/the_congos
@@ -17,7 +17,7 @@ one:
 two:
   id: 2
   artist: Prince Jazzbo 
-  name: Natty Pass Thru
+  title: Natty Pass Thru
   description: Price Jazzbos original Black Ark materpiece
   date: 1977-03-28
   img_src: http://www.ebay.com/prince_jazzbo
@@ -30,7 +30,7 @@ two:
 three:
   id: 3
   artist: King Perry
-  name: Natty Pass Thru
+  title: Natty Pass Thru
   description: Ska King at Studio One
   date: 1968-04-21
   img_src: http://www.ebay.com/king_perry
@@ -42,7 +42,7 @@ three:
 four:
   id: 4
   artist: Prince Far I & The Arabs
-  name: Cry Tuff Dub Encounter Chapter 1
+  title: Cry Tuff Dub Encounter Chapter 1
   description: Massive dub set by the man called Prince Far I
   date: 1978-05-20
   img_src: http://www.ebay.com/king_perry
@@ -54,7 +54,7 @@ four:
 five:
   id: 5
   artist: Johnny Clarke
-  name: None Shall Escape the Judgement
+  title: None Shall Escape the Judgement
   description: Flyers style with Johhny Clarke, produced by Striker
   date: 1979-03-12
   img_src: http://www.ebay.com/king_perry
