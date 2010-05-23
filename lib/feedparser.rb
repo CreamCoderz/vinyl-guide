@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'cobravsmongoose'
-require File.dirname(__FILE__) + '/../domain/recorddata'
+require File.dirname(__FILE__) + '/../app/domain/recorddata'
 
 module FeedParser
   def self.parse(rss)

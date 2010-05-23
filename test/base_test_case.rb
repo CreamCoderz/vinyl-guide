@@ -1,3 +1,6 @@
+require File.dirname(__FILE__) + "/../spec/lib/crawler/ebay_base_data"
+require File.dirname(__FILE__) + "/../lib/dateutil"
+
 module BaseTestCase
   RECORD_DISPLAY_FIELDS = ['artist', 'title', 'description', 'date', 'img_src', 'producer', 'band', 'engineer', 'studio']
   CURRENCY_SYMBOLS = {'USD' => '$', 'GBP' => '&pound;', 'AUD' => '$', 'CAD' => '$', 'CHF' => '?', 'CNY' => '&yen;', 'EUR' => '&euro;',

@@ -3,8 +3,8 @@ require 'spec'
 require 'activesupport'
 require File.dirname(__FILE__) + "/ebay_base_spec"
 require File.dirname(__FILE__) + "/ebayitemsdetailsparser_helper"
-require File.dirname(__FILE__) + '/../../../app/util/ebay/ebayitemsdetailsparser'
-require File.dirname(__FILE__) + '/../../../app/util/ebay/ebayitemsdetailsparser'
+require File.dirname(__FILE__) + '/../../../lib/crawler/ebayitemsdetailsparser'
+require File.dirname(__FILE__) + '/../../../lib/crawler/ebayitemsdetailsparser'
 include Spec::Matchers
 include EbayItemsDetailsParserHelper
 include EbayBaseSpec

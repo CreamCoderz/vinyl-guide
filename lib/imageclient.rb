@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + "/ebay/ebaylogger")
+require File.expand_path(File.dirname(__FILE__) + "/crawler/ebaylogger")
 include EbayLogger
 
 class ImageClient

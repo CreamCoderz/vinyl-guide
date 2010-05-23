@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/ebaycrawler'
 require File.dirname(__FILE__) + '/../webclient'
 require File.dirname(__FILE__) + '/../imageclient'
 require File.dirname(__FILE__) + '/../dateutil'
-require File.dirname(__FILE__) + '/../../../config/environment'
+require File.dirname(__FILE__) + '/../../config/environment'
 
 properties_file = YAML.load_file("../../../config/build.#{Rails.env}.yml")
 store_path = properties_file['store_path']

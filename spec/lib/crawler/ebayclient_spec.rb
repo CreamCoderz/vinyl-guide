@@ -1,7 +1,7 @@
 require 'spec'
 require 'time'
-require File.dirname(__FILE__) + '/../../../app/util/webclient'
-require File.dirname(__FILE__) + '/../../../app/util/ebay/ebayclient'
+require File.dirname(__FILE__) + '/../../../lib/webclient'
+require File.dirname(__FILE__) + '/../../../lib/crawler/ebayclient'
 require File.dirname(__FILE__) + '/../settablehttpclient'
 require File.dirname(__FILE__) + "/ebay_base_spec"
 require File.dirname(__FILE__) + "/ebay_base_data"

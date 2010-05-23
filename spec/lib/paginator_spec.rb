@@ -1,5 +1,5 @@
 require File.dirname(__FILE__) + '/../spec_helper'
-require File.dirname(__FILE__) + '/../../app/util/paginator'
+require File.dirname(__FILE__) + '/../../lib/paginator'
 require File.dirname(__FILE__) + '/../../test/base_test_case'
 include BaseTestCase
 

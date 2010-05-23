@@ -1,4 +1,6 @@
 require File.dirname(__FILE__) + "/../../../app/domain/ebayitemdata"
+require File.dirname(__FILE__) + "/../../../lib/dateutil"
+require 'cgi'
 include DateUtil
 
 module EbayBaseData

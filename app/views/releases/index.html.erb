@@ -4,8 +4,8 @@
 
   <table>
     <tr>
-      <th>Title</th>
       <th>Artist</th>
+      <th>Title</th>
       <th>Year</th>
       <th>Label</th>
       <th>Matrix number</th>
@@ -13,8 +13,8 @@
 
     <% @releases.each do |release| %>
         <tr>
-          <td><%= h release.title %></td>
           <td><%= h release.artist %></td>
+          <td><%= h release.title %></td>
           <td><%= h release.year %></td>
           <td><%= h release.label %></td>
           <td><%= h release.matrix_number %></td>

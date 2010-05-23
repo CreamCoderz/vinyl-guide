@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + "/../../../app/util/dateutil"
+require File.dirname(__FILE__) + "/../dateutil"
 require 'cobravsmongoose'
 
 class EbayTimeParser

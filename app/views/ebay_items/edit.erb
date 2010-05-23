@@ -1,0 +1,13 @@
+<h2>Editing release</h2>
+
+<% form_for(@ebay_item) do |f| %>
+    <%= f.error_messages %>
+    <p>
+      <%= f.label :release_id %><br/>
+      <%= f.text_field :release_id %>
+    </p>
+
+    <p>
+      <%= f.submit 'Update' %>
+    </p>
+<% end %>

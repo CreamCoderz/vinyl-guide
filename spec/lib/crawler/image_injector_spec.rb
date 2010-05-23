@@ -2,7 +2,7 @@ require 'spec'
 require 'activesupport'
 require 'activerecord'
 
-require File.dirname(__FILE__) + "/../../../app/util/image_injector"
+require File.dirname(__FILE__) + "/../../../lib/image_injector"
 require File.dirname(__FILE__) + "/../../base_spec_case"
 
 describe ImageInjector do

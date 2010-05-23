@@ -1,5 +1,5 @@
 require 'spec'
-require File.dirname(__FILE__) + '/../../app/util/feedparser'
+require File.dirname(__FILE__) + '/../../lib/feedparser'
 
 module FeedParserSpec
 

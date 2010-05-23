@@ -2,8 +2,8 @@ require 'spec'
 require 'activesupport'
 require 'time'
 require File.dirname(__FILE__) + "/ebay_base_data"
-require File.dirname(__FILE__) + "/../../../app/util/dateutil"
-require File.dirname(__FILE__) + '/../../../app/util/ebay/ebaytimeparser'
+require File.dirname(__FILE__) + "/../../../lib/dateutil"
+require File.dirname(__FILE__) + '/../../../lib/crawler/ebaytimeparser'
 include EbayBaseData
 
 

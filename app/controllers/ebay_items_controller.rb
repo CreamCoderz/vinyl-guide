@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + "/parsers/params_parser")
+require File.expand_path(File.dirname(__FILE__) + "/../../lib/params_parser")
 
 class EbayItemsController < ApplicationController
   PAGE_LIMIT = 20

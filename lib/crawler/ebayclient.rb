@@ -1,8 +1,8 @@
 require 'activesupport'
 require File.dirname(__FILE__) + "/../dateutil"
-require File.dirname(__FILE__) + "/../ebay/ebayfinditemsparser"
-require File.dirname(__FILE__) + "/../ebay/ebayitemsdetailsparser"
-require File.dirname(__FILE__) + "/../ebay/ebaytimeparser"
+require File.dirname(__FILE__) + "/../crawler/ebayfinditemsparser"
+require File.dirname(__FILE__) + "/../crawler/ebayitemsdetailsparser"
+require File.dirname(__FILE__) + "/../crawler/ebaytimeparser"
 
 class EbayClient
   FIND_ITEMS_CALL = 'FindItemsAdvanced'

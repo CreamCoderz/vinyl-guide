@@ -1,7 +1,7 @@
 require 'spec'
 require 'net/http'
 require 'uri'
-require File.dirname(__FILE__) + '/../../app/util/webclient'
+require File.dirname(__FILE__) + '/../../lib/webclient'
 require File.dirname(__FILE__) + '/feedparser_spec'
 require File.dirname(__FILE__) + '/settablehttpclient'
 
