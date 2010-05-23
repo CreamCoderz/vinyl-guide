@@ -1,4 +1,5 @@
 require 'test_helper'
+require File.dirname(__FILE__) + '/../../app/domain/ebayitemdatabuilder'
 
 class EbayItemsControllerTest < ActionController::TestCase
   ENDTIME, PRICE, TITLE = SearchController::SORTABLE_FIELDS

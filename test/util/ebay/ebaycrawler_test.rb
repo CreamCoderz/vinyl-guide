@@ -1,10 +1,10 @@
 require 'test_helper'
-require File.dirname(__FILE__) + '/../../../app/util/ebay/ebayclient'
-require File.dirname(__FILE__) + '/../../../app/util/ebay/ebaycrawler'
-require File.dirname(__FILE__) + '/../../../app/util/imageclient'
-require File.dirname(__FILE__) + '/../../../app/util/webclient'
-require File.dirname(__FILE__) + '/../../../spec/util/ebay/ebay_base_spec'
-require File.dirname(__FILE__) + '/../../../spec/util/settablehttpclient'
+require File.dirname(__FILE__) + '/../../../lib/crawler/ebayclient'
+require File.dirname(__FILE__) + '/../../../lib/crawler/ebaycrawler'
+require File.dirname(__FILE__) + '/../../../lib/imageclient'
+require File.dirname(__FILE__) + '/../../../lib/webclient'
+require File.dirname(__FILE__) + '/../../../spec/lib/crawler/ebay_base_spec'
+require File.dirname(__FILE__) + '/../../../spec/lib/settablehttpclient'
 include EbayBaseSpec
 
 class EbayCrawlerTest < ActiveSupport::TestCase
@@ -93,7 +93,7 @@ class EbayCrawlerTest < ActiveSupport::TestCase
   end
 
   def test_ignores_default_image
-    default_image = File.new(File.dirname(__FILE__) +"/../../../app/util/ebay/data/default_ebay_img.jpg", "r").gets(nil)
+    default_image = File.new(File.dirname(__FILE__) +"/../../../lib/crawler/data/default_ebay_img.jpg", "r").gets(nil)
     past_time = DateTime.parse('2009-08-19T10:20:00+00:00')
     ebay_auction = EbayAuction.new({:item_id => TETRACK_ITEMID, :end_time => past_time})
     assert ebay_auction.save

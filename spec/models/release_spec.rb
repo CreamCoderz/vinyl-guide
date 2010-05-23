@@ -28,10 +28,10 @@ describe Release do
   context ".search" do
 
     before do
-      @title_word = @valid_attributes[:title].gsub(/[^ ]+/).first
-      @artist_word = @valid_attributes[:artist].gsub(/[^ ]+/).first
-      @label_word = @valid_attributes[:label].gsub(/[^ ]+/).first
-      @matrix_word = @valid_attributes[:matrix_number].gsub(/[^ ]+/).first
+      @title_word = @valid_attributes[:title][/[^ ]+/].first
+      @artist_word = @valid_attributes[:artist][/[^ ]+/].first
+      @label_word = @valid_attributes[:label][/[^ ]+/].first
+      @matrix_word = @valid_attributes[:matrix_number][/[^ ]+/].first
       @query_words = [@title_word, @artist_word, @label_word, @matrix_word]
     end
 
