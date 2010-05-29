@@ -80,10 +80,10 @@ class SearchControllerTest < ActionController::TestCase
   end
 
   def test_should_display_autocomplete_output
-    expected_records = [ebay_items(:four)]
+    expected_record = ebay_items(:four)
     response = xhr :get, :search, :q => 'prince'
     assert_response :success
-    assert_equal [expected_records[0]][release].to_json(:only => [:title], :methods => [:link]).to_json(:only => [:title], :methods => [:link]), response.body
+    assert_equal [expected_record].to_json(:only => [:title], :methods => [:link]), response.body
   end
 
   #TODO: it really should return a 400 for a bad sort param, but i'll let it default for now

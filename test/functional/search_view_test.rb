@@ -22,7 +22,6 @@ class SearchViewTest <  ActionController::TestCase
     query = ebay_items[0].title
     get :search, :q => query, :sort => ENDTIME, :order => DESC
     check_search_results(ebay_items[0..19])
-    puts @response.body
     assert_select ".next" do |elm|
       assert_equal "/search?q=#{CGI.escape(query)}&sort=#{ENDTIME}&order=#{DESC}&page=#{assigns(:next)}", elm[0].attributes['href']
     end
