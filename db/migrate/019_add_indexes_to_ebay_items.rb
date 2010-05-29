@@ -1,11 +1,9 @@
 class AddIndexesToEbayItems < ActiveRecord::Migration
   def self.up
-    add_index :ebay_items, :description, :text
-    add_index :ebay_items, :title, :string
+    add_index :ebay_items, [:title]
   end
 
   def self.down
-    remove_index :ebay_items, :description
-    remove_index :ebay_items, :title
+    remove_index :ebay_items, :column => [:title]
   end
 end

@@ -1,3 +1,5 @@
+require File.expand_path(File.dirname(__FILE__) + "/../../lib/serializer/auto_complete_serializer")
+
 class ReleasesController < ApplicationController
   # GET /releases
   # GET /releases.xml
@@ -6,7 +8,7 @@ class ReleasesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @releases }
+      format.xml { render :xml => @releases }
     end
   end
 
@@ -17,7 +19,7 @@ class ReleasesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @release }
+      format.xml { render :xml => @release }
     end
   end
 
@@ -28,7 +30,7 @@ class ReleasesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @release }
+      format.xml { render :xml => @release }
     end
   end
 
@@ -46,10 +48,10 @@ class ReleasesController < ApplicationController
       if @release.save
         flash[:notice] = 'Release was successfully created.'
         format.html { redirect_to(@release) }
-        format.xml  { render :xml => @release, :status => :created, :location => @release }
+        format.xml { render :xml => @release, :status => :created, :location => @release }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @release.errors, :status => :unprocessable_entity }
+        format.xml { render :xml => @release.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -63,10 +65,10 @@ class ReleasesController < ApplicationController
       if @release.update_attributes(params[:release])
         flash[:notice] = 'Release was successfully updated.'
         format.html { redirect_to(@release) }
-        format.xml  { head :ok }
+        format.xml { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @release.errors, :status => :unprocessable_entity }
+        format.xml { render :xml => @release.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -79,7 +81,16 @@ class ReleasesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(releases_url) }
-      format.xml  { head :ok }
+      format.xml { head :ok }
+    end
+  end
+
+  def search
+    page_num = ParamsParser.parse_page_param(params)
+    query = ParamsParser.parse_query_param(params)
+    releases = Release.search(:page => page_num, :query => query)
+    respond_to do |format|
+      format.json { render :json => releases[0].to_json(:only => [:title], :methods => [:link]) }
     end
   end
 end

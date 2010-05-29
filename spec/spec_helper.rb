@@ -4,6 +4,10 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path(File.join(File.dirname(__FILE__),'..','config','environment'))
 require 'spec/autorun'
 require 'spec/rails'
+require 'factory_girl'
+#TODO: this should be implicitly required
+require File.expand_path(File.join(File.dirname(__FILE__),'factories','release_factory'))
+require File.expand_path(File.join(File.dirname(__FILE__),'factories','ebay_item_factory'))
 
 # Uncomment the next line to use webrat's matchers
 #require 'webrat/integrations/rspec-rails'

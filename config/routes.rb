@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+  map.releases_search '/releases/search', :controller => 'releases', :action => 'search'
   map.resources :releases, :has_many => :ebay_items
 
   map.resources :records

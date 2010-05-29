@@ -1,0 +1,27 @@
+<h2>Categorize Auction</h2>
+
+
+<label>Find Releases</label>
+<form name="search" action="<%= releases_search_path %>" method="get">
+  <input name="q" id="release-finder" value=""/>
+</form>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        new AutoCompleter("release-finder", "/releases/search");
+    });
+</script>
+
+<% form_for(@ebay_item) do |f| %>
+    <%= f.error_messages %>
+
+    <p>
+      <%= f.label :release_id %><br/>
+      <%= f.text_field :release_id %>
+    </p>
+    <p>
+      <%= f.submit 'Update' %>
+    </p>
+<% end %>
+
+<%= link_to 'Show', @ebay_item %>

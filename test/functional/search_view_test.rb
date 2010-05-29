@@ -11,19 +11,10 @@ class SearchViewTest <  ActionController::TestCase
   end
 
   def test_should_display_search_view
-    expected_records = [ebay_items(:five), ebay_items(:four)]
+    expected_records = [ebay_items(:four)]
     response = get :search, :q => PRINCE
     assert_response :success
     check_search_results(expected_records)
-  end
-
-  def test_should_display_autocomplete_output
-    expected_records = [ebay_items(:five), ebay_items(:four)]
-    response = xhr :get, :search, :q => PRINCE
-    assert_response :success
-    expected_response = [{:title => expected_records[0].title, :id => expected_records[0].id},
-            {:title => expected_records[1].title, :id => expected_records[1].id}]
-    assert_equal expected_response.to_json, response.body
   end
 
   def test_pagination
@@ -41,7 +32,7 @@ class SearchViewTest <  ActionController::TestCase
 
   def test_should_display_header_data
     get :search, :q => PRINCE
-    assert_select 'h3', CGI.escapeHTML('1-2 of 2 Search Results found for "' + PRINCE + '"')
+    assert_select 'h3', CGI.escapeHTML('1-1 of 1 Search Results found for "' + PRINCE + '"')
   end
 
   #TODO: this test will fail when i fix the "results 1-0 of 0" bug

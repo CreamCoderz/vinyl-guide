@@ -128,4 +128,13 @@ describe ReleasesController do
     end
   end
 
+  describe "search" do
+    it "should assign some results fields" do
+      title = "thanks and praise"
+      release = Factory.create(:release, :title => title)
+      response = xhr :get, :search, :q => title
+      response.body.should == [release].to_json(:only => [:title], :methods => [:link])
+    end
+  end
+
 end
