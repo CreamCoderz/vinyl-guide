@@ -1,3 +1,4 @@
+#TODO: turn this class into a module and use as a mix in for the model classes
 class Paginator
 
   PAGE_LIMIT = 20

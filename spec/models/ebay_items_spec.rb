@@ -58,6 +58,15 @@ describe EbayItem do
       search_results.should == expected_items.reverse
     end
 
+
+    it "should only include items mapped to releases if specified" do
+      release = Factory.create(:release)
+      ebay_item = Factory.create(:ebay_item, :release_id => release)
+      EbayItem.search(:query => ebay_item.title, :column => 'endtime', :include_mapped => false)[0].should be_empty
+      EbayItem.search(:query => ebay_item.title, :column => 'endtime', :include_mapped => true)[0].should_not be_empty 
+    end
+
+
   end
 
   describe "#link" do

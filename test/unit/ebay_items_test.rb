@@ -65,7 +65,7 @@ class EbayItemsTest < ActiveSupport::TestCase
     assert_equal picture_count, Picture.find(:all).length
   end
 
-  def make_basic_ebay_item()
+  def make_basic_ebay_item
     ebay_item = EbayItem.new(:itemid => ITEM_ID)
     ebay_item.bidcount = 10
     ebay_item.price = 55.99

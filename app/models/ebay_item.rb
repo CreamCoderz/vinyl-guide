@@ -17,9 +17,11 @@ class EbayItem < ActiveRecord::Base
   def self.search(params)
     query_value, column = params[:query], params[:column]
     page_num, order = params[:page] || 1, params[:order] || DESC
+    include_mapped = params[:include_mapped] == nil ? true : params[:include_mapped]
+    include_mapped_query = include_mapped ? "" : " AND release_id IS NULL"
     order_query = " #{column} #{order}"
     query = QueryGenerator.generate_wild_query(SEARCHABLE_FIELDS, ':wild_query')
-    @ebay_items, @prev, @next, @start, @end, @total = @paginator.paginate(page_num, [query, {:wild_query => "%#{query_value}%"}], order_query)
+    @ebay_items, @prev, @next, @start, @end, @total = @paginator.paginate(page_num, ["#{query}#{include_mapped_query}", {:wild_query => "%#{query_value}%"}], order_query)
   end
   
   def link
