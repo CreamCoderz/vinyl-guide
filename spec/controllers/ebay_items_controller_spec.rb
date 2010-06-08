@@ -11,9 +11,8 @@ describe EbayItemsController do
   end
 
   it "should list child entities of a release" do
-    Release.stub!(:find).with("1").and_return(mock_release, :ebay_items => EbayItem)
-    EbayItem.stub!(:find).with(:all).and_return([mock_ebay_item])
-    mock_release.should_receive(:ebay_items).and_return(EbayItem)
+    Release.stub!(:find).with("1", :include => :ebay_items).and_return(mock_release)
+    mock_release.stub!(:ebay_items).and_return([mock_ebay_item])
     get :index, :release_id => "1", :id => "1"
     actual_ebay_items = assigns[:ebay_items]
     actual_ebay_items.length.should == 1

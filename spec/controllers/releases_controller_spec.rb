@@ -2,6 +2,10 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe ReleasesController do
 
+  def mock_ebay_item(stubs={})
+    @mock_ebay_item ||= mock_model(EbayItem, stubs)
+  end
+
   def mock_release(stubs={})
     @mock_release ||= mock_model(Release, stubs)
   end
@@ -16,8 +20,13 @@ describe ReleasesController do
 
   describe "GET show" do
     it "assigns the requested release as @release" do
-      Release.stub!(:find).with("37").and_return(mock_release)
+      Release.stub!(:find).with("37", :include => :ebay_items).and_return(mock_release)
+      mock_release.stub!(:ebay_items).and_return([mock_ebay_item])
       get :show, :id => "37"
+      actual_ebay_items = assigns[:ebay_items]
+      actual_ebay_items.length.should == 1
+      actual_ebay_items[0].id.should == mock_ebay_item.id
+      assigns[:release].id.should == mock_release.id
       assigns[:release].should equal(mock_release)
     end
   end

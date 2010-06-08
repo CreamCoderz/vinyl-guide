@@ -15,8 +15,8 @@ class ReleasesController < ApplicationController
   # GET /releases/1
   # GET /releases/1.xml
   def show
-    @release = Release.find(params[:id])
-
+    @release = Release.find(params[:id], :include => :ebay_items)
+    @ebay_items = @release.ebay_items
     respond_to do |format|
       format.html # show.html.erb
       format.xml { render :xml => @release }

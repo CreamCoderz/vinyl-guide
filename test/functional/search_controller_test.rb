@@ -83,7 +83,7 @@ class SearchControllerTest < ActionController::TestCase
     expected_record = ebay_items(:four)
     response = xhr :get, :search, :q => 'prince'
     assert_response :success
-    assert_equal [expected_record].to_json(:only => [:title], :methods => [:link]), response.body
+    assert_equal [expected_record].to_json(:only => [:title, :id], :methods => [:link]), response.body
   end
 
   #TODO: it really should return a 400 for a bad sort param, but i'll let it default for now

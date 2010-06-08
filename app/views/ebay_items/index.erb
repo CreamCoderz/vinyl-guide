@@ -24,6 +24,18 @@
   </table>
 
   <br/>
+
+  Add Ebay Items
+  <form name="search" action="<%= "#{search_path}?show_mapped=false}" %>" method="get">
+    <input name="q" id="ebay-item-finder" value=""/>
+  </form>
+
+  <script type="text/javascript">
+      $(document).ready(function() {
+          Release.init("<%= @release.id %>", "<%= "#{form_authenticity_token}" %>");
+          new AutoCompleter("ebay-item-finder", "<%= "#{search_path}?include_mapped=false" %>", "ebay_item", Release.categorize);
+      });
+  </script>
   <%= render :partial => "partials/ebay_item_index", :locals => {
           :header_text => "<h3>All Vinyl Results #{@start}-#{@end} of #{@total}</h3>",
           :base_url => "/all"} %>

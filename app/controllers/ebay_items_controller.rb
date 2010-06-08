@@ -9,8 +9,8 @@ class EbayItemsController < ApplicationController
   end
 
   def index
-    @release = Release.find(params[:release_id])
-    @ebay_items = @release.ebay_items.find(:all)
+    @release = Release.find(params[:release_id], :include => :ebay_items)
+    @ebay_items = @release.ebay_items
   end
 
   def edit

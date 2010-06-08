@@ -2,6 +2,7 @@ require 'test_helper'
 include BaseTestCase
 include ApplicationHelper
 include ERB::Util
+include ActionController::UrlWriter
 
 class HeaderViewTest <  ActionController::TestCase
 

@@ -1,31 +1,42 @@
 <p>
   <b>Artist:</b>
-  <%=h @release.artist %>
+  <%= h @release.artist %>
 </p>
 
 <p>
   <b>Title:</b>
-  <%=h @release.title %>
+  <%= h @release.title %>
 </p>
 
 <p>
   <b>Year:</b>
-  <%=h @release.year %>
+  <%= h @release.year %>
 </p>
 
 <p>
   <b>Label:</b>
-  <%=h @release.label %>
+  <%= h @release.label %>
 </p>
 
 <p>
   <b>Matrix number:</b>
-  <%=h @release.matrix_number %>
+  <%= h @release.matrix_number %>
 </p>
 
-<p>
-  <%= link_to "Show Ebay Items", release_ebay_items_path(@release) %>
-</p>
+Add Ebay Items
+<form name="search" action="<%= "#{search_path}?show_mapped=false}" %>" method="get">
+  <input name="q" id="ebay-item-finder" value=""/>
+</form>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        Release.init("<%= @release.id %>", "<%= "#{form_authenticity_token}" %>");
+        new AutoCompleter("ebay-item-finder", "<%= "#{search_path}?include_mapped=false" %>", "ebay_item", Release.categorize);
+    });
+</script>
+<%= render :partial => "partials/ebay_item_index", :locals => {
+        :header_text => "<h2>Auctions for this release</h2>",
+        :base_url => "/all"} %>
 
 <%= link_to 'Edit', edit_release_path(@release) %> |
 <%= link_to 'Back', releases_path %>
