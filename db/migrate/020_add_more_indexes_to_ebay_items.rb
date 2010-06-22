@@ -1,4 +1,4 @@
-class AddIndexesToEbayItems < ActiveRecord::Migration
+class AddMoreIndexesToEbayItems < ActiveRecord::Migration
   def self.up
     add_index :ebay_items, [:endtime]
     add_index :ebay_items, [:price]

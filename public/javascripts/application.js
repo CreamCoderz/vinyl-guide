@@ -38,9 +38,9 @@ var Release = function() {
     var authenticityToken;
 
     this.categorize = function(id) {
-        $.post('ebay_items/' + id, {'_method': 'put', 'ebay_item[release_id]': Release.releaseId, 'authenticity_token': Release.authenticityToken},
+        $.post("/ebay_items/" + id, {"_method": "put", "ebay_item[release_id]": Release.releaseId, "authenticity_token": Release.authenticityToken},
                 function(data) {
-                    alert("success");
+                    $(".ebay-items").prepend(data);
                 });
     };
 

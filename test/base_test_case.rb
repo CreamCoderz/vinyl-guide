@@ -4,8 +4,8 @@ require File.dirname(__FILE__) + "/../lib/dateutil"
 module BaseTestCase
   RECORD_DISPLAY_FIELDS = ['artist', 'title', 'description', 'date', 'img_src', 'producer', 'band', 'engineer', 'studio']
   CURRENCY_SYMBOLS = {'USD' => '$', 'GBP' => '&pound;', 'AUD' => '$', 'CAD' => '$', 'CHF' => '?', 'CNY' => '&yen;', 'EUR' => '&euro;',
-          'HKD' => '$', 'INR' => 'INR', 'MYR' => 'MYR', 'PHP' => 'PHP', 'PLN' => 'PLN', 'SEK' => 'kr', 'SGD' => '$', 'TWD' => '$'}
-  DISPLAY_AS_LINK = lambda {|href| "<a href=\"" + href + "\">" + href + "</a>"}
+                      'HKD' => '$', 'INR' => 'INR', 'MYR' => 'MYR', 'PHP' => 'PHP', 'PLN' => 'PLN', 'SEK' => 'kr', 'SGD' => '$', 'TWD' => '$'}
+  DISPLAY_AS_LINK = lambda { |href| "<a href=\"" + href + "\">" + href + "</a>" }
   DISPLAY_AS_IMG = lambda do |hasimage, id|
     if hasimage
       "<img src=\"/images/gallery/#{id}.jpg\" />"
@@ -14,19 +14,19 @@ module BaseTestCase
     end
   end
   DEFAULT_IMG_URL = '<img src="/images/noimage.jpg" />'
-  ESCAPE_HTML = lambda {|html| CGI.escapeHTML(html)}
-  TO_S = lambda {|arg| arg.to_s}
-  TO_DATE = lambda {|arg| arg.to_time.strftime("%B %d, %Y - %I:%M:%S %p")}
-  TO_DOLLARS = lambda {|arg| "$#{arg.to_s}0 USD" }
+  ESCAPE_HTML = lambda { |html| CGI.escapeHTML(html) }
+  TO_S = lambda { |arg| arg.to_s }
+  TO_DATE = lambda { |arg| arg.to_time.strftime("%B %d, %Y - %I:%M:%S %p") }
+  TO_DOLLARS = lambda { |arg| "$#{arg.to_s}0 USD" }
   TO_CURRENCY = lambda do |value, currency_type|
     currency_symbol = CURRENCY_SYMBOLS[currency_type]
     "#{currency_symbol}#{value.to_s}0 #{currency_type}"
   end
 
   EBAY_ITEM_DISPLAY_FIELDS = [['url', DISPLAY_AS_LINK], ['itemid', TO_S], ['title', TO_S], ['bidcount', TO_S],
-          ['price', TO_DOLLARS], ['starttime', TO_DATE], ['endtime', TO_DATE],
-          ['country', TO_S], ['subgenre', TO_S], ['size', TO_S], ['speed', TO_S], ['condition', TO_S], ['sellerid', TO_S],
-          ['description', ESCAPE_HTML], ['hasimage', DISPLAY_AS_IMG]]
+                              ['price', TO_DOLLARS], ['starttime', TO_DATE], ['endtime', TO_DATE],
+                              ['country', TO_S], ['subgenre', TO_S], ['size', TO_S], ['speed', TO_S], ['condition', TO_S], ['sellerid', TO_S],
+                              ['description', ESCAPE_HTML], ['hasimage', DISPLAY_AS_IMG]]
   EBAY_ITEM_ABBRV_DISPLAY_FIELDS = [['hasimage', DISPLAY_AS_IMG], ['title', TO_S], ['endtime', TO_DATE], {'price', TO_CURRENCY}]
 
   RECORD_INPUT_TYPE_FIELDS = Array.new(RECORD_DISPLAY_FIELDS);
@@ -41,7 +41,7 @@ module BaseTestCase
   end
 
   #TODO: resolve EBayItem field name from dom field name
-  DISPLAY_FIELDS_TO_ITEM_FIELDS = {'gallery' => 'hasimage'}.default{|key| key}
+  DISPLAY_FIELDS_TO_ITEM_FIELDS = {'gallery' => 'hasimage'}.default { |key| key }
 
 
   def check_search_results(expected_records)
@@ -58,8 +58,8 @@ module BaseTestCase
 
   def check_item_result(item_dom_fields, expected_record, expected_ebay_item_fields)
     assert_equal expected_ebay_item_fields.length, item_dom_fields.length
-    check_record_field_with_extraction [Proc.new {|field, expected_value| assert_equal expected_value, field.children.to_s}],
-            item_dom_fields, expected_ebay_item_fields, expected_record
+    check_record_field_with_extraction [Proc.new { |field, expected_value| assert_equal expected_value, field.children.to_s }],
+                                       item_dom_fields, expected_ebay_item_fields, expected_record
   end
 
   #TODO: this method should go away once all usages are updated
@@ -141,30 +141,24 @@ module BaseTestCase
     ebay_items = []
     (1..num).each do |i|
       currency_key_num = i > (CURRENCY_SYMBOLS.keys.length-1) ? i % (CURRENCY_SYMBOLS.keys.length-1) : i
-      ebay_item = EbayItem.new(:itemid => EbayBaseData::TETRACK_EBAY_ITEM.itemid + i, :title => EbayBaseData::TETRACK_EBAY_ITEM.title, :description => CGI.unescapeHTML(EbayBaseData::TETRACK_EBAY_ITEM.description), :bidcount => EbayBaseData::TETRACK_EBAY_ITEM.bidcount,
-              :price => EbayBaseData::TETRACK_EBAY_ITEM.price + i, :currencytype => CURRENCY_SYMBOLS.keys[currency_key_num], :endtime => EbayBaseData::TETRACK_EBAY_ITEM.endtime + i, :starttime => EbayBaseData::TETRACK_EBAY_ITEM.starttime + i,
-              :url => EbayBaseData::TETRACK_EBAY_ITEM.url, :galleryimg => EbayBaseData::TETRACK_EBAY_ITEM.galleryimg, :sellerid => EbayBaseData::TETRACK_EBAY_ITEM.sellerid, :hasimage => false)
-      ebay_items.insert(-1, ebay_item)
-      ebay_item.save
+      ebay_items << EbayItem.new(:itemid => EbayBaseData::TETRACK_EBAY_ITEM.itemid + i, :title => EbayBaseData::TETRACK_EBAY_ITEM.title, :description => CGI.unescapeHTML(EbayBaseData::TETRACK_EBAY_ITEM.description), :bidcount => EbayBaseData::TETRACK_EBAY_ITEM.bidcount,
+                                 :price => EbayBaseData::TETRACK_EBAY_ITEM.price + i, :currencytype => CURRENCY_SYMBOLS.keys[currency_key_num], :endtime => Time.new + i, :starttime => Time.new + i,
+                                 :url => EbayBaseData::TETRACK_EBAY_ITEM.url, :galleryimg => EbayBaseData::TETRACK_EBAY_ITEM.galleryimg, :sellerid => EbayBaseData::TETRACK_EBAY_ITEM.sellerid, :hasimage => false)
     end
+    ebay_items.each { |ebay_item| ebay_item.save }
     ebay_items
   end
 
-  #TODO: create DSL in favor of duplication generate functions like this
+  #TODO: create DSL in favor of duplicating generate functions like this.. better yet, use Factory Girl
 
   def generate_ebay_items_with_size(num, size="LP", price=10.00)
     ebay_items = []
-    (1..num).each do |i|
-      ebay_item = EbayItem.new(:itemid => 10000 + i, :title => "single title", :description => CGI.unescapeHTML(EbayBaseData::TETRACK_EBAY_ITEM.description), :bidcount => 5,
-              :price => price + i, :currencytype => "USD", :endtime => EbayBaseData::TETRACK_EBAY_ITEM.endtime + i, :starttime => EbayBaseData::TETRACK_EBAY_ITEM.starttime + i,
-              :url => "http://singlerecord.com", :galleryimg => "http://www.singleimg.com/", :sellerid => "jahchicken", :size => size)
-      ebay_items.insert(-1, ebay_item)
-    end
+    num.times { ebay_items << Factory.create(:ebay_item, :size => size, :price => price) }
     ebay_items
   end
 
   def save_ebay_items(ebay_items)
-    ebay_items.map{|ebay_item| ebay_item.save }
+    ebay_items.map { |ebay_item| ebay_item.save }
   end
 
   def bind_erb_file(path, binding)

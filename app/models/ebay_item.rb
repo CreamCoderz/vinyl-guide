@@ -10,6 +10,7 @@ class EbayItem < ActiveRecord::Base
   validates_numericality_of :bidcount
   validates_presence_of :url
 
+  belongs_to :release
   has_many :pictures, :foreign_key => "ebay_item_id"
 
   @paginator = Paginator.new(EbayItem)

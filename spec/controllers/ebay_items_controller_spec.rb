@@ -48,6 +48,12 @@ describe EbayItemsController do
         put :update, :id => "1"
         response.should redirect_to(ebay_item_path(mock_ebay_item))
       end
+
+      it "should return a rendered partial for an AJAX request" do
+        EbayItem.stub!(:find).and_return(mock_ebay_item(:update_attributes => true))
+        xhr :put, :update, :id => "1", :format => "xml"
+        response.should render_template("partials/_ebay_item_abbrv.erb")
+      end
     end
 
     describe "with invalid params" do

@@ -36,11 +36,11 @@ Factory.sequence :price do |n|
 end
 
 Factory.sequence :endtime do |n|
-  Date.new + n
+  Time.new + (n * 1000)
 end
 
 Factory.sequence :starttime do |n|
-  Date.new + n
+  Time.new + (n * 1000)
 end
 
 Factory.sequence :url do |n|

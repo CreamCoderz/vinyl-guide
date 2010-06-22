@@ -10,6 +10,7 @@ describe "/releases/index.html.erb" do
         :artist => "value for artist",
         :year => 1978,
         :label => "value for label",
+        :format => Format::LP,
         :matrix_number => "value for matrix_number"
       ),
       stub_model(Release,
@@ -17,6 +18,7 @@ describe "/releases/index.html.erb" do
         :artist => "value for artist",
         :year => 1978,
         :label => "value for label",
+        :format => Format::LP,        
         :matrix_number => "value for matrix_number"
       )
     ]
@@ -24,10 +26,11 @@ describe "/releases/index.html.erb" do
 
   it "renders a list of releases" do
     render
-    response.should have_tag("tr>td", "value for title".to_s, 2)
-    response.should have_tag("tr>td", "value for artist".to_s, 2)
+    response.should have_tag("tr>td", "value for title", 2)
+    response.should have_tag("tr>td", "value for artist", 2)
     response.should have_tag("tr>td", 1978.to_s, 2)
-    response.should have_tag("tr>td", "value for label".to_s, 2)
-    response.should have_tag("tr>td", "value for matrix_number".to_s, 2)
+    response.should have_tag("tr>td", "value for label", 2)
+    response.should have_tag("tr>td", Format::LP.name, 2)
+    response.should have_tag("tr>td", "value for matrix_number", 2)
   end
 end

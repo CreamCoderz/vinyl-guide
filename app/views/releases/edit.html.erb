@@ -19,6 +19,10 @@
       <%= f.label :label %><br/>
       <%= f.text_field :label %>
     </p>
+     <p>
+      <%= f.label :format %><br/>
+      <%= collection_select(:release, :format_id, Format.all, :id, :name) %>
+    </p>
     <p>
       <%= f.label :matrix_number %><br/>
       <%= f.text_field :matrix_number %>

@@ -8,6 +8,7 @@ describe "/releases/show.html.erb" do
                                               :artist => "value for artist",
                                               :year => 1978,
                                               :label => "value for label",
+                                              :format => Format::LP,
                                               :matrix_number => "value for matrix_number"
     )
     assigns[:ebay_items] = @ebay_items = [Factory(:ebay_item, :release_id => @release.id), Factory(:ebay_item, :release_id => @release.id)]
@@ -19,6 +20,7 @@ describe "/releases/show.html.erb" do
     response.should have_text(/value\ for\ artist/)
     response.should have_text(/1978/)
     response.should have_text(/value\ for\ label/)
+    response.should have_text(/#{Format::LP.name}/)
     response.should have_text(/value\ for\ matrix_number/)
     @ebay_items.each do |ebay_item|
       response.should have_text(/#{ebay_item.title}/)

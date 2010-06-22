@@ -7,8 +7,16 @@ describe Release do
             :artist => "value for artist",
             :year => 1978,
             :label => "value for label",
-            :matrix_number => "value for matrix_number"
+            :matrix_number => "value for matrix_number",
+            :format => Format::SINGLE
     }
+  end
+
+  describe "associations" do
+    it "should have one format" do
+      release = Factory(:release, :format => Format::LP)
+      release.format.should == Format::LP
+    end
   end
 
   describe "constraints" do
@@ -23,8 +31,33 @@ describe Release do
       Release.create!(@valid_attributes)
       @valid_attributes[:label] = "harry j"
       Release.create!(@valid_attributes)
+      @valid_attributes[:format] = Format::EP
+      Release.create!(@valid_attributes)
       Release.create(@valid_attributes).errors.on(:title).should == "must not match an existing combination of fields"
     end
+
+    it "should allow LP, EP, or single for the format field" do
+      [Format::LP, Format::EP, Format::SINGLE].each do |format|
+        @valid_attributes[:format] = format
+        Release.create!(@valid_attributes)
+      end
+    end
+
+    describe "#create" do
+      it "should not allow any other format value" do
+        @valid_attributes[:format_id] = 20000
+        Release.create(@valid_attributes).errors.on(:format).should == "the format must exist"
+      end
+    end
+
+    describe "#update" do
+      it "should no allow any other format values on update" do
+        Release.create!(@valid_attributes)
+        @valid_attributes[:format_id] = 20000
+        Release.create(@valid_attributes).errors.on(:format).should == "the format must exist"
+      end
+    end
+
   end
 
   describe "#link" do

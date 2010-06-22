@@ -8,6 +8,7 @@
       <th>Title</th>
       <th>Year</th>
       <th>Label</th>
+      <th>Format</th>
       <th>Matrix number</th>
     </tr>
 
@@ -17,6 +18,7 @@
           <td><%= h release.title %></td>
           <td><%= h release.year %></td>
           <td><%= h release.label %></td>
+          <td><%= h release.format.name if release.format %></td>
           <td><%= h release.matrix_number %></td>
           <td><%= link_to 'Show', release %></td>
           <td><%= link_to 'Edit', edit_release_path(release) %></td>

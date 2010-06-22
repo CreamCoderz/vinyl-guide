@@ -1,29 +1,41 @@
-<table class="abbrvItem">
+<li class="recordItem">
+  <table class="abbrvItem">
     <tr>
-        <td>
+      <td>
+        <p><span><img src="<%= display_gallery_img(ebay_item.id, ebay_item.hasimage) %>"/></span></p>
+      </td>
+      <td>
+        <p>
+          <label>Title</label>
+          <span><%= ebay_item.title %></span>
+        </p>
 
-            <p><span><img src="<%= display_gallery_img(ebay_item.id, ebay_item.hasimage) %>"/></span></p>
-        </td>
-        <td>
-            <p>
-                <label>Title</label>
-                <span><%= ebay_item.title %></span>
-            </p>
+        <p>
+          <label>End Time</label>
+          <span><%= display_date(ebay_item.endtime) %></span>
+        </p>
 
-            <p>
-                <label>End Time</label>
-                <span><%= display_date(ebay_item.endtime) %></span>
-            </p>
-
-            <p>
-                <label>Price</label>
-                <span><%= number_to_currency ebay_item.price, :unit => display_currency_symbol(ebay_item.currencytype) %> <%= ebay_item.currencytype %></span>
-            </p>
-        </td>
+        <p>
+          <label>Price</label>
+          <span><%= number_to_currency ebay_item.price, :unit => display_currency_symbol(ebay_item.currencytype) %> <%= ebay_item.currencytype %></span>
+        </p>
+      </td>
     </tr>
     <tr>
-        <td>
-            <a class="view" href="/<%= ebay_item.id %>">View Details</a>
-        </td>
+      <td>
+        <a class="view" href="/<%= ebay_item.id %>">View Details</a>
+      </td>
     </tr>
-</table>
+    <% if ebay_item.release_id %>
+        <% form_for(ebay_item) do |f| %>
+            <%= f.error_messages %>
+            <input type="hidden" name="ebay_item[release_id]" value=""/>
+
+            <p>
+              <%= f.submit 'Remove Mapping' %>
+            </p>
+        <% end %>
+    <% end %>
+  </table>
+</li>
+<hr/>

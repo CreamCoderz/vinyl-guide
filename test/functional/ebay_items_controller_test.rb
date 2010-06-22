@@ -86,13 +86,12 @@ class EbayItemsControllerTest < ActionController::TestCase
     ebay_lp_1 = generate_ebay_items_with_size(1, "LP (12-Inch)")[0]
     ebay_lp_2 = generate_ebay_items_with_size(1, '12"')[0]
     other = generate_ebay_items_with_size(1, 'OTHER')[0]
-    save_ebay_items([ebay_single_1, ebay_single_2, ebay_ep_1, ebay_ep_2, ebay_lp_1, ebay_lp_2, other])
     get :singles, :page => 1
-    assert_equal [ebay_single_1, ebay_single_2], assigns(:ebay_items)
+    assert_equal [ebay_single_2, ebay_single_1], assigns(:ebay_items)
     get :eps, :page => 1
-    assert_equal [ebay_ep_1, ebay_ep_2], assigns(:ebay_items)
+    assert_equal [ebay_ep_2, ebay_ep_1], assigns(:ebay_items)
     get :lps, :page => 1
-    assert_equal [ebay_lp_1, ebay_lp_2], assigns(:ebay_items)
+    assert_equal [ebay_lp_2, ebay_lp_1], assigns(:ebay_items)
     get :other, :page => 1
     assert_equal [other], assigns(:ebay_items)
   end
@@ -103,9 +102,6 @@ class EbayItemsControllerTest < ActionController::TestCase
     ebay_eps =  generate_ebay_items_with_size(more_than_a_page, "10\"")
     ebay_lps = generate_ebay_items_with_size(more_than_a_page, "LP")
     other_items = generate_ebay_items_with_size(more_than_a_page, "Other")
-    ebay_singles.map{|ebay_item| ebay_item.save }
-    ebay_eps.map{|ebay_item| ebay_item.save }
-    ebay_lps.map{|ebay_item| ebay_item.save }
     other_items.map{|ebay_item| ebay_item.save }
     get :singles, :page => 1
     actual_ebay_items = assigns(:ebay_items)

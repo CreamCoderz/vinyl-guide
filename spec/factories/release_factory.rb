@@ -3,6 +3,7 @@ Factory.define :release do |release|
   release.artist { Factory.next(:artist) }
   release.year { Factory.next(:year) }
   release.label { Factory.next(:label) }
+  release.format Format::LP
   release.matrix_number { Factory.next(:matrix_number) }
 end
 

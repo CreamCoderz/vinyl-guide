@@ -7,25 +7,27 @@
   <b>Title:</b>
   <%= h @release.title %>
 </p>
-
 <p>
   <b>Year:</b>
   <%= h @release.year %>
 </p>
-
 <p>
   <b>Label:</b>
   <%= h @release.label %>
 </p>
-
+<p>
+  <b>Format:</b>
+  <%= h @release.format.name if @release.format %>
+</p>
 <p>
   <b>Matrix number:</b>
   <%= h @release.matrix_number %>
 </p>
 
 Add Ebay Items
-<form name="search" action="<%= "#{search_path}?show_mapped=false}" %>" method="get">
-  <input name="q" id="ebay-item-finder" value=""/>
+<form id="mapping-search" name="search" action="<%= "#{search_path}" %>" method="get">
+  <input type="text" name="q" id="ebay-item-finder" value=""/>
+  <!--<p>Show only unmapped auctions: <input type="checkbox" name="show_mapped" id="show_mapped" value="false" checked="checked"/></p>-->
 </form>
 
 <script type="text/javascript">
