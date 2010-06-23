@@ -52,3 +52,19 @@ var Release = function() {
     return {init: this.init,
         categorize: this.categorize}
 }();
+
+var EbayItem = function() {
+    this.init = function(ebayItem, authenticityToken) {
+        this.ebayItemId = ebayItem;
+        this.authenticityToken = authenticityToken;
+    };
+
+    this.categorize = function(id) {
+        $.post("/ebay_items/" + EbayItem.ebayItemId, {"_method": "put", "ebay_item[release_id]": id, "authenticity_token": EbayItem.authenticityToken},
+                function() {
+                    window.location = "/releases/" + id;
+                });
+    };
+    return {init: this.init,
+        categorize: this.categorize}
+}();

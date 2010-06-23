@@ -24,6 +24,7 @@ class EbayItemsController < ApplicationController
     if @ebay_item.update_attributes(params[:ebay_item])
       flash[:notice] = 'The auction was successfully updated.'
       if request.xhr?
+        @controls = true        
         render :template => "partials/_ebay_item_abbrv.erb", :layout => false, :locals => {:ebay_item => @ebay_item}
       else
         redirect_to ebay_item_path(@ebay_item)

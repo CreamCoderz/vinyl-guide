@@ -97,6 +97,7 @@ a:active {
 .recordItem {
     margin: 2px;
     list-style: none;
+    border-bottom: #006600 solid;
 }
 
 .container {

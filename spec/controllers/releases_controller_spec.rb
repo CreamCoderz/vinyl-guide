@@ -28,6 +28,7 @@ describe ReleasesController do
       actual_ebay_items[0].id.should == mock_ebay_item.id
       assigns[:release].id.should == mock_release.id
       assigns[:release].should equal(mock_release)
+      assigns[:controls].should be_true
     end
   end
 
@@ -142,7 +143,7 @@ describe ReleasesController do
       title = "thanks and praise"
       release = Factory.create(:release, :title => title)
       response = xhr :get, :search, :q => title
-      response.body.should == [release].to_json(:only => [:title], :methods => [:link])
+      response.body.should == [release].to_json(:only => [:title, :id], :methods => [:link])
     end
   end
 

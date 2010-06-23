@@ -17,6 +17,7 @@ class ReleasesController < ApplicationController
   def show
     @release = Release.find(params[:id], :include => :ebay_items)
     @ebay_items = @release.ebay_items
+    @controls = true
     respond_to do |format|
       format.html # show.html.erb
       format.xml { render :xml => @release }
@@ -90,7 +91,7 @@ class ReleasesController < ApplicationController
     query = ParamsParser.parse_query_param(params)
     releases = Release.search(:page => page_num, :query => query)
     respond_to do |format|
-      format.json { render :json => releases[0].to_json(:only => [:title], :methods => [:link]) }
+      format.json { render :json => releases[0].to_json(:only => [:title, :id], :methods => [:link]) }
     end
   end
 end

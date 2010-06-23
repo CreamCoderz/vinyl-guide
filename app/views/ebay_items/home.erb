@@ -17,8 +17,7 @@
     </ul>
     <hr/>
     <h3>Most Recent Vinyl Result</h3>
-    <%= render :partial=> "partials/ebay_item_abbrv", :locals => { :ebay_item => @ebay_items[0] } %>
-    <hr/>
+    <%= render :partial=> "partials/ebay_item_abbrv", :locals => { :ebay_item => @ebay_items[0], :controls => false } %>
     <h3><%= @ebay_items.length %> Latest Vinyl Results</h3>
 
     <div>

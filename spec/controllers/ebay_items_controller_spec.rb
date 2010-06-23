@@ -51,8 +51,9 @@ describe EbayItemsController do
 
       it "should return a rendered partial for an AJAX request" do
         EbayItem.stub!(:find).and_return(mock_ebay_item(:update_attributes => true))
-        xhr :put, :update, :id => "1", :format => "xml"
+        xhr :put, :update, :id => "1", :format => "xml", :controls => true 
         response.should render_template("partials/_ebay_item_abbrv.erb")
+        assigns[:controls].should be_true        
       end
     end
 

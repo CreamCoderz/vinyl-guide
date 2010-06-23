@@ -34,8 +34,11 @@ Add Ebay Items
     $(document).ready(function() {
         Release.init("<%= @release.id %>", "<%= "#{form_authenticity_token}" %>");
         new AutoCompleter("ebay-item-finder", "<%= "#{search_path}?include_mapped=false" %>", "ebay_item", Release.categorize);
+
     });
 </script>
+<%= javascript_include_tag 'releases' %>
+
 <%= render :partial => "partials/ebay_item_index", :locals => {
         :header_text => "<h2>Auctions for this release</h2>",
         :base_url => "/all"} %>

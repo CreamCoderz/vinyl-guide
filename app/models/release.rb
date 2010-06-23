@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/../../lib/query_generator'
 class Release < ActiveRecord::Base
   SEARCHABLE_FIELDS = [:title, :artist, :label, :matrix_number]
 
-  has_many :ebay_items, :foreign_key => "release_id"
+  has_many :ebay_items, :foreign_key => "release_id", :order => "updated_at ASC"
   belongs_to :format
 
   validates_uniqueness_of :title, :scope => [:title, :artist, :year, :label, :matrix_number, :format_id], :message => "must not match an existing combination of fields"
