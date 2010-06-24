@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100623052002) do
+ActiveRecord::Schema.define(:version => 20100624050716) do
 
   create_table "ebay_auctions", :force => true do |t|
     t.integer  "item_id",  :limit => 8
@@ -47,6 +47,13 @@ ActiveRecord::Schema.define(:version => 20100623052002) do
     t.string "name"
   end
 
+  create_table "labels", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "pictures", :force => true do |t|
     t.integer "ebay_item_id"
     t.string  "url"
@@ -76,6 +83,7 @@ ActiveRecord::Schema.define(:version => 20100623052002) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "format_id"
+    t.integer  "label_id"
   end
 
 end

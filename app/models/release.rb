@@ -5,6 +5,8 @@ class Release < ActiveRecord::Base
 
   has_many :ebay_items, :foreign_key => "release_id", :order => "updated_at ASC"
   belongs_to :format
+  #TODO: rename after we get rid of the label field
+  belongs_to :label_entity, :class_name => 'Label', :foreign_key => 'label_id'
 
   validates_uniqueness_of :title, :scope => [:title, :artist, :year, :label, :matrix_number, :format_id], :message => "must not match an existing combination of fields"
 
