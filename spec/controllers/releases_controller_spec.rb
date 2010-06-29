@@ -7,6 +7,7 @@ describe ReleasesController do
   end
 
   def mock_release(stubs={})
+    stubs.merge({:label_entity => Factory(:label)})
     @mock_release ||= mock_model(Release, stubs)
   end
 
@@ -34,17 +35,19 @@ describe ReleasesController do
 
   describe "GET new" do
     it "assigns a new release as @release" do
-      Release.stub!(:new).and_return(mock_release)
+      Release.stub!(:new).and_return(mock_release({:label_entity => Factory(:label), :build_label_entity => nil}))
       get :new
       assigns[:release].should equal(mock_release)
+      assigns[:release].label_entity.should_not be_nil
     end
   end
 
   describe "GET edit" do
     it "assigns the requested release as @release" do
-      Release.stub!(:find).with("37").and_return(mock_release)
+      Release.stub!(:find).with("37").and_return(mock_release({:label_entity => Factory(:label), :build_label_entity => nil}))
       get :edit, :id => "37"
       assigns[:release].should equal(mock_release)
+      assigns[:release].label_entity.should_not be_nil      
     end
   end
 
@@ -100,6 +103,13 @@ describe ReleasesController do
         put :update, :id => "1"
         response.should redirect_to(release_url(mock_release))
       end
+
+      it "should update a release" do
+        release = Factory(:release)
+        put :update, :id => release.id.to_s, :release => {:title => 'foo'}
+        release.reload.title.should == 'foo'
+      end
+
     end
 
     describe "with invalid params" do

@@ -1,14 +1,14 @@
 require File.dirname(__FILE__) + '/../../lib/query_generator'
 
 class Release < ActiveRecord::Base
-  SEARCHABLE_FIELDS = [:title, :artist, :label, :matrix_number]
+  SEARCHABLE_FIELDS = [:title, :artist, :matrix_number]
 
   has_many :ebay_items, :foreign_key => "release_id", :order => "updated_at ASC"
   belongs_to :format
-  #TODO: rename after we get rid of the label field
   belongs_to :label_entity, :class_name => 'Label', :foreign_key => 'label_id'
+  accepts_nested_attributes_for :label_entity
 
-  validates_uniqueness_of :title, :scope => [:title, :artist, :year, :label, :matrix_number, :format_id], :message => "must not match an existing combination of fields"
+  validates_uniqueness_of :title, :scope => [:title, :artist, :year, :label_id, :format_id, :matrix_number], :message => "The release must not match an existing combination of fields"
 
   validate_on_create :format_must_exist
   validate_on_update :format_must_exist

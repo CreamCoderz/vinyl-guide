@@ -2,13 +2,14 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Release do
   before do
+    label = Factory(:label, :name => "value for label")
     @valid_attributes = {
             :title => "value for title",
             :artist => "value for artist",
             :year => 1978,
-            :label => "value for label",
+            :label_id => label.id,
             :matrix_number => "value for matrix_number",
-            :format => Format::SINGLE
+            :format_id => Format::SINGLE.id
     }
   end
 
@@ -33,10 +34,17 @@ describe Release do
     end
 
     it "should belong to label" do
-      label = Factory(:label)
-      label.releases << release = Factory(:release)
-      label.save
+      release = Factory(:release)
+      release.label_entity = label = Factory(:label)
+      release.save
       release.reload.label_entity.should == label
+    end
+
+    it "should accept nested attributes for label" do
+      release = Factory(:release)
+      release.label_entity_attributes= {:name => 'Channel One'}
+      release.save
+      release.reload.label_entity.name.should == 'Channel One'
     end
   end
 
@@ -50,11 +58,11 @@ describe Release do
       Release.create!(@valid_attributes)
       @valid_attributes[:year] = 1970
       Release.create!(@valid_attributes)
-      @valid_attributes[:label] = "harry j"
+      @valid_attributes[:label_id] = Factory(:label, :name =>"harry j").id
       Release.create!(@valid_attributes)
-      @valid_attributes[:format] = Format::EP
+      @valid_attributes[:format_id] = (Format::EP).id
       Release.create!(@valid_attributes)
-      Release.create(@valid_attributes).errors.on(:title).should == "must not match an existing combination of fields"
+      Release.create(@valid_attributes).errors.on(:title).should == "The release must not match an existing combination of fields"
     end
 
     it "should allow LP, EP, or single for the format field" do
@@ -93,9 +101,8 @@ describe Release do
     before do
       @title_word = @valid_attributes[:title][/[^ ]+/].first
       @artist_word = @valid_attributes[:artist][/[^ ]+/].first
-      @label_word = @valid_attributes[:label][/[^ ]+/].first
       @matrix_word = @valid_attributes[:matrix_number][/[^ ]+/].first
-      @query_words = [@title_word, @artist_word, @label_word, @matrix_word]
+      @query_words = [@title_word, @artist_word, @matrix_word]
     end
 
     it "should return an empty result set when no items exist" do

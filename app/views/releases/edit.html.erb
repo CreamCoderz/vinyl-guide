@@ -16,10 +16,14 @@
       <%= f.text_field :year %>
     </p>
     <p>
-      <%= f.label :label %><br/>
-      <%= f.text_field :label %>
+      <% f.fields_for :label_entity do |label_form| %>
+          <%= label_form.label :name, "Label" %><br/>
+          <% existing_labels = Label.all.collect { |label| ["#{label.name}", label.name] } %>
+          <% existing_labels.insert(0, ['', '']) %>
+          <%= label_form.select :name, existing_labels, {}, :id => 'label_selector' %>
+      <% end %>
     </p>
-     <p>
+    <p>
       <%= f.label :format %><br/>
       <%= collection_select(:release, :format_id, Format.all, :id, :name) %>
     </p>
@@ -31,6 +35,8 @@
       <%= f.submit 'Update' %>
     </p>
 <% end %>
+
+<%= javascript_include_tag 'releases' %>
 
 <%= link_to 'Show', @release %> |
 <%= link_to 'Back', releases_path %>

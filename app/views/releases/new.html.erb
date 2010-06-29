@@ -15,9 +15,15 @@
       <%= f.label :year %><br/>
       <%= f.text_field :year %>
     </p>
+    <% f.fields_for :label_entity do |label_form| %>
+        <%= label_form.label :name, "Label" %><br/>
+        <% existing_labels = Label.all.collect { |label| ["#{label.name}", label.name] } %>
+        <% existing_labels.insert(0, ['','']) %>
+        <%= label_form.select :name, existing_labels, {}, :id => 'label_selector' %>
+    <% end %>
     <p>
-      <%= f.label :label %><br/>
-      <%= f.text_field :label %>
+      <%= f.label :format %><br/>
+      <%= collection_select(:release, :format_id, Format.all, :id, :name) %>
     </p>
     <p>
       <%= f.label :matrix_number %><br/>
@@ -27,5 +33,7 @@
       <%= f.submit 'Create' %>
     </p>
 <% end %>
+
+<%= javascript_include_tag 'releases' %>
 
 <%= link_to 'Back', releases_path %>

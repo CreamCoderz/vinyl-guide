@@ -2,7 +2,7 @@ Factory.define :release do |release|
   release.title { Factory.next(:title) }
   release.artist { Factory.next(:artist) }
   release.year { Factory.next(:year) }
-  release.label { Factory.next(:label) }
+  release.label_entity { Factory.next(:label) }
   release.format Format::LP
   release.matrix_number { Factory.next(:matrix_number) }
 end
@@ -20,7 +20,7 @@ Factory.sequence :year do |n|
 end
 
 Factory.sequence :label do |n|
-  "label #{n}"
+  Factory(:label)
 end
 
 Factory.sequence :matrix_number do |n|

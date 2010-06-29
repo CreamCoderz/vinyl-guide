@@ -17,7 +17,7 @@
           <td><%= h release.artist %></td>
           <td><%= h release.title %></td>
           <td><%= h release.year %></td>
-          <td><%= h release.label %></td>
+          <td><%= h release.label_entity.name if release.label_entity %></td>
           <td><%= h release.format.name if release.format %></td>
           <td><%= h release.matrix_number %></td>
           <td><%= link_to 'Show', release %></td>

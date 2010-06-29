@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100624050716) do
+ActiveRecord::Schema.define(:version => 20100628005108) do
 
   create_table "ebay_auctions", :force => true do |t|
     t.integer  "item_id",  :limit => 8
@@ -78,7 +78,6 @@ ActiveRecord::Schema.define(:version => 20100624050716) do
     t.string   "title"
     t.string   "artist"
     t.integer  "year"
-    t.string   "label"
     t.string   "matrix_number"
     t.datetime "created_at"
     t.datetime "updated_at"

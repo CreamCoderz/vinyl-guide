@@ -28,7 +28,7 @@ class ReleasesController < ApplicationController
   # GET /releases/new.xml
   def new
     @release = Release.new
-
+    @release.build_label_entity
     respond_to do |format|
       format.html # new.html.erb
       format.xml { render :xml => @release }
@@ -38,6 +38,7 @@ class ReleasesController < ApplicationController
   # GET /releases/1/edit
   def edit
     @release = Release.find(params[:id])
+    @release.build_label_entity if @release.label_entity.nil?    
   end
 
   # POST /releases

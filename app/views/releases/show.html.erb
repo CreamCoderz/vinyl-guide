@@ -13,7 +13,7 @@
 </p>
 <p>
   <b>Label:</b>
-  <%= h @release.label %>
+  <%= h @release.label_entity.name if @release.label_entity%>
 </p>
 <p>
   <b>Format:</b>
