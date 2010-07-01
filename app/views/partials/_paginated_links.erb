@@ -1,3 +1,6 @@
+<% sort ||= nil %>
+<% order ||= nil %>
+<% base_url ||= "" %>
 <% if prev_link %>
     <a class="prev" href="<%=
         "#{append_query_params(base_url,

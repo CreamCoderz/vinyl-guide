@@ -1,10 +1,12 @@
-require File.expand_path(File.dirname(__FILE__) + "/../../lib/serializer/auto_complete_serializer")
-
 class ReleasesController < ApplicationController
-  # GET /releases
-  # GET /releases.xml
+
+  def initialize
+    @paginator = Paginator.new(Release)
+  end
+
   def index
-    @releases = Release.all
+    @page_num = ParamsParser.parse_page_param(params)
+    @releases, @prev, @next, @start, @end, @total = @paginator.paginate(@page_num, nil, "artist ASC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -12,8 +14,6 @@ class ReleasesController < ApplicationController
     end
   end
 
-  # GET /releases/1
-  # GET /releases/1.xml
   def show
     @release = Release.find(params[:id], :include => :ebay_items)
     @ebay_items = @release.ebay_items
@@ -24,8 +24,6 @@ class ReleasesController < ApplicationController
     end
   end
 
-  # GET /releases/new
-  # GET /releases/new.xml
   def new
     @release = Release.new
     @release.build_label_entity
@@ -35,10 +33,9 @@ class ReleasesController < ApplicationController
     end
   end
 
-  # GET /releases/1/edit
   def edit
     @release = Release.find(params[:id])
-    @release.build_label_entity if @release.label_entity.nil?    
+    @release.build_label_entity if @release.label_entity.nil?
   end
 
   # POST /releases
@@ -92,7 +89,7 @@ class ReleasesController < ApplicationController
     query = ParamsParser.parse_query_param(params)
     releases = Release.search(:page => page_num, :query => query)
     respond_to do |format|
-      format.json { render :json => releases[0].to_json(:only => [:title, :id], :methods => [:link]) }
+      format.json { render :json => releases[0].to_json(:include => {:label_entity => {:only => :name}}, :only => [:matrix_number, :title, :matrix, :artist, :id], :methods => [:link]) }
     end
   end
 end

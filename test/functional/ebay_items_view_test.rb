@@ -59,10 +59,9 @@ class EbayItemsViewTest <  ActionController::TestCase
 
   def test_show_view
     get :show, :id => 1
-    check_item_result(assert_select('li p span'), ebay_items(:one), EBAY_ITEM_DISPLAY_FIELDS)
+    check_item_result(assert_select('p span'), ebay_items(:one), EBAY_ITEM_DISPLAY_FIELDS)
     get :show, :id => 4
-    check_item_result(assert_select('li p span'), ebay_items(:four), EBAY_ITEM_DISPLAY_FIELDS)
-
+    check_item_result(assert_select(' span'), ebay_items(:four), EBAY_ITEM_DISPLAY_FIELDS)
   end
 
   def test_show_pictures

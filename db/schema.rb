@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20100628005108) do
 
   create_table "labels", :force => true do |t|
     t.string   "name"
-    t.string   "description"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

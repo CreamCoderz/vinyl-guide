@@ -243,7 +243,7 @@ a:active {
 
 .abbrvItem {
     border: 0;
-    border-spacing: 2px 0px
+    border-spacing: 2px 0
 }
 
 .abbrbItem td {
@@ -256,4 +256,15 @@ a:active {
 
 .padBtn {
     padding: 2px 8px;
+}
+
+.releases {
+    width: 100%;
+}
+
+.map-auction {
+    float: left;
+    border: solid 1px #990000;
+    padding: 10px;
+    clear: both;
 }

@@ -5,7 +5,7 @@ class Release < ActiveRecord::Base
 
   has_many :ebay_items, :foreign_key => "release_id", :order => "updated_at ASC"
   belongs_to :format
-  belongs_to :label_entity, :class_name => 'Label', :foreign_key => 'label_id'
+  belongs_to :label_entity, :class_name => 'Label', :foreign_key => 'label_id', :dependent => :destroy
   accepts_nested_attributes_for :label_entity
 
   validates_uniqueness_of :title, :scope => [:title, :artist, :year, :label_id, :format_id, :matrix_number], :message => "The release must not match an existing combination of fields"

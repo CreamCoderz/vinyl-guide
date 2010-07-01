@@ -1,10 +1,15 @@
 <div class="container">
-    <h3>Vinyl Details</h3>
-
-    <ul>
-        <li class="recordItem">
-            <%= render :partial=> "partials/ebay_item", :locals => { :ebay_item => @ebay_item } %>
-        </li>
-        <hr/>
-    </ul>
+  <h3>Vinyl Details</h3>
+  <%= render :partial=> "partials/ebay_item", :locals => {:ebay_item => @ebay_item} %>
+  <div class="map-auction">
+    <div class="releases-search">
+      <h3>Map to an Existing Release</h3>
+      <%= render :partial => "partials/search_release_form", :locals => {:ebay_item => @ebay_item} %>
+    </div>
+    <div class="create-release">
+      <h3>Create a Release</h3>
+      <%= render :partial=> "partials/new_release_form", :locals => {:release => @release} %>
+    </div>
+  </div>
+  <div style="clear:both"></div>
 </div>

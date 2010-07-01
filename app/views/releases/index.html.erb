@@ -2,8 +2,10 @@
 
   <h3>Listing releases</h3>
 
-  <table>
+  <%= render :partial => "partials/paginated_links", :locals => {:next_link => @next, :prev_link => @prev} %>
+  <table class="releases">
     <tr>
+      <th>&nbsp;</th>
       <th>Artist</th>
       <th>Title</th>
       <th>Year</th>
@@ -14,6 +16,8 @@
 
     <% @releases.each do |release| %>
         <tr>
+          <% ebay_item = release.ebay_items ? release.ebay_items[0] : nil %>
+          <td><img src="<%= display_gallery_img(ebay_item.id, ebay_item.hasimage) if ebay_item %>"/></td>
           <td><%= h release.artist %></td>
           <td><%= h release.title %></td>
           <td><%= h release.year %></td>

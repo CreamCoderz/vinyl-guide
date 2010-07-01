@@ -39,6 +39,8 @@ class EbayItemsController < ApplicationController
   end
 
   def show
+    @release = Release.new
+    @release.label_entity = Label.new
   end
 
   def all

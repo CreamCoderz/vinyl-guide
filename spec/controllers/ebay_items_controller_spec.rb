@@ -28,6 +28,13 @@ describe EbayItemsController do
     end
   end
 
+  describe "GET show" do
+    it "should assign a @release" do
+      get :show, :id => "#{Factory(:ebay_item).id}"
+      assigns[:release].should_not be_nil
+    end
+  end
+
   describe "PUT update" do
 
     describe "with valid params" do

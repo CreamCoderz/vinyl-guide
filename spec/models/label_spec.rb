@@ -18,6 +18,14 @@ describe Label do
       Label.create(:name => "Studio One").errors.on(:name).should == "The label name must be unique."    
       Label.create(:name => "sTuDio oNE").errors.on(:name).should == "The label name must be unique."    
     end
+
+    it "should delete all references to itself when destroyed" do
+      label = Factory(:label, :name => "Studio One")
+      release = Factory(:release, :label_entity => label)
+      release.label_entity.should_not be_nil
+      label.destroy
+      release.reload.label_entity.should be_nil
+    end
   end
 
   describe "associations" do

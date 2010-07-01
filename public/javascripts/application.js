@@ -2,13 +2,17 @@ function setClass(elm, className) {
     elm.setAttribute("class", className);
 }
 
-function AutoCompleter(id, path, key, callback) {
+function AutoCompleter(id, path, key, callback, linkTextBuilder) {
 
     //TODO: looks like jquery is setting the scope of 'this', so i had to inline the functions
     $("#" + id).autocomplete(path, {
         formatItem: function(item) {
             var link = item[key].link;
-            var title = item[key].title;
+            var title;
+            if (linkTextBuilder == undefined)
+                title = item[key].title;
+            else
+                title = linkTextBuilder(item);
             return "<a href=\"" + link + "\">" + title + "</a>";
 
         },
@@ -54,6 +58,7 @@ var Release = function() {
 }();
 
 var EbayItem = function() {
+    var key = 'release';
     this.init = function(ebayItem, authenticityToken) {
         this.ebayItemId = ebayItem;
         this.authenticityToken = authenticityToken;
@@ -65,6 +70,16 @@ var EbayItem = function() {
                     window.location = "/releases/" + id;
                 });
     };
+
+    this.linkTextBuilder = function(item) {
+        var anchorText = [];
+        anchorText.push(item[key].artist);
+        anchorText.push(item[key].title);
+        anchorText.push(item[key]['label_entity'].name);
+        anchorText.push(item[key].matrix_number);
+        return anchorText.join(" - ")
+    };
     return {init: this.init,
-        categorize: this.categorize}
+        categorize: this.categorize,
+        linkTextBuilder :this.linkTextBuilder}
 }();

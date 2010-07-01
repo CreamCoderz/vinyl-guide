@@ -1,39 +1,5 @@
-<h1>New release</h1>
+<h2>Create release</h2>
 
-<% form_for(@release) do |f| %>
-    <%= f.error_messages %>
-
-    <p>
-      <%= f.label :artist %><br/>
-      <%= f.text_field :artist %>
-    </p>
-    <p>
-      <%= f.label :title %><br/>
-      <%= f.text_field :title %>
-    </p>
-    <p>
-      <%= f.label :year %><br/>
-      <%= f.text_field :year %>
-    </p>
-    <% f.fields_for :label_entity do |label_form| %>
-        <%= label_form.label :name, "Label" %><br/>
-        <% existing_labels = Label.all.collect { |label| ["#{label.name}", label.name] } %>
-        <% existing_labels.insert(0, ['','']) %>
-        <%= label_form.select :name, existing_labels, {}, :id => 'label_selector' %>
-    <% end %>
-    <p>
-      <%= f.label :format %><br/>
-      <%= collection_select(:release, :format_id, Format.all, :id, :name) %>
-    </p>
-    <p>
-      <%= f.label :matrix_number %><br/>
-      <%= f.text_field :matrix_number %>
-    </p>
-    <p>
-      <%= f.submit 'Create' %>
-    </p>
-<% end %>
-
-<%= javascript_include_tag 'releases' %>
+<%= render :partial => "partials/new_release_form", :locals => {:release => @release} %>
 
 <%= link_to 'Back', releases_path %>
