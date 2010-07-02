@@ -38,16 +38,23 @@ class ReleasesController < ApplicationController
     @release.build_label_entity if @release.label_entity.nil?
   end
 
-  # POST /releases
-  # POST /releases.xml
   def create
+    #TODO: refactor this conditional to use a more functional approach
+    if label_entity_attributes = params[:release][:label_entity_attributes]
+      if label_name = label_entity_attributes[:name]
+        if label = Label.find_by_name(label_name)
+          params[:release].delete([:label_entity_attributes])
+          params[:release][:label_entity] = label
+        end
+      end
+    end
     @release = Release.new(params[:release])
 
     respond_to do |format|
       if @release.save
         flash[:notice] = 'Release was successfully created.'
         format.html { redirect_to(@release) }
-        format.xml { render :xml => @release, :status => :created, :location => @release }
+        format.json { render :json => @release, :status => :created, :location => @release }
       else
         format.html { render :action => "new" }
         format.xml { render :xml => @release.errors, :status => :unprocessable_entity }
@@ -55,8 +62,6 @@ class ReleasesController < ApplicationController
     end
   end
 
-  # PUT /releases/1
-  # PUT /releases/1.xml
   def update
     @release = Release.find(params[:id])
 
@@ -72,8 +77,6 @@ class ReleasesController < ApplicationController
     end
   end
 
-  # DELETE /releases/1
-  # DELETE /releases/1.xml
   def destroy
     @release = Release.find(params[:id])
     @release.destroy

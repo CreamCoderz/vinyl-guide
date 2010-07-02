@@ -73,12 +73,18 @@ var EbayItem = function() {
 
     this.linkTextBuilder = function(item) {
         var anchorText = [];
-        anchorText.push(item[key].artist);
-        anchorText.push(item[key].title);
-        anchorText.push(item[key]['label_entity'].name);
-        anchorText.push(item[key].matrix_number);
+        this.pushIfNotEmpty(anchorText, item[key].artist);
+        this.pushIfNotEmpty(anchorText, item[key].title);
+        this.pushIfNotEmpty(anchorText, item[key]['label_entity'].name);
+        this.pushIfNotEmpty(anchorText, item[key].matrix_number);
         return anchorText.join(" - ")
     };
+
+    this.pushIfNotEmpty = function(anchorText, value) {
+        if ("" != value)
+            anchorText.push(value);
+    };
+    
     return {init: this.init,
         categorize: this.categorize,
         linkTextBuilder :this.linkTextBuilder}
