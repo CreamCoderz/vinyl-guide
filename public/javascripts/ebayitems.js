@@ -2,12 +2,13 @@ $(document).ready(function() {
     var options = {
         url: "/releases.json",
         dataType: "json",
-        success: function() {
-            $('#new_release_errors').html('<p>Release Successfully Created</p>');
+        success: function(responseText, statusText, xhr, elm) {
+            $('.new_release_errors', elm).html('<p>Release Successfully Created</p>');
         },
-        error: function(data) {
-            $('#new_release_errors').html('<p>The Release Must be Unique</p>');
+        error: function(responseText, statusText, xhr, elm) {
+            console.log(responseText);
+            $('.new_release_errors', elm).html('<p>The Release Already Exists</p>');
         }
     };
-    $('#new_release').ajaxForm(options);
+    $('.new_release').ajaxForm(options);
 });

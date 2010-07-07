@@ -77,6 +77,11 @@ describe Release do
         @valid_attributes[:format_id] = 20000
         Release.create(@valid_attributes).errors.on(:format).should == "the format must exist"
       end
+
+      it "should only allow 4 digit dates" do
+        @valid_attributes[:year] = 12
+        Release.create(@valid_attributes).errors.on(:year).should == "the year must have 4 digits and be valid"
+      end
     end
 
     describe "#update" do

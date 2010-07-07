@@ -2,6 +2,7 @@ require File.dirname(__FILE__) + '/../../lib/query_generator'
 
 class Release < ActiveRecord::Base
   SEARCHABLE_FIELDS = [:title, :artist, :matrix_number]
+  VALID_YEARS = (1940..Time.new.year).to_a.reverse
 
   has_many :ebay_items, :foreign_key => "release_id", :order => "updated_at ASC"
   belongs_to :format
@@ -10,7 +11,7 @@ class Release < ActiveRecord::Base
 
   validates_uniqueness_of :title, :scope => [:title, :artist, :year, :label_id, :format_id, :matrix_number], :message => "The release must not match an existing combination of fields"
 
-  validate_on_create :format_must_exist
+  validate_on_create :format_must_exist, :year_must_be_valid
   validate_on_update :format_must_exist
 
   @paginator = Paginator.new(Release)
@@ -30,6 +31,12 @@ class Release < ActiveRecord::Base
   def format_must_exist
     unless Format.find_by_id(self.format_id)
       errors.add(:format, "the format must exist")
+    end
+  end
+
+  def year_must_be_valid
+    if self.year && !VALID_YEARS.include?(self.year)
+      errors.add(:year, "the year must have 4 digits and be valid")
     end
   end
 end

@@ -1,4 +1,4 @@
-<% form_for(release) do |f| %>
+<% form_for(release, :html => {:class => 'new_release'}) do |f| %>
     <%= f.error_messages %>
 
     <p>
@@ -11,7 +11,7 @@
     </p>
     <p>
       <%= f.label :year %><br/>
-      <%= f.text_field :year %>
+      <%= f.select("year", Release::VALID_YEARS, {:include_blank => true}) %>
     </p>
     <% f.fields_for :label_entity do |label_form| %>
         <%= label_form.label :name, "Label" %><br/>
@@ -30,7 +30,7 @@
     <p>
       <%= f.submit 'Create' %>
     </p>
-    <div id='new_release_errors'></div>
+    <div class='new_release_errors'></div>
 <% end %>
 
 <%= javascript_include_tag 'releases' %>

@@ -7,6 +7,7 @@ class EbayItemsController < ApplicationController
   before_filter :set_sortable_fields, :only => [:all, :singles, :eps, :lps, :other, :home]
   before_filter :set_page_num, :only => [:all, :singles, :eps, :lps, :other]
   before_filter :find_ebay_item, :only => [:edit, :update, :show]
+  before_filter :set_release, :only => [:show]
 
   def initialize
     @paginator = Paginator.new(EbayItem)
@@ -39,8 +40,6 @@ class EbayItemsController < ApplicationController
   end
 
   def show
-    @release = Release.new
-    @release.label_entity = Label.new
   end
 
   def all
@@ -89,4 +88,8 @@ class EbayItemsController < ApplicationController
     @ebay_item = EbayItem.find(params[:id])
   end
 
+  def set_release
+    @release = Release.new
+    @release.label_entity = Label.new
+  end
 end
