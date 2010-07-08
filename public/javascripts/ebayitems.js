@@ -11,4 +11,10 @@ $(document).ready(function() {
         }
     };
     $('.new_release').ajaxForm(options);
+
+    //TODO: this will display all the forms on a page
+    $('.show-mapping-controls a').click(function(event) {
+        $('.map-auction').show();
+        event.preventDefault();
+    });
 });

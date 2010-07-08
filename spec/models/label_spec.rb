@@ -8,15 +8,25 @@ describe Label do
     }
   end
 
-  it "should create a new instance given valid attributes" do
-    Label.create!(@valid_attributes)
+  describe "create" do
+    it "should create a new instance given valid attributes" do
+      Label.create!(@valid_attributes)
+    end
+
+    it "should trim whitespace around the name" do
+      label = Label.create(:name => "  Rockers  ", :description => "Label with whitespace")
+      label.name.should == "Rockers"
+      label.name = "   Rockers   "
+      label.save
+      label.name.should == "Rockers"      
+    end
   end
 
   describe "constraints" do
     it "should validate uniqueness of name" do
       Label.create!(:name => "Studio One")
-      Label.create(:name => "Studio One").errors.on(:name).should == "The label name must be unique."    
-      Label.create(:name => "sTuDio oNE").errors.on(:name).should == "The label name must be unique."    
+      Label.create(:name => "Studio One").errors.on(:name).should == "The label name must be unique."
+      Label.create(:name => "sTuDio oNE").errors.on(:name).should == "The label name must be unique."
     end
 
     it "should delete all references to itself when destroyed" do

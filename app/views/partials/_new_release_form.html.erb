@@ -15,7 +15,7 @@
     </p>
     <% f.fields_for :label_entity do |label_form| %>
         <%= label_form.label :name, "Label" %><br/>
-        <% existing_labels = Label.all.collect { |label| ["#{label.name}", label.name] } %>
+        <% existing_labels = Label.find(:all, :order => "name ASC").collect { |label| ["#{label.name}", label.name] } %>
         <% existing_labels.insert(0, ['','']) %>
         <%= label_form.select :name, existing_labels, {}, :id => 'label_selector' %>
     <% end %>

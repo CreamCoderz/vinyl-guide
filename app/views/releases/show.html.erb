@@ -23,8 +23,11 @@
   <b>Matrix number:</b>
   <%= h @release.matrix_number %>
 </p>
+<%= link_to 'Edit Release', edit_release_path(@release) %> |
+<%= link_to 'Delete Release', @release, :confirm => 'Are you sure?', :method => :delete %> |
+<%= link_to 'View All Releases', releases_path %>
 
-Add Ebay Items
+<p>Add Ebay Items</p>
 <form id="mapping-search" name="search" action="<%= "#{search_path}" %>" method="get">
   <input type="text" name="q" id="ebay-item-finder" value=""/>
   <!--<p>Show only unmapped auctions: <input type="checkbox" name="show_mapped" id="show_mapped" value="false" checked="checked"/></p>-->
@@ -42,6 +45,3 @@ Add Ebay Items
 <%= render :partial => "partials/ebay_item_index", :locals => {
         :header_text => "<h2>Auctions for this release</h2>",
         :base_url => "/all"} %>
-
-<%= link_to 'Edit', edit_release_path(@release) %> |
-<%= link_to 'Back', releases_path %>

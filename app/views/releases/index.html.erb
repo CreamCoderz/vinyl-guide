@@ -17,16 +17,18 @@
     <% @releases.each do |release| %>
         <tr>
           <% ebay_item = release.ebay_items ? release.ebay_items[0] : nil %>
-          <td><img src="<%= display_gallery_img(ebay_item.id, ebay_item.hasimage) if ebay_item %>"/></td>
+          <td>
+            <%- if ebay_item -%>
+                <img src="<%= display_gallery_img(ebay_item.id, ebay_item.hasimage) %>"/>
+            <%- end -%>
+          </td>
           <td><%= h release.artist %></td>
           <td><%= h release.title %></td>
           <td><%= h release.year %></td>
           <td><%= h release.label_entity.name if release.label_entity %></td>
           <td><%= h release.format.name if release.format %></td>
           <td><%= h release.matrix_number %></td>
-          <td><%= link_to 'Show', release %></td>
-          <td><%= link_to 'Edit', edit_release_path(release) %></td>
-          <td><%= link_to 'Destroy', release, :confirm => 'Are you sure?', :method => :delete %></td>
+          <td><%= link_to 'View Details', release %></td>
         </tr>
     <% end %>
   </table>

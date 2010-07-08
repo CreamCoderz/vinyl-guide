@@ -263,8 +263,8 @@ a:active {
 }
 
 .map-auction {
+    display: none;
     float: left;
     border: solid 1px #990000;
     padding: 10px;
-    clear: both;
 }

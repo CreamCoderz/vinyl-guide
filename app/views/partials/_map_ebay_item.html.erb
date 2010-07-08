@@ -1,10 +1,14 @@
-<div class="map-auction">
-  <div class="releases-search">
-    <h3>Map to an Existing Release</h3>
-    <%= render :partial => "partials/search_release_form", :locals => {:ebay_item => ebay_item} %>
-  </div>
-  <div class="create-release">
-    <h3>Create a Release</h3>
-    <%= render :partial=> "partials/new_release_form", :locals => {:release => release} %>
+<div>
+  <p class="show-mapping-controls"><a href="#">Map This Auction</a></p>
+
+  <div class="map-auction">
+    <div class="releases-search">
+      <h3>Map to an Existing Release</h3>
+      <%= render :partial => "partials/search_release_form", :locals => {:ebay_item => ebay_item} %>
+    </div>
+    <div class="create-release">
+      <h3>Create a Release</h3>
+      <%= render :partial=> "partials/new_release_form", :locals => {:release => release} %>
+    </div>
   </div>
 </div>
