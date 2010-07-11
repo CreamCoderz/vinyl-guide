@@ -10,6 +10,17 @@ describe EbayItem do
     @data_builder = EbayItemDataBuilder.new
   end
 
+  describe "validations" do
+
+    before do
+      @ebay_item = Factory(:ebay_item)
+    end
+
+    it "should validate uniquess of itemid" do
+      EbayItem.create(:itemid => @ebay_item.itemid).errors.on(:itemid).should_not be_nil
+    end
+  end
+
   describe ".search" do
     it "should sort by price" do
       ebay_item_med, ebay_item_cheap, ebay_item_expensive = @data_builder.to_items(:price=, * [10.0, 5.0, 20.0]) { |item| item.title=ASWAD_TITLE }
@@ -63,7 +74,7 @@ describe EbayItem do
       release = Factory.create(:release)
       ebay_item = Factory.create(:ebay_item, :release_id => release)
       EbayItem.search(:query => ebay_item.title, :column => 'endtime', :include_mapped => false)[0].should be_empty
-      EbayItem.search(:query => ebay_item.title, :column => 'endtime', :include_mapped => true)[0].should_not be_empty 
+      EbayItem.search(:query => ebay_item.title, :column => 'endtime', :include_mapped => true)[0].should_not be_empty
     end
 
 

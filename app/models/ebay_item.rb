@@ -6,6 +6,7 @@ class EbayItem < ActiveRecord::Base
   DESC, ASC = 'desc', 'asc'
 
   validates_numericality_of :itemid, :only_integer => true
+  validates_uniqueness_of :itemid
   validates_numericality_of :price
   validates_numericality_of :bidcount
   validates_presence_of :url

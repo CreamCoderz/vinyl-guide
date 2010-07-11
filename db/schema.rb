@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100628005108) do
+ActiveRecord::Schema.define(:version => 20100710232213) do
 
   create_table "ebay_auctions", :force => true do |t|
     t.integer  "item_id",  :limit => 8
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20100628005108) do
   end
 
   add_index "ebay_items", ["endtime"], :name => "index_ebay_items_on_endtime"
+  add_index "ebay_items", ["itemid"], :name => "index_ebay_items_on_itemid"
   add_index "ebay_items", ["price"], :name => "index_ebay_items_on_price"
   add_index "ebay_items", ["title"], :name => "index_ebay_items_on_title"
 
