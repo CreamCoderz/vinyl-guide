@@ -8,7 +8,7 @@ module FeedParser
     items_node = rss_data['rss']['channel']['item']
     parsed_data = []
     if items_node
-      items_node.each { |item| parsed_data << RecordData.new(item['title']['$'], item['link']['$'], item['description']['$'], item['pubDate']['$']) }
+      items_node.each { |item| parsed_data << FeedItem.new(item['title']['$'], item['link']['$'], item['description']['$'], item['pubDate']['$']) }
     end
     parsed_data
   end

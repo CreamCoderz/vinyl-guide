@@ -5,7 +5,7 @@ require File.dirname(__FILE__) + '/../lib/imageclient'
 require File.dirname(__FILE__) + '/../lib/dateutil'
 require File.dirname(__FILE__) + '/../config/environment'
 
-properties_file = YAML.load_file("/../config/build.#{Rails.env}.yml")
+properties_file = YAML.load_file(File.dirname(__FILE__) + "/../config/build.#{Rails.env}.yml")
 store_path = properties_file['store_path']
 ebay_api_key = properties_file['ebay_api_key']
 web_client = WebClient.new(Net::HTTP)

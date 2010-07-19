@@ -40,8 +40,8 @@ file :copy_public_files do
 end
 
 task :configure do
-  sh "ln -s #{BASE_PATH}/../vinylguide_store/gallery ."
-  sh "ln -s #{BASE_PATH}/../vinylguide_store/pictures ."
+  sh "ln -s #{Rails.root}/../vinylguide_store/gallery #{Rails.root}/public/images"
+  sh "ln -s #{Rails.root}/../vinylguide_store/pictures #{Rails.root}/public/images"
 end
 
 task :clean do

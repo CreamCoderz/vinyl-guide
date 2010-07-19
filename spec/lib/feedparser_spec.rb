@@ -47,8 +47,8 @@ module FeedParserSpec
                 "    </item>\n" +
 		FEED_FOOTER
   
-  JAZZBO_RECORD = RecordData.new(@jazzbo_title, @jazzbo_link, @jazzbo_description, @jazzbo_pub_date)
-  CONGOS_RECORD = RecordData.new(@congos_title, @congos_link, @congos_description, @congos_pub_date)
+  JAZZBO_RECORD = FeedItem.new(@jazzbo_title, @jazzbo_link, @jazzbo_description, @jazzbo_pub_date)
+  CONGOS_RECORD = FeedItem.new(@congos_title, @congos_link, @congos_description, @congos_pub_date)
   
 describe FeedParser do
   it "should be empty if no items exist" do
