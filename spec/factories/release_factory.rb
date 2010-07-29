@@ -19,7 +19,7 @@ Factory.sequence :year do |n|
   1970 + n
 end
 
-Factory.sequence :label do |n|
+Factory.sequence :label do
   Factory(:label)
 end
 

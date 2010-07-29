@@ -4,7 +4,7 @@ class Release < ActiveRecord::Base
   SEARCHABLE_FIELDS = [:title, :artist, :matrix_number]
   VALID_YEARS = (1940..Time.new.year).to_a.reverse
 
-  has_many :ebay_items, :foreign_key => "release_id", :order => "updated_at ASC"
+  has_many :ebay_items, :foreign_key => "release_id", :order => "updated_at DESC"
   belongs_to :format
   belongs_to :label_entity, :class_name => 'Label', :foreign_key => 'label_id', :dependent => :destroy
   accepts_nested_attributes_for :label_entity

@@ -220,6 +220,10 @@ a:active {
     background-color: #006600;
 }
 
+.nav-color {
+    color: #006600;
+}
+
 .logo {
     font-weight: bold;
     margin-top: 8px;
@@ -267,4 +271,14 @@ a:active {
     float: left;
     border: solid 1px #990000;
     padding: 10px;
+}
+
+.related-items {
+    float: left;
+    border: solid 1px #990000;
+    padding: 10px;    
+}
+
+.clearfix {
+    clear: both;
 }

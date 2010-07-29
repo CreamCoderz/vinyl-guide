@@ -47,7 +47,7 @@ describe ReleasesController do
       Release.stub!(:find).with("37").and_return(mock_release({:label_entity => Factory(:label), :build_label_entity => nil}))
       get :edit, :id => "37"
       assigns[:release].should equal(mock_release)
-      assigns[:release].label_entity.should_not be_nil      
+      assigns[:release].label_entity.should_not be_nil
     end
   end
 
@@ -68,7 +68,7 @@ describe ReleasesController do
 
       it "should use an existing label if the params match one" do
         cry_tuff_label = Factory(:label, :name => 'Cry Tuff')
-        post :create, :release => {:artist => 'Reggae George', :format_id => Format::LP.id, :label_entity_attributes => { 'name' => cry_tuff_label.name} }
+        post :create, :release => {:artist => 'Reggae George', :format_id => Format::LP.id, :label_entity_attributes => {'name' => cry_tuff_label.name}}
         cry_tuff_label.reload.releases.length.should == 1
       end
     end
@@ -84,6 +84,22 @@ describe ReleasesController do
         Release.stub!(:new).and_return(mock_release(:save => false))
         post :create, :release => {}
         response.should render_template('new')
+      end
+    end
+
+    describe "associates an ebay item" do
+      it "should associate an ebay item with a newly created release" do
+        Release.stub!(:new).and_return(mock_release(:save => true))
+        ebay_item = Factory(:ebay_item)
+        post :create, :release => {}, :ebay_item_id => "#{ebay_item.id}"
+        EbayItem.find(ebay_item.id).release_id.should == mock_release.id
+      end
+
+      it "should only associate an existing ebay item" do
+        Release.stub!(:new).and_return(mock_release(:save => true))
+        EbayItem.stub!(:find_by_id).and_return(nil)
+        post :create, :release => {}, :ebay_item_id => '1234'
+        assigns[:release].should equal(mock_release)
       end
     end
 

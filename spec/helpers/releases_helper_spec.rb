@@ -1,11 +1,12 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe ReleasesHelper do
-
-  #Delete this example and add some real ones or delete this file
-  it "is included in the helper object" do
-    included_modules = (class << helper; self; end).send :included_modules
-    included_modules.should include(ReleasesHelper)
+  include ReleasesHelper
+  describe "#display" do
+    it "should generate a display name for a release model" do
+      release = Factory(:release, :artist => "Prince Jazzbo", :title => "Ital corner",
+                        :matrix_number => "", :label_entity => nil, :format => Format::LP)
+      release_title_for(release).should == "Ital corner - Prince Jazzbo - 1976 - LP"
+    end
   end
-
 end

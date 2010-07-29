@@ -3,7 +3,7 @@ $(document).ready(function() {
         url: "/releases.json",
         dataType: "json",
         success: function(responseText, statusText, xhr, elm) {
-            $('.new_release_errors', elm).html('<p>Release Successfully Created</p>');
+           window.location.reload();
         },
         error: function(responseText, statusText, xhr, elm) {
             console.log(responseText);

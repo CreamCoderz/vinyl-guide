@@ -27,6 +27,7 @@
       <%= f.label :matrix_number %><br/>
       <%= f.text_field :matrix_number %>
     </p>
+    <%= hidden_field_tag :ebay_item_id, @ebay_item.id if @ebay_item %>
     <p>
       <%= f.submit 'Create' %>
     </p>

@@ -20,7 +20,24 @@ describe EbayItemsController do
     assigns[:release].id.should == mock_release.id
   end
 
-  describe "GET edit" do
+  describe "#show" do
+    before do
+      @release = Factory(:release)
+      @ebay_item = Factory(:ebay_item, :release => @release)
+    end
+    it "should assign an empty array of related ebay items" do
+      get :show, :id => @ebay_item.id
+      assigns[:ebay_item].should == @ebay_item
+      assigns[:related_ebay_items].should be_empty
+    end
+    it "should assign the related ebay item" do
+      related_ebay_item = Factory(:ebay_item, :release => @release)
+      get :show, :id => @ebay_item.id
+      assigns[:related_ebay_items].should == [related_ebay_item]
+    end
+  end
+
+  describe "#edit" do
     it "assigns the requested ebay_item as @ebay_item" do
       EbayItem.stub!(:find).with("37").and_return(mock_ebay_item)
       get :edit, :id => "37"
@@ -28,14 +45,14 @@ describe EbayItemsController do
     end
   end
 
-  describe "GET show" do
+  describe "#get" do
     it "should assign a @release" do
       get :show, :id => "#{Factory(:ebay_item).id}"
       assigns[:release].should_not be_nil
     end
   end
 
-  describe "PUT update" do
+  describe "#update" do
 
     describe "with valid params" do
       it "updates the requested ebay_item" do
@@ -58,9 +75,9 @@ describe EbayItemsController do
 
       it "should return a rendered partial for an AJAX request" do
         EbayItem.stub!(:find).and_return(mock_ebay_item(:update_attributes => true))
-        xhr :put, :update, :id => "1", :format => "xml", :controls => true 
+        xhr :put, :update, :id => "1", :format => "xml", :controls => true
         response.should render_template("partials/_ebay_item_abbrv.erb")
-        assigns[:controls].should be_true        
+        assigns[:controls].should be_true
       end
     end
 

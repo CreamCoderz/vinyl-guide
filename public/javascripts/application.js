@@ -67,7 +67,7 @@ var EbayItem = function() {
     this.categorize = function(id) {
         $.post("/ebay_items/" + EbayItem.ebayItemId, {"_method": "put", "ebay_item[release_id]": id, "authenticity_token": EbayItem.authenticityToken},
                 function() {
-                    window.location = "/releases/" + id;
+                    window.location.reload();
                 });
     };
 
@@ -75,7 +75,8 @@ var EbayItem = function() {
         var anchorText = [];
         this.pushIfNotEmpty(anchorText, item[key].artist);
         this.pushIfNotEmpty(anchorText, item[key].title);
-        this.pushIfNotEmpty(anchorText, item[key]['label_entity'].name);
+        if (item[key]['label_entity'])
+            this.pushIfNotEmpty(anchorText, item[key]['label_entity'].name);
         this.pushIfNotEmpty(anchorText, item[key].matrix_number);
         return anchorText.join(" - ")
     };
@@ -84,7 +85,7 @@ var EbayItem = function() {
         if ("" != value)
             anchorText.push(value);
     };
-    
+
     return {init: this.init,
         categorize: this.categorize,
         linkTextBuilder :this.linkTextBuilder}

@@ -25,7 +25,7 @@ class EbayItemsController < ApplicationController
     if @ebay_item.update_attributes(params[:ebay_item])
       flash[:notice] = 'The auction was successfully updated.'
       if request.xhr?
-        @controls = true        
+        @controls = true
         render :template => "partials/_ebay_item_abbrv.erb", :layout => false, :locals => {:ebay_item => @ebay_item}
       else
         redirect_to ebay_item_path(@ebay_item)
@@ -40,6 +40,10 @@ class EbayItemsController < ApplicationController
   end
 
   def show
+    @ebay_item = EbayItem.find(params[:id], :include => [{:release => :ebay_items}, :pictures])
+    @related_ebay_items = []
+    releases = @ebay_item.release
+    @related_ebay_items = releases.ebay_items.inject([]) { |memo, ebay_item| memo << ebay_item unless @ebay_item == ebay_item; memo } if releases
   end
 
   def all

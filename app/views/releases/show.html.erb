@@ -43,5 +43,5 @@
 <%= javascript_include_tag 'releases' %>
 
 <%= render :partial => "partials/ebay_item_index", :locals => {
-        :header_text => "<h2>Auctions for this release</h2>",
+        :header_text => "<h2>#{@ebay_items.length} auctions for this release</h2>",
         :base_url => "/all"} %>

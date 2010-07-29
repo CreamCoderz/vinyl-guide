@@ -49,9 +49,14 @@ class ReleasesController < ApplicationController
       end
     end
     @release = Release.new(params[:release])
-
+    release_created = @release.save
+    if ebay_item_id = params[:ebay_item_id]
+      if ebay_item = EbayItem.find_by_id(ebay_item_id.to_i)
+        ebay_item.update_attributes!(:release_id => @release.id)
+      end
+    end
     respond_to do |format|
-      if @release.save
+      if release_created
         flash[:notice] = 'Release was successfully created.'
         format.html { redirect_to(@release) }
         format.json { render :json => @release, :status => :created, :location => @release }
