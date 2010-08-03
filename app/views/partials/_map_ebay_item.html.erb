@@ -1,7 +1,29 @@
 <div>
-  <p class="show-mapping-controls"><a href="#">Map This Auction</a></p>
-
-  <div class="map-auction">
+  <p class="show-mapping-controls"><a class="map" href="#">Map This Auction</a> (<a class="help" href="#">What is this?</a>)</p>
+  <div class="help-steps hidden">
+    Mapping an auction means that it will be associated with a release. Mapped auctions are auctions that we know
+    something about and can help categorize for the good of the community.
+    More information is available on the <a href="/about/welcome">welcome</a> page.
+    Here are some relevant instructions:
+    <ul>
+      <li>
+        Click on the 'Map This Auction' Link (if it exists.. if it does not, then the auction is already mapped)
+      </li>
+      <li>
+        Enter search text into the 'Find Releases' field to see if the release already exists
+      </li>
+      <li>
+        Click the item that represents the auction if it exists.
+      </li>
+      <li>
+        If the release does not exist, create it using the 'Create a Release' form below
+      </li>
+      <li>
+        In either case the page will reload and display related auctions and a link to the release.
+      </li>
+    </ul>
+  </div>
+  <div class="map-auction hidden">
     <div class="releases-search">
       <h3>Map to an Existing Release</h3>
       <%= render :partial => "partials/search_release_form", :locals => {:ebay_item => ebay_item} %>

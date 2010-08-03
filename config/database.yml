@@ -21,7 +21,7 @@ development:
   database: vinylguide_development2
   pool: 5
   username: root
-  password: rootsvinyl
+  password:
   socket: /tmp/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -34,7 +34,7 @@ test:
   database: vinylguide_test2
   pool: 5
   username: root
-  password: rootsvinyl
+  password: 
   socket: /tmp/mysql.sock
 
 production:

@@ -12,9 +12,13 @@ $(document).ready(function() {
     };
     $('.new_release').ajaxForm(options);
 
-    //TODO: this will display all the forms on a page
-    $('.show-mapping-controls a').click(function(event) {
-        $('.map-auction').show();
+    $('.show-mapping-controls a.map').click(function(event) {
+        $('.map-auction').toggleClass('hidden');
+        event.preventDefault();
+    });
+
+     $('.show-mapping-controls a.help').click(function(event) {
+        $('.help-steps').toggleClass('hidden');
         event.preventDefault();
     });
 });

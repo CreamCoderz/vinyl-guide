@@ -2,6 +2,11 @@ $(document).ready(function() {
     $('.edit_ebay_item').ajaxForm(function(data) {
         $('#ebay_item_' + this.url.split("/")[2]).remove();
     });
+
+    $('a.help').click(function(event) {
+        $('.help-steps').toggleClass('hidden');
+        event.preventDefault();
+    });
 });
 
 $(document).ready(function() {

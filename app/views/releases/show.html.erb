@@ -13,7 +13,7 @@
 </p>
 <p>
   <b>Label:</b>
-  <%= h @release.label_entity.name if @release.label_entity%>
+  <%= h @release.label_entity.name if @release.label_entity %>
 </p>
 <p>
   <b>Format:</b>
@@ -27,12 +27,28 @@
 <%= link_to 'Delete Release', @release, :confirm => 'Are you sure?', :method => :delete %> |
 <%= link_to 'View All Releases', releases_path %>
 
-<p>Add Ebay Items</p>
+<p>Add Ebay Items (<a class="help" href="#">What is this?</a>)</p>
+<div class="help-steps hidden">
+  Search for and map additional auctions that belong to this release.
+  More information is available on the <a href="/about/welcome">welcome</a> page.
+  Here are some relevant instructions:
+  <ul>
+    <li>
+      Enter text in this search field below and click on a result that should be mapped to this release. The
+      first 20 unmapped results will be included in the drop down menu. 
+    </li>
+    <li>
+      You will see the auction appear on the page below the search box
+    </li>
+    <li>
+      Delete the auction by pressing the 'X' link if to remove the mapping of that auction from this release
+    </li>
+  </ul>
+</div>
 <form id="mapping-search" name="search" action="<%= "#{search_path}" %>" method="get">
   <input type="text" name="q" id="ebay-item-finder" value=""/>
   <!--<p>Show only unmapped auctions: <input type="checkbox" name="show_mapped" id="show_mapped" value="false" checked="checked"/></p>-->
 </form>
-
 <script type="text/javascript">
     $(document).ready(function() {
         Release.init("<%= @release.id %>", "<%= "#{form_authenticity_token}" %>");
