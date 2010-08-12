@@ -3,7 +3,7 @@ $(document).ready(function() {
         url: "/releases.json",
         dataType: "json",
         success: function(responseText, statusText, xhr, elm) {
-           window.location.reload();
+            window.location.reload();
         },
         error: function(responseText, statusText, xhr, elm) {
             console.log(responseText);
@@ -13,12 +13,12 @@ $(document).ready(function() {
     $('.new_release').ajaxForm(options);
 
     $('.show-mapping-controls a.map').click(function(event) {
-        $('.map-auction').toggleClass('hidden');
+        $('#map-auction').toggleClass('hidden');
         event.preventDefault();
     });
 
-     $('.show-mapping-controls a.help').click(function(event) {
-        $('.help-steps').toggleClass('hidden');
+     $('.show-mapping-controls a .help').click(function(event) {
+        $('#help-steps').toggleClass('hidden');
         event.preventDefault();
     });
 });

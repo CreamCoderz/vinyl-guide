@@ -4,7 +4,7 @@ $(document).ready(function() {
     });
 
     $('a.help').click(function(event) {
-        $('.help-steps').toggleClass('hidden');
+        $('#help-steps').toggleClass('hidden');
         event.preventDefault();
     });
 });

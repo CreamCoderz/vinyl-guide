@@ -1,6 +1,6 @@
 <div>
   <p class="show-mapping-controls"><a class="map" href="#">Map This Auction</a> (<a class="help" href="#">What is this?</a>)</p>
-  <div class="help-steps hidden">
+  <div id="help-steps" class="hidden">
     Mapping an auction means that it will be associated with a release. Mapped auctions are auctions that we know
     something about and can help categorize for the good of the community.
     More information is available on the <a href="/about/welcome">welcome</a> page.
@@ -23,7 +23,7 @@
       </li>
     </ul>
   </div>
-  <div class="map-auction hidden">
+  <div id="map-auction" class="hidden">
     <div class="releases-search">
       <h3>Map to an Existing Release</h3>
       <%= render :partial => "partials/search_release_form", :locals => {:ebay_item => ebay_item} %>

@@ -40,7 +40,7 @@ class EbayItemsController < ApplicationController
   end
 
   def show
-    @ebay_item = EbayItem.find(params[:id], :include => [{:release => :ebay_items}, :pictures])
+    @ebay_item = EbayItem.find(params[:id], :include => [{:release => [:label_entity, :format, :ebay_items]}, :pictures])
     @related_ebay_items = []
     releases = @ebay_item.release
     @related_ebay_items = releases.ebay_items.inject([]) { |memo, ebay_item| memo << ebay_item unless @ebay_item == ebay_item; memo } if releases

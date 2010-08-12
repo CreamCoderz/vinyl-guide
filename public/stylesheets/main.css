@@ -58,26 +58,22 @@ input, select {
 a:link {
     color: #006600;
     text-decoration: none;
-    font-size: 16px;
 }
 
 a:visited {
     color: #006600;
     text-decoration: none;
-    font-size: 16px;
     font-weight: normal;
 }
 
 a:hover {
     color: #006600;
     text-decoration: underline;
-    font-size: 16px;
 }
 
 a:active {
     color: #006600;
     text-decoration: none;
-    font-size: 16px;
 }
 
 .controls {
@@ -155,29 +151,26 @@ a:active {
 .nav div {
     margin-left: 7px;
     margin-top: 12px;
+    font-size: 20px;
 }
 
 .navLink a:link, .nav a:link, .subnav a:link {
     text-decoration: none;
-    font-size: 20px;
     color: #FF9900;
 }
 
 .navLink a:visited, .nav a:visited, .subnav a:visited {
     text-decoration: none;
-    font-size: 20px;
     color: #FF9900;
 }
 
 .navLink a:hover, .nav a:hover, .subnav a:hover {
     text-decoration: underline;
-    font-size: 20px;
     color: #FF9900;
 }
 
 .navLink a:active, .nav a:active, .subnav a:active {
     text-decoration: none;
-    font-size: 20px;
     color: #FF9900;
 }
 
@@ -266,7 +259,7 @@ a:active {
     width: 100%;
 }
 
-.map-auction {
+#map-auction {
     float: left;
     border: solid 1px #990000;
     padding: 10px;
@@ -279,14 +272,13 @@ a:active {
     margin: 1px;
 }
 
-.help-steps {
-    border: solid 1px #990000;
+#help-steps {
     padding: 10px;
     float: left;
-    margin: 1px;    
+    margin: 1px;
 }
 
-.help-steps ul li {
+#help-steps ul li {
     margin-left: 20px;
 }
 

@@ -6,7 +6,7 @@ class ReleasesController < ApplicationController
 
   def index
     @page_num = ParamsParser.parse_page_param(params)
-    @releases, @prev, @next, @start, @end, @total = @paginator.paginate(@page_num, nil, "artist ASC")
+    @releases, @prev, @next, @start, @end, @total = @paginator.paginate(@page_num, nil, "artist ASC", [:label_entity, :format, :ebay_items])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +15,7 @@ class ReleasesController < ApplicationController
   end
 
   def show
-    @release = Release.find(params[:id], :include => :ebay_items)
+    @release = Release.find(params[:id], :include => [:label_entity, :format, :ebay_items])
     @ebay_items = @release.ebay_items
     @controls = true
     respond_to do |format|

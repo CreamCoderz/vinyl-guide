@@ -35,6 +35,7 @@ file :copy_public_files do
   mkdir "build/public"
   cp_r "public/javascripts", "build/public/javascripts"
   cp_r "public/stylesheets", "build/public/stylesheets"
+  cp_r "public/about", "build/public/about"
   mkdir "build/public/images"
   sh "cp ./public/images/*.jpg ./public/images/*.png ./build/public/images"
 end
