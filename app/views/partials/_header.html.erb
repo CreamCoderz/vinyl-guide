@@ -2,20 +2,29 @@
 <div class="header">
   <div class="logo">Roots Vinyl Guide</div>
   <div class="nav">
-    <div>
-      <a href="/">HOME</a>
-      <a href="/all?page=1">ALL</a>
-      <a href="/lps?page=1">LPS</a>
-      <a href="/eps?page=1">EPS</a>
-      <a href="/singles?page=1">SINGLES</a>
-      <a href="/other?page=1">OTHER</a>
-      <a href="/releases">RELEASES</a>
-      <a href="/about/welcome">ABOUT</a>
-
-      <form name="search" action="/search" method="get">
-        <input name="q" id="q" value=""/>
-        <input type="submit" value="SEARCH"/>
-      </form>
+    <div class="auction-menu">
+      <ul>
+        <li><a href="/">HOME</a></li>
+        <li class="more">
+          <span><a href="/all?page=1">AUCTIONS</a></span>
+          <ul>
+            <li><%= link_to 'ALL', all_path %></li>
+            <li><a href="/lps?page=1">LPS</a></li>
+            <li><a href="/eps?page=1">EPS</a></li>
+            <li><a href="/singles?page=1">SINGLES</a></li>
+            <li><a href="/other?page=1">OTHER</a></li>
+          </ul>
+        </li>
+        <li><%= link_to 'RELEASES', releases_path %></li>
+        <li><%= link_to 'LABELS', labels_path %></li>
+        <li><a href="/about/welcome">ABOUT</a></li>
+      </ul>
+      <div class="search-form">
+        <form name="search" action="/search" method="get">
+          <input type="text" name="q" id="q" value=""/>
+          <input type="submit" value="SEARCH"/>
+        </form>
+      </div>
 
       <script type="text/javascript">
           $(document).ready(function() {
@@ -26,53 +35,4 @@
     </div>
   </div>
 </div>
-
-<% if @sortable_base_url %>
-    <div class="subheader">
-      <div class="subnav">
-        <div>
-          SORT BY:
-            <span id='endtime'>
-                <% if 'endtime'.casecmp(@sort_param) == 0 and 'desc'.casecmp(@order_param) == 0 %>
-                <a class="<%= 'endtime'.casecmp(@sort_param) ? "selected " : "" %>asc"
-                   href="<%= h append_query_params(@sortable_base_url,
-                                                   [['sort', 'endtime'],
-                                                    ['order', 'asc']]) %>">END TIME</a>
-            <% else %>
-                <a class="<%= 'endtime'.casecmp(@sort_param) == 0 ? "selected " : "" %>desc"
-                   href="<%= h append_query_params(@sortable_base_url,
-                                                   [['sort', 'endtime'],
-                                                    ['order', 'desc']]) %>">END TIME</a>
-            <% end %>
-            </span>
-            <span id='price'>
-            <% if 'price'.casecmp(@sort_param) == 0 and 'desc'.casecmp(@order_param) == 0 %>
-                <a class="<%= 'price'.casecmp(@sort_param) ? "selected " : "" %>asc"
-                   href="<%= h append_query_params(@sortable_base_url,
-                                                   [['sort', 'price'],
-                                                    ['order', 'asc']]) %>">PRICE</a>
-            <% else %>
-                <a class="<%= 'price'.casecmp(@sort_param) == 0 ? "selected " : "" %>desc"
-                   href="<%= h append_query_params(@sortable_base_url,
-                                                   [['sort', 'price'],
-                                                    ['order', 'desc']]) %>">PRICE</a>
-            <% end %>
-            </span>
-            <span id='title'>
-            <% if 'title'.casecmp(@sort_param) == 0 and 'desc'.casecmp(@order_param) == 0 %>
-                <a class="<%= 'title'.casecmp(@sort_param) == 0 ? "selected " : "" %>asc"
-                   href="<%= h append_query_params(@sortable_base_url,
-                                                   [['sort', 'title'],
-                                                    ['order', 'asc']]) %>">TITLE</a>
-            <% else %>
-                <a class="<%= 'title'.casecmp(@sort_param) == 0 ? "selected " : "" %>desc"
-                   href="<%= h append_query_params(@sortable_base_url,
-                                                   [['sort', 'title'],
-                                                    ['order', 'desc']]) %>">TITLE</a>
-            <% end %>
-            </span>
-        </div>
-      </div>
-    </div>
-<% end %>
 </html>

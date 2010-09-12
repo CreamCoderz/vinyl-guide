@@ -1,16 +1,71 @@
 <div class="container">
-  <h3><%= header_text %></h3>
-  <%= render :partial => "partials/paginated_links", :locals => {
-          :base_url => base_url,
-          :sort => @sort_param, :order => @order_param,
-          :next_link => @next, :prev_link => @prev} %>
-  <ul class="ebay-items">
-    <% @ebay_items.each do |ebay_item| %>
-      <%= render :partial=> "partials/ebay_item_abbrv", :locals => {:ebay_item => ebay_item} %>
-    <% end %>
-  </ul>
-  <%= render :partial => "partials/paginated_links", :locals => {
-          :base_url => base_url,
-          :sort => @sort_param, :order => @order_param,
-          :next_link => @next, :prev_link => @prev} %>
+  <div>
+    <table class="item-list-header">
+      <tr>
+        <th class="align-left">
+          <%= render :partial => "partials/paginated_links", :locals => {
+                  :base_url => base_url,
+                  :sort => @sort_param, :order => @order_param,
+                  :next_link => @next, :prev_link => @prev} %>
+        </th>
+        <th class="align-center">
+          <h3 style="display:inline"><%= header_text %></h3>
+        </th>
+        <% if @sortable_base_url %>
+            <th class="align-right">
+            <span id='endtime'>
+                <% if 'endtime'.casecmp(@sort_param) == 0 and 'desc'.casecmp(@order_param) == 0 %>
+                <a class="<%= 'endtime'.casecmp(@sort_param) ? "selected " : "" %>asc"
+                   href="<%= h append_query_params(@sortable_base_url,
+                                                   [['sort', 'endtime'],
+                                                    ['order', 'asc']]) %>">END TIME</a>
+            <% else %>
+                <a class="<%= 'endtime'.casecmp(@sort_param) == 0 ? "selected " : "" %>desc"
+                   href="<%= h append_query_params(@sortable_base_url,
+                                                   [['sort', 'endtime'],
+                                                    ['order', 'desc']]) %>">END TIME</a>
+            <% end %>
+            </span>
+            <span id='price'>
+            <% if 'price'.casecmp(@sort_param) == 0 and 'desc'.casecmp(@order_param) == 0 %>
+                <a class="<%= 'price'.casecmp(@sort_param) ? "selected " : "" %>asc"
+                   href="<%= h append_query_params(@sortable_base_url,
+                                                   [['sort', 'price'],
+                                                    ['order', 'asc']]) %>">PRICE</a>
+            <% else %>
+                <a class="<%= 'price'.casecmp(@sort_param) == 0 ? "selected " : "" %>desc"
+                   href="<%= h append_query_params(@sortable_base_url,
+                                                   [['sort', 'price'],
+                                                    ['order', 'desc']]) %>">PRICE</a>
+            <% end %>
+            </span>
+            <span id='title'>
+            <% if 'title'.casecmp(@sort_param) == 0 and 'desc'.casecmp(@order_param) == 0 %>
+                <a class="<%= 'title'.casecmp(@sort_param) == 0 ? "selected " : "" %>asc"
+                   href="<%= h append_query_params(@sortable_base_url,
+                                                   [['sort', 'title'],
+                                                    ['order', 'asc']]) %>">TITLE</a>
+            <% else %>
+                <a class="<%= 'title'.casecmp(@sort_param) == 0 ? "selected " : "" %>desc"
+                   href="<%= h append_query_params(@sortable_base_url,
+                                                   [['sort', 'title'],
+                                                    ['order', 'desc']]) %>">TITLE</a>
+            <% end %>
+            </span>
+            </th>
+        <% end %>
+      </tr>
+    </table>
+    <hr/>
+    <ul class="ebay-items">
+      <% @ebay_items.each do |ebay_item| %>
+          <%= render :partial=> "partials/ebay_item_abbrv", :locals => {:ebay_item => ebay_item} %>
+      <% end %>
+    </ul>
+    <hr/>    
+    <%= render :partial => "partials/paginated_links", :locals => {
+            :base_url => base_url,
+            :sort => @sort_param, :order => @order_param,
+            :next_link => @next, :prev_link => @prev} %>
+  </div>
 </div>

@@ -1,39 +1,53 @@
 <div class="container">
 
   <h3>Releases</h3>
-  <p>This view is from the perspective of user generated releases. A user can create a release and map many
-    EBay auctions mapped to it. For more information, please visit the <a class="fontfix" href="/about/welcome">welcome</a></span> page</p>
-  <hr/>  
-  <%= render :partial => "partials/paginated_links", :locals => {:next_link => @next, :prev_link => @prev} %>
-  <table class="releases">
-    <tr>
-      <th>&nbsp;</th>
-      <th>Artist</th>
-      <th>Title</th>
-      <th>Year</th>
-      <th>Label</th>
-      <th>Format</th>
-      <th>Matrix number</th>
-    </tr>
 
+  <p>This view is from the perspective of user generated releases. A user can create a release and map many
+    EBay auctions mapped to it. For more information, please visit the
+    <a class="fontfix" href="/about/welcome">welcome</a></span> page</p>
+  <hr/>
+  <%= render :partial => "partials/paginated_links", :locals => {:next_link => @next, :prev_link => @prev} %>
+  <ul class="ebay-items">
     <% @releases.each do |release| %>
-        <tr>
+        <li class="recordItem" id="release<%= release.id %>">
+          <!--<div class="title-link">-->
+          <!--</div>-->
           <% ebay_item = release.ebay_items ? release.ebay_items[0] : nil %>
-          <td>
-            <%- if ebay_item -%>
-                <img src="<%= display_gallery_img(ebay_item.id, ebay_item.hasimage) %>"/>
-            <%- end -%>
-          </td>
-          <td><%= h release.artist %></td>
-          <td><%= h release.title %></td>
-          <td><%= h release.year %></td>
-          <td><%= h release.label_entity.name if release.label_entity %></td>
-          <td><%= h release.format.name if release.format %></td>
-          <td><%= h release.matrix_number %></td>
-          <td><%= link_to 'View Details', release %></td>
-        </tr>
+          <%- if ebay_item -%>
+              <img src="<%= display_gallery_img(ebay_item.id, ebay_item.hasimage) %>"/>
+          <%- else -%>
+              <img src="/images/noimage.jpg"/>
+          <%- end -%>
+          <table>
+            <tr>
+              <td><label>Title</label></td>
+              <td><span><%= link_to h(release.title), release, :title => "View #{release.title} Details" %></span></td>
+            </tr>
+            <tr>
+              <td><label>Artist</label></td>
+              <td><span><%= h release.artist %></span></td>
+            </tr>
+            <tr>
+              <td>
+                <label>Label</label>
+              </td>
+              <td>
+                <span><%= link_to(h(release.label_entity.name), release.label_entity, :title => "View #{release.label_entity.name} Details") if release.label_entity %></span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label>Format</label>
+              </td>
+              <td>
+                <span><%= h release.format.name if release.format %></span>
+              </td>
+            </tr>
+          </table>
+        </li>
+        <div class="clearfix"></div>
     <% end %>
-  </table>
+  </ul>
 
   <br/>
 

@@ -1,43 +1,34 @@
 <li class="recordItem" id="ebay_item_<%= ebay_item.id %>">
-  <table class="abbrvItem">
+  <img src="<%= display_gallery_img(ebay_item.id, ebay_item.hasimage) %>"/></span></p>
+  <table>
     <tr>
-      <td>
-        <p><span><img src="<%= display_gallery_img(ebay_item.id, ebay_item.hasimage) %>"/></span></p>
-      </td>
-      <td>
-        <p>
-          <label>Title</label>
-          <span><%= ebay_item.title %></span>
-        </p>
-
-        <p>
-          <label>End Time</label>
-          <span><%= display_date(ebay_item.endtime) %></span>
-        </p>
-
-        <p>
-          <label>Price</label>
-          <span><%= number_to_currency ebay_item.price, :unit => display_currency_symbol(ebay_item.currencytype) %> <%= ebay_item.currencytype %></span>
-        </p>
-      </td>
+      <td><label>Title</label></td>
+      <td><span><%= link_to h(ebay_item.title), ebay_item, :title => "View #{ebay_item.title} Details" %></span></td>
     </tr>
     <tr>
-      <% if @controls && ebay_item.release_id %>
-          <td>
-            <% form_for(ebay_item) do |f| %>
-                <%= f.error_messages %>
-                <input type="hidden" name="ebay_item[release_id]" value=""/>
-
-                <p>
-                  <%= f.submit 'X', :class => "unmap-auction" %>
-                </p>
-            <% end %>
-          </td>
-      <% end %>
+      <td><label>End Time</label></td>
+      <td><span><%= display_date(ebay_item.endtime) %></span></td>
+    </tr>
+    <tr>
       <td>
-        <a class="view" href="/<%= ebay_item.id %>">View Details</a>
+        <label>Price</label>
+      </td>
+      <td>
+        <span><%= number_to_currency ebay_item.price, :unit => display_currency_symbol(ebay_item.currencytype) %> <%= ebay_item.currencytype %></span>
       </td>
     </tr>
-
   </table>
+  <% if @controls && ebay_item.release_id %>
+      <p>
+        <% form_for(ebay_item) do |f| %>
+            <%= f.error_messages %>
+            <input type="hidden" name="ebay_item[release_id]" value=""/>
+
+            <p>
+              <%= f.submit 'X', :class => "unmap-auction" %>
+            </p>
+        <% end %>
+        </p>
+  <% end %>
+  <div class="clearfix"></div>
 </li>

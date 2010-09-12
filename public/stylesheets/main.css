@@ -12,12 +12,16 @@ h1 {
 
 h2 {
     font-size: 20px;
+    font-weight: bold;
     color: #990000;
+    margin: 10px 0 10px 0;
 }
 
 h3 {
     color: #006600;
     font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0 10px 0;
 }
 
 img {
@@ -29,10 +33,17 @@ label {
     font-weight: bold;
 }
 
-input, select {
+input[type=text] {
+    margin-top: -2px;
     font-family: Courier, sans-serif;
     font-size: 16px;
-    border: 2px solid #006600;
+    border: 2px solid #FF9900;
+}
+
+input, select {
+    font-family: Courier, sans-serif;
+    font-size: 14px;
+    border: 2px solid #990000;
 }
 
 .controls a:link {
@@ -93,11 +104,10 @@ a:active {
 .recordItem {
     margin: 2px;
     list-style: none;
-    border-bottom: #006600 solid;
 }
 
 .container {
-    width: 1200px;
+    width: 1180px;
     margin: 10px;
 }
 
@@ -107,10 +117,21 @@ a:active {
 
 .container hr {
     margin-left: 0;
-    height: 3px;
+    height: 2px;
     background-color: #006600;
     color: #990000;
     border: 0;
+}
+
+.container > div {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 1140px;    
+}
+
+.content {
+    margin-top: 0;
+    padding: 0;
     width: 1200px;
 }
 
@@ -119,7 +140,7 @@ a:active {
     padding: 0;
     width: 1200px;
     height: 45px;
-    background-color: #FF9900;
+    background: #FF9900 url('/images/title_bar_left.png') repeat-x bottom;;
 }
 
 .nav {
@@ -127,7 +148,7 @@ a:active {
     left: 278px;
     width: 922px;
     height: 100%;
-    background-color: #006600;
+    background: #006600 url('/images/title_bar_right.png') repeat-x bottom;
     font-size: 20px;
 }
 
@@ -150,7 +171,7 @@ a:active {
 
 .nav div {
     margin-left: 7px;
-    margin-top: 12px;
+    margin-top: 10px;
     font-size: 20px;
 }
 
@@ -197,18 +218,26 @@ a:active {
     color: #FFFFFF;
 }
 
-.subnav .selected {
+a.selected {
     font-weight: bold;
+    color: #990000;    
 }
 
-.subnav .asc {
-    color: #FF9900;
+a.asc {
+    padding-right: 15px;
 }
 
-.subnav .desc {
-    color: #990000;
+a.desc {
+    padding-right: 15px;
 }
 
+a.selected.asc {
+    background: url('/images/sort_down.png') no-repeat right 4px;
+}
+
+a.selected.desc {
+    background: url('/images/sort_up.png') no-repeat right 4px;    
+}
 .navBgcolor {
     background-color: #006600;
 }
@@ -221,10 +250,17 @@ a:active {
     font-weight: bold;
     margin-top: 8px;
     margin-left: 12px;
+    padding: 0;
     float: left;
     width: 255px;
     height: 100%;
     font-size: 25px;
+}
+
+.title-left {
+    margin: 0;
+    height: 13px;
+    background: url('/images/title_bar_left.png') repeat-x top;
 }
 
 .footer {
@@ -234,7 +270,7 @@ a:active {
 }
 
 .footer div {
-    margin-top: 8px;
+    padding-top: 8px;
     margin-left: 12px;
 }
 
@@ -288,4 +324,131 @@ a:active {
 
 .hidden {
     display: none;
+}
+
+.auction-menu ul > li {
+    margin: 0 8px;
+    padding: 0 2px 0 2px;
+    float: left;
+    background-color: #006600;
+}
+
+.auction-menu ul > li.more {
+    margin: 0 8px;
+    padding: 0 15px 0 0;
+    float: left;
+    background: #006600 url('/images/menu_down.png') no-repeat 100px 4px;
+}
+
+.auction-menu {
+    z-index: 100;
+}
+
+.auction-menu ul li a, .auction-menu ul li a:visited {
+    display: block;
+    overflow: hidden;
+}
+
+.auction-menu ul li.more a {
+    display: block;
+    min-width: 90px;
+    overflow: hidden;
+}
+
+.auction-menu ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.auction-menu ul li {
+    float: left;
+    position: relative;
+}
+
+.auction-menu ul li ul {
+    background-color: #006600;
+    display: none;
+}
+
+.auction-menu ul li ul li {
+    margin: 0;
+    padding-top: 5px;
+    padding-left: 5px;
+    /*padding: 2px, 5px, 2px, 5px;*/
+}
+
+.auction-menu ul li:hover ul {
+    display: block;
+    position: absolute;
+    top: 21px;
+    left: 0;
+}
+
+.auction-menu ul li:hover ul li ul {
+    display: none;
+}
+
+.auction-menu ul li:hover ul li a {
+    display: block;
+}
+
+.auction-menu ul li:hover ul li:hover ul {
+    display: block;
+    position: absolute;
+    left: 105px;
+    top: 0;
+}
+
+.auction-menu ul li:hover ul li:hover ul.left {
+    left: -105px;
+}
+
+div.search-form {
+    text-align: right;
+    margin-right: 5px;
+    position: relative;
+    float: right;
+    margin-top: -4px;
+}
+
+table.item-list-header {
+    width: 100%;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.align-right {
+    text-align: right;
+}
+
+ul.ebay-items {
+    margin: 0;
+}
+
+
+ul.ebay-items li {
+    padding-top: 2px;
+    padding-bottom: 10px;
+}
+
+ul.ebay-items li img {
+    float: left;
+    padding: 8px 26px 10px;
+}
+
+ul.ebay-items li p {
+    margin-top: 8px;
+}
+
+
+ul.ebay-items li table tr td {
+    padding-top: 8px;
+    padding-right: 20px;
 }

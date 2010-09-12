@@ -19,21 +19,29 @@
 <div class="header">
     <div class="logo">Roots Vinyl Guide</div>
     <div class="nav">
-
-        <div>
-            <a href="/">HOME</a>
-            <a href="/all?page=1">ALL</a>
-            <a href="/lps?page=1">LPS</a>
-            <a href="/eps?page=1">EPS</a>
-            <a href="/singles?page=1">SINGLES</a>
-            <a href="/other?page=1">OTHER</a>
-            <a href="/releases">RELEASES</a>
-            <a href="/about/welcome">ABOUT</a>
-
-            <form name="search" action="/search" method="get">
-                <input name="q" id="q" value=""/>
-                <input type="submit" value="SEARCH"/>
-            </form>
+        <div class="auction-menu">
+            <ul>
+                <li><a href="/">HOME</a></li>
+                <li class="more">
+                    <span><a href="/all?page=1">AUCTIONS</a></span>
+                    <ul>
+                        <li><a href="/all">ALL</a></li>
+                        <li><a href="/lps?page=1">LPS</a></li>
+                        <li><a href="/eps?page=1">EPS</a></li>
+                        <li><a href="/singles?page=1">SINGLES</a></li>
+                        <li><a href="/other?page=1">OTHER</a></li>
+                    </ul>
+                </li>
+                <li><a href="/releases">RELEASES</a></li>
+                <li><a href="/labels">LABELS</a></li>
+                <li><a href="/about/welcome">ABOUT</a></li>
+            </ul>
+            <div class="search-form">
+                <form name="search" action="/search" method="get">
+                    <input class="ac_input" autocomplete="off" name="q" id="q" value="" type="text">
+                    <input value="SEARCH" type="submit">
+                </form>
+            </div>
 
             <script type="text/javascript">
                 $(document).ready(function() {

@@ -1,22 +1,41 @@
-<h1>Listing labels</h1>
+<div class="container">
+<h3>Record Labels</h3>
+<p>This view is from the perspective of user generated record labels. A record label can have many releases mapped to
+  it.
+  When a user creates a release, they may choose an exisiting record label from or add an entry to the list.
+  For more information, please visit the <a class="fontfix" href="/about/welcome">welcome</a></span> page</p>
+<hr/>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-  </tr>
+<ul class="ebay-items">
+  <% @labels.each do |label| %>
+      <li class="recordItem" id="label<%= label.id %>">
+        <img src="<%= display_gallery_img_for(label.ebay_item) %>"/>
+        <table>
+          <tr>
+            <td><label>Name</label></td>
+            <td><span><%= link_to h(label.name), label, :title => "View #{label.name} Details" %></span></td>
+          </tr>
+          <tr>
+            <td><label>Description</label></td>
+            <td>
+              <span><%= truncate(h(label.description), :length => 200, :omission => "... #{link_to('(more)', label)}") %></span>
+            </td>
+          </tr>
+          <!--<tr>-->
+            <!--<td><label>Actions</label></td>-->
+            <!--<td>-->
+              <!--<span><%= link_to 'View Details', label %></span> |-->
+              <!--<span><%= link_to 'Edit Details', edit_label_path(label) %></span> |-->
+              <!--<span><%= link_to 'Delete Label', label, :confirm => 'Are you sure?', :method => :delete %></span>-->
+            <!--</td>-->
+          <!--</tr>-->
+        </table>
+      </li>
+      <div class="clearfix"></div>
+  <% end %>
+</ul>
 
-<% @labels.each do |label| %>
-  <tr>
-    <td><%=h label.name %></td>
-    <td><%=h label.description %></td>
-    <td><%= link_to 'Show', label %></td>
-    <td><%= link_to 'Edit', edit_label_path(label) %></td>
-    <td><%= link_to 'Destroy', label, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
+<br/>
 
 <%= link_to 'New label', new_label_path %>
+</div>

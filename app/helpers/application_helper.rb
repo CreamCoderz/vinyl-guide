@@ -3,7 +3,7 @@ require 'cgi'
 
 module ApplicationHelper
   CURRENCY_SYMBOLS = {'USD' => '$', 'GBP' => '&pound;', 'AUD' => '$', 'CAD' => '$', 'CHF' => '?', 'CNY' => '&yen;', 'EUR' => '&euro;',
-          'HKD' => '$', 'INR' => 'INR', 'MYR' => 'MYR', 'PHP' => 'PHP', 'PLN' => 'PLN', 'SEK' => 'kr', 'SGD' => '$', 'TWD' => '$'}
+                      'HKD' => '$', 'INR' => 'INR', 'MYR' => 'MYR', 'PHP' => 'PHP', 'PLN' => 'PLN', 'SEK' => 'kr', 'SGD' => '$', 'TWD' => '$'}
 
   def display_gallery_img(id, hasimage)
     if hasimage
@@ -11,6 +11,10 @@ module ApplicationHelper
     else
       return "/images/noimage.jpg"
     end
+  end
+
+  def display_gallery_img_for(ebay_item)
+    ebay_item && ebay_item.hasimage ? "/images/gallery/#{ebay_item.id}.jpg" : "/images/noimage.jpg"
   end
 
   def unescape_html(html)

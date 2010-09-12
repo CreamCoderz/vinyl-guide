@@ -21,7 +21,7 @@ describe ReleasesController do
 
   describe "GET show" do
     it "assigns the requested release as @release" do
-      Release.stub!(:find).with("37", :include => :ebay_items).and_return(mock_release)
+      Release.stub!(:find).with("37", :include => [:label_entity, :format, :ebay_items]).and_return(mock_release)
       mock_release.stub!(:ebay_items).and_return([mock_ebay_item])
       get :show, :id => "37"
       actual_ebay_items = assigns[:ebay_items]

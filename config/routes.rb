@@ -10,7 +10,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'eps', :controller => 'ebay_items', :action => 'eps'
   map.connect 'lps', :controller => 'ebay_items', :action => 'lps'
   map.connect 'other', :controller => 'ebay_items', :action => 'other'
-  map.connect 'all', :controller => 'ebay_items', :action => 'all'
+  map.all     'all', :controller => 'ebay_items', :action => 'all'
   map.connect '/:id', :controller => 'ebay_items', :action => 'show'
   map.connect '/:id/edit', :controller => 'ebay_items', :action => 'edit'
 

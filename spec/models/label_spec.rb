@@ -47,4 +47,19 @@ describe Label do
       label.releases.should == [release]
     end
   end
+
+  describe "#ebay_item" do
+    before do
+      @label = Factory(:label)
+    end
+
+    it "should return the first ebay item of the first release" do
+      @label.releases = [Factory(:release)]
+      @label.ebay_item.should == @label.releases.first.ebay_items.first
+    end
+
+    it "should return nil if no release has been mapped" do
+      @label.ebay_item.should be_nil
+    end
+  end
 end
