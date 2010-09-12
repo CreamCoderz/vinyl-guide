@@ -6,6 +6,10 @@ body {
     margin: 8px;
 }
 
+p {
+    margin: 10px 0 10px 0;
+}
+
 h1 {
     display: inline;
 }
@@ -33,10 +37,10 @@ label {
     font-weight: bold;
 }
 
-input[type=text] {
+.search-form input[type=text] {
     margin-top: -2px;
     font-family: Courier, sans-serif;
-    font-size: 16px;
+    font-size: 20px;
     border: 2px solid #FF9900;
 }
 
@@ -126,7 +130,7 @@ a:active {
 .container > div {
     margin-left: 20px;
     margin-right: 20px;
-    width: 1140px;    
+    width: 1140px;
 }
 
 .content {
@@ -140,13 +144,13 @@ a:active {
     padding: 0;
     width: 1200px;
     height: 45px;
-    background: #FF9900 url('/images/title_bar_left.png') repeat-x bottom;;
+    background: #FF9900 url('/images/title_bar_left.png') repeat-x bottom;
 }
 
 .nav {
     float: right;
     left: 278px;
-    width: 922px;
+    width: 872px;
     height: 100%;
     background: #006600 url('/images/title_bar_right.png') repeat-x bottom;
     font-size: 20px;
@@ -220,7 +224,7 @@ a:active {
 
 a.selected {
     font-weight: bold;
-    color: #990000;    
+    color: #990000;
 }
 
 a.asc {
@@ -236,8 +240,9 @@ a.selected.asc {
 }
 
 a.selected.desc {
-    background: url('/images/sort_up.png') no-repeat right 4px;    
+    background: url('/images/sort_up.png') no-repeat right 4px;
 }
+
 .navBgcolor {
     background-color: #006600;
 }
@@ -251,10 +256,16 @@ a.selected.desc {
     margin-top: 8px;
     margin-left: 12px;
     padding: 0;
-    float: left;
-    width: 255px;
-    height: 100%;
     font-size: 25px;
+    text-align: right;
+    width: 100%;    
+}
+
+.logo-container {
+    float: left;
+    width: 305px;
+    height: 100%;
+    background: url('/images/logo.png') no-repeat 14px 4px;
 }
 
 .title-left {
@@ -270,7 +281,7 @@ a.selected.desc {
 }
 
 .footer div {
-    padding-top: 8px;
+    padding-top: 13px;
     margin-left: 12px;
 }
 
@@ -316,6 +327,7 @@ a.selected.desc {
 
 #help-steps ul li {
     margin-left: 20px;
+    list-style: disc;
 }
 
 .clearfix {
@@ -374,8 +386,7 @@ a.selected.desc {
 .auction-menu ul li ul li {
     margin: 0;
     padding-top: 5px;
-    padding-left: 5px;
-    /*padding: 2px, 5px, 2px, 5px;*/
+    padding-left: 5px; /*padding: 2px, 5px, 2px, 5px;*/
 }
 
 .auction-menu ul li:hover ul {
@@ -432,7 +443,6 @@ ul.ebay-items {
     margin: 0;
 }
 
-
 ul.ebay-items li {
     padding-top: 2px;
     padding-bottom: 10px;
@@ -446,7 +456,6 @@ ul.ebay-items li img {
 ul.ebay-items li p {
     margin-top: 8px;
 }
-
 
 ul.ebay-items li table tr td {
     padding-top: 8px;
