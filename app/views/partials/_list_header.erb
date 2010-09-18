@@ -1,0 +1,14 @@
+<table class="item-list-header">
+  <tr>
+    <th class="align-left">
+      <%= render :partial => "partials/paginated_links", :locals => {
+              :base_url => base_url,
+              :sort => @sort_param, :order => @order_param,
+              :next_link => @next, :prev_link => @prev} %>
+    </th>
+    <th class="align-center">
+      <h3 style="display:inline"><%= header_text %></h3>
+    </th>
+    <%= render :partial => "partials/sort_links" %>
+  </tr>
+</table>
