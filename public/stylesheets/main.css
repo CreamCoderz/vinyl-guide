@@ -461,3 +461,7 @@ ul.ebay-items li table tr td {
     padding-top: 8px;
     padding-right: 20px;
 }
+
+/* Twitter Widget Overrides */
+.twtr-hd {display: none}
+.twtr-ft {display: none}

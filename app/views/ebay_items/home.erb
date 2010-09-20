@@ -1,25 +1,58 @@
 <div class="container">
-    <h2>RootsVinylGuide.com provides a searchable back catalog of EBay auctions in the category of
-        Reggae &amp; Ska records and allows for community driven auction categorization.
-    </h2>
-    <hr/>
-    <h3>Most Recent Vinyl Result</h3>
-    <ul class="ebay-items" style="margin-left:0">
-    <%= render :partial=> "partials/ebay_item_abbrv", :locals => { :ebay_item => @ebay_items[0], :controls => false } %>
-    </ul>
-    <hr/>
-    <h3><%= @ebay_items.length %> Latest Vinyl Results</h3>
+  <h2>RootsVinylGuide.com provides a searchable back catalog of EBay auctions in the category of
+    Reggae &amp; Ska records and allows for community driven auction categorization.
+  </h2>
+  <p>follow <%= link_to 'rootsvinylguide@twitter', "http://twitter.com/rootsvinylguide"%></p>
+  <script src="http://widgets.twimg.com/j/2/widget.js"></script>
+  <script>
+      new TWTR.Widget({
+          version: 2,
+          type: 'profile',
+          rpp: 4,
+          interval: 6000,
+          width: 800,
+          height: 300,
+          theme: {
+              shell: {
+                  background: '#ffffff',
+                  color: '#990000',
+                  border: '1px solid'
+              },
+              tweets: {
+                  background: '#ffffff',
+                  color: '#990000',
+                  links: '#990000'
+              }
+          },
+          features: {
+              scrollbar: false,
+              loop: false,
+              live: false,
+              hashtags: true,
+              timestamp: true,
+              avatars: false,
+              behavior: 'all'
+          }
+      }).render().setUser('rootsvinylguide').start();
+  </script>
+  <hr/>
+  <h3>Most Recent Vinyl Result</h3>
+  <ul class="ebay-items" style="margin-left:0">
+    <%= render :partial=> "partials/ebay_item_abbrv", :locals => {:ebay_item => @ebay_items[0], :controls => false} %>
+  </ul>
+  <hr/>
+  <h3><%= @ebay_items.length %> Latest Vinyl Results</h3>
 
-    <div>
-        <% count = 1 %>
-        <% @ebay_items.each do |ebay_item| %>
-            <a href="/<%= ebay_item.id %>">
-                <img class="view" src="<%= display_gallery_img(ebay_item.id, ebay_item.hasimage) %>" alt="<%= h ebay_item.title %>" title="<%= h ebay_item.title %>"/>
-            </a>
-            <% if count % 5 == 0 %>
-                <br/>
-            <% end %>
-            <% count += 1 %>
+  <div>
+    <% count = 1 %>
+    <% @ebay_items.each do |ebay_item| %>
+        <a href="/<%= ebay_item.id %>">
+          <img class="view" src="<%= display_gallery_img(ebay_item.id, ebay_item.hasimage) %>" alt="<%= h ebay_item.title %>" title="<%= h ebay_item.title %>"/>
+        </a>
+        <% if count % 5 == 0 %>
+            <br/>
         <% end %>
-    </div>
+        <% count += 1 %>
+    <% end %>
+  </div>
 </div>
