@@ -7,10 +7,10 @@
     <a class="fontfix" href="/about/welcome">welcome</a></span> page</p>
   <table class="item-list-header">
     <th>
-    <%= render :partial => "partials/paginated_links", :locals => {:next_link => @next, :prev_link => @prev} %>
+      <%= render :partial => "partials/paginated_links", :locals => {:next_link => @next, :prev_link => @prev} %>
     </th>
     <th>
-    <h3 style="display:inline"><%= "Releases #{@start}-#{@end} of #{@total}" %></h3>
+      <h3 style="display:inline"><%= "Releases #{@start}-#{@end} of #{@total}" %></h3>
     </th>
   </table>
   <hr/>
@@ -25,12 +25,14 @@
           <%- end -%>
           <table>
             <tr>
-              <td><label>Title</label></td>
-              <td><span><%= link_to h(release.title), release, :title => "View #{release.title} Release Details" %></span></td>
-            </tr>
-            <tr>
               <td><label>Artist</label></td>
               <td><span><%= h release.artist %></span></td>
+            </tr>
+            <tr>
+              <td><label>Title</label></td>
+              <td>
+                <span><%= h(release.title) %></span>
+              </td>
             </tr>
             <tr>
               <td>
@@ -49,6 +51,7 @@
               </td>
             </tr>
           </table>
+          <%= link_to "(view details...)", release, :title => "View #{release.title} Release Details" %>
         </li>
     <% end %>
   </ul>

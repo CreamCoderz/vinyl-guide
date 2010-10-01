@@ -2,7 +2,8 @@
   <h2>RootsVinylGuide.com provides a searchable back catalog of EBay auctions in the category of
     Reggae &amp; Ska records and allows for community driven auction categorization.
   </h2>
-  <p>follow <%= link_to 'rootsvinylguide@twitter', "http://twitter.com/rootsvinylguide"%></p>
+  <div class="twitter-widget">
+  <p>Recent Updates from <%= link_to 'rootsvinylguide@twitter', "http://twitter.com/rootsvinylguide"%></p>
   <script src="http://widgets.twimg.com/j/2/widget.js"></script>
   <script>
       new TWTR.Widget({
@@ -35,6 +36,7 @@
           }
       }).render().setUser('rootsvinylguide').start();
   </script>
+  </div>
   <hr/>
   <h3>Most Recent Vinyl Result</h3>
   <ul class="ebay-items" style="margin-left:0">

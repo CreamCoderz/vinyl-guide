@@ -5,7 +5,9 @@ include EbayLogger
 
 class EbayCrawler
 
-  CRAWLING_INTERVAL_SECONDS = 20 * 60
+  #TODO: wasteful hack to get around ebay's current api issues: http://dev-forums.ebay.com/thread.jspa?threadID=500016830&start=15&tstart=0
+  #CRAWLING_INTERVAL_SECONDS = 20 * 60
+  CRAWLING_INTERVAL_SECONDS = 70 * 60
   DEFAULT_EBAY_IMAGE = File.new(File.dirname(__FILE__) + "/data/default_ebay_img.jpg").gets(nil)
 
   def initialize(ebay_client, image_client, image_dir=nil)
