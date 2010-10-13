@@ -14,13 +14,13 @@ class Release < ActiveRecord::Base
   validate_on_create :format_must_exist, :year_must_be_valid
   validate_on_update :format_must_exist
 
-  @paginator = Paginator.new(Release)
+  @paginator = Paginator::Util.new(Release)
 
 
   def self.search(params)
     query = QueryGenerator.generate_wild_query(SEARCHABLE_FIELDS, ':wild_query')
     page_num = params[:page] || 1
-    @ebay_items, @prev, @next, @start, @end, @total = @paginator.paginate(page_num, [query, {:wild_query => "%#{params[:query]}%"}])
+    @paginator.paginate(page_num, [query, {:wild_query => "%#{params[:query]}%"}])
   end
 
   def link

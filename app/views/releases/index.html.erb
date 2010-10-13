@@ -51,14 +51,16 @@
               </td>
             </tr>
           </table>
-          <%= link_to "(view details...)", release, :title => "View #{release.title} Release Details" %>
+          <%= link_to "(view details)", release, :title => "View #{release.title} Release Details" %>
         </li>
     <% end %>
   </ul>
 
   <br/>
 
-  <%= link_to 'New release', new_release_path %>
   <%= render :partial => "partials/paginated_links", :locals => {:next_link => @next, :prev_link => @prev} %>
+  <br/><br/>
+  <%= link_to 'New release', new_release_path %>
+
 
 </div>

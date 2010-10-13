@@ -111,19 +111,19 @@ describe Release do
     end
 
     it "should return an empty result set when no items exist" do
-      results = Release.search(:query => @title_word)[0]
+      results = Release.search(:query => @title_word).items
       results.should be_empty
     end
 
     it "should return an empty result set for a query that doesn't match" do
-      results = Release.search(:query => "foo")[0]
+      results = Release.search(:query => "foo").items
       results.should be_empty
     end
 
     it "should find 1 result for a query word" do
       expected_record = Release.create!(@valid_attributes)
       @query_words.each do |word|
-        results = Release.search(word)[0]
+        results = Release.search(word).items
         results.length.should == 1
         results[0].id.should == expected_record.id
       end
@@ -132,7 +132,7 @@ describe Release do
     it "should use the paginator" do
       title = "ital corner"
       21.times { Factory.create(:release, :title => title) }
-      results = Release.search(:query => title, :page => 2)[0]
+      results = Release.search(:query => title, :page => 2).items
       results.length.should == 1
     end
   end

@@ -27,13 +27,13 @@ describe EbayItem do
       [ebay_item_med, ebay_item_cheap, ebay_item_expensive].each { |item| item.save }
       expected_items = [ebay_item_expensive, ebay_item_med, ebay_item_cheap]
 
-      search_results = EbayItem.search(:query => ASWAD_TITLE, :column => :price)[0]
+      search_results = EbayItem.search(:query => ASWAD_TITLE, :column => :price).items
       search_results.should == expected_items
 
-      search_results = EbayItem.search(:query => ASWAD_TITLE, :column => :price, :page => 1, :order => DESC)[0]
+      search_results = EbayItem.search(:query => ASWAD_TITLE, :column => :price, :page => 1, :order => DESC).items
       search_results.should == expected_items
 
-      search_results = EbayItem.search(:query => ASWAD_TITLE, :column => :price, :page => 1, :order => ASC)[0]
+      search_results = EbayItem.search(:query => ASWAD_TITLE, :column => :price, :page => 1, :order => ASC).items
       search_results.should == expected_items.reverse
     end
 
@@ -45,13 +45,13 @@ describe EbayItem do
       [middle_item, newest_item, oldest_item].each { |item| item.save }
       expected_items = [newest_item, middle_item, oldest_item]
       expected_items.each { |expected_item| expected_item.save }
-      search_results = EbayItem.search(:query => ASWAD_TITLE, :column => :endtime)[0]
+      search_results = EbayItem.search(:query => ASWAD_TITLE, :column => :endtime).items
       search_results.should == expected_items
 
-      search_results = EbayItem.search(:query => ASWAD_TITLE, :column => :endtime, :page => 1, :order => DESC)[0]
+      search_results = EbayItem.search(:query => ASWAD_TITLE, :column => :endtime, :page => 1, :order => DESC).items
       search_results.should == expected_items
 
-      search_results = EbayItem.search(:query => ASWAD_TITLE, :column => :endtime, :page => 1, :order => ASC)[0]
+      search_results = EbayItem.search(:query => ASWAD_TITLE, :column => :endtime, :page => 1, :order => ASC).items
       search_results.should == expected_items.reverse
     end
 
@@ -59,13 +59,13 @@ describe EbayItem do
       ebay_item_linval, ebay_item_esk, ebay_item_sabba = @data_builder.to_items(:title=, * ["Linval #{ASWAD_TITLE}", "Eskender #{ASWAD_TITLE}", "Sabba #{ASWAD_TITLE}"])
       [ebay_item_linval, ebay_item_esk, ebay_item_sabba].each { |item| item.save }
       expected_items = [ebay_item_sabba, ebay_item_linval, ebay_item_esk]
-      search_results = EbayItem.search(:query => ASWAD_TITLE, :column => :title)[0]
+      search_results = EbayItem.search(:query => ASWAD_TITLE, :column => :title).items
       search_results.should == expected_items
 
-      search_results = EbayItem.search(:query => ASWAD_TITLE, :column => :title, :page => 1, :order => DESC)[0]
+      search_results = EbayItem.search(:query => ASWAD_TITLE, :column => :title, :page => 1, :order => DESC).items
       search_results.should == expected_items
 
-      search_results = EbayItem.search(:query => ASWAD_TITLE, :column => :title, :page => 1, :order => ASC)[0]
+      search_results = EbayItem.search(:query => ASWAD_TITLE, :column => :title, :page => 1, :order => ASC).items
       search_results.should == expected_items.reverse
     end
 
@@ -73,8 +73,8 @@ describe EbayItem do
     it "should only include items mapped to releases if specified" do
       release = Factory.create(:release)
       ebay_item = Factory.create(:ebay_item, :release_id => release)
-      EbayItem.search(:query => ebay_item.title, :column => 'endtime', :include_mapped => false)[0].should be_empty
-      EbayItem.search(:query => ebay_item.title, :column => 'endtime', :include_mapped => true)[0].should_not be_empty
+      EbayItem.search(:query => ebay_item.title, :column => 'endtime', :include_mapped => false).items.should be_empty
+      EbayItem.search(:query => ebay_item.title, :column => 'endtime', :include_mapped => true).items.should_not be_empty
     end
 
 

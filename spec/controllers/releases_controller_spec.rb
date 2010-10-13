@@ -190,7 +190,9 @@ describe ReleasesController do
       title = "thanks and praise"
       release = Factory.create(:release, :title => title)
       response = xhr :get, :search, :q => title
-      response.body.should == [release].to_json(:include => {:label_entity => {:only => :name}}, :only => [:matrix_number, :title, :matrix, :artist, :id], :methods => [:link])
+      body = JSON.parse(response.body)
+      body['hits'].should == 1
+      body['releases'].should == [release].to_json(:include => {:label_entity => {:only => :name}}, :only => [:matrix_number, :title, :matrix, :artist, :id], :methods => [:link])
     end
   end
 

@@ -1,12 +1,12 @@
 class ReleasesController < ApplicationController
 
   def initialize
-    @paginator = Paginator.new(Release)
+    @paginator = Paginator::Util.new(Release)
   end
 
   def index
     @page_num = ParamsParser.parse_page_param(params)
-    @releases, @prev, @next, @start, @end, @total = @paginator.paginate(@page_num, nil, "artist ASC", [:label_entity, :format, :ebay_items])
+    @releases = @paginator.paginate(@page_num, nil, "artist ASC", [:label_entity, :format, :ebay_items]).items
 
     respond_to do |format|
       format.html # index.html.erb
@@ -97,7 +97,7 @@ class ReleasesController < ApplicationController
     query = ParamsParser.parse_query_param(params)
     releases = Release.search(:page => page_num, :query => query)
     respond_to do |format|
-      format.json { render :json => releases[0].to_json(:include => {:label_entity => {:only => :name}}, :only => [:matrix_number, :title, :matrix, :artist, :id], :methods => [:link]) }
+      format.json { render :json => {:hits => releases.total, :releases => releases.items.to_json(:include => {:label_entity => {:only => :name}}, :only => [:matrix_number, :title, :matrix, :artist, :id], :methods => [:link]) }}.to_json
     end
   end
 end

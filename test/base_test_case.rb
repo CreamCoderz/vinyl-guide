@@ -145,7 +145,7 @@ module BaseTestCase
                                  :price => EbayBaseData::TETRACK_EBAY_ITEM.price + i, :currencytype => CURRENCY_SYMBOLS.keys[currency_key_num], :endtime => Time.new + i, :starttime => Time.new + i,
                                  :url => EbayBaseData::TETRACK_EBAY_ITEM.url, :galleryimg => EbayBaseData::TETRACK_EBAY_ITEM.galleryimg, :sellerid => EbayBaseData::TETRACK_EBAY_ITEM.sellerid, :hasimage => false)
     end
-    ebay_items.each { |ebay_item| ebay_item.save }
+    ebay_items.each { |ebay_item| ebay_item.save! }
     ebay_items
   end
 

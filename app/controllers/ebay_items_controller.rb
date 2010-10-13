@@ -1,5 +1,5 @@
 require File.expand_path(File.dirname(__FILE__) + "/../../lib/params_parser")
-require File.dirname(__FILE__) + '/../../lib/paginator'
+require File.dirname(__FILE__) + '/../../lib/paginator/util'
 
 class EbayItemsController < ApplicationController
   PAGE_LIMIT = 20
@@ -10,7 +10,7 @@ class EbayItemsController < ApplicationController
   before_filter :set_release, :only => [:show]
 
   def initialize
-    @paginator = Paginator.new(EbayItem)
+    @paginator = Paginator::Util.new(EbayItem)
   end
 
   def index

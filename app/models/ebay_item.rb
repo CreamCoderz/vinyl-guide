@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../../lib/paginator'
+require File.dirname(__FILE__) + '/../../lib/paginator/util'
 require File.dirname(__FILE__) + '/../../lib/query_generator'
 
 class EbayItem < ActiveRecord::Base
@@ -14,7 +14,7 @@ class EbayItem < ActiveRecord::Base
   belongs_to :release
   has_many :pictures, :foreign_key => "ebay_item_id"
 
-  @paginator = Paginator.new(EbayItem)
+  @paginator = Paginator::Util.new(EbayItem)
 
   def self.search(params)
     query_value, column = params[:query], params[:column]
@@ -23,7 +23,7 @@ class EbayItem < ActiveRecord::Base
     include_mapped_query = include_mapped ? "" : " AND release_id IS NULL"
     order_query = " #{column} #{order}"
     query = QueryGenerator.generate_wild_query(SEARCHABLE_FIELDS, ':wild_query')
-    @ebay_items, @prev, @next, @start, @end, @total = @paginator.paginate(page_num, ["#{query}#{include_mapped_query}", {:wild_query => "%#{query_value}%"}], order_query)
+    @paginator.paginate(page_num, ["#{query}#{include_mapped_query}", {:wild_query => "%#{query_value}%"}], order_query)
   end
   
   def link
