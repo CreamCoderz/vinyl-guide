@@ -1,3 +1,3 @@
 <%= render :partial => "partials/ebay_item_index", :locals => {
-        :header_text => "All Vinyl Results #{@start}-#{@end} of #{@total}",
+        :header_text => "All Vinyl Results #{@page_results.start_from}-#{@page_results.end_on} of #{@page_results.total}",
         :base_url => "/all"} %>

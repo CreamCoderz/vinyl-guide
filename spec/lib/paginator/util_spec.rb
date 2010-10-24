@@ -1,7 +1,5 @@
 require File.dirname(__FILE__) + '/../../spec_helper'
 require File.dirname(__FILE__) + '/../../../lib/paginator/util'
-require File.dirname(__FILE__) + '/../../../test/base_test_case'
-include BaseTestCase
 
 describe Paginator::Util do
 
@@ -67,10 +65,6 @@ describe Paginator::Util do
         @paginator.paginate(0).should be_empty
       end
     end
-  end
-
-  def check_empty_results(paginated_result)
-
   end
 
 end

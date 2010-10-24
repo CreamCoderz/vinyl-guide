@@ -37,6 +37,7 @@ function AutoCompleter(id, path, key, callback, linkTextBuilder) {
             });
         },
         cacheLength: 0,
+        indicator: 'foo.jpg',
         max: 20}).result(function (event, item) {
         if (callback == undefined)
             location.href = item[key].link;

@@ -6,8 +6,8 @@ class ReleasesController < ApplicationController
 
   def index
     @page_num = ParamsParser.parse_page_param(params)
-    @releases = @paginator.paginate(@page_num, nil, "artist ASC", [:label_entity, :format, :ebay_items]).items
-
+    @page_results = @paginator.paginate(@page_num, nil, "artist ASC", [:label_entity, :format, :ebay_items])
+    @releases = @page_results.items
     respond_to do |format|
       format.html # index.html.erb
       format.xml { render :xml => @releases }
