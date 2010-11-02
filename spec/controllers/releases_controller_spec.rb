@@ -192,7 +192,7 @@ describe ReleasesController do
       response = xhr :get, :search, :q => title
       body = JSON.parse(response.body)
       body['hits'].should == 1
-      body['releases'].should == [release].to_json(:include => {:label_entity => {:only => :name}}, :only => [:matrix_number, :title, :matrix, :artist, :id], :methods => [:link])
+      body['releases'].should == JSON.parse([release].to_json(:include => {:label_entity => {:only => :name}}, :only => [:matrix_number, :title, :matrix, :artist, :id], :methods => [:link]))
     end
   end
 

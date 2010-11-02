@@ -22,6 +22,7 @@ describe "/releases/index.html.erb" do
         :matrix_number => "value for matrix_number"
       )
     ]
+    assigns[:page_results] = Paginator::Result.empty_result
   end
 
   it "renders a list of releases" do

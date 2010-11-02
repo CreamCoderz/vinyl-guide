@@ -15,6 +15,7 @@ describe "/releases/show.html.erb" do
   end
 
   it "renders attributes in <p>" do
+    assigns[:page_results] = Paginator::Result.empty_result
     render
     response.should have_text(/value\ for\ title/)
     response.should have_text(/value\ for\ artist/)

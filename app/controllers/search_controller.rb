@@ -9,12 +9,12 @@ class SearchController < ApplicationController
     @query = ParamsParser.parse_query_param(params)
     @sort_param, @order_param = ParamsParser.parse_sort_params(params)
     include_mapped = params[:include_mapped].blank? ? true : params[:include_mapped] == "true"
-    @ebay_items, @prev, @next, @start, @end, @total = EbayItem.search(:query => @query, :column => @sort_param,
+    @page_results = EbayItem.search(:query => @query, :column => @sort_param,
                                                                       :order => @order_param, :page => page_num,
                                                                       :include_mapped => include_mapped)
     @sortable_base_url = "/search?q=#{@query}&page=#{page_num}"
     if request.xml_http_request?
-     render :json => {:hits => 0, :items => @ebay_items.to_json(:only => [:id, :title], :methods => [:link])}
+     render :json => {:hits => 0, :ebay_items => JSON.parse(@page_results.items.to_json(:only => [:id, :title], :methods => [:link]))}
     end
   end
 

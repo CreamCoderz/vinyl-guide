@@ -1,17 +1,3 @@
-function setClass(elm, className) {
-    elm.setAttribute("class", className);
-}
-//
-//$(document).ready(function() {
-//    $("ul.auction-menu").superfish({
-//        hoverClass:    'auction-menu',          // the class applied to hovered list items
-//        delay:       800,                            // one second delay on mouseout
-//        animation:   {opacity:'show',height:'show'},  // fade-in and slide-down animation
-//        speed:       'fast'                         // faster animation speed
-//    });
-//});
-
-
 function AutoCompleter(id, path, key, callback, linkTextBuilder) {
 
     //TODO: looks like jquery is setting the scope of 'this', so i had to inline the functions
@@ -28,7 +14,7 @@ function AutoCompleter(id, path, key, callback, linkTextBuilder) {
         },
         dataType: "json",
         parse: function(data) {
-            return $.map(data, function(item) {
+            return $.map(data[key + 's'], function(item) {
                 return {
                     data: item,
                     value: item.title,

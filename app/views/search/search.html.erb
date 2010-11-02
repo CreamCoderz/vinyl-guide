@@ -1,20 +1,18 @@
 <div class="container">
 
-  <% if @start && @end %>
-      <% @range = "#{@start}-#{@end} of" %>
-  <% end %>
-  <% header_text = "<h3>#{@range} #{@total} Search Results found for &quot;#{h(@query)}&quot;</h3>" %>
+  <% @range = "#{@page_results.start_from}-#{@page_results.end_on} of" unless @page_results.empty? %>
+  <% header_text = "<h3>#{@range} #{@page_results.total} Search Results found for &quot;#{h(@query)}&quot;</h3>" %>
   <% base_url = "/search?q=#{url_escape(@query)}" %>
   <%= render :partial => "partials/list_header", :locals => {:base_url => "/search?q=#{url_escape(@query)}", :header_text => header_text} %>
   <hr/>
   <ul class="ebay-items">
-    <% @ebay_items.each do |ebay_item| %>
+    <% @page_results.items.each do |ebay_item| %>
         <%= render :partial=> "partials/ebay_item_abbrv", :locals => {:ebay_item => ebay_item, :controls => false} %>
     <% end %>
   </ul>
   <%= render :partial => "partials/paginated_links", :locals => {
-          :base_url => base_url,
-          :sort => @sort_param, :order => @order_param,
+          :base_url  => base_url,
+          :sort      => @sort_param, :order => @order_param,
           :next_link => @next, :prev_link => @prev
   } %>
   <br/>

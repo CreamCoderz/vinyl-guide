@@ -27,6 +27,7 @@ describe "/ebay_items/index.erb" do
 
     )
     assigns[:ebay_items] = [@ebay_item]
+    assigns[:page_results] = Paginator::Result.empty_result
   end
 
   it "renders attributes in <p>" do

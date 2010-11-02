@@ -97,7 +97,7 @@ class ReleasesController < ApplicationController
     query = ParamsParser.parse_query_param(params)
     releases = Release.search(:page => page_num, :query => query)
     respond_to do |format|
-      format.json { render :json => {:hits => releases.total, :releases => releases.items.to_json(:include => {:label_entity => {:only => :name}}, :only => [:matrix_number, :title, :matrix, :artist, :id], :methods => [:link]) }}.to_json
+      format.json {render :json => {:hits => releases.total, :releases => JSON.parse(releases.items.to_json(:include => {:label_entity => {:only => :name}}, :only => [:matrix_number, :title, :matrix, :artist, :id], :methods => [:link]))}}
     end
   end
 end
