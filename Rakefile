@@ -30,6 +30,7 @@ file :copy_app_files => [:copy_public_files] do |t|
   cp_r "tools", "build"
   cp_r "util", "build"
   cp   "Rakefile", "build"
+#  cp   "Gemfile", "build"
 end
 
 file :copy_public_files do
