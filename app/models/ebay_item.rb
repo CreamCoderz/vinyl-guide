@@ -16,16 +16,16 @@ class EbayItem < ActiveRecord::Base
 
   @paginator = Paginator::Util.new(EbayItem)
 
-  def self.search(params)
-    query_value, column = params[:query], params[:column]
-    page_num, order = params[:page] || 1, params[:order] || DESC
-    include_mapped = params[:include_mapped] == nil ? true : params[:include_mapped]
-    include_mapped_query = include_mapped ? "" : " AND release_id IS NULL"
-    order_query = " #{column} #{order}"
-    query = QueryGenerator.generate_wild_query(SEARCHABLE_FIELDS, ':wild_query')
-    @paginator.paginate(page_num, ["#{query}#{include_mapped_query}", {:wild_query => "%#{query_value}%"}], order_query)
+  searchable do
+    text(:title_text) { title }
+    text(:sellerid)
+    text(:description) { description.present? ? description[1..1000] : nil }
+    string :title
+    long(:endtime) { endtime.to_i }
+    float :price
+    boolean(:mapped) { release.present? }
   end
-  
+
   def link
     "/#{self.id}"
   end

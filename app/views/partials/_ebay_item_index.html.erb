@@ -11,6 +11,7 @@
     <%= render :partial => "partials/paginated_links", :locals => {
             :base_url => base_url,
             :sort => @sort_param, :order => @order_param,
-            :next_link => @page_results.next_page_num, :prev_link => @page_results.prev_page_num} %>
+            :next_link => @page_results ? @page_results.next_page_num : nil,
+            :prev_link => @page_results ? @page_results.prev_page_num : nil} %>
   </div>
 </div>

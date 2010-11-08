@@ -8,6 +8,7 @@ require 'rake/testtask'
 require 'rake/rdoctask'
 
 require 'tasks/rails'
+require 'sunspot/rails/tasks'
 
 ENVIRONMENT = Rails.env.downcase
 PROPERTIES = YAML.load_file("config/build.#{ENVIRONMENT}.yml")

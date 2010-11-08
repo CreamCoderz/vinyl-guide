@@ -1,4 +1,4 @@
-class ParamsParser
+module ParamsParser
   SORTABLE_FIELDS = ['endtime', 'price', 'title']
   ORDER_FIELDS = ['desc', 'asc']
 
