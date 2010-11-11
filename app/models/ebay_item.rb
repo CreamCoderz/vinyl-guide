@@ -14,7 +14,7 @@ class EbayItem < ActiveRecord::Base
   belongs_to :release
   has_many :pictures, :foreign_key => "ebay_item_id"
 
-  @paginator = Paginator::Util.new(EbayItem)
+  after_save { |item| item.index! }
 
   searchable do
     text(:title_text) { title }

@@ -2,13 +2,6 @@ require File.dirname(__FILE__) + '/../spec_helper'
 require File.dirname(__FILE__) + '/../../app/domain/ebayitemdatabuilder'
 
 describe EbayItem do
-  ASWAD_TITLE = 'aswad'
-  ENDTIME, PRICE, TITLE = SearchController::SORTABLE_FIELDS
-  DESC, ASC = SearchController::ORDER_FIELDS
-
-  before :each do
-    @data_builder = EbayItemDataBuilder.new
-  end
 
   describe "validations" do
 
@@ -18,6 +11,25 @@ describe EbayItem do
 
     it "should validate uniquess of itemid" do
       EbayItem.create(:itemid => @ebay_item.itemid).errors.on(:itemid).should_not be_nil
+    end
+
+  end
+
+  describe ".search" do
+    let (:ebay_item) {Factory(:ebay_item)}
+    
+    it "commits the ebay item to the solr index after creation" do
+      EbayItem.search do
+        keywords(ebay_item.title)
+      end.should_not be_nil
+    end
+
+    it "commits the ebay item to the solr index after save" do
+      ebay_item.update_attributes(:release_id => 1)
+      EbayItem.search do
+        keywords(ebay_item.title)
+        with(:mapped, true)
+      end.should_not be_nil
     end
   end
 
