@@ -1,5 +1,4 @@
 require File.dirname(__FILE__) + '/../../lib/paginator/util'
-require File.dirname(__FILE__) + '/../../lib/query_generator'
 
 class EbayItem < ActiveRecord::Base
   SEARCHABLE_FIELDS = ['title']
@@ -13,6 +12,14 @@ class EbayItem < ActiveRecord::Base
 
   belongs_to :release
   has_many :pictures, :foreign_key => "ebay_item_id"
+
+  named_scope :singles, :conditions => ["size=? OR size=?", '7"', "Single (7-Inch)"]
+  named_scope :eps, :conditions => ["size=? OR size=?", 'EP, Maxi (10, 12-Inch)', '10"']
+  named_scope :lps, :conditions => ["size=? OR size=? OR size=?", "LP (12-Inch)", "LP", '12"']
+  named_scope :other, :conditions => ["size!=? AND size!=? AND size!=? AND size!=? AND size!=? AND size!=? AND size!=?", "LP (12-Inch)", "LP", 'EP, Maxi (10, 12-Inch)', '10"', '7"', "Single (7-Inch)", '12"']
+
+  cattr_reader :per_page
+  @@per_page = 20
 
   after_save { |item| item.index! }
 

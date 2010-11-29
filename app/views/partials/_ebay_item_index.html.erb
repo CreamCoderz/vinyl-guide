@@ -3,7 +3,7 @@
     <%= render :partial => "partials/list_header", :locals => {:base_url => base_url, :header_text => header_text} %>
     <hr/>
     <ul class="ebay-items">
-      <% @ebay_items.each do |ebay_item| %>
+      <% @page_results.items.each do |ebay_item| %>
           <%= render :partial=> "partials/ebay_item_abbrv", :locals => {:ebay_item => ebay_item} %>
       <% end %>
     </ul>

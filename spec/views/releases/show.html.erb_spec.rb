@@ -11,11 +11,11 @@ describe "/releases/show.html.erb" do
                                               :format => Format::LP,
                                               :matrix_number => "value for matrix_number"
     )
-    assigns[:ebay_items] = @ebay_items = [Factory(:ebay_item, :release_id => @release.id), Factory(:ebay_item, :release_id => @release.id)]
+    @ebay_items = [Factory(:ebay_item, :release_id => @release.id), Factory(:ebay_item, :release_id => @release.id)]
+    assigns[:page_results] = Paginator::Result.new(:items => @ebay_items)
   end
 
   it "renders attributes in <p>" do
-    assigns[:page_results] = Paginator::Result.empty_result
     render
     response.should have_text(/value\ for\ title/)
     response.should have_text(/value\ for\ artist/)

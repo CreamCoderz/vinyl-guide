@@ -5,6 +5,9 @@ require File.expand_path(File.join(File.dirname(__FILE__), '..', 'config', 'envi
 require 'spec/autorun'
 require 'spec/rails'
 require 'factory_girl'
+require 'will_paginate'
+require 'sunspot'
+require 'sunspot/rails'
 #TODO: this should be implicitly required
 require File.expand_path(File.join(File.dirname(__FILE__), 'factories', 'release_factory'))
 require File.expand_path(File.join(File.dirname(__FILE__), 'factories', 'ebay_item_factory'))

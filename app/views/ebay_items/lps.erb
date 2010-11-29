@@ -1,4 +1,4 @@
 <%= render :partial => "partials/ebay_item_index", :locals => {
-        :header_text => "LP Results #{@start}-#{@end} of #{@total}",
+        :header_text => header_text("LP", @page_results),
         :sort => @sort_param, :order => @order_param,
         :base_url => "/lps/"} %>

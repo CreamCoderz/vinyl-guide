@@ -11,23 +11,15 @@ describe "/ebay_items/index.erb" do
                           :matrix_number => "value for matrix_number"
     )
     assigns[:release] = @release
-    @ebay_item = stub_model(EbayItem,
-                            :price => 25.50,
-                            :title => "OG '78 press",
-                            :endtime => Date.new,
-                            :hasimage => true,
-                            :id => 100
-    )
-    @ebay_item_2 = stub_model(EbayItem,
-                              :price => 30.50,
-                              :title => "OG '76 press",
-                              :endtime => Date.new,
-                              :hasimage => true,
-                              :id => 100
-
-    )
-    assigns[:ebay_items] = [@ebay_item]
-    assigns[:page_results] = Paginator::Result.empty_result
+    @ebay_item = Factory(:ebay_item,
+                         :price => 25.50,
+                         :title => "OG '78 press",
+                         :endtime => Time.now,
+                         :hasimage => true,
+                         :id => 100)
+    assigns[:page_results] = Paginator::Result.new(:paginated_results => WillPaginate::Collection.create(1, 1, 0) do |pager|
+      pager.replace([@ebay_item])
+    end)
   end
 
   it "renders attributes in <p>" do

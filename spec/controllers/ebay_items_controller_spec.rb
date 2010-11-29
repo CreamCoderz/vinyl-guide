@@ -2,22 +2,22 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe EbayItemsController do
 
+
   def mock_ebay_item(stubs={})
     @mock_ebay_item ||= mock_model(EbayItem, stubs)
   end
-
-  def mock_release(stubs={})
-    @mock_release ||= mock_model(Release, stubs)
-  end
-
-  it "should list child entities of a release" do
-    Release.stub!(:find).with("1", :include => :ebay_items).and_return(mock_release)
-    mock_release.stub!(:ebay_items).and_return([mock_ebay_item])
-    get :index, :release_id => "1", :id => "1"
-    actual_ebay_items = assigns[:ebay_items]
-    actual_ebay_items.length.should == 1
-    actual_ebay_items[0].id.should == mock_ebay_item.id
-    assigns[:release].id.should == mock_release.id
+  
+  describe "#index" do
+    it "should list child entities of a release" do
+      mock_release = mock_model(Release)
+      Release.stub!(:find).with("1", :include => :ebay_items).and_return(mock_release)
+      mock_release.stub!(:ebay_items).and_return([mock_ebay_item])
+      get :index, :release_id => "1", :id => "1"
+      actual_ebay_items = assigns[:ebay_items]
+      actual_ebay_items.length.should == 1
+      actual_ebay_items[0].id.should == mock_ebay_item.id
+      assigns[:release].id.should == mock_release.id
+    end
   end
 
   describe "#show" do
@@ -49,6 +49,24 @@ describe EbayItemsController do
     it "should assign a @release" do
       get :show, :id => "#{Factory(:ebay_item).id}"
       assigns[:release].should_not be_nil
+    end
+  end
+
+  context "custom routes" do
+    before do
+      @ebay_item = Factory(:ebay_item)
+      @ebay_item.stub(:paginate).and_return(WillPaginate::Collection.create(1, 1, 0) do |pager|
+        pager.replace([@ebay_item])
+      end)
+    end
+    ['lps', 'eps', 'singles', 'other'].each do |route|
+      describe "##{route}" do
+        it "uses the #{route} scope to assign page_results" do
+          EbayItem.should_receive(route).and_return(@ebay_item)
+          get route.to_sym
+          assigns[:page_results].items.should == [@ebay_item]
+        end
+      end
     end
   end
 

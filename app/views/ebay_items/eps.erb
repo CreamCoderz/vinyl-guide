@@ -1,3 +1,3 @@
 <%= render :partial => "partials/ebay_item_index", :locals => {
-        :header_text => "EP Results #{@start}-#{@end} of #{@total}",
+        :header_text => header_text("EP", @page_results),
         :base_url => "/eps"} %>

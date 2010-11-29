@@ -5,9 +5,9 @@ class SearchController < ApplicationController
   def search
     page_num = ParamsParser.parse_page_param(params)
     @query = ParamsParser.parse_query_param(params)
-    @sort_param, @order_param = ParamsParser.parse_sort_params(params)
-    sort_param = @sort_param
-    order_param = @order_param
+    @parsed_params = ParamsParser.parse_sort_params(params)
+    sort_param = @parsed_params.sort
+    order_param = @parsed_params.order
     query = @query
 
     include_mapped = params[:include_mapped].blank? ? nil : params[:include_mapped] == "true"
@@ -19,8 +19,10 @@ class SearchController < ApplicationController
     end
 
     @ebay_items = paginated_results.results
+    @page_results = Paginator::Result.new(:search_results => paginated_results)
 
-    @page_results = Paginator::Result.new(:paginated_results => paginated_results)
+    @sort_param = sort_param
+    @order_param = order_param
 
     @sortable_base_url = "/search?q=#{@query}&page=#{page_num}"
     if request.xml_http_request?

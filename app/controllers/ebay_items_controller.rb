@@ -48,44 +48,34 @@ class EbayItemsController < ApplicationController
 
   def all
     @sortable_base_url = "/all"
-    @page_results = @paginator.paginate(@page_num, nil, @order_query)
-    @ebay_items = @page_results.items
+    @page_results = Paginator::Result.new(:paginated_results => EbayItem.paginate(:order => @order_query, :page => @page_num))
   end
-
-#TODO: move the query building to the model
 
   def singles
     @sortable_base_url = "/singles"
-    @page_results = @paginator.paginate(@page_num, ["size=? OR size=?", '7"',
-                                                    "Single (7-Inch)"], @order_query)
-    @ebay_items = @page_results.items
+    @page_results = Paginator::Result.new(:paginated_results => EbayItem.singles.paginate(:page => @page_num, :order => @order_query))
   end
 
   def eps
     @sortable_base_url = "/eps"
-    @page_results =  @paginator.paginate(@page_num, ["size=? OR size=?",
-                                                                                      'EP, Maxi (10, 12-Inch)', '10"'], @order_query)
-    @ebay_items = @page_results.items
+    @page_results = Paginator::Result.new(:paginated_results => EbayItem.eps.paginate(:page => @page_num, :order => @order_query))    
   end
 
   def lps
     @sortable_base_url = "/lps"
-    @page_results = @paginator.paginate(@page_num, ["size=? OR size=? OR size=?",
-                                                                                      "LP (12-Inch)", "LP", '12"'], @order_query)
-    @ebay_items = @page_results.items
+    @page_results = Paginator::Result.new(:paginated_results => EbayItem.lps.paginate(:page => @page_num, :order => @order_query))
   end
 
   def other
     @sortable_base_url = "/other"
-    @page_results = @paginator.paginate(@page_num, ["size!=? AND size!=? AND size!=? AND size!=? AND size!=? AND size!=? AND size!=?",
-                                                                                      "LP (12-Inch)", "LP", 'EP, Maxi (10, 12-Inch)', '10"', '7"', "Single (7-Inch)", '12"'], @order_query)
-    @ebay_items = @page_results.items
+    @page_results = Paginator::Result.new(:paginated_results => EbayItem.other.paginate(:page => @page_num, :order => @order_query))        
   end
 
   private
 
   def set_sortable_fields
-    @sort_param, @order_param = ParamsParser.parse_sort_params params
+    parsed_params = ParamsParser.parse_sort_params(params)
+    @sort_param, @order_param = parsed_params.sort, parsed_params.order
     @order_query = "#{@sort_param} #{@order_param}"
   end
 
