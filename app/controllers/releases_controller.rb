@@ -16,7 +16,7 @@ class ReleasesController < ApplicationController
 
   def show
     @release = Release.find(params[:id], :include => [:label_entity, :format, :ebay_items])
-    @ebay_items = @release.ebay_items
+    @page_results = Paginator::Result.from_items(@release.ebay_items)
     @controls = true
     respond_to do |format|
       format.html # show.html.erb

@@ -11,7 +11,7 @@ describe ReleasesController do
     @mock_release ||= mock_model(Release, stubs)
   end
 
-  describe "GET index" do
+  describe "#index" do
     it "assigns all releases as @releases" do
       release = Factory(:release)
       get :index
@@ -19,21 +19,21 @@ describe ReleasesController do
     end
   end
 
-  describe "GET show" do
+  describe "#show" do
     it "assigns the requested release as @release" do
       Release.stub!(:find).with("37", :include => [:label_entity, :format, :ebay_items]).and_return(mock_release)
       mock_release.stub!(:ebay_items).and_return([mock_ebay_item])
       get :show, :id => "37"
-      actual_ebay_items = assigns[:ebay_items]
+      page_results = assigns[:page_results]
+      actual_ebay_items = page_results.items
       actual_ebay_items.length.should == 1
       actual_ebay_items[0].id.should == mock_ebay_item.id
-      assigns[:release].id.should == mock_release.id
       assigns[:release].should equal(mock_release)
       assigns[:controls].should be_true
     end
   end
 
-  describe "GET new" do
+  describe "#new" do
     it "assigns a new release as @release" do
       Release.stub!(:new).and_return(mock_release({:label_entity => Factory(:label), :build_label_entity => nil}))
       get :new
@@ -42,7 +42,7 @@ describe ReleasesController do
     end
   end
 
-  describe "GET edit" do
+  describe "#edit" do
     it "assigns the requested release as @release" do
       Release.stub!(:find).with("37").and_return(mock_release({:label_entity => Factory(:label), :build_label_entity => nil}))
       get :edit, :id => "37"
@@ -51,7 +51,7 @@ describe ReleasesController do
     end
   end
 
-  describe "POST create" do
+  describe "#create" do
 
     describe "with valid params" do
       it "assigns a newly created release as @release" do
@@ -120,7 +120,7 @@ describe ReleasesController do
 
   end
 
-  describe "PUT update" do
+  describe "#update" do
 
     describe "with valid params" do
       it "updates the requested release" do
@@ -171,7 +171,7 @@ describe ReleasesController do
 
   end
 
-  describe "DELETE destroy" do
+  describe "#destroy" do
     it "destroys the requested release" do
       Release.should_receive(:find).with("37").and_return(mock_release)
       mock_release.should_receive(:destroy)
@@ -185,7 +185,7 @@ describe ReleasesController do
     end
   end
 
-  describe "search" do
+  describe "#search" do
     it "should assign some results fields" do
       title = "thanks and praise"
       release = Factory.create(:release, :title => title)

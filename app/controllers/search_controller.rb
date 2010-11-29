@@ -18,8 +18,7 @@ class SearchController < ApplicationController
       paginate(:page => page_num, :per_page => 20)
     end
 
-    @ebay_items = paginated_results.results
-    @page_results = Paginator::Result.new(:search_results => paginated_results)
+    @page_results = Paginator::Result.new(:paginated_results => paginated_results.results)
 
     @sort_param = sort_param
     @order_param = order_param

@@ -63,4 +63,12 @@ module ApplicationHelper
     end
     base_url + query
   end
+
+  def header_text(format, page_results)
+    if page_results.empty?
+      "No #{format} Results"
+    else
+      "#{format} Results #{page_results.start_from}-#{page_results.end_on} of #{page_results.total}"      
+    end
+  end
 end
