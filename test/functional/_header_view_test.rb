@@ -7,8 +7,8 @@ include ActionController::UrlWriter
 class HeaderViewTest <  ActionController::TestCase
 
   TEMPLATE_PATH = File.dirname(__FILE__) + '/../../app/views/partials/_header.html.erb'
-  ENDTIME, PRICE, TITLE = SearchController::SORTABLE_FIELDS
-  DESC, ASC = SearchController::ORDER_FIELDS
+  ENDTIME, PRICE, TITLE = SearchController::SORTABLE_OPTIONS
+  DESC, ASC = SearchController::ORDER_OPTIONS
   SORT_PARAM = 'sort'
   ORDER_PARAM = 'order'
   Q = "JAH"

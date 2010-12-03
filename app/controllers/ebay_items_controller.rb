@@ -41,42 +41,47 @@ class EbayItemsController < ApplicationController
 
   def show
     @ebay_item = EbayItem.find(params[:id], :include => [{:release => [:label_entity, :format, :ebay_items]}, :pictures])
-    @related_ebay_items = []
-    releases = @ebay_item.release
-    @related_ebay_items = releases.ebay_items.inject([]) { |memo, ebay_item| memo << ebay_item unless @ebay_item == ebay_item; memo } if releases
+    @related_ebay_items = @ebay_item.related_items
   end
 
   def all
     @sortable_base_url = "/all"
-    @page_results = Paginator::Result.new(:paginated_results => EbayItem.paginate(:order => @order_query, :page => @page_num))
+    set_page_results(:all_items)
   end
 
   def singles
     @sortable_base_url = "/singles"
-    @page_results = Paginator::Result.new(:paginated_results => EbayItem.singles.paginate(:page => @page_num, :order => @order_query))
+    set_page_results(:singles)
   end
 
   def eps
     @sortable_base_url = "/eps"
-    @page_results = Paginator::Result.new(:paginated_results => EbayItem.eps.paginate(:page => @page_num, :order => @order_query))    
+    set_page_results(:eps)
   end
 
   def lps
     @sortable_base_url = "/lps"
-    @page_results = Paginator::Result.new(:paginated_results => EbayItem.lps.paginate(:page => @page_num, :order => @order_query))
+    set_page_results(:lps)
   end
 
   def other
     @sortable_base_url = "/other"
-    @page_results = Paginator::Result.new(:paginated_results => EbayItem.other.paginate(:page => @page_num, :order => @order_query))        
+    set_page_results(:other)
   end
 
   private
 
   def set_sortable_fields
-    parsed_params = ParamsParser.parse_sort_params(params)
-    @sort_param, @order_param = parsed_params.sort, parsed_params.order
+    @parsed_params = ParamsParser.parse_sort_params(params)
+    @sort_param, @order_param, @time = @parsed_params.sort, @parsed_params.order, @parsed_params.time
     @order_query = "#{@sort_param} #{@order_param}"
+  end
+
+  def set_page_results(scope)
+    ebay_items = EbayItem.send(scope)
+    ebay_items = ebay_items.send(@time) unless @time == 'all'
+    ebay_items = ebay_items.all.paginate(:order => @order_query, :page => @page_num)
+    @page_results = Paginator::Result.new(:paginated_results => ebay_items)
   end
 
   def set_page_num

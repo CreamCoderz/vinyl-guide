@@ -87,3 +87,9 @@ var EbayItem = function() {
         categorize: this.categorize,
         linkTextBuilder :this.linkTextBuilder}
 }();
+
+$(document).ready(function() {
+    $('#time-form').change(function() {
+        this.submit();
+    });
+});

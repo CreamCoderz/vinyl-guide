@@ -2,8 +2,8 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe SearchController do
 
-  ENDTIME, PRICE, TITLE = SearchController::SORTABLE_FIELDS
-  DESC, ASC = SearchController::ORDER_FIELDS
+  ENDTIME, PRICE, TITLE = SearchController::SORTABLE_OPTIONS
+  DESC, ASC = SearchController::ORDER_OPTIONS
 
 
   #TODO: don't die on missing query param

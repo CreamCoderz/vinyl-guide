@@ -1,43 +1,17 @@
 <% if @sortable_base_url %>
     <th class="align-right">
-            <span id='endtime'>
-            <% if 'endtime'.casecmp(@sort_param) == 0 and 'desc'.casecmp(@order_param) == 0 %>
-                <a class="<%= 'endtime'.casecmp(@sort_param) ? "selected " : "" %>asc"
-                   href="<%= h append_query_params(@sortable_base_url,
-                                                   [['sort', 'endtime'],
-                                                    ['order', 'asc']]) %>">END TIME</a>
-            <% else %>
-                <a class="<%= 'endtime'.casecmp(@sort_param) == 0 ? "selected " : "" %>desc"
-                   href="<%= h append_query_params(@sortable_base_url,
-                                                   [['sort', 'endtime'],
-                                                    ['order', 'desc']]) %>">END TIME</a>
-            <% end %>
-            </span>
-            <span id='price'>
-            <% if 'price'.casecmp(@sort_param) == 0 and 'desc'.casecmp(@order_param) == 0 %>
-                <a class="<%= 'price'.casecmp(@sort_param) ? "selected " : "" %>asc"
-                   href="<%= h append_query_params(@sortable_base_url,
-                                                   [['sort', 'price'],
-                                                    ['order', 'asc']]) %>">PRICE</a>
-            <% else %>
-                <a class="<%= 'price'.casecmp(@sort_param) == 0 ? "selected " : "" %>desc"
-                   href="<%= h append_query_params(@sortable_base_url,
-                                                   [['sort', 'price'],
-                                                    ['order', 'desc']]) %>">PRICE</a>
-            <% end %>
-            </span>
-            <span id='title'>
-            <% if 'title'.casecmp(@sort_param) == 0 and 'desc'.casecmp(@order_param) == 0 %>
-                <a class="<%= 'title'.casecmp(@sort_param) == 0 ? "selected " : "" %>asc"
-                   href="<%= h append_query_params(@sortable_base_url,
-                                                   [['sort', 'title'],
-                                                    ['order', 'asc']]) %>">TITLE</a>
-            <% else %>
-                <a class="<%= 'title'.casecmp(@sort_param) == 0 ? "selected " : "" %>desc"
-                   href="<%= h append_query_params(@sortable_base_url,
-                                                   [['sort', 'title'],
-                                                    ['order', 'desc']]) %>">TITLE</a>
-            <% end %>
-            </span>
+      <span id='time'>
+          <form id="time-form" action="<%= url_for %>" method="GET">
+            <select name="time">
+              <option value=""></option>
+              <option value="week">This Day</option>
+              <option value="week">This Week</option>
+              <option value="month">This Month</option>
+            </select>
+          </form>
+      </span>
+      <span id='endtime'><%= sort_link('END TIME', 'endtime', @parsed_params) %></span>
+      <span id='price'><%= sort_link('PRICE', 'price', @parsed_params) %></span>
+      <span id='title'> <%= sort_link('TITLE', 'title', @parsed_params) %></span>
     </th>
 <% end %>

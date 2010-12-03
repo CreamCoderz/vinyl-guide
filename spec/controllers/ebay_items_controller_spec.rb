@@ -61,10 +61,18 @@ describe EbayItemsController do
     end
     ['lps', 'eps', 'singles', 'other'].each do |route|
       describe "##{route}" do
+        before do
+          @items = [@ebay_item]
+          @items.stub('all').and_return(@items)
+          EbayItem.should_receive(route).and_return(@items)
+        end
         it "uses the #{route} scope to assign page_results" do
-          EbayItem.should_receive(route).and_return(@ebay_item)
           get route.to_sym
-          assigns[:page_results].items.should == [@ebay_item]
+          assigns[:page_results].items.should == @items
+        end
+        it "assigns the time constraint" do
+          get route.to_sym
+          assigns[:time] = 'all'
         end
       end
     end

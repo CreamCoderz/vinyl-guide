@@ -2,11 +2,11 @@
   <h3>Vinyl Details</h3>
   <% if @ebay_item.release %>
       <div class="related-items">
-        <p><%= @related_ebay_items.empty? ? "No" : @related_ebay_items.length %> Related Auctions
+        <p><%= no_or_length(@ebay_item.related_items) %> Related Auctions
           for <%= link_to release_title_for(@ebay_item.release), @ebay_item.release %>
         </p>
         <p>
-          <% @related_ebay_items.each do |related_item| %>
+          <% @ebay_item.related_items.each do |related_item| %>
               <% link_to "/#{related_item.id}" do %>
                   <span><img src="<%= display_gallery_img(related_item.id, related_item.hasimage) %>"/></span>
               <% end %>

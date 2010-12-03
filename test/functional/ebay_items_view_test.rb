@@ -4,8 +4,8 @@ File.expand_path(File.dirname(__FILE__) + "/ebay_items_controller_test")
 include BaseTestCase
 
 class EbayItemsViewTest <  ActionController::TestCase
-  ENDTIME, PRICE, TITLE = SearchController::SORTABLE_FIELDS
-  DESC, ASC = SearchController::ORDER_FIELDS
+  ENDTIME, PRICE, TITLE = SearchController::SORTABLE_OPTIONS
+  DESC, ASC = SearchController::ORDER_OPTIONS
 
   def setup
     @controller = EbayItemsController.new

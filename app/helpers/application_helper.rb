@@ -68,7 +68,33 @@ module ApplicationHelper
     if page_results.empty?
       "No #{format} Results"
     else
-      "#{format} Results #{page_results.start_from}-#{page_results.end_on} of #{page_results.total}"      
+      "#{format} Results #{page_results.start_from}-#{page_results.end_on} of #{page_results.total}"
     end
   end
+
+  def no_or_length(a)
+    a.empty? ? "No" : a.length
+  end
+
+  def related_items(related_items)
+    related_items.collect do |related_item|
+      link_to "/#{related_item.id}" do
+        %|<span><img src="#{display_gallery_img(related_item.id, related_item.hasimage)}"/></span>"|
+      end.concat('\n')
+    end
+  end
+
+  def sort_link(link_title, field, parsed_params)
+    html_options = {:class => ""}
+    html_options[:class] += 'selected ' if parsed_params.selected?(:sort, field)
+    html_options[:class] += (parsed_params.order.to_sym == :desc && parsed_params.selected?(:sort, field)) ? 'asc' : 'desc'
+
+    query_params = {}
+    query_params[:sort] = field    
+    query_params[:order] = (parsed_params.order.to_sym == :desc && parsed_params.selected?(:sort, field)) ? 'asc' : 'desc'
+    query_params[:time] = parsed_params.time if parsed_params.declared?(:time)
+
+    link_to link_title, query_params, html_options
+  end
+
 end

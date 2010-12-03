@@ -2,8 +2,8 @@ require 'test_helper'
 require File.dirname(__FILE__) + '/../../app/domain/ebayitemdatabuilder'
 
 class EbayItemsControllerTest < ActionController::TestCase
-  ENDTIME, PRICE, TITLE = SearchController::SORTABLE_FIELDS
-  DESC, ASC = SearchController::ORDER_FIELDS
+  ENDTIME, PRICE, TITLE = SearchController::SORTABLE_OPTIONS
+  DESC, ASC = SearchController::ORDER_OPTIONS
   SORTABLE_ROUTES = [:all, :singles, :eps, :lps, :other]
 
   def setup

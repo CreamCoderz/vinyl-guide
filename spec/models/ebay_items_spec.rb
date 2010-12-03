@@ -3,7 +3,6 @@ require File.dirname(__FILE__) + '/../spec_helper'
 describe EbayItem do
 
   context "validations" do
-
     before do
       @ebay_item = Factory(:ebay_item)
     end
@@ -11,45 +10,68 @@ describe EbayItem do
     it "should validate uniquess of itemid" do
       EbayItem.create(:itemid => @ebay_item.itemid).errors.on(:itemid).should_not be_nil
     end
-
   end
 
   context "named scopes" do
-    before do
-      @other_ebay_item = Factory(:ebay_item, :size => "jumbo")
-    end
-    describe ".singles" do
-      it "scopes items by the single format" do
-        single = Factory(:ebay_item, :size => '7"')
-        single2 = Factory(:ebay_item, :size => "Single (7-Inch)")
-        ebay_item_singles = EbayItem.singles
-        ebay_item_singles.should =~ [single, single2]
+    context "formats" do
+      before do
+        @other_ebay_item = Factory(:ebay_item, :size => "jumbo")
+      end
+      describe ".all_items" do
+        it "scopes items for all" do
+          EbayItem.all_items.should == [@other_ebay_item]
+        end
+      end
+      describe ".singles" do
+        it "scopes items by the single format" do
+          single = Factory(:ebay_item, :size => '7"')
+          single2 = Factory(:ebay_item, :size => "Single (7-Inch)")
+          ebay_item_singles = EbayItem.singles
+          ebay_item_singles.should =~ [single, single2]
+        end
+      end
+      describe ".eps" do
+        it "scopes items by the ep format" do
+          ep = Factory(:ebay_item, :size => '10"')
+          ep2 = Factory(:ebay_item, :size => "EP, Maxi (10, 12-Inch)")
+          ebay_item_eps = EbayItem.eps
+          ebay_item_eps.should =~ [ep, ep2]
+        end
+      end
+      describe ".lps" do
+        it "scopes items by the lp format" do
+          lp = Factory(:ebay_item, :size => 'LP (12-Inch)')
+          lp2 = Factory(:ebay_item, :size => "LP")
+          lp3 = Factory(:ebay_item, :size => '12"')
+          ebay_item_lps = EbayItem.lps
+          ebay_item_lps.should =~ [lp, lp2, lp3]
+        end
+      end
+      describe ".other" do
+        it "scopes items by any other size" do
+          Factory(:ebay_item, :size => "LP")
+          Factory(:ebay_item, :size => '7"')
+          Factory(:ebay_item, :size => '10"')
+          ebay_item_lps = EbayItem.other
+          ebay_item_lps.should =~ [@other_ebay_item]
+        end
       end
     end
-    describe ".eps" do
-      it "scopes items by the ep format" do
-        ep = Factory(:ebay_item, :size => '10"')
-        ep2 = Factory(:ebay_item, :size => "EP, Maxi (10, 12-Inch)")
-        ebay_item_eps = EbayItem.eps
-        ebay_item_eps.should =~ [ep, ep2]
+    describe ".today" do
+      it "returns all items created today" do
+        Factory(:ebay_item, :created_at => 2.days.ago)
+        ebay_item = Factory(:ebay_item)
+        EbayItem.today.should == [ebay_item]
       end
-    end
-    describe ".lps" do
-      it "scopes items by the lp format" do
-        lp = Factory(:ebay_item, :size => 'LP (12-Inch)')
-        lp2 = Factory(:ebay_item, :size => "LP")
-        lp3 = Factory(:ebay_item, :size => '12"')
-        ebay_item_lps = EbayItem.lps
-        ebay_item_lps.should =~ [lp, lp2, lp3]
+      it "returns all items created this week" do
+        Factory(:ebay_item, :created_at => 8.days.ago)
+        ebay_item = Factory(:ebay_item)
+        EbayItem.week.should == [ebay_item]
       end
-    end
-    describe ".other" do
-     it "scopes items by any other size" do
-        Factory(:ebay_item, :size => "LP")
-        Factory(:ebay_item, :size => '7"')
-        Factory(:ebay_item, :size => '10"')
-        ebay_item_lps = EbayItem.other
-        ebay_item_lps.should =~ [@other_ebay_item]
+      it "returns all items created this month" do
+        Factory(:ebay_item, :created_at => 32.days.ago)
+        ebay_item = Factory(:ebay_item)
+        EbayItem.month.should == [ebay_item]
       end
     end
   end
@@ -69,6 +91,19 @@ describe EbayItem do
         keywords(ebay_item.title)
         with(:mapped, true)
       end.should_not be_nil
+    end
+  end
+
+
+  describe "#related_items" do
+    it "returns empty" do
+      Factory(:ebay_item).related_items.should be_empty
+    end
+    it "returns associated ebay items" do
+      release = Factory(:release)
+      ebay_item = Factory(:ebay_item, :release => release)
+      related_ebay_item = Factory(:ebay_item, :release => release)
+      ebay_item.related_items.should == [related_ebay_item]
     end
   end
 

@@ -3,8 +3,8 @@ include BaseTestCase
 
 class SearchViewTest <  ActionController::TestCase
   PRINCE = 'prince'
-  ENDTIME, PRICE, TITLE = SearchController::SORTABLE_FIELDS
-  DESC, ASC = SearchController::ORDER_FIELDS
+  ENDTIME, PRICE, TITLE = SearchController::SORTABLE_OPTIONS
+  DESC, ASC = SearchController::ORDER_OPTIONS
 
   def setup
     @controller = SearchController.new
