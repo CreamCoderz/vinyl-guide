@@ -37,6 +37,7 @@ class EbayItemsController < ApplicationController
 
   def home
     @ebay_items = EbayItem.find(:all, :order => @order_query, :limit => PAGE_LIMIT)
+    @top_items = EbayItem.top_items
   end
 
   def show
@@ -45,27 +46,22 @@ class EbayItemsController < ApplicationController
   end
 
   def all
-    @sortable_base_url = "/all"
-    set_page_results(:all_items)
+    set_page_results(:all_time)
   end
 
   def singles
-    @sortable_base_url = "/singles"
     set_page_results(:singles)
   end
 
   def eps
-    @sortable_base_url = "/eps"
     set_page_results(:eps)
   end
 
   def lps
-    @sortable_base_url = "/lps"
     set_page_results(:lps)
   end
 
   def other
-    @sortable_base_url = "/other"
     set_page_results(:other)
   end
 
@@ -78,9 +74,7 @@ class EbayItemsController < ApplicationController
   end
 
   def set_page_results(scope)
-    ebay_items = EbayItem.send(scope)
-    ebay_items = ebay_items.send(@time) unless @time == 'all'
-    ebay_items = ebay_items.all.paginate(:order => @order_query, :page => @page_num)
+    ebay_items = EbayItem.send(scope).send(@time).paginate(:order => @order_query, :page => @page_num, :per_page => '20')
     @page_results = Paginator::Result.new(:paginated_results => ebay_items)
   end
 

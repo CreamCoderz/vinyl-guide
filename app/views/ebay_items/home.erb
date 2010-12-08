@@ -3,25 +3,22 @@
     Reggae &amp; Ska records and allows for community driven auction categorization.
   </h2>
   <hr/>
-  <h3>Most Recent Vinyl Result</h3>
-  <ul class="ebay-items" style="margin-left:0">
-    <%= render :partial=> "partials/ebay_item_abbrv", :locals => {:ebay_item => @ebay_items[0], :controls => false} %>
-  </ul>
+  <p>
+    <h3 class="home-header">Top Auctions In The Last 24 Hours</h3>
+    <%= link_to '(more...)', all_path(:sort => 'price', :order => 'desc', :time => 'today') %>
+  </p>
+    <%= render :partial => "partials/small_ebay_item_index", :locals => {:ebay_items => @top_items} %>
+  <div class="clearfix"></div>
   <hr/>
-  <h3><%= @ebay_items.length %> Latest Vinyl Results</h3>
+  <p>
+    <h3 class="home-header"><%= @ebay_items.length %> Latest Vinyl Results</h3>
+    <%= link_to '(more...)', all_path %>  
+  </p>
   <div>
-    <% count = 1 %>
-    <% @ebay_items.each do |ebay_item| %>
-        <a href="/<%= ebay_item.id %>">
-          <img class="view" src="<%= display_gallery_img(ebay_item.id, ebay_item.hasimage) %>" alt="<%= h ebay_item.title %>" title="<%= h ebay_item.title %>"/>
-        </a>
-        <% if count % 5 == 0 %>
-            <br/>
-        <% end %>
-        <% count += 1 %>
-    <% end %>
+    <%= render :partial => "partials/small_ebay_item_index", :locals => {:ebay_items => @ebay_items} %>
   </div>
-  <hr/>  
+  <div class="clearfix"></div>
+  <hr/>
   <div class="twitter-widget">
   <p>Recent Updates from <%= link_to 'rootsvinylguide@twitter', "http://twitter.com/rootsvinylguide"%></p>
   <script src="http://widgets.twimg.com/j/2/widget.js"></script>

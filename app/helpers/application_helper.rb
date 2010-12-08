@@ -44,7 +44,7 @@ module ApplicationHelper
   end
 
   def display_date(date)
-    date.to_time.strftime("%B %d, %Y - %I:%M:%S %p")
+    date.to_time.strftime("%B %d, %Y - %I:%M:%S %p GMT")
   end
 
   def display_currency_symbol(currency_type)
@@ -90,7 +90,7 @@ module ApplicationHelper
     html_options[:class] += (parsed_params.order.to_sym == :desc && parsed_params.selected?(:sort, field)) ? 'asc' : 'desc'
 
     query_params = {}
-    query_params[:sort] = field    
+    query_params[:sort] = field
     query_params[:order] = (parsed_params.order.to_sym == :desc && parsed_params.selected?(:sort, field)) ? 'asc' : 'desc'
     query_params[:time] = parsed_params.time if parsed_params.declared?(:time)
 

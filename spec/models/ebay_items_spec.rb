@@ -17,9 +17,9 @@ describe EbayItem do
       before do
         @other_ebay_item = Factory(:ebay_item, :size => "jumbo")
       end
-      describe ".all_items" do
+      describe ".all_time" do
         it "scopes items for all" do
-          EbayItem.all_items.should == [@other_ebay_item]
+          EbayItem.all_time.should == [@other_ebay_item]
         end
       end
       describe ".singles" do
@@ -72,6 +72,15 @@ describe EbayItem do
         Factory(:ebay_item, :created_at => 32.days.ago)
         ebay_item = Factory(:ebay_item)
         EbayItem.month.should == [ebay_item]
+      end
+    end
+    describe ".top_items" do
+      before do
+        @ebay_items = []
+        5.times { |i| @ebay_items << Factory(:ebay_item, :price => 1.00 * i) }
+      end
+      it "assigns todays top four highest priced items" do
+        EbayItem.top_items.should =~ @ebay_items[1..-1]
       end
     end
   end

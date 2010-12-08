@@ -1,6 +1,8 @@
 <div class="container">
   <div>
-    <%= render :partial => "partials/list_header", :locals => {:base_url => base_url, :header_text => header_text} %>
+    <%= render :partial => "partials/sortable_list_header", :locals => {:base_url => base_url,
+                                                               :header_text => header_text,
+                                                               :sort_partial => "time_bound_sort_links"} %>
     <hr/>
     <ul class="ebay-items">
       <% @page_results.items.each do |ebay_item| %>

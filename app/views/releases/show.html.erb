@@ -58,6 +58,16 @@
 </script>
 <%= javascript_include_tag 'releases' %>
 
-<%= render :partial => "partials/ebay_item_index", :locals => {
-        :header_text => "<h2>#{header_text("Auction", @page_results)} for this release</h2>",
-        :base_url => "/all"} %>
+
+<div class="container">
+  <div>
+    <%= render :partial => "partials/list_header", :locals => {:header_text => "<h2>#{header_text("Auction", @page_results)} for this release</h2>"} %>
+    <hr/>
+    <ul class="ebay-items">
+      <% @page_results.items.each do |ebay_item| %>
+          <%= render :partial=> "partials/ebay_item_abbrv", :locals => {:ebay_item => ebay_item} %>
+      <% end %>
+    </ul>
+    <hr/>
+  </div>
+</div>

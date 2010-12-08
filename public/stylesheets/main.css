@@ -1,3 +1,4 @@
+
 body {
     color: #990000;
     font-family: Courier, sans-serif;
@@ -466,6 +467,15 @@ ul.ebay-items li table tr td {
     display: inline;
 }
 
+div.small-auction {
+    float: left;
+    width: 200px;
+    font-size: 14px;
+}
+
+.home-header {
+    display:inline;
+}
 .twitter-widget {
 }
 

@@ -19,6 +19,22 @@ Factory.define :ebay_item do |ebay_item|
   ebay_item.release_id nil
 end
 
+Factory.define :single_ebay_item, :parent => :ebay_item do |ebay_item|
+  ebay_item.size '7"'
+end
+
+Factory.define :ep_ebay_item, :parent => :ebay_item do |ebay_item|
+  ebay_item.size '10"'
+end
+
+Factory.define :lp_ebay_item, :parent => :ebay_item do |ebay_item|
+  ebay_item.size '12"'
+end
+
+Factory.define :other_ebay_item, :parent => :ebay_item do |ebay_item|
+  ebay_item.size '60"'
+end
+
 Factory.sequence :itemid do |n|
   n + 370384311537
 end

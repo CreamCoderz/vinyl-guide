@@ -13,7 +13,7 @@ class EbayItem < ActiveRecord::Base
   belongs_to :release
   has_many :pictures, :foreign_key => "ebay_item_id"
 
-  named_scope :all_items
+  named_scope :all_time, lambda {}
   named_scope :singles, :conditions => ["size=? OR size=?", '7"', "Single (7-Inch)"]
   named_scope :eps, :conditions => ["size=? OR size=?", 'EP, Maxi (10, 12-Inch)', '10"']
   named_scope :lps, :conditions => ["size=? OR size=? OR size=?", "LP (12-Inch)", "LP", '12"']
@@ -22,6 +22,7 @@ class EbayItem < ActiveRecord::Base
   named_scope :today, :conditions => "created_at > NOW()-INTERVAL 1 DAY"
   named_scope :week, :conditions => "created_at > NOW()-INTERVAL 1 WEEK"
   named_scope :month, :conditions => "created_at > NOW()-INTERVAL 1 MONTH"
+  named_scope :top_items, :conditions => "created_at > NOW()-INTERVAL 1 DAY", :order => "price DESC", :limit => 4
 
   cattr_reader :per_page
   @@per_page = 20

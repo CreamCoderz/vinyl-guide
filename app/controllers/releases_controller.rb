@@ -1,13 +1,11 @@
 class ReleasesController < ApplicationController
 
-  def initialize
-    @paginator = Paginator::Util.new(Release)
-  end
-
   def index
     @page_num = ParamsParser.parse_page_param(params)
-    @page_results = @paginator.paginate(@page_num, nil, "artist ASC", [:label_entity, :format, :ebay_items])
+    release_results = Release.paginate(:all, :order => "artist ASC", :include => [:label_entity, :format, :ebay_items], :page => @page_num, :per_page => '20')
+    @page_results = Paginator::Result.new(:paginated_results => release_results)
     @releases = @page_results.items
+    @parsed_params = ParamsParser::ParsedParams.new({})
     respond_to do |format|
       format.html # index.html.erb
       format.xml { render :xml => @releases }

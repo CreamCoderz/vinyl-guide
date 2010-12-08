@@ -2,8 +2,8 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe "/ebay_items/index.erb" do
   include EbayItemsHelper
-  before(:each) do
-    @release = stub_model(Release,
+  before do
+    @release = Factory(:release,
                           :title => "value for title",
                           :artist => "value for artist",
                           :year => 1978,
@@ -20,6 +20,7 @@ describe "/ebay_items/index.erb" do
     assigns[:page_results] = Paginator::Result.new(:paginated_results => WillPaginate::Collection.create(1, 1, 0) do |pager|
       pager.replace([@ebay_item])
     end)
+    assigns[:parsed_params] = ParamsParser::ParsedParams.new({})
   end
 
   it "renders attributes in <p>" do

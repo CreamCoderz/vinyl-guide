@@ -1,0 +1,17 @@
+<th class="align-right">
+  <span id='time'>
+      <form id="time-form" action="<%= url_for %>" method="GET">
+        <select name="time">
+          <%= options_for_select([['All Time', 'all_time'], ['24 Hours', 'today'], ['This Week', 'week'], ['This Month', 'month']], @parsed_params.time) %>
+          <% @parsed_params.selected.each_pair do |param_key, param_value| %>
+              <% unless param_key.to_sym == :time %>
+                  <input type="hidden" name="<%= param_key %>" value="<%= param_value %>"/>
+              <% end %>
+          <% end %>
+        </select>
+      </form>
+  </span>
+  <span id='endtime'><%= sort_link('END TIME', 'endtime', @parsed_params) %></span>
+  <span id='price'><%= sort_link('PRICE', 'price', @parsed_params) %></span>
+  <span id='title'> <%= sort_link('TITLE', 'title', @parsed_params) %></span>
+</th>

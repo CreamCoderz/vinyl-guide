@@ -2,7 +2,9 @@
 
   <% header_text = "<h3>#{@page_results.range} #{@page_results.total} Search Results found for &quot;#{h(@query)}&quot;</h3>" %>
   <% base_url = "/search?q=#{url_escape(@query)}" %>
-  <%= render :partial => "partials/list_header", :locals => {:base_url => "/search?q=#{url_escape(@query)}", :header_text => header_text} %>
+  <%= render :partial => "partials/sortable_list_header", :locals => {:base_url => "/search?q=#{url_escape(@query)}",
+                                                             :header_text => header_text,
+                                                             :sort_partial => "sort_links"} %>
   <hr/>
   <ul class="ebay-items">
     <% @page_results.items.each do |ebay_item| %>

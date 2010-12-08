@@ -5,7 +5,7 @@ describe ParamsParser do
 
   describe "#parse_sort_params" do
     describe "the time param" do
-      ['today', 'week', 'month', 'all'].each do |time|
+      ['today', 'week', 'month', 'all_time'].each do |time|
         it "parses #{time}" do
           params = {:time => time}
           ParamsParser.parse_sort_params(params).time.should == time
@@ -14,7 +14,7 @@ describe ParamsParser do
 
       it "defaults to all" do
         params = {}
-        ParamsParser.parse_sort_params(params).time.should == 'all'
+        ParamsParser.parse_sort_params(params).time.should == 'all_time'
       end
 
     end
@@ -45,6 +45,21 @@ describe ParamsParser do
     end
     it "returns false" do
       @parsed_params.declared?(:time).should be_false
+    end
+  end
+
+  describe "#selected" do
+    before do
+      @parsed_params = ParamsParser::ParsedParams.new({:sort => "price", :order => "desc"})
+    end
+    it "returns a hash of declared params" do
+      @parsed_params.selected.should == {:sort => "price", :order => "desc"}
+    end
+    it "clones the params hash to avoid modification" do
+      query_params = @parsed_params.selected
+      query_params.should == {:sort => "price", :order => "desc"}
+      query_params[:foo] = "bar"
+      @parsed_params.selected[:foo].should be_nil
     end
   end
 

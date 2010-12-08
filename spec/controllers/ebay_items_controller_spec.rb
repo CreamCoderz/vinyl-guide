@@ -2,11 +2,20 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe EbayItemsController do
 
-
   def mock_ebay_item(stubs={})
     @mock_ebay_item ||= mock_model(EbayItem, stubs)
   end
-  
+
+  describe "#home" do
+    before do
+      EbayItem.stub!(:top_items).and_return([@mock_ebay_item])
+    end
+    it "assigns todays top three highest priced items" do
+      get :home
+      assigns[:top_items].should =~ [@mock_ebay_item] 
+    end
+  end
+
   describe "#index" do
     it "should list child entities of a release" do
       mock_release = mock_model(Release)
@@ -53,26 +62,14 @@ describe EbayItemsController do
   end
 
   context "custom routes" do
-    before do
-      @ebay_item = Factory(:ebay_item)
-      @ebay_item.stub(:paginate).and_return(WillPaginate::Collection.create(1, 1, 0) do |pager|
-        pager.replace([@ebay_item])
-      end)
-    end
     ['lps', 'eps', 'singles', 'other'].each do |route|
       describe "##{route}" do
         before do
-          @items = [@ebay_item]
-          @items.stub('all').and_return(@items)
-          EbayItem.should_receive(route).and_return(@items)
+          @items = [Factory("#{route.singularize}_ebay_item")]
         end
         it "uses the #{route} scope to assign page_results" do
           get route.to_sym
           assigns[:page_results].items.should == @items
-        end
-        it "assigns the time constraint" do
-          get route.to_sym
-          assigns[:time] = 'all'
         end
       end
     end

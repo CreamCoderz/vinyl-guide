@@ -1,22 +1,11 @@
-<% sort ||= nil %>
-<% order ||= nil %>
-<% base_url ||= "" %>
 <% if prev_link %>
-    <a class="prev" href="<%=
-        "#{append_query_params(base_url,
-                               [["sort", sort],
-                                ["order", order],
-                                ["page", prev_link]])}" %>">&lt; Prev</a>
+    <%= link_to "&lt; Prev", @parsed_params.selected.merge(:page => prev_link), {:class => "prev"} %>
 <% else %>
     &lt; Prev
 <% end %>
     &nbsp;|&nbsp;
 <% if next_link %>
-    <a class="next" href="<%=
-        "#{append_query_params(base_url,
-                               [["sort", sort],
-                                ["order", order],
-                                ["page", next_link]])}" %>">Next &gt;</a>
+    <%= link_to "Next &gt;", @parsed_params.selected.merge(:page => next_link), {:class => "next"} %>
 <% else %>
     Next &gt;
 <% end %>

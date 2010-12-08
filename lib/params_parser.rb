@@ -1,7 +1,7 @@
 module ParamsParser
   SORTABLE_OPTIONS = ['endtime', 'price', 'title']
   ORDER_OPTIONS = ['desc', 'asc']
-  TIME_OPTIONS = ['all', 'today', 'week', 'month']
+  TIME_OPTIONS = ['all_time', 'today', 'week', 'month']
 
   class ParsedParams
     attr_reader :sort, :order, :time
@@ -29,6 +29,10 @@ module ParamsParser
       instance_variable_get("@#{key}")
     end
 
+    def selected
+      @selected.clone
+    end
+    
     private
 
     def set_default_param(accepted_options, param, key)
