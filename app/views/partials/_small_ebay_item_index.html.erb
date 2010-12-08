@@ -1,13 +1,17 @@
 <% unless ebay_items.empty? %>
-<% ebay_items.each do |ebay_item| %>
-    <div class="small-auction">
-      <% link_to "/#{ebay_item.id}" do %>
-          <img src="<%= display_gallery_img(ebay_item.id, ebay_item.hasimage) %>"/>
-      <% end %>
-      <p><%= h(truncate(ebay_item.title, :length => 40)) %></p>
-      <p><%= number_to_currency ebay_item.price, :unit => display_currency_symbol(ebay_item.currencytype) %> <%= ebay_item.currencytype %></p>
-    </div>
-<% end %>
+    <% ebay_items.each_with_index do |ebay_item, i| %>
+        <div class="small-auction">
+          <% link_to "/#{ebay_item.id}" do %>
+              <img src="<%= display_gallery_img(ebay_item.id, ebay_item.hasimage) %>"/>
+          <% end %>
+          <p><%= h(truncate(ebay_item.title, :length => 40)) %></p>
+
+          <p><%= number_to_currency ebay_item.price, :unit => display_currency_symbol(ebay_item.currencytype) %> <%= ebay_item.currencytype %></p>
+        </div>
+        <% if (i+1) % 5 == 0 %>
+            <div class="clearfix"></div>
+        <% end %>
+    <% end %>
 <% else %>
     <p>No auctions found...</p>
 <% end %>

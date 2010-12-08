@@ -7,13 +7,14 @@
     <h3 class="home-header">Top Auctions In The Last 24 Hours</h3>
     <%= link_to '(more...)', all_path(:sort => 'price', :order => 'desc', :time => 'today') %>
   </p>
+  <div class="clearfix"></div>
     <%= render :partial => "partials/small_ebay_item_index", :locals => {:ebay_items => @top_items} %>
   <div class="clearfix"></div>
   <hr/>
-  <p>
+  <div>
     <h3 class="home-header"><%= @ebay_items.length %> Latest Vinyl Results</h3>
     <%= link_to '(more...)', all_path %>  
-  </p>
+  </div>
   <div>
     <%= render :partial => "partials/small_ebay_item_index", :locals => {:ebay_items => @ebay_items} %>
   </div>
