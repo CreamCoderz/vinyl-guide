@@ -471,6 +471,7 @@ div.small-auction {
     float: left;
     width: 200px;
     font-size: 14px;
+    padding: 4px;
 }
 
 .home-header {

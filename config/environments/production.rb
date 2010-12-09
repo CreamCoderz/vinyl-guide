@@ -26,3 +26,5 @@ config.action_view.cache_template_loading            = true
 
 # Enable threaded mode
 # config.threadsafe!
+
+ActionController::Base.cache_store = :synchronized_memory_store

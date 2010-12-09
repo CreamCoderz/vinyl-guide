@@ -1,4 +1,3 @@
-require 'activesupport'
 require File.dirname(__FILE__) + '/../lib/imageclient'
 require File.dirname(__FILE__) + '/../lib/webclient'
 

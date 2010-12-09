@@ -1,4 +1,3 @@
-require 'activesupport'
 require File.dirname(__FILE__) + "/../dateutil"
 require File.dirname(__FILE__) + "/../crawler/ebayfinditemsparser"
 require File.dirname(__FILE__) + "/../crawler/ebayitemsdetailsparser"

@@ -1,6 +1,5 @@
 require 'cobravsmongoose'
 require 'time'
-require 'activesupport'
 require File.dirname(__FILE__) + "/../../app/domain/ebayitemdata"
 require File.dirname(__FILE__) + "/../arrayutil"
 require File.dirname(__FILE__) + "/ebayitemsdetailsparserdata"

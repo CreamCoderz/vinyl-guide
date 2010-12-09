@@ -1,6 +1,4 @@
 require 'spec'
-require 'activesupport'
-require 'active_record'
 
 require File.dirname(__FILE__) + "/../../../lib/image_injector"
 require File.dirname(__FILE__) + "/../../base_spec_case"

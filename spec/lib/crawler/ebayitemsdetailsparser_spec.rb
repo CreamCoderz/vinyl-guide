@@ -1,6 +1,5 @@
 require 'time'
 require 'spec'
-require 'activesupport'
 require File.dirname(__FILE__) + "/ebay_base_spec"
 require File.dirname(__FILE__) + "/ebayitemsdetailsparser_helper"
 require File.dirname(__FILE__) + '/../../../lib/crawler/ebayitemsdetailsparser'
