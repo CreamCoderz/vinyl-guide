@@ -4,7 +4,8 @@
           <% link_to "/#{ebay_item.id}" do %>
               <img src="<%= display_gallery_img(ebay_item.id, ebay_item.hasimage) %>"/>
           <% end %>
-          <p><%= link_to h(truncate(ebay_item.title, :length => 40)), ebay_item_path(ebay_item) %></p>
+          <p><%= link_to h(truncate(ebay_item.title, :length => 40)), ebay_item_path(ebay_item)
+          %></p>
 
           <p><%= number_to_currency ebay_item.price, :unit => display_currency_symbol(ebay_item.currencytype) %> <%= ebay_item.currencytype %></p>
         </div>

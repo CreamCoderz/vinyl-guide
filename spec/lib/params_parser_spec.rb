@@ -20,6 +20,14 @@ describe ParamsParser do
     end
   end
 
+  describe "acceptable params" do
+    it "accepts q" do
+      parsed_params = ParamsParser.parse_sort_params({:q => "foo"})
+      parsed_params.q.should == "foo"
+      parsed_params.declared?(:q).should be_true
+    end
+  end
+
   describe "#selected?" do
     before do
       @parsed_params = ParamsParser::ParsedParams.new({:order => "desc"})
