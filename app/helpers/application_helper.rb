@@ -93,6 +93,7 @@ module ApplicationHelper
     query_params[:sort] = field
     query_params[:order] = (parsed_params.order.to_sym == :desc && parsed_params.selected?(:sort, field)) ? 'asc' : 'desc'
     query_params[:time] = parsed_params.time if parsed_params.declared?(:time)
+    query_params[:q] = parsed_params.q if parsed_params.declared?(:q)
 
     link_to link_title, query_params, html_options
   end
