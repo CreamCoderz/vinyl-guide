@@ -12,6 +12,12 @@ describe EbayItem do
     end
   end
 
+  context "after create" do
+    it "sets the format based on the size" do
+      Factory(:ebay_item, :size => '7"').format.should == Format::SINGLE
+    end
+  end
+
   context "named scopes" do
     context "formats" do
       before do
@@ -34,8 +40,9 @@ describe EbayItem do
         it "scopes items by the ep format" do
           ep = Factory(:ebay_item, :size => '10"')
           ep2 = Factory(:ebay_item, :size => "EP, Maxi (10, 12-Inch)")
+          ep3 = Factory(:ebay_item, :size => "Single, EP (12-Inch)")
           ebay_item_eps = EbayItem.eps
-          ebay_item_eps.should =~ [ep, ep2]
+          ebay_item_eps.should =~ [ep, ep2, ep3]
         end
       end
       describe ".lps" do

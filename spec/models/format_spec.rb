@@ -1,15 +1,14 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Format do
-  before(:each) do
-    @valid_attributes = {
-            :name => "value for name"
-    }
-  end
-
   describe "associations" do
-    it "should belong to release" do
-      Factory(:release)
+    it "has many releases" do
+      release = Factory(:release, :format => Format::LP)
+      Format::LP.releases.should =~ [release]
+    end
+    it "has many ebay_items" do
+      ebay_item = Factory(:ebay_item, :format => Format::LP)
+      Format::LP.reload.ebay_items.should =~ [ebay_item]
     end
   end
 
@@ -27,7 +26,7 @@ describe Format do
 
   describe "create" do
     it "should create a new instance given valid attributes" do
-      Format.create!(@valid_attributes)
+      Format.create!(:name => "value for name")
     end
 
     it "should validate uniqueness of name" do

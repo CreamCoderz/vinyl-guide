@@ -4,6 +4,12 @@ class EbayItem < ActiveRecord::Base
   SEARCHABLE_FIELDS = ['title']
   DESC, ASC = 'desc', 'asc'
 
+  FORMATS_BY_SIZE = {
+      Format::LP => ["LP (12-Inch)", "LP", '12"'],
+      Format::EP => ['EP, Maxi (10, 12-Inch)', '10"', 'Single, EP (12-Inch)'],
+      Format::SINGLE => ["size=? OR size=?", '7"', "Single (7-Inch)"]
+  }
+
   validates_numericality_of :itemid, :only_integer => true
   validates_uniqueness_of :itemid
   validates_numericality_of :price
@@ -12,11 +18,12 @@ class EbayItem < ActiveRecord::Base
 
   belongs_to :release
   has_many :pictures, :foreign_key => "ebay_item_id"
+  belongs_to :format
 
   named_scope :all_time, lambda {}
-  named_scope :singles, :conditions => ["size=? OR size=?", '7"', "Single (7-Inch)"]
-  named_scope :eps, :conditions => ["size=? OR size=?", 'EP, Maxi (10, 12-Inch)', '10"']
-  named_scope :lps, :conditions => ["size=? OR size=? OR size=?", "LP (12-Inch)", "LP", '12"']
+  named_scope :singles, :conditions => ["format_id = #{Format::SINGLE.id}"]
+  named_scope :eps, :conditions => ["format_id = #{Format::EP.id}"]
+  named_scope :lps, :conditions => ["format_id = #{Format::LP.id}"]
   named_scope :other, :conditions => ["size!=? AND size!=? AND size!=? AND size!=? AND size!=? AND size!=? AND size!=?", "LP (12-Inch)", "LP", 'EP, Maxi (10, 12-Inch)', '10"', '7"', "Single (7-Inch)", '12"']
 
   named_scope :today, :conditions => "created_at > NOW()-INTERVAL 1 DAY"
@@ -26,6 +33,12 @@ class EbayItem < ActiveRecord::Base
 
   cattr_reader :per_page
   @@per_page = 20
+
+  before_save do |item|
+    item.format ||= FORMATS_BY_SIZE.keys.detect do |format|
+      FORMATS_BY_SIZE[format].include?(item.size)
+    end
+  end
 
   after_save { |item| item.index! }
 

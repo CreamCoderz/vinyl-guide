@@ -5,6 +5,7 @@ class Format < ActiveRecord::Base
   SINGLE = Format.find_by_name('Single')
 
   has_many :releases
+  has_many :ebay_items
 
   validates_uniqueness_of :name, :message => "The name must be unique"
 end
