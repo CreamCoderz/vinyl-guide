@@ -66,17 +66,17 @@ describe EbayItem do
     end
     describe ".today" do
       it "returns all items created today" do
-        Factory(:ebay_item, :created_at => 2.days.ago)
+        Factory(:ebay_item, :endtime => 2.days.ago)
         ebay_item = Factory(:ebay_item)
         EbayItem.today.should == [ebay_item]
       end
       it "returns all items created this week" do
-        Factory(:ebay_item, :created_at => 8.days.ago)
+        Factory(:ebay_item, :endtime => 8.days.ago)
         ebay_item = Factory(:ebay_item)
         EbayItem.week.should == [ebay_item]
       end
       it "returns all items created this month" do
-        Factory(:ebay_item, :created_at => 32.days.ago)
+        Factory(:ebay_item, :endtime => 32.days.ago)
         ebay_item = Factory(:ebay_item)
         EbayItem.month.should == [ebay_item]
       end

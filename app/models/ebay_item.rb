@@ -26,10 +26,10 @@ class EbayItem < ActiveRecord::Base
   named_scope :lps, :conditions => ["format_id = #{Format::LP.id}"]
   named_scope :other, :conditions => ["size!=? AND size!=? AND size!=? AND size!=? AND size!=? AND size!=? AND size!=?", "LP (12-Inch)", "LP", 'EP, Maxi (10, 12-Inch)', '10"', '7"', "Single (7-Inch)", '12"']
 
-  named_scope :today, :conditions => "created_at > NOW()-INTERVAL 1 DAY"
-  named_scope :week, :conditions => "created_at > NOW()-INTERVAL 1 WEEK"
-  named_scope :month, :conditions => "created_at > NOW()-INTERVAL 1 MONTH"
-  named_scope :top_items, :conditions => "created_at > NOW()-INTERVAL 1 DAY", :order => "price DESC", :limit => 4
+  named_scope :today, :conditions => "endtime > NOW()-INTERVAL 1 DAY"
+  named_scope :week, :conditions => "endtime > NOW()-INTERVAL 1 WEEK"
+  named_scope :month, :conditions => "endtime > NOW()-INTERVAL 1 MONTH"
+  named_scope :top_items, :conditions => "endtime > NOW()-INTERVAL 1 DAY", :order => "price DESC", :limit => 4
 
   cattr_reader :per_page
   @@per_page = 20
