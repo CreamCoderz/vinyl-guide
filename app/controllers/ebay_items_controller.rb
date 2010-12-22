@@ -9,10 +9,6 @@ class EbayItemsController < ApplicationController
   before_filter :find_ebay_item, :only => [:edit, :update, :show]
   before_filter :set_release, :only => [:show]
 
-  def initialize
-    @paginator = Paginator::Util.new(EbayItem)
-  end
-
   def index
     @release = Release.find(params[:release_id], :include => :ebay_items)
     @ebay_items = @release.ebay_items

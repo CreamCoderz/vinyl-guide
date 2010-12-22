@@ -20,10 +20,6 @@ class SearchController < ApplicationController
 
     @page_results = Paginator::Result.new(:paginated_results => paginated_results.results)
 
-    @sort_param = sort_param
-    @order_param = order_param
-
-    @sortable_base_url = "/search?q=#{@query}&page=#{page_num}"
     if request.xml_http_request?
       render :json => {:hits => @page_results.total, :ebay_items => JSON.parse(@page_results.items.to_json(:only => [:id, :title], :methods => [:link]))}
     end

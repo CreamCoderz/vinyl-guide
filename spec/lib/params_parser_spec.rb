@@ -42,6 +42,10 @@ describe ParamsParser do
       parsed_params = ParamsParser.parse_sort_params({})
       parsed_params.selected?(:sort, :endtime).should be_true
     end
+    it "defaults to endtime when accepted_param is set" do
+      parsed_params = ParamsParser.parse_sort_params({:q => "junior murvin"})
+      parsed_params.selected?(:sort, :endtime).should be_true
+    end
   end
 
   describe "#declared?" do
