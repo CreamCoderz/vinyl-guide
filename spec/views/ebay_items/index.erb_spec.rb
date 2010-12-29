@@ -20,7 +20,7 @@ describe "/ebay_items/index.erb" do
     assigns[:page_results] = Paginator::Result.new(:paginated_results => WillPaginate::Collection.create(1, 1, 0) do |pager|
       pager.replace([@ebay_item])
     end)
-    assigns[:parsed_params] = ParamsParser::ParsedParams.new({})
+    assigns[:parsed_params] = ParsedParams.new({})
   end
 
   it "renders attributes in <p>" do

@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + "/../spec_helper"
-require File.dirname(__FILE__) + "/../../lib/params_parser"
+require File.dirname(__FILE__) + "/../../lib/parsed_params"
 
-describe ParamsParser do
+describe ParsedParams do
 
   describe "#parse_sort_params" do
     describe "the time param" do
@@ -30,7 +30,7 @@ describe ParamsParser do
 
   describe "#selected?" do
     before do
-      @parsed_params = ParamsParser::ParsedParams.new({:order => "desc"})
+      @parsed_params = ParsedParams.new({:order => "desc"})
     end
     it "returns true" do
       @parsed_params.selected?(:order, "desc").should be_true
@@ -40,17 +40,24 @@ describe ParamsParser do
     end
     it "defaults to endtime" do
       parsed_params = ParamsParser.parse_sort_params({})
-      parsed_params.selected?(:sort, :endtime).should be_true
+      parsed_params.selected?(:sort, 'endtime').should be_true
     end
-    it "defaults to endtime when accepted_param is set" do
-      parsed_params = ParamsParser.parse_sort_params({:q => "junior murvin"})
-      parsed_params.selected?(:sort, :endtime).should be_true
+    context "accepted param is set" do
+      it "defaults to endtime when accepted_param is set" do
+        parsed_params = ParamsParser.parse_sort_params({:q => "junior murvin"})
+        parsed_params.selected?(:sort, 'endtime').should be_true
+      end
+      it "defaults to endtime when accepted_param is set" do
+        parsed_params = ParamsParser.parse_sort_params({:q => "junior murvin", :sort => "price"})
+        parsed_params.selected?(:sort, 'endtime').should be_false
+        parsed_params.selected?(:sort, 'price').should be_true
+      end
     end
   end
 
   describe "#declared?" do
     before do
-      @parsed_params = ParamsParser::ParsedParams.new({:order => "desc"})
+      @parsed_params = ParsedParams.new({:order => "desc"})
     end
     it "returns true" do
       @parsed_params.declared?(:order).should be_true
@@ -62,7 +69,7 @@ describe ParamsParser do
 
   describe "#selected" do
     before do
-      @parsed_params = ParamsParser::ParsedParams.new({:sort => "price", :order => "desc"})
+      @parsed_params = ParsedParams.new({:sort => "price", :order => "desc"})
     end
     it "returns a hash of declared params" do
       @parsed_params.selected.should == {:sort => "price", :order => "desc"}
