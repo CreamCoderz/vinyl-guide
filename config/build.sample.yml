@@ -2,3 +2,4 @@
 base_path: "<app_base_path>"
 store_path: "<store_path>"
 ebay_api_key: "<ebay_api_key>"
+solr_home_path: "<solr_home_path>"

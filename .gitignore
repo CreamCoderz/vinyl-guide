@@ -1,0 +1,6 @@
+.idea/*
+config/database.yml
+config/build.*
+log/*
+tmp/*
+solr/*

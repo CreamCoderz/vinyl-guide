@@ -6,7 +6,8 @@ gem "cobravsmongoose", "0.0.2"
 gem 'nokogiri', '1.4.3.1'
 gem 'sunspot_rails', '1.1.0'
 gem 'will_paginate', '2.3.12'
-gem 'json' '1.4.6'
+#gem 'json' '1.5.1'
+gem 'factory_girl', '1.3.3'
 
 group :test do
   gem 'rspec', '1.3.0', :require => false
