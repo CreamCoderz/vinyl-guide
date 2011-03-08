@@ -1,5 +1,3 @@
-require File.dirname(__FILE__) + '/../../lib/query_generator'
-
 class Release < ActiveRecord::Base
   SEARCHABLE_FIELDS = [:title, :artist, :matrix_number]
   VALID_YEARS = (1940..Time.new.year).to_a.reverse

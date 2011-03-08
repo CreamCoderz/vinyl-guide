@@ -1,5 +1,3 @@
-require File.dirname(__FILE__) + '/../../lib/paginator/util'
-
 class EbayItem < ActiveRecord::Base
   SEARCHABLE_FIELDS = ['title']
   DESC, ASC = 'desc', 'asc'

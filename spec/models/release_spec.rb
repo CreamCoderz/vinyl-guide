@@ -1,15 +1,15 @@
-require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+require 'spec_helper'
 
 describe Release do
   before do
     label = Factory(:label, :name => "value for label")
     @valid_attributes = {
-            :title => "value for title",
-            :artist => "value for artist",
-            :year => 1978,
-            :label_id => label.id,
-            :matrix_number => "value for matrix_number",
-            :format_id => Format::SINGLE.id
+        :title => "value for title",
+        :artist => "value for artist",
+        :year => 1978,
+        :label_id => label.id,
+        :matrix_number => "value for matrix_number",
+        :format_id => Format::SINGLE.id
     }
   end
 
@@ -105,13 +105,16 @@ describe Release do
       @artist_word = @valid_attributes[:artist][/[^ ]+/].first
       @matrix_word = @valid_attributes[:matrix_number][/[^ ]+/].first
       @query_words = [@title_word, @artist_word, @matrix_word]
+      Release.reindex
     end
+
 
     it "finds 1 result for a query word" do
       expected_record = Release.create!(@valid_attributes)
-      Release.reindex
       @query_words.each do |word|
-        results = Release.search { keywords(word) }.results
+        results = Release.search do
+          with(:title).starting_with(word)
+        end.results
         results.total_entries.should == 1
         results[0].id.should == expected_record.id
       end

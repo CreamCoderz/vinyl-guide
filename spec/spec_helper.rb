@@ -1,7 +1,7 @@
 # This file is copied to ~/spec when you run 'ruby script/generate rspec'
 # from the project root directory.
 ENV["RAILS_ENV"] ||= 'test'
-require File.expand_path(File.join(File.dirname(__FILE__), '..', 'config', 'environment'))
+require File.expand_path(File.join(File.dirname(__FILE__),'..','config','environment'))
 require 'spec/autorun'
 require 'spec/rails'
 require 'factory_girl'
@@ -19,7 +19,7 @@ require File.expand_path(File.join(File.dirname(__FILE__), 'factories', 'format_
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.
-Dir[File.expand_path(File.join(File.dirname(__FILE__), 'support', '**', '*.rb'))].each { |f| require f }
+Dir[File.expand_path(File.join(File.dirname(__FILE__),'support','**','*.rb'))].each {|f| require f}
 
 Spec::Runner.configure do |config|
   # If you're not using ActiveRecord you should remove these
@@ -39,7 +39,7 @@ Spec::Runner.configure do |config|
   # do so right here. Just uncomment the next line and replace the fixture
   # names with your fixtures.
   #
-  config.global_fixtures = :formats
+  # config.global_fixtures = :table_a, :table_b
   #
   # If you declare global fixtures, be aware that they will be declared
   # for all of your examples, even those that don't use them.

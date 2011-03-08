@@ -94,12 +94,14 @@ class ReleasesController < ApplicationController
     page_num = ParamsParser.parse_page_param(params)
     query = ParamsParser.parse_query_param(params)
     search_results = Release.search do
-      keywords(query) unless query.blank?
+      unless query.blank?
+        with(:title).starting_with(query)
+      end
       paginate(:page => page_num, :per_page => 20)
     end
     releases = Paginator::Result.new(:paginated_results => search_results.results)
     respond_to do |format|
-      format.json {render :json => {:hits => releases.total, :releases => JSON.parse(releases.items.to_json(:include => {:label_entity => {:only => :name}}, :only => [:matrix_number, :title, :matrix, :artist, :id], :methods => [:link]))}}
+      format.json { render :json => {:hits => releases.total, :releases => JSON.parse(releases.items.to_json(:include => {:label_entity => {:only => :name}}, :only => [:matrix_number, :title, :matrix, :artist, :id], :methods => [:link]))} }
     end
   end
 end
