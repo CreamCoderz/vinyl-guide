@@ -37,7 +37,7 @@ class ReleasesController < ApplicationController
   end
 
   def create
-    #TODO: refactor this conditional to use a more functional approach
+    #TODO: should be pushed back into the model into the release before_create
     if label_entity_attributes = params[:release][:label_entity_attributes]
       if label_name = label_entity_attributes[:name]
         if label = Label.find_by_name(label_name)
@@ -93,15 +93,9 @@ class ReleasesController < ApplicationController
   def search
     page_num = ParamsParser.parse_page_param(params)
     query = ParamsParser.parse_query_param(params)
-    search_results = Release.search do
-      unless query.blank?
-        with(:title).starting_with(query)
-      end
-      paginate(:page => page_num, :per_page => 20)
-    end
-    releases = Paginator::Result.new(:paginated_results => search_results.results)
+    releases = Release.search(:page => page_num, :query => query)
     respond_to do |format|
-      format.json { render :json => {:hits => releases.total, :releases => JSON.parse(releases.items.to_json(:include => {:label_entity => {:only => :name}}, :only => [:matrix_number, :title, :matrix, :artist, :id], :methods => [:link]))} }
+      format.json {render :json => {:hits => releases.total, :releases => JSON.parse(releases.items.to_json(:include => {:label_entity => {:only => :name}}, :only => [:matrix_number, :title, :matrix, :artist, :id], :methods => [:link]))}}
     end
   end
 end

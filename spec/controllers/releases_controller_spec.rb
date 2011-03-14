@@ -189,7 +189,6 @@ describe ReleasesController do
     it "should assign some results fields" do
       title = "thanks and praise"
       release = Factory.create(:release, :title => title)
-      Release.reindex
       response = xhr :get, :search, :q => title
       body = JSON.parse(response.body)
       body['hits'].should == 1

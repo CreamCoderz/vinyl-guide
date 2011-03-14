@@ -105,20 +105,32 @@ describe Release do
       @artist_word = @valid_attributes[:artist][/[^ ]+/].first
       @matrix_word = @valid_attributes[:matrix_number][/[^ ]+/].first
       @query_words = [@title_word, @artist_word, @matrix_word]
-      Release.reindex
     end
 
+    it "should return an empty result set when no items exist" do
+      results = Release.search(:query => @title_word).items
+      results.should be_empty
+    end
 
-    it "finds 1 result for a query word" do
+    it "should return an empty result set for a query that doesn't match" do
+      results = Release.search(:query => "foo").items
+      results.should be_empty
+    end
+
+    it "should find 1 result for a query word" do
       expected_record = Release.create!(@valid_attributes)
       @query_words.each do |word|
-        results = Release.search do
-          with(:title).starting_with(word)
-        end.results
-        results.total_entries.should == 1
+        results = Release.search(word).items
+        results.length.should == 1
         results[0].id.should == expected_record.id
       end
     end
 
+    it "should use the paginator" do
+      title = "ital corner"
+      21.times { Factory.create(:release, :title => title) }
+      results = Release.search(:query => title, :page => 2).items
+      results.length.should == 1
+    end
   end
 end
