@@ -4,3 +4,5 @@ config/build.*
 log/*
 tmp/*
 solr/*
+build/*
+build.tgz
