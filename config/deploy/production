@@ -1,0 +1,4 @@
+set :user, "will"  # The server's user for deploys
+set :runner, "will"
+set :rails_env, "production"
+server "rootsvinylguide.com", :app, :web, :db, :primary => true
