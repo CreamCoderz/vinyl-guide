@@ -8,6 +8,10 @@ ssh_options[:forward_agent] = true
 set :application, "vinyl-guide"
 set :repository, "git@github.com:willsu/vinyl-guide.git"
 
+set :gem_home, "/Users/will/.rvm/gems/ruby-1.8.7-p334"
+
+set(:rake) { "GEM_HOME=#{gem_home} RAILS_ENV=development /usr/bin/env rake" }
+
 # If you aren't deploying to /u/apps/#{application} on the target
 # servers (which is the default), you can specify the actual location
 # via the :deploy_to variable:
@@ -21,7 +25,9 @@ set :scm_verbose, true
 set :deploy_via, :remote_cache
 
 before 'deploy:restart', 'deploy:create_conf_symlinks'
-#before 'deploy:migrate', 'deploy:create_image_symlinks'
+before 'deploy:restart', 'deploy:create_image_symlinks'
+before 'deploy:restart', 'deploy:start_solr'
+#before 'deploy:restart', 'deploy:create_solr_symlink'
 
 namespace :deploy do
 
@@ -39,9 +45,19 @@ namespace :deploy do
   end
 
   #symlink to solr dir
+#  desc "Symlink solr data dir"
+#  task :create_solr_symlink, :roles => [:app, :web, :db] do
+#    run "ln -s #{PROPERTIES['solr_home_path']} #{release_path}/solr/data"
+#  end
+
+  desc "start solr"
+  task :start_solr, :roles => [:app, :web, :db] do
+    run "cd #{current_path} && #{rake} sunspot:solr:stop"
+    run "cd #{current_path} && #{rake} sunspot:solr:start"
+  end
 
   task :start, :roles => :app do
-    run "touch #{current_release}/tmp/restart.txt"
+    run "/opt/nginx/sbin/nginx"
   end
 
   task :stop, :roles => :app do
@@ -50,6 +66,6 @@ namespace :deploy do
 
   desc "Restart Application"
   task :restart, :roles => :app do
-    run "touch #{current_release}/tmp/restart.txt"
+    run "kill -HUP `cat /opt/nginx/logs/nginx.pid`"
   end
 end
