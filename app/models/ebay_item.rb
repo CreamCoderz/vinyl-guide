@@ -19,9 +19,10 @@ class EbayItem < ActiveRecord::Base
   belongs_to :format
 
   named_scope :all_time, lambda {}
-  named_scope :singles, :conditions => ["format_id = #{Format::SINGLE.id}"]
-  named_scope :eps, :conditions => ["format_id = #{Format::EP.id}"]
-  named_scope :lps, :conditions => ["format_id = #{Format::LP.id}"]
+  named_scope :singles, :conditions => ["format_id = #{Format::SINGLE.id}"], :order => "created_at DESC"
+  named_scope :eps, :conditions => ["format_id = #{Format::EP.id}"], :order => "created_at DESC"
+  named_scope :lps, :conditions => ["format_id = #{Format::LP.id}"], :order => "created_at DESC"
+  #TODO: this should really be where ebay_item has format of nil
   named_scope :other, :conditions => ["size!=? AND size!=? AND size!=? AND size!=? AND size!=? AND size!=? AND size!=?", "LP (12-Inch)", "LP", 'EP, Maxi (10, 12-Inch)', '10"', '7"', "Single (7-Inch)", '12"']
 
   named_scope :today, :conditions => "endtime > NOW()-INTERVAL 1 DAY"

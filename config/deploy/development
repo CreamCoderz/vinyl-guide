@@ -2,6 +2,7 @@ set :user, "will"  # The server's user for deploys
 set :runner, "will" # deploy:restart need :runner to be set
 set :rails_env, "development"
 set :scm_command, "/usr/local/bin/git"
+set :gem_home, "/Users/will/.rvm/gems/ree-1.8.7-2011.03"
 server "127.0.0.1", :app, :web, :db, :primary => true
 
 PROPERTIES = YAML.load_file("config/build.development.yml")
