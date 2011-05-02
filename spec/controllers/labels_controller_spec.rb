@@ -16,7 +16,7 @@ describe LabelsController do
 
   describe "GET show" do
     it "assigns the requested label as @label" do
-      Label.stub!(:find).with("37").and_return(mock_label)
+      Label.stub!(:find).with("37", :include => :releases).and_return(mock_label)
       get :show, :id => "37"
       assigns[:label].should equal(mock_label)
     end

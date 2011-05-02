@@ -13,7 +13,7 @@ class LabelsController < ApplicationController
   # GET /labels/1
   # GET /labels/1.xml
   def show
-    @label = Label.find(params[:id])
+    @label = Label.find(params[:id], :include => :releases)
 
     respond_to do |format|
       format.html # show.html.erb
