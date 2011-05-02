@@ -6,11 +6,7 @@
           for <%= link_to release_title_for(@ebay_item.release), @ebay_item.release %>
         </p>
         <p>
-          <% @ebay_item.related_items.each do |related_item| %>
-              <% link_to "/#{related_item.id}" do %>
-                  <span><img src="<%= display_gallery_img(related_item.id, related_item.hasimage) %>"/></span>
-              <% end %>
-          <% end %>
+          <%= render :partial => "partials/small_ebay_item_index", :locals => {:ebay_items => @ebay_item.related_items, :num_per_row => 8} %>
         </p>
       </div>
   <% else %>

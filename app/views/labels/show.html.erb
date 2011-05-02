@@ -1,13 +1,34 @@
 <p>
   <b>Name:</b>
-  <%=h @label.name %>
+  <%= h @label.name %>
 </p>
 
 <p>
   <b>Description:</b>
-  <%=h @label.description %>
+  <%= h @label.description %>
 </p>
 
+<p>
+  <b>Releases:</b>
+  <% num_per_row ||= 8 %>
+  <% unless @label.releases.empty? %>
+      <% @label.releases.each_with_index do |release, i| %>
+        <div class="small-auction">
+          <% link_to "/#{release.id}" do %>
+              <img src="<%= display_gallery_img(@label.ebay_item.id, @label.ebay_item.hasimage) %>"/>
+          <% end %>
+          <p><%= link_to h(truncate(release.title, :length => 40)), release_path(release) %></p>
+
+        </div>
+        <% if (i+1) % num_per_row == 0 %>
+            <div class="clearfix"></div>
+        <% end %>
+    <% end %>
+  <% else %>
+    <p>No releases found...</p>
+  <% end %>
+</p>
+<div class="clearfix"></div>
 
 <%= link_to 'Edit', edit_label_path(@label) %> |
 <%= link_to 'Back', labels_path %>

@@ -33,7 +33,7 @@ describe EbayItem do
           single = Factory(:ebay_item, :size => '7"')
           single2 = Factory(:ebay_item, :size => "Single (7-Inch)")
           ebay_item_singles = EbayItem.singles
-          ebay_item_singles.should =~ [single, single2]
+          ebay_item_singles.should == [single, single2]
         end
       end
       describe ".eps" do
@@ -42,7 +42,7 @@ describe EbayItem do
           ep2 = Factory(:ebay_item, :size => "EP, Maxi (10, 12-Inch)")
           ep3 = Factory(:ebay_item, :size => "Single, EP (12-Inch)")
           ebay_item_eps = EbayItem.eps
-          ebay_item_eps.should =~ [ep, ep2, ep3]
+          ebay_item_eps.should == [ep, ep2, ep3]
         end
       end
       describe ".lps" do
@@ -51,7 +51,7 @@ describe EbayItem do
           lp2 = Factory(:ebay_item, :size => "LP")
           lp3 = Factory(:ebay_item, :size => '12"')
           ebay_item_lps = EbayItem.lps
-          ebay_item_lps.should =~ [lp, lp2, lp3]
+          ebay_item_lps.should == [lp, lp2, lp3]
         end
       end
       describe ".other" do
@@ -60,7 +60,7 @@ describe EbayItem do
           Factory(:ebay_item, :size => '7"')
           Factory(:ebay_item, :size => '10"')
           ebay_item_lps = EbayItem.other
-          ebay_item_lps.should =~ [@other_ebay_item]
+          ebay_item_lps.should == [@other_ebay_item]
         end
       end
     end
@@ -87,7 +87,7 @@ describe EbayItem do
         5.times { |i| @ebay_items << Factory(:ebay_item, :price => 1.00 * i) }
       end
       it "assigns todays top four highest priced items" do
-        EbayItem.top_items.should =~ @ebay_items[1..-1]
+        EbayItem.top_items.should == @ebay_items[1..-1].reverse
       end
     end
   end

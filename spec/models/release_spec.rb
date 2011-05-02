@@ -13,7 +13,7 @@ describe Release do
     }
   end
 
-  describe "associations" do
+  context "associations" do
     it "should have one format" do
       release = Factory(:release, :format => Format::LP)
       #noinspection RubyArgCount
@@ -43,6 +43,7 @@ describe Release do
       release.save
       release.reload.label_entity.name.should == 'Channel One'
     end
+
   end
 
   describe "constraints" do
@@ -89,6 +90,26 @@ describe Release do
       end
     end
 
+  end
+
+  describe "#ebay_item" do
+    before do
+      @release = Factory(:release)
+    end
+    context "release has ebay items" do
+      before do
+        @canonical_ebay_item = Factory(:ebay_item, :release => @release)
+        Factory(:ebay_item, :release => @release)
+      end
+
+      it "returns the first ebay_item" do
+        @release.ebay_item.should == @canonical_ebay_item
+      end
+    end
+
+    it "returns nil" do
+      @release.ebay_item.should be_nil
+    end
   end
 
   describe "#link" do

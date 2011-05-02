@@ -30,6 +30,9 @@ class Release < ActiveRecord::Base
 #    string :matrix_number
 #  end
 
+  def ebay_item
+    ebay_items.first
+  end
 
   def link
     "/releases/#{id}"

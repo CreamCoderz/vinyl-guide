@@ -58,7 +58,7 @@
 
   <br/>
 
-  <%= render :partial => "partials/paginated_links", :locals => {:next_link => @next, :prev_link => @prev} %>
+  <%= render :partial => "partials/paginated_links", :locals => {:next_link => @page_results.next_page_num, :prev_link => @page_results.prev_page_num} %>
   <br/><br/>
   <%= link_to 'New release', new_release_path %>
 
