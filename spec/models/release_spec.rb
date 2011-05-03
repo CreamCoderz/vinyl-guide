@@ -46,6 +46,60 @@ describe Release do
 
   end
 
+  context "callbacks" do
+    describe "#before_save" do
+      context "no label exists" do
+        before do
+          @release = Release.new(@valid_attributes.merge("label_entity_attributes" => {"name" => "Studio One"}))
+          @release.save
+        end
+        it "creates the label if none exists" do
+          Label.find_by_name("Studio One").should_not be_nil
+        end
+      end
+      context "a label exists" do
+        before do
+          @label = Factory(:label)
+          @release = Release.new(@valid_attributes.merge("label_entity_attributes" => {"name" => @label.name}))
+          @release.save
+        end
+        it "creates a release associated with an existing label" do
+          @release.reload.label_entity.should == @label
+        end
+      end
+      context "a release, already associated with a label" do
+        before do
+          @label = Factory(:label)
+          @release = Release.new(@valid_attributes)
+          @release.label_entity = @label
+          @release.save
+        end
+        context "has it's label updated" do
+          before do
+            @release.update_attributes("label_entity_attributes" => {"id" => @label.id, "name" => "a new name"})
+          end
+          it "does not modify the previously bound label" do
+            Label.find_by_name(@label.name).should_not be_nil
+          end
+          it "creates the new label" do
+            Label.find_by_name("a new name").should_not be_nil
+          end
+        end
+        context "has it's other properties updated" do
+          before do
+            @release.update_attributes("title" => "newreleasename")
+          end
+          it "updates the release title" do
+            @release.reload.title.should == "newreleasename"
+          end
+          it "should not affect the releases label" do
+            @release.reload.label_entity.should == @label
+          end
+        end
+      end
+    end
+  end
+
   describe "constraints" do
     it "should create a new instance given valid attributes" do
       Release.create!(@valid_attributes)

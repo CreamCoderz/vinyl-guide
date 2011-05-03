@@ -11,11 +11,11 @@ class Release < ActiveRecord::Base
 
   validates_uniqueness_of :title, :scope => [:title, :artist, :year, :label_id, :format_id, :matrix_number], :message => "The release must not match an existing combination of fields"
 
-  validate_on_create :format_must_exist, :year_must_be_valid
-  validate_on_update :format_must_exist
+  validate :format_must_exist, :year_must_be_valid
 
   @paginator = Paginator::Util.new(Release)
 
+  before_validation :set_label
 
   def self.search(params)
     query = QueryGenerator.generate_wild_query(SEARCHABLE_FIELDS, ':wild_query')
@@ -39,6 +39,13 @@ class Release < ActiveRecord::Base
   end
 
   private
+  def set_label
+    if self.label_entity
+      existing_label = Label.find_by_name(label_entity.name)
+      self.label_entity = existing_label ? existing_label : Label.new(:name => label_entity.name)
+    end
+  end
+
   def format_must_exist
     unless Format.find_by_id(self.format_id)
       errors.add(:format, "the format must exist")

@@ -3,7 +3,7 @@ class Label < ActiveRecord::Base
   validates_uniqueness_of :name, :case_sensitive => false, :message => "The label name must be unique."
 
   def before_save
-    self.name = self.name.strip    
+    self.name = self.name.strip
   end
 
   def ebay_item

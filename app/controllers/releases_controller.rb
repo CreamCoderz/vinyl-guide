@@ -37,15 +37,6 @@ class ReleasesController < ApplicationController
   end
 
   def create
-    #TODO: should be pushed back into the model into the release before_create
-    if label_entity_attributes = params[:release][:label_entity_attributes]
-      if label_name = label_entity_attributes[:name]
-        if label = Label.find_by_name(label_name)
-          params[:release].delete([:label_entity_attributes])
-          params[:release][:label_entity] = label
-        end
-      end
-    end
     @release = Release.new(params[:release])
     release_created = @release.save
     if ebay_item_id = params[:ebay_item_id]
