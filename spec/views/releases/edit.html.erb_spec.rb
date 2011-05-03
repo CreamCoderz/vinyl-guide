@@ -21,7 +21,7 @@ describe "/releases/edit.html.erb" do
     response.should have_tag("form[action=#{release_path(@release)}][method=post]") do
       with_tag('input#release_title[name=?]', "release[title]")
       with_tag('input#release_artist[name=?]', "release[artist]")
-      with_tag('input#release_year[name=?]', "release[year]")
+      with_tag('select#release_year[name=?]', "release[year]")
       with_tag("select#label_selector[name=?]", "release[label_entity_attributes][name]")
       with_tag('select#release_format_id[name=?]', "release[format_id]")
       with_tag('input#release_matrix_number[name=?]', "release[matrix_number]")
