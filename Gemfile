@@ -13,6 +13,7 @@ gem 'factory_girl', '1.3.3'
 gem 'capistrano', '2.5.2'
 gem 'capistrano-ext', '1.2.1'
 gem 'passenger', '3.0.5'
+gem 'devise', '1.0.7'
 
 group :test do
   gem 'rspec', '1.3.0', :require => false

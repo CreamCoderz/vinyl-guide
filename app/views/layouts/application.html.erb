@@ -11,15 +11,16 @@
   <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.2.0/build/cssreset/reset-min.css">  
   <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1"/>
   <%= stylesheet_link_tag 'main' %>
-  <%= stylesheet_link_tag 'jquery.autocomplete', 'superfish.css' %>
+  <%= stylesheet_link_tag 'jquery.autocomplete' %>
   <%= javascript_include_tag 'jquery-1.4.2.min' %>
-  <%= javascript_include_tag 'jquery.autocomplete', 'jquery.form', 'jquery.selectboxes', 'plugins/superfish/superfish', 'plugins/superfish/supersubs' %>
+  <%= javascript_include_tag 'jquery.autocomplete', 'jquery.form', 'jquery.selectboxes' %>
   <%= javascript_include_tag 'application' %>
 </head>
 <body>
 <%= render :partial => "partials/header" %>
 
 <p style="color: green"><%= flash[:notice] %></p>
+<p style="color: red"><%= flash[:alert] %></p>
 
 <div class="content">
   <%= yield %>

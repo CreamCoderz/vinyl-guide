@@ -28,3 +28,5 @@ config.action_view.cache_template_loading            = true
 # config.threadsafe!
 
 ActionController::Base.cache_store = :synchronized_memory_store
+
+config.action_mailer.default_url_options = { :host => 'localhost:3000' }
