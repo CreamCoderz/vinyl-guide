@@ -34,11 +34,24 @@ describe ReleasesController do
   end
 
   describe "#new" do
-    it "assigns a new release as @release" do
-      Release.stub!(:new).and_return(mock_release({:label_entity => Factory(:label), :build_label_entity => nil}))
-      get :new
-      assigns[:release].should equal(mock_release)
-      assigns[:release].label_entity.should_not be_nil
+    context "anonymous user" do
+      before do
+        get :new
+      end
+      it "redirects" do
+        response.should redirect_to(new_user_session_path)
+      end
+    end
+    context "logged in user" do
+      before do
+        sign_in Factory(:confirmed_user)
+        Release.stub!(:new).and_return(mock_release({:label_entity => Factory(:label), :build_label_entity => nil}))
+        get :new
+      end
+      it "assigns a new release as @release" do
+        assigns[:release].should equal(mock_release)
+        assigns[:release].label_entity.should_not be_nil
+      end
     end
   end
 

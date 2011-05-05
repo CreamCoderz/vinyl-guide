@@ -1,5 +1,7 @@
 class ReleasesController < ApplicationController
 
+  before_filter :redirect_anonymous, :only => [:new]
+
   def index
     @page_num = ParamsParser.parse_page_param(params)
     release_results = Release.paginate(:all, :order => "artist ASC", :include => [:label_entity, :format, :ebay_items], :page => @page_num, :per_page => '20')
@@ -88,5 +90,10 @@ class ReleasesController < ApplicationController
     respond_to do |format|
       format.json {render :json => {:hits => releases.total, :releases => JSON.parse(releases.items.to_json(:include => {:label_entity => {:only => :name}}, :only => [:matrix_number, :title, :matrix, :artist, :id], :methods => [:link]))}}
     end
+  end
+
+  private
+  def redirect_anonymous
+    redirect_to new_user_session_path unless current_user
   end
 end

@@ -1,7 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.root :controller => 'ebay_items', :action => 'home'
   map.devise_for :users
-  map.resources :users, :only => [:new, :create]
   map.resources :labels
   map.resources :releases, :collection => {:search => :get}, :has_many => :ebay_items
   map.resources :ebay_items
