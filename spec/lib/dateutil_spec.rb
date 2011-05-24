@@ -1,12 +1,13 @@
+require 'spec_helper'
 require File.dirname(__FILE__) + "/../../lib/dateutil"
 require 'time'
-require 'spec'
+
 
 describe DateUtil do
 
   it "should parse a date into an iso8601 string" do
-    date = DateTime.parse('2009-07-11T11:40:00+00:00')    
-    DateUtil.date_to_utc(date).should == '2009-07-11T11:40:00.000Z'
+    date = DateTime.parse('2009-07-01T13:34:08.000Z')
+    DateUtil.date_to_utc(date).should == '2009-07-01T13:34:08.000Z'
   end
 
   it "should parse a string in iso8601 format to a date" do

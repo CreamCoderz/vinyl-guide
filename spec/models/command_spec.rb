@@ -1,4 +1,3 @@
-require 'spec'
 require File.dirname(__FILE__) + "/../../app/domain/command"
 
 describe Command do

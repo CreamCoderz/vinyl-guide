@@ -17,14 +17,6 @@ module ApplicationHelper
     ebay_item && ebay_item.hasimage ? "/images/gallery/#{ebay_item.id}.jpg" : "/images/noimage.jpg"
   end
 
-  def unescape_html(html)
-    CGI.unescapeHTML(html)
-  end
-
-  def html_escape(html)
-    CGI.escapeHTML(html)
-  end
-
   def url_escape(html)
     CGI.escape(html)
   end

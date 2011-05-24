@@ -1,4 +1,4 @@
-require 'spec'
+require 'spec_helper'
 require 'net/http'
 require 'uri'
 require File.dirname(__FILE__) + '/../../lib/webclient'

@@ -1,4 +1,5 @@
-require 'spec'
+require 'spec_helper'
+
 require File.dirname(__FILE__) + "/ebay_base_spec"
 require File.dirname(__FILE__) + '/../../../lib/crawler/ebayfinditemsparser'
 include EbayBaseSpec

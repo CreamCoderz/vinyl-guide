@@ -1,4 +1,4 @@
-require 'spec'
+require 'spec_helper'
 require 'time'
 require File.dirname(__FILE__) + "/ebay_base_data"
 require File.dirname(__FILE__) + "/../../../lib/dateutil"

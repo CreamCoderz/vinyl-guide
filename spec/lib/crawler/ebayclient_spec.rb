@@ -1,4 +1,4 @@
-require 'spec'
+require 'spec_helper'
 require 'time'
 require File.dirname(__FILE__) + '/../../../lib/webclient'
 require File.dirname(__FILE__) + '/../../../lib/crawler/ebayclient'
@@ -26,9 +26,8 @@ describe EbayClient do
     ebay_client = EbayClient.new(WebClient.new(web_client), NIL_API_KEY)
     end_time_to = Date.new.next
     find_items_results = ebay_client.find_items(end_time_to)
-    #TODO: these should be in reverse order
-    web_client.path[1].should == EbayBaseSpec.generate_find_items_request(end_time_to, 1)
-    web_client.path[0].should == EbayBaseSpec.generate_find_items_request(end_time_to, 1, 'EBAY-GB', 'Reggae%2F+Ska')
+    web_client.path[0].should == EbayBaseSpec.generate_find_items_request(end_time_to, 1)
+    web_client.path[1].should == EbayBaseSpec.generate_find_items_request(end_time_to, 1, 'EBAY-GB', 'Reggae%2F+Ska')
     web_client.host.should == SAMPLE_BASE_FIND_HOST
     find_items_results.should == FOUND_ITEMS.concat([FOUND_ITEM_6, FOUND_ITEM_7])
     #TODO: log all other unmarked items
@@ -43,9 +42,9 @@ describe EbayClient do
     uk_response = make_success_response(EbayBaseSpec.generate_complete_find_items_response(1, 1))
     response1 = make_success_response(EbayBaseSpec.generate_find_items_response(1, 2))
     response2 = make_success_response(EbayBaseSpec.generate_find_items_response(2, 2))
-    web_client.should_receive(:get).ordered.with(SAMPLE_BASE_FIND_URL + uk_request).and_return(uk_response)
     web_client.should_receive(:get).ordered.with(SAMPLE_BASE_FIND_URL + expected_url1).and_return(response1)
     web_client.should_receive(:get).ordered.with(SAMPLE_BASE_FIND_URL + expected_url2).and_return(response2)
+    web_client.should_receive(:get).ordered.with(SAMPLE_BASE_FIND_URL + uk_request).and_return(uk_response)
     ebay_client = EbayClient.new(web_client, NIL_API_KEY)
     find_items_results = ebay_client.find_items(end_time_to)
     find_items_results.length.should == 10
@@ -60,8 +59,8 @@ describe EbayClient do
     web_client.path[0].should == SAMPLE_GET_MULTIPLE_ITEMS_REQUEST
     web_client.host.should == 'open.api.ebay.com'
     detailses.length.should == 2
-    check_tetrack_item(detailses[0])
     check_garnet_item(detailses[1])
+    check_tetrack_item(detailses[0])
   end
 
   it "should not exceed 20 items details per request" do

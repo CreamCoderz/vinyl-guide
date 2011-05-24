@@ -152,8 +152,8 @@ describe Release do
     end
     context "release has ebay items" do
       before do
-        @canonical_ebay_item = Factory(:ebay_item, :release => @release)
-        Factory(:ebay_item, :release => @release)
+        @canonical_ebay_item = Factory(:ebay_item, :release => @release, :updated_at => Time.now + 10)
+        Factory(:ebay_item, :release => @release, :updated_at => Time.now - 10)
       end
 
       it "returns the first ebay_item" do
@@ -176,9 +176,9 @@ describe Release do
   describe ".search" do
 
     before do
-      @title_word = @valid_attributes[:title][/[^ ]+/].first
-      @artist_word = @valid_attributes[:artist][/[^ ]+/].first
-      @matrix_word = @valid_attributes[:matrix_number][/[^ ]+/].first
+      @title_word = @valid_attributes[:title][/[^ ]+/]
+      @artist_word = @valid_attributes[:artist][/[^ ]+/]
+      @matrix_word = @valid_attributes[:matrix_number][/[^ ]+/]
       @query_words = [@title_word, @artist_word, @matrix_word]
     end
 
@@ -195,7 +195,7 @@ describe Release do
     it "should find 1 result for a query word" do
       expected_record = Release.create!(@valid_attributes)
       @query_words.each do |word|
-        results = Release.search(word).items
+        results = Release.search(:query => word).items
         results.length.should == 1
         results[0].id.should == expected_record.id
       end

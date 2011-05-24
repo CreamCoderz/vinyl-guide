@@ -8,7 +8,7 @@ describe LabelsController do
 
   describe "GET index" do
     it "assigns all labels as @labels" do
-      Label.stub!(:find).with(:all).and_return([mock_label])
+      Label.stub!(:all).and_return([mock_label])
       get :index
       assigns[:labels].should == [mock_label]
     end

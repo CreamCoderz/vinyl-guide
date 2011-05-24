@@ -1,8 +1,6 @@
 require 'cobravsmongoose'
 require File.dirname(__FILE__) + "/../dateutil"
 require File.dirname(__FILE__) + "/../arrayutil"
-include ArrayUtil
-include DateUtil
 
 class EbayFindItemsParser
 
@@ -12,10 +10,10 @@ class EbayFindItemsParser
     @parsed_items = []
     if !parsed_items['findItemsAdvancedResponse']['searchResult']['item'].nil?
       items = parsed_items['findItemsAdvancedResponse']['searchResult']['item']
-      items = arrayifiy(items)
+      items = ArrayUtil.arrayifiy(items)
       @num_total_items = items.length
       items.each do |item|
-        @parsed_items.insert(-1, [item['itemId']['$'].to_i, utc_to_date(item['listingInfo']['endTime']['$'])])
+        @parsed_items.insert(-1, [item['itemId']['$'].to_i, DateUtil.utc_to_date(item['listingInfo']['endTime']['$'])])
       end
       @page_number = parsed_items['findItemsAdvancedResponse']['paginationOutput']['pageNumber']['$']
       @total_pages = parsed_items['findItemsAdvancedResponse']['paginationOutput']['totalPages']['$']

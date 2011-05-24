@@ -30,26 +30,26 @@ describe EbayItem do
       end
       describe ".singles" do
         it "scopes items by the single format" do
-          single = Factory(:ebay_item, :size => '7"')
-          single2 = Factory(:ebay_item, :size => "Single (7-Inch)")
+          single = Factory(:ebay_item, :size => '7"', :created_at => Time.now)
+          single2 = Factory(:ebay_item, :size => "Single (7-Inch)", :created_at => Time.now - 1)
           ebay_item_singles = EbayItem.singles
           ebay_item_singles.should == [single, single2]
         end
       end
       describe ".eps" do
         it "scopes items by the ep format" do
-          ep = Factory(:ebay_item, :size => '10"')
-          ep2 = Factory(:ebay_item, :size => "EP, Maxi (10, 12-Inch)")
-          ep3 = Factory(:ebay_item, :size => "Single, EP (12-Inch)")
+          ep = Factory(:ebay_item, :size => '10"', :created_at => Time.now)
+          ep2 = Factory(:ebay_item, :size => "EP, Maxi (10, 12-Inch)", :created_at => Time.now-1)
+          ep3 = Factory(:ebay_item, :size => "Single, EP (12-Inch)", :created_at => Time.now-2)
           ebay_item_eps = EbayItem.eps
           ebay_item_eps.should == [ep, ep2, ep3]
         end
       end
       describe ".lps" do
         it "scopes items by the lp format" do
-          lp = Factory(:ebay_item, :size => 'LP (12-Inch)')
-          lp2 = Factory(:ebay_item, :size => "LP")
-          lp3 = Factory(:ebay_item, :size => '12"')
+          lp = Factory(:ebay_item, :size => 'LP (12-Inch)', :created_at => Time.now)
+          lp2 = Factory(:ebay_item, :size => "LP", :created_at => Time.now - 1)
+          lp3 = Factory(:ebay_item, :size => '12"', :created_at => Time.now - 2)
           ebay_item_lps = EbayItem.lps
           ebay_item_lps.should == [lp, lp2, lp3]
         end
