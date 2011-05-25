@@ -1,7 +1,3 @@
-require 'cobravsmongoose'
-require File.dirname(__FILE__) + "/../dateutil"
-require File.dirname(__FILE__) + "/../arrayutil"
-
 class EbayFindItemsParser
 
   def initialize(xml)

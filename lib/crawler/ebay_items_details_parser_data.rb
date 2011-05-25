@@ -1,6 +1,3 @@
-require File.dirname(__FILE__) + "/../dateutil"
-require 'cgi'
-
 module EbayItemsDetailsParserData
 
   DESCRIPTION = 'Description'

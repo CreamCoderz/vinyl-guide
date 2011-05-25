@@ -1,3 +1,5 @@
+require 'net/http'
+
 class SettableHttpClient < Net::HTTP
   attr_reader :host, :port, :path
 

@@ -1,12 +1,10 @@
 require 'spec_helper'
-require 'time'
-require File.dirname(__FILE__) + '/../../../lib/webclient'
-require File.dirname(__FILE__) + '/../../../lib/crawler/ebayclient'
-require File.dirname(__FILE__) + '/../settablehttpclient'
+require "#{Rails.root}/lib/crawler/ebay_client"
+require "#{Rails.root}/lib/web_client"
 require File.dirname(__FILE__) + "/ebay_base_spec"
+require File.dirname(__FILE__) + "/../settable_http_client"
 require File.dirname(__FILE__) + "/ebay_base_data"
-require File.dirname(__FILE__) + '/ebayitemsdetailsparser_spec'
-require File.dirname(__FILE__) + '/ebayitemsdetailsparser_helper'
+require File.dirname(__FILE__) + '/ebay_items_details_parser_helper'
 require File.dirname(__FILE__) + '/../../base_spec_case'
 include EbayItemsDetailsParserHelper
 include EbayBaseData

@@ -1,8 +1,8 @@
-require File.dirname(__FILE__) + '/../lib/crawler/ebayclient'
-require File.dirname(__FILE__) + '/../lib/crawler/ebaycrawler'
-require File.dirname(__FILE__) + '/../lib/webclient'
+require File.dirname(__FILE__) + '/../lib/crawler/ebay_client'
+require File.dirname(__FILE__) + '/../lib/crawler/ebay_crawler'
+require File.dirname(__FILE__) + '/../lib/web_client'
 require File.dirname(__FILE__) + '/../lib/imageclient'
-require File.dirname(__FILE__) + '/../lib/dateutil'
+require File.dirname(__FILE__) + '/../lib/date_util'
 require File.dirname(__FILE__) + '/../config/environment'
 
 properties_file = YAML.load_file(File.dirname(__FILE__) + "/../config/build.#{Rails.env}.yml")

@@ -1,10 +1,10 @@
 require 'test_helper'
-require File.dirname(__FILE__) + '/../../../lib/crawler/ebayclient'
-require File.dirname(__FILE__) + '/../../../lib/crawler/ebaycrawler'
+require File.dirname(__FILE__) + '/../../../lib/crawler/ebay_client'
+require File.dirname(__FILE__) + '/../../../lib/crawler/ebay_crawler'
 require File.dirname(__FILE__) + '/../../../lib/imageclient'
-require File.dirname(__FILE__) + '/../../../lib/webclient'
+require File.dirname(__FILE__) + '/../../../lib/web_client'
 require File.dirname(__FILE__) + '/../../../spec/lib/crawler/ebay_base_spec'
-require File.dirname(__FILE__) + '/../../../spec/lib/settablehttpclient'
+require File.dirname(__FILE__) + '/../../../spec/lib/settable_http_client'
 include EbayBaseSpec
 
 class EbayCrawlerTest < ActiveSupport::TestCase

@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + "/../../lib/crawler/ebayitemsdetailsparserdata"
+require File.dirname(__FILE__) + "/../../lib/crawler/ebay_items_details_parser_data"
 require 'cgi'
 include EbayItemsDetailsParserData
 

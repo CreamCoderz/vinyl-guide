@@ -1,8 +1,8 @@
 require 'spec_helper'
 require 'time'
 require File.dirname(__FILE__) + "/ebay_base_data"
-require File.dirname(__FILE__) + "/../../../lib/dateutil"
-require File.dirname(__FILE__) + '/../../../lib/crawler/ebaytimeparser'
+require File.dirname(__FILE__) + "/../../../lib/date_util"
+require File.dirname(__FILE__) + '/../../../lib/crawler/ebay_time_parser'
 include EbayBaseData
 
 

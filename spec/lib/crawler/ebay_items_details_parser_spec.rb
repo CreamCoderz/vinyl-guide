@@ -1,11 +1,7 @@
 require 'spec_helper'
 
-require 'time'
-
-require File.dirname(__FILE__) + "/ebay_base_spec"
-require File.dirname(__FILE__) + "/ebayitemsdetailsparser_helper"
-require File.dirname(__FILE__) + '/../../../lib/crawler/ebayitemsdetailsparser'
-require File.dirname(__FILE__) + '/../../../lib/crawler/ebayitemsdetailsparser'
+require File.dirname(__FILE__) + "/ebay_items_details_parser_helper"
+require File.dirname(__FILE__) + '/../../../lib/crawler/ebay_items_details_parser'
 include EbayItemsDetailsParserHelper
 include EbayBaseSpec
 

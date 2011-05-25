@@ -1,6 +1,3 @@
-require File.dirname(__FILE__) + "/../dateutil"
-require 'cobravsmongoose'
-
 class EbayTimeParser
 
   def self.parse(xml)

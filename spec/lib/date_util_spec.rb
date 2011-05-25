@@ -1,5 +1,5 @@
 require 'spec_helper'
-require File.dirname(__FILE__) + "/../../lib/dateutil"
+require File.dirname(__FILE__) + "/../../lib/date_util"
 require 'time'
 
 

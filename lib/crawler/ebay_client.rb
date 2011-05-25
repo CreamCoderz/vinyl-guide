@@ -1,8 +1,3 @@
-require File.dirname(__FILE__) + "/../dateutil"
-require File.dirname(__FILE__) + "/../crawler/ebayfinditemsparser"
-require File.dirname(__FILE__) + "/../crawler/ebayitemsdetailsparser"
-require File.dirname(__FILE__) + "/../crawler/ebaytimeparser"
-
 class EbayClient
   FIND_ITEMS_CALL = 'FindItemsAdvanced'
   FIND_ITEMS_BASE_CALL = 'services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME='

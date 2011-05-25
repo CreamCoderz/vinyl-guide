@@ -1,5 +1,5 @@
 require File.dirname(__FILE__) + "/../../../app/domain/ebayitemdata"
-require File.dirname(__FILE__) + "/../../../lib/dateutil"
+require File.dirname(__FILE__) + "/../../../lib/date_util"
 require 'cgi'
 include DateUtil
 

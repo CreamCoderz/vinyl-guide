@@ -1,9 +1,9 @@
 require 'spec_helper'
 require 'net/http'
 require 'uri'
-require File.dirname(__FILE__) + '/../../lib/webclient'
+require File.dirname(__FILE__) + '/../../lib/web_client'
 require File.dirname(__FILE__) + '/feedparser_spec'
-require File.dirname(__FILE__) + '/settablehttpclient'
+require File.dirname(__FILE__) + '/settable_http_client'
 
 describe WebClient do
   URL = "http://rss.example.com/index.html"

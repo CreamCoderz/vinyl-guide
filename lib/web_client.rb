@@ -1,6 +1,6 @@
 require 'net/http'
 require 'uri'
-require File.dirname(__FILE__) + '/feedparser'
+require File.dirname(__FILE__) + '/feed_parser'
 
 class WebClient
 

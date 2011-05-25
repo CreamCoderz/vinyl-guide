@@ -1,5 +1,5 @@
 require 'spec_helper'
-require File.dirname(__FILE__) + '/../../lib/feedparser'
+require File.dirname(__FILE__) + '/../../lib/feed_parser'
 
 module FeedParserSpec
 

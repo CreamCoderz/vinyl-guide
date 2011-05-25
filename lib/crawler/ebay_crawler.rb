@@ -1,8 +1,3 @@
-require 'active_record'
-require File.expand_path(File.dirname(__FILE__) + "/../../config/environment")
-require File.expand_path(File.dirname(__FILE__) + "/ebaylogger")
-include EbayLogger
-
 class EbayCrawler
 
   #TODO: wasteful hack to get around ebay's current api issues: http://dev-forums.ebay.com/thread.jspa?threadID=500016830&start=15&tstart=0
