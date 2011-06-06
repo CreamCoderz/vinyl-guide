@@ -1,5 +1,5 @@
-<% form_for(release, :html => {:class => 'new_release'}) do |f| %>
-    <%= f.error_messages %>
+<%= form_for(release, :html => {:class => 'new_release'}) do |f| %>
+    <%= full_error_messages(release) %>
 
     <p>
       <%= f.label :artist %><br/>

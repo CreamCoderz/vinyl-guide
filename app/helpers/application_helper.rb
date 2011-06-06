@@ -90,4 +90,17 @@ module ApplicationHelper
     link_to link_title, query_params, html_options
   end
 
+  def full_error_messages(model)
+    #todo: tag helpers.. y u no work here?!
+    markup = ""
+    if model.errors.full_messages.length > 0
+      markup += "<ul>"
+      model.errors.full_messages.each do |m|
+        markup += "<li>#{m}</li>"
+      end
+      markup += "</ul>"
+    end
+    markup.html_safe
+  end
+
 end

@@ -1,11 +1,11 @@
 <% if prev_link %>
-    <%= link_to "&lt; Prev", @parsed_params.selected.merge(:page => prev_link), {:class => "prev"} %>
+    <%= link_to "< Prev", @parsed_params.selected.merge(:page => prev_link), {:class => "prev"} %>
 <% else %>
     &lt; Prev
 <% end %>
     &nbsp;|&nbsp;
 <% if next_link %>
-    <%= link_to "Next &gt;", @parsed_params.selected.merge(:page => next_link), {:class => "next"} %>
+    <%= link_to "Next >", @parsed_params.selected.merge(:page => next_link), {:class => "next"} %>
 <% else %>
     Next &gt;
 <% end %>

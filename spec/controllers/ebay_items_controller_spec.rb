@@ -8,11 +8,11 @@ describe EbayItemsController do
 
   describe "#home" do
     before do
-      EbayItem.stub!(:top_items).and_return([@mock_ebay_item])
+      @ebay_item = Factory(:ebay_item)
     end
     it "assigns todays top three highest priced items" do
       get :home
-      assigns[:top_items].should =~ [@mock_ebay_item] 
+      assigns[:top_items].should =~ [@ebay_item]
     end
   end
 

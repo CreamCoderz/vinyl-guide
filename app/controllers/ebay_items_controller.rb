@@ -30,7 +30,7 @@ class EbayItemsController < ApplicationController
 
   def home
     @ebay_items = Rails.cache.fetch("recent-items-#{Time.now.hour}-#{Time.now.min}") { EbayItem.find(:all, :order => @order_query, :limit => PAGE_LIMIT) }
-    @top_items  = Rails.cache.fetch("top-items-#{Time.now.hour}-#{Time.now.min}") { EbayItem.top_items }
+    @top_items = Rails.cache.fetch("top-items-#{Time.now.hour}-#{Time.now.min}") { EbayItem.top_items.all }
   end
 
   def show
@@ -38,24 +38,12 @@ class EbayItemsController < ApplicationController
     @related_ebay_items = @ebay_item.related_items
   end
 
+  [:singles, :eps, :lps, :other].each do |m|
+    define_method(m) { set_page_results(m) }
+  end
+
   def all
     set_page_results(:all_time)
-  end
-
-  def singles
-    set_page_results(:singles)
-  end
-
-  def eps
-    set_page_results(:eps)
-  end
-
-  def lps
-    set_page_results(:lps)
-  end
-
-  def other
-    set_page_results(:other)
   end
 
   private

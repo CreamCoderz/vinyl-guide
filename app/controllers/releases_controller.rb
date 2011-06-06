@@ -1,6 +1,6 @@
 class ReleasesController < ApplicationController
 
-  before_filter :redirect_anonymous, :only => [:new]
+#  before_filter :redirect_anonymous, :only => [:new]
 
   def index
     @page_num = ParamsParser.parse_page_param(params)

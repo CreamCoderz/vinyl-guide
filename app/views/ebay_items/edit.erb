@@ -1,7 +1,7 @@
 <h2>Editing release</h2>
 
-<% form_for(@ebay_item) do |f| %>
-    <%= f.error_messages %>
+<%= form_for(@ebay_item) do |f| %>
+    <%= full_error_messages @ebay_item %>
     <p>
       <%= f.label :release_id %><br/>
       <%= f.text_field :release_id %>

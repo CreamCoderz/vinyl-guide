@@ -20,8 +20,8 @@
   </table>
   <% if @controls && ebay_item.release_id %>
       <p>
-        <% form_for(ebay_item) do |f| %>
-            <%= f.error_messages %>
+        <%= form_for(ebay_item) do |f| %>
+            <%= full_error_messages ebay_item %>
             <input type="hidden" name="ebay_item[release_id]" value=""/>
 
             <p>
