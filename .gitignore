@@ -6,3 +6,4 @@ tmp/*
 solr/*
 build/*
 build.tgz
+builder/*
