@@ -16,7 +16,7 @@ class ImageClient
       end
     rescue Exception => e
       EBAY_CRAWLER_LOGGER.error("#{Time.new} - error fetching image for url: #{url}")
-      EBAY_CRAWLER_LOGGER.error(e)
+      EBAY_CRAWLER_LOGGER.error(e.inspect)
     end
     image_content
   end

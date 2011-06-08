@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../lib/imageclient'
+require File.dirname(__FILE__) + '/../lib/image_client'
 require File.dirname(__FILE__) + '/../lib/web_client'
 
 image_client = ImageClient.new(WebClient.new(Net::HTTP))

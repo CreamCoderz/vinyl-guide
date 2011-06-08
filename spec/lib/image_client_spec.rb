@@ -1,5 +1,5 @@
 require 'spec_helper'
-require File.dirname(__FILE__) + '/../../lib/imageclient'
+require File.dirname(__FILE__) + '/../../lib/image_client'
 require File.dirname(__FILE__) + "/../base_spec_case"
 include BaseSpecCase
 

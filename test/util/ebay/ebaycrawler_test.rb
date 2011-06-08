@@ -1,7 +1,7 @@
 require 'test_helper'
 require File.dirname(__FILE__) + '/../../../lib/crawler/ebay_client'
 require File.dirname(__FILE__) + '/../../../lib/crawler/ebay_crawler'
-require File.dirname(__FILE__) + '/../../../lib/imageclient'
+require File.dirname(__FILE__) + '/../../../lib/image_client'
 require File.dirname(__FILE__) + '/../../../lib/web_client'
 require File.dirname(__FILE__) + '/../../../spec/lib/crawler/ebay_base_spec'
 require File.dirname(__FILE__) + '/../../../spec/lib/settable_http_client'
