@@ -8,6 +8,16 @@ ssh_options[:forward_agent] = true
 set :application, "vinyl-guide"
 set :repository, "git@github.com:willsu/vinyl-guide.git"
 
+# Add RVM's lib directory to the load path.
+$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
+
+# Load RVM's capistrano plugin.
+require "rvm/capistrano"
+
+set :rvm_ruby_string, '1.9.2'
+set :rvm_type, :user  # Don't use system-wide RVM
+
+
 #set(:rake) { "GEM_HOME=#{gem_home} RAILS_ENV=#{rails_env} /usr/bin/env rake" }
 
 # If you aren't deploying to /u/apps/#{application} on the target
