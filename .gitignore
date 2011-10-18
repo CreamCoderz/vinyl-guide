@@ -7,3 +7,5 @@ solr/*
 build/*
 build.tgz
 builder/*
+public/images/gallery/*
+public/images/pictures/*
