@@ -6,8 +6,7 @@ class Release < ActiveRecord::Base
 
   has_many :ebay_items, :order => "updated_at DESC"
   belongs_to :format
-  #TODO: it should not be dependent on :destroy of a label.. it should probably just link the release to a blank label
-  belongs_to :label_entity, :class_name => 'Label', :foreign_key => 'label_id', :dependent => :destroy
+  belongs_to :label_entity, :class_name => 'Label', :foreign_key => 'label_id'
   accepts_nested_attributes_for :label_entity
 
   validates_uniqueness_of :title, :scope => [:title, :artist, :year, :label_id, :format_id, :matrix_number], :message => "The release must not match an existing combination of fields"

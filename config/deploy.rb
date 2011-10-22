@@ -36,6 +36,7 @@ before 'deploy:restart', 'deploy:create_conf_symlinks'
 before 'deploy:restart', 'deploy:create_image_symlinks'
 before 'deploy:restart', 'deploy:bundle_install'
 before 'deploy:restart', 'deploy:start_solr'
+before 'deploy:restart', 'deploy:migrate'
 
 namespace :deploy do
 
@@ -60,6 +61,11 @@ namespace :deploy do
   task :start_solr, :roles => [:app, :web, :db] do
     run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:stop || true"
     run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:start"
+  end
+
+  desc "migrate db"
+  task :migrate, :roles => [:db] do
+    run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake db:migrate"
   end
 
   task :start, :roles => :app do

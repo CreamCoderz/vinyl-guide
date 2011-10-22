@@ -4,7 +4,7 @@ class EbayItem < ActiveRecord::Base
 
   FORMATS_BY_SIZE = {
       Format::LP => ["LP (12-Inch)", "LP", '12"'],
-      Format::EP => ['EP, Maxi (10, 12-Inch)', '10"', 'Single, EP (12-Inch)'],
+      Format::EP => ['EP, Maxi (10, 12-Inch)', '10"', 'Single, EP (12-Inch)', 'Single, EP (10-Inch)'],
       Format::SINGLE => ["size=? OR size=?", '7"', "Single (7-Inch)"]
   }
 
@@ -19,11 +19,10 @@ class EbayItem < ActiveRecord::Base
   belongs_to :format
 
   scope :all_time, lambda {}
-  scope :singles, :conditions => ["format_id = #{Format::SINGLE.id}"], :order => "created_at DESC"
-  scope :eps, :conditions => ["format_id = #{Format::EP.id}"], :order => "created_at DESC"
-  scope :lps, :conditions => ["format_id = #{Format::LP.id}"], :order => "created_at DESC"
-  #TODO: this should really be where ebay_item has format of nil
-  scope :other, :conditions => ["size!=? AND size!=? AND size!=? AND size!=? AND size!=? AND size!=? AND size!=?", "LP (12-Inch)", "LP", 'EP, Maxi (10, 12-Inch)', '10"', '7"', "Single (7-Inch)", '12"']
+  scope :singles, :conditions => {:format_id => Format::SINGLE.id}, :order => "created_at DESC"
+  scope :eps, :conditions => {:format_id => Format::EP.id}, :order => "created_at DESC"
+  scope :lps, :conditions => {:format_id => Format::LP.id}, :order => "created_at DESC"
+  scope :other, :conditions => {:format_id => nil}
 
   scope :today, :conditions => "endtime > NOW()-INTERVAL 1 DAY"
   scope :week, :conditions => "endtime > NOW()-INTERVAL 1 WEEK"
@@ -33,11 +32,7 @@ class EbayItem < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 20
 
-  before_save do |item|
-    item.format ||= FORMATS_BY_SIZE.keys.detect do |format|
-      FORMATS_BY_SIZE[format].include?(item.size)
-    end
-  end
+  before_save :set_format
 
   after_save { |item| item.index! }
 
@@ -59,4 +54,10 @@ class EbayItem < ActiveRecord::Base
     "/#{self.id}"
   end
 
+  private
+  def set_format
+    self.format ||= FORMATS_BY_SIZE.keys.detect do |format|
+      FORMATS_BY_SIZE[format].include?(size)
+    end
+  end
 end

@@ -22,6 +22,15 @@ describe Label do
     end
   end
 
+  describe "#before_destroy" do
+    it "removes associations to releases" do
+      label = Factory(:label)
+      release = Factory(:release, :label_entity => label)
+      label.destroy
+      release.reload.label_id.should be_nil
+    end
+  end
+
   describe "constraints" do
     it "should validate uniqueness of name" do
       Label.create!(:name => "Studio One")
