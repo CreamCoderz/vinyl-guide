@@ -1,0 +1,29 @@
+.comments {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.comments li {
+    clear: left;
+    margin-bottom: 20px;
+}
+
+.comment div {
+    margin-bottom: 5px;
+}
+
+.item-image {
+    float: left;
+}
+
+.new_comment {
+    clear: left;
+}
+
+.new_comment div {
+    margin-top: 5px;
+}
+
+.user-info {
+    color: #006600;
+}

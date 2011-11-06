@@ -1,0 +1,15 @@
+%li
+  .item-image
+    = link_to polymorphic_path(comment.parent) do
+      = gallery_img_for(comment.parent).html_safe
+  .user-info
+    %span
+      = comment.user.email
+    %span
+      = relative_past_time(comment.created_at)
+  .comment-body
+    %span
+      = truncate(comment.body, :length => 120)
+    %span
+  = content_for "comment_#{comment.id}_links".to_sym
+

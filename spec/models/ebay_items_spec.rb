@@ -7,9 +7,9 @@ describe EbayItem do
       @ebay_item = Factory(:ebay_item)
     end
 
-    it "should validate uniquess of itemid" do
-      EbayItem.create(:itemid => @ebay_item.itemid).errors.on(:itemid).should_not be_nil
-    end
+    it { should validate_uniqueness_of(:itemid) }
+    it { should have_many(:comments) }
+
   end
 
   context "after create" do

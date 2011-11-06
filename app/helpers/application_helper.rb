@@ -17,6 +17,10 @@ module ApplicationHelper
     ebay_item && ebay_item.hasimage ? "/images/gallery/#{ebay_item.id}.jpg" : "/images/noimage.jpg"
   end
 
+  def gallery_img_for(item)
+    image_tag(display_gallery_img_for(item))
+  end
+
   def url_escape(html)
     CGI.escape(html)
   end
@@ -103,4 +107,7 @@ module ApplicationHelper
     markup.html_safe
   end
 
+  def relative_past_time(time)
+    "#{time_ago_in_words(time)} ago"
+  end
 end

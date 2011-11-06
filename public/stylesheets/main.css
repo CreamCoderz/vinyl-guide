@@ -45,7 +45,7 @@ label {
     border: 2px solid #FF9900;
 }
 
-input, select {
+input, select, textarea {
     font-family: Courier, sans-serif;
     font-size: 14px;
     border: 2px solid #990000;
@@ -167,7 +167,7 @@ a:active {
     font-size: 20px;
 }
 
-.search, .nav input[type=submit] {
+input[type=submit] {
     background-color: #FF9900;
     color: #990000;
     font-weight: normal;
@@ -279,6 +279,7 @@ a.selected.desc {
     background-color: #FF9900;
     width: 1200px;
     height: 45px;
+    clear: both;
 }
 
 .footer div {

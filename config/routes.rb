@@ -8,6 +8,7 @@ VinylGuide::Application.routes.draw do
     resources :ebay_items
   end
   resources :ebay_items
+  resources :comments
 
   match 'search' => 'search#search'
   match 'singles' => 'ebay_items#singles'

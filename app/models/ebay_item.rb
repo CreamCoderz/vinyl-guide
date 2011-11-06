@@ -15,8 +15,10 @@ class EbayItem < ActiveRecord::Base
   validates_presence_of :url
 
   belongs_to :release
-  has_many :pictures, :foreign_key => "ebay_item_id"
   belongs_to :format
+
+  has_many :pictures, :foreign_key => "ebay_item_id"
+  has_many :comments, :as => :parent
 
   scope :all_time, lambda {}
   scope :singles, :conditions => {:format_id => Format::SINGLE.id}, :order => "created_at DESC"

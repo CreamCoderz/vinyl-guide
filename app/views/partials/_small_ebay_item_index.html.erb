@@ -1,15 +1,7 @@
 <% num_per_row ||= 5 %>
 <% unless ebay_items.empty? %>
     <% ebay_items.each_with_index do |ebay_item, i| %>
-        <div class="small-auction">
-          <% link_to "/#{ebay_item.id}" do %>
-              <img src="<%= display_gallery_img(ebay_item.id, ebay_item.hasimage) %>"/>
-          <% end %>
-          <p><%= link_to h(truncate(ebay_item.title, :length => 40)), ebay_item_path(ebay_item)
-          %></p>
-
-          <p><%= number_to_currency(ebay_item.price, :unit => display_currency_symbol(ebay_item.currencytype)) %> <%= ebay_item.currencytype %></p>
-        </div>
+        <%= render :partial => "ebay_items/small_ebay_item", :locals => {:ebay_item => ebay_item} %>
         <% if (i+1) % num_per_row == 0 %>
             <div class="clearfix"></div>
         <% end %>

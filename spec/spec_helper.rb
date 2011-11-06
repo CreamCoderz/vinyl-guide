@@ -2,6 +2,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'remarkable/active_record'
 require 'factory_girl'
 require 'sunspot'
 require 'sunspot/rails'
@@ -11,6 +12,7 @@ require File.expand_path(File.join(File.dirname(__FILE__), 'factories', 'ebay_it
 require File.expand_path(File.join(File.dirname(__FILE__), 'factories', 'label_factory'))
 require File.expand_path(File.join(File.dirname(__FILE__), 'factories', 'format_factory'))
 require File.expand_path(File.join(File.dirname(__FILE__), 'factories', 'user_factory'))
+require File.expand_path(File.join(File.dirname(__FILE__), 'factories', 'comment_factory'))
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.

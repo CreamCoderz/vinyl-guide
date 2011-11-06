@@ -1,4 +1,5 @@
 source 'http://rubygems.org'
+source 'http://gems.github.com'
 
 gem "rails", "3.0.7"
 gem "rake", "0.8.7"
@@ -13,9 +14,11 @@ gem 'capistrano', '2.5.2'
 gem 'capistrano-ext', '1.2.1'
 gem 'passenger', '3.0.5'
 gem 'devise', '1.3.0'
-gem 'test-unit', '1.2.3'
+gem 'haml'
 
 group :test do
   gem 'rspec', '2.5'
   gem "rspec-rails", "2.5"
+  gem 'test-unit', '1.2.3'
+  gem "remarkable_activerecord"
 end

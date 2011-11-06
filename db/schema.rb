@@ -10,7 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110504025254) do
+ActiveRecord::Schema.define(:version => 20111025020941) do
+
+  create_table "comments", :force => true do |t|
+    t.integer  "parent_id"
+    t.string   "parent_type", :default => "EbayItem"
+    t.string   "title"
+    t.text     "body"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["parent_id", "parent_type"], :name => "index_comments_on_parent_id_and_parent_type"
 
   create_table "ebay_auctions", :force => true do |t|
     t.integer  "item_id",  :limit => 8

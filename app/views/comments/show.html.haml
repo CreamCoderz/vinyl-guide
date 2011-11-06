@@ -1,0 +1,18 @@
+%ol.comment
+  %li
+    .item-image
+      = link_to polymorphic_path(@comment.parent) do
+        = gallery_img_for(@comment.parent).html_safe
+    .user-info
+      %span
+        = @comment.user.email
+      %span
+        = relative_past_time(@comment.created_at)
+    .comment-body
+      %span
+        = @comment.body
+      %span
+    .comment-links
+      = link_to 'View All Comments', comments_path
+      |
+      = link_to 'View Commented Item', polymorphic_path(@comment.parent)
