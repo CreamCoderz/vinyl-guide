@@ -17,17 +17,20 @@
   <%= render :partial=> "partials/ebay_item", :locals => {:ebay_item => @ebay_item} %>
   <div style="clear: both"></div>
 
-  <h3 id="comments">Comments</h3>
-  <ol class="comments">
-    <% @ebay_item.comments.each do |comment| %>
-        <%= render :partial => 'comments/comment', :locals => {:comment => comment} %>
-    <% end %>
-  </ol>
+  <% #HIDDEN COMMENTS %>
+  <!--<h3 id="comments">Comments</h3>-->
+  <!--<ol class="comments">-->
+    <!--<% @ebay_item.comments.each do |comment| %>-->
+        <!--<%= render :partial => 'comments/comment', :locals => {:comment => comment} %>-->
+    <!--<% end %>-->
+  <!--</ol>-->
+
   <% if signed_in? %>
-    <%= render :partial => "comments/form", :locals => {:ebay_item => @ebay_item} %>
+    <!--<%= render :partial => "comments/form", :locals => {:ebay_item => @ebay_item} %>-->
   <% else %>
-    Please <%= link_to('sign in', new_user_session_path) %> to comment on this auction
+    <!--Please <%= link_to('sign in', new_user_session_path) %> to comment on this auction-->
   <% end %>
+  <% #END HIDDEN COMMENTS %>
 
 </div>
 
