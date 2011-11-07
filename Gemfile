@@ -15,6 +15,7 @@ gem 'capistrano-ext', '1.2.1'
 gem 'passenger', '3.0.5'
 gem 'devise', '1.3.0'
 gem 'haml'
+gem 'jquery-rails'
 
 group :test do
   gem 'rspec', '2.5'

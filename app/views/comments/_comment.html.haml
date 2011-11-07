@@ -7,6 +7,9 @@
       = comment.user.email
     %span
       = relative_past_time(comment.created_at)
+    - if current_user == comment.user
+      %span
+        = link_to("Delete Comment", comment_path(comment), :method => :delete)
   .comment-body
     %span
       = truncate(comment.body, :length => 120)
