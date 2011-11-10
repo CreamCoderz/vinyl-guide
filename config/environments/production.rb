@@ -49,5 +49,10 @@ VinylGuide::Application.configure do
 
   ActionController::Base.cache_store = :synchronized_memory_store
 
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => "www.rootsvinylguide.com" }
+  config.action_mailer.logger = Rails.logger
+  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.smtp_settings = {
+      :domain => 'www.rootsvinylguide.com',
+  }
 end
