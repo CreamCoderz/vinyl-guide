@@ -42,7 +42,8 @@ namespace :deploy do
 
   desc "Symlink config files"
   task :create_conf_symlinks, :roles => [:app, :web, :db] do
-    run "ln -s #{shared_path}/system/config/database.yml #{current_path}/config/database.yml "
+    run "ln -s #{shared_path}/system/config/database.yml #{current_path}/config/database.yml"
+    run "ln -s #{shared_path}/system/config/newrelic.yml #{current_path}/config/newrelic.yml"
     run "ln -s #{shared_path}/system/config/build.#{rails_env}.yml #{current_path}/config/build.#{rails_env}.yml"
   end
 
