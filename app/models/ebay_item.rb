@@ -21,15 +21,15 @@ class EbayItem < ActiveRecord::Base
   has_many :comments, :as => :parent
 
   scope :all_time, lambda {}
-  scope :singles, :conditions => {:format_id => Format::SINGLE.id}, :order => "created_at DESC"
-  scope :eps, :conditions => {:format_id => Format::EP.id}, :order => "created_at DESC"
-  scope :lps, :conditions => {:format_id => Format::LP.id}, :order => "created_at DESC"
-  scope :other, :conditions => {:format_id => nil}
+  scope :singles, where(:format_id => Format::SINGLE.id)
+  scope :eps, where(:format_id => Format::EP.id)
+  scope :lps, where(:format_id => Format::LP.id)
+  scope :other, where(:format_id => nil)
 
-  scope :today, :conditions => "endtime > NOW()-INTERVAL 1 DAY"
-  scope :week, :conditions => "endtime > NOW()-INTERVAL 1 WEEK"
-  scope :month, :conditions => "endtime > NOW()-INTERVAL 1 MONTH"
-  scope :top_items, :conditions => "endtime > NOW()-INTERVAL 1 DAY", :order => "price DESC", :limit => 4
+  scope :today, where("endtime > NOW()-INTERVAL 1 DAY")
+  scope :week, where("endtime > NOW()-INTERVAL 1 WEEK")
+  scope :month, where("endtime > NOW()-INTERVAL 1 MONTH")
+  scope :top_items, where("endtime > NOW()-INTERVAL 1 DAY").order("price DESC").limit(4)
 
   cattr_reader :per_page
   @@per_page = 20

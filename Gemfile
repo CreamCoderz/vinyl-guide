@@ -16,7 +16,7 @@ gem 'passenger', '3.0.5'
 gem 'devise', '1.3.0'
 gem 'haml'
 gem 'jquery-rails'
-gem 'newrelic_rpm'
+gem 'newrelic_rpm', '3.3.0'
 
 group :test do
   gem 'rspec', '2.5'

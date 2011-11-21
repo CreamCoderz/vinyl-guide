@@ -55,7 +55,7 @@ class EbayItemsController < ApplicationController
   end
 
   def set_page_results(scope)
-    ebay_items = EbayItem.send(scope).send(@time).paginate(:order => @order_query, :page => @page_num, :per_page => '20')
+    ebay_items = EbayItem.send(scope).send(@time).order(@order_query).paginate(:page => @page_num, :per_page => '20')
     @page_results = Paginator::Result.new(:paginated_results => ebay_items)
   end
 

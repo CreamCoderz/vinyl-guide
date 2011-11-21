@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111107020956) do
+ActiveRecord::Schema.define(:version => 20111120051048) do
 
   create_table "comments", :force => true do |t|
     t.integer  "parent_id"
@@ -53,14 +53,16 @@ ActiveRecord::Schema.define(:version => 20111107020956) do
     t.integer  "format_id"
   end
 
-  add_index "ebay_items", ["endtime", "price"], :name => "index_ebay_items_on_endtime_and_price"
-  add_index "ebay_items", ["endtime", "title"], :name => "index_ebay_items_on_endtime_and_title"
   add_index "ebay_items", ["endtime"], :name => "index_ebay_items_on_endtime"
+  add_index "ebay_items", ["format_id", "endtime"], :name => "index_ebay_items_on_format_id_and_endtime"
+  add_index "ebay_items", ["format_id", "price"], :name => "index_ebay_items_on_format_id_and_price"
+  add_index "ebay_items", ["format_id", "title"], :name => "index_ebay_items_on_format_id_and_title"
   add_index "ebay_items", ["format_id"], :name => "index_ebay_items_on_format_id"
   add_index "ebay_items", ["itemid"], :name => "index_ebay_items_on_itemid"
-  add_index "ebay_items", ["price"], :name => "index_ebay_items_on_price"
+  add_index "ebay_items", ["price", "format_id"], :name => "index_ebay_items_on_price_and_format_id"
   add_index "ebay_items", ["release_id"], :name => "index_ebay_items_on_release_id"
   add_index "ebay_items", ["size"], :name => "index_ebay_items_on_size"
+  add_index "ebay_items", ["title", "format_id"], :name => "index_ebay_items_on_title_and_format_id"
   add_index "ebay_items", ["title"], :name => "index_ebay_items_on_title"
 
   create_table "formats", :force => true do |t|
