@@ -1,6 +1,6 @@
 production:
   solr:
-    hostname: localhost
+    hostname: 10.176.161.115
     port: 8983
     log_level: WARNING
     min_memory: 50M
