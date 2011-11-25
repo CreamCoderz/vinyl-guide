@@ -2,7 +2,6 @@ set :user, "will"  # The server's user for deploys
 set :runner, "will"
 set :rails_env, "production"
 set :gem_home, "/home/will/.rvm/gems/ree-1.8.7-2011.03"
-#server "rootsvinylguide.com", :app, :web, :db, :primary => true
 server "174.143.209.95", :app, :web, :db, :primary => true
 
 PROPERTIES = YAML.load_file("config/build.production.yml")

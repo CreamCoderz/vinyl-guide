@@ -29,8 +29,8 @@ class EbayItemsController < ApplicationController
   end
 
   def home
-    @ebay_items = Rails.cache.fetch("recent-items-#{Time.now.hour}-#{Time.now.min}") { EbayItem.find(:all, :order => @order_query, :limit => PAGE_LIMIT) }
-    @top_items = Rails.cache.fetch("top-items-#{Time.now.hour}-#{Time.now.min}") { EbayItem.top_items.all }
+    @ebay_items = Rails.cache.fetch("recent-items", :expires_in => 5.minutes) { EbayItem.all(:order => 'endtime DESC', :limit => PAGE_LIMIT) }
+    @top_items = Rails.cache.fetch("top-items", :expires_in => 5.minutes) { EbayItem.top_items.all }
   end
 
   def show

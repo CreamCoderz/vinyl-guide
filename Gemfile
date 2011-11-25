@@ -17,6 +17,7 @@ gem 'devise', '1.3.0'
 gem 'haml'
 gem 'jquery-rails'
 gem 'newrelic_rpm', '3.3.0'
+gem 'dalli'
 
 group :test do
   gem 'rspec', '2.5'
