@@ -2,6 +2,8 @@ Dir.glob("#{Rails.root}/lib/crawler/*.{rb}").each { |file| require file }
 Dir.glob("#{Rails.root}/lib/crawler/data/*.{rb}").each { |file| require file }
 Dir.glob("#{Rails.root}/app/domain/*.{rb}").each { |file| require file }
 
+Signal.trap("ALRM") { puts caller.join('\n') }
+
 properties_file = YAML.load_file("#{Rails.root}/config/build.#{Rails.env}.yml")
 store_path = properties_file["store_path"]
 ebay_api_key = properties_file["ebay_api_key"]
