@@ -26,10 +26,11 @@ class EbayItem < ActiveRecord::Base
   scope :lps, where(:format_id => Format::LP.id)
   scope :other, where(:format_id => nil)
 
-  scope :today, where("endtime > NOW()-INTERVAL 1 DAY")
-  scope :week, where("endtime > NOW()-INTERVAL 1 WEEK")
-  scope :month, where("endtime > NOW()-INTERVAL 1 MONTH")
-  scope :top_items, where("endtime > NOW()-INTERVAL 1 DAY").order("price DESC").limit(4)
+  # MySQL is wrongly choosing indexes.. force it to use a single-column index on endtime
+  scope :today, from("ebay_items force index (index_ebay_items_on_endtime)").where("endtime > NOW()-INTERVAL 1 DAY")
+  scope :week, from("ebay_items force index (index_ebay_items_on_endtime)").where("endtime > NOW()-INTERVAL 1 WEEK")
+  scope :month, from("ebay_items force index (index_ebay_items_on_endtime)").where("endtime > NOW()-INTERVAL 1 MONTH")
+  scope :top_items, from("ebay_items force index (index_ebay_items_on_endtime)").where("endtime > NOW()-INTERVAL 1 DAY").order("price DESC").limit(4)
 
   cattr_reader :per_page
   @@per_page = 20
