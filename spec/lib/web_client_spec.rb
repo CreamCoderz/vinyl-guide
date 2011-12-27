@@ -15,8 +15,8 @@ describe WebClient do
             "</rss>\n"+
             "</xml>"
     http_client.set_response(expected_response)
-    web_client = WebClient.new(http_client)
-    actual_response = web_client.get(URL)
+    WebClient.client = http_client
+    actual_response = WebClient.get(URL)
     actual_response.should == Net::HTTPSuccess
     actual_response.body.should == expected_response
     http_client.host.should == "rss.example.com"
@@ -26,9 +26,9 @@ describe WebClient do
 
   it "should make a get request with query params if they exist" do
     http_client = SettableHttpClient.new 'unused'
-    web_client = WebClient.new(http_client)
+    WebClient.client = http_client
     url_with_query = '/somepath?query=thequery'
-    web_client.get('http://www.example.com' +url_with_query)
+    WebClient.get('http://www.example.com' +url_with_query)
     http_client.path[0].should == url_with_query
   end
 
@@ -38,13 +38,13 @@ describe WebClient do
   it "should parse request into an array of records" do
     http_client = SettableHttpClient.new 'unused'
     http_client.set_response(FeedParserSpec::FEED_HEADER + FeedParserSpec::FEED_FOOTER)
-    web_client = WebClient.new(http_client)
-    response = web_client.get(URL)
-    actual_results = web_client.crawl(response)
+    WebClient.client = http_client
+    response = WebClient.get(URL)
+    actual_results = WebClient.crawl(response)
     actual_results.length.should == 0
     http_client.set_response(FeedParserSpec::FEED_WITH_ITEMS)
-    response = web_client.get(URL)
-    actual_results = web_client.crawl(response)
+    response = WebClient.get(URL)
+    actual_results = WebClient.crawl(response)
     actual_results.length.should == 2
     FeedParserSpec.check_feed_item(actual_results[0], FeedParserSpec::JAZZBO_RECORD)
     FeedParserSpec.check_feed_item(actual_results[1], FeedParserSpec::CONGOS_RECORD)
@@ -53,11 +53,11 @@ describe WebClient do
   it "should raise an exception upon unsuccesful response" do
     http_client = SettableHttpClient.new 'unused'
     http_client.set_response("", "4")
-    web_client = WebClient.new(http_client)
-    response = web_client.get(URL)
+    WebClient.client = http_client
+    response = WebClient.get(URL)
     response.should == Net::HTTPClientError
     begin
-      actual_results = web_client.crawl(response)
+      actual_results = WebClient.crawl(response)
     rescue Exception => detail
       detail.message.should == "invalid response"
     end

@@ -4,22 +4,18 @@ require File.dirname(__FILE__) + '/feed_parser'
 
 class WebClient
 
-  def initialize(http_client)
-    @http_client = http_client
-  end
+  cattr_accessor :client
 
-  def get(url)
+  def self.get(url)
     uri = URI.parse(url)
-    response = @http_client.start(uri.host, uri.port) do |http|
+    client.start(uri.host, uri.port) do |http|
       path = uri.path
-      if !uri.query.nil?
-        path += "?" + uri.query
-      end
-      response = http.get(path)
+      path += "?" + uri.query if uri.query.present?
+      http.get(path)
     end
   end
 
-  def crawl(response)
+  def self.crawl(response)
     raise Exception.new('invalid response') if (response != Net::HTTPSuccess)
     @result = FeedParser.parse(response.body)
   end

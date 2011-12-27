@@ -21,8 +21,9 @@ describe EbayClient do
     web_client = SettableHttpClient.new("unused")
     web_client.set_response(SAMPLE_FIND_ITEMS_RESPONSE)
     web_client.set_response(EbayBaseSpec.generate_find_items_response_uk(1, 1))
-    ebay_client = EbayClient.new(WebClient.new(web_client), NIL_API_KEY)
+    ebay_client = EbayClient.new(NIL_API_KEY)
     end_time_to = Date.new.next
+    WebClient.client = web_client
     find_items_results = ebay_client.find_items(end_time_to)
     web_client.path[0].should == EbayBaseSpec.generate_find_items_request(end_time_to, 1)
     web_client.path[1].should == EbayBaseSpec.generate_find_items_request(end_time_to, 1, 'EBAY-GB', 'Reggae%2F+Ska')
@@ -32,7 +33,7 @@ describe EbayClient do
   end
 
   it "should send request per page for many pages of find items results" do
-    web_client = mock('web_client')
+    web_client = WebClient
     end_time_to = Date.new.next
     uk_request = EbayBaseSpec.generate_find_items_request(end_time_to, 1, 'EBAY-GB', 'Reggae%2F+Ska')
     expected_url1 = EbayBaseSpec.generate_find_items_request(end_time_to, 1)
@@ -43,7 +44,7 @@ describe EbayClient do
     web_client.should_receive(:get).ordered.with(SAMPLE_BASE_FIND_URL + expected_url1).and_return(response1)
     web_client.should_receive(:get).ordered.with(SAMPLE_BASE_FIND_URL + expected_url2).and_return(response2)
     web_client.should_receive(:get).ordered.with(SAMPLE_BASE_FIND_URL + uk_request).and_return(uk_response)
-    ebay_client = EbayClient.new(web_client, NIL_API_KEY)
+    ebay_client = EbayClient.new(NIL_API_KEY)
     find_items_results = ebay_client.find_items(end_time_to)
     find_items_results.length.should == 10
   end
@@ -52,7 +53,8 @@ describe EbayClient do
     web_client = SettableHttpClient.new "unused"
     multiple_items_response = make_multiple_items_response(TETRACK_ITEM_XML + GARNET_ITEM_XML)
     web_client.set_response(multiple_items_response)
-    ebay_client = EbayClient.new(WebClient.new(web_client), NIL_API_KEY)
+    WebClient.client = web_client
+    ebay_client = EbayClient.new(NIL_API_KEY)
     detailses = ebay_client.get_details([TETRACK_ITEMID, GARNET_ITEMID])
     web_client.path[0].should == SAMPLE_GET_MULTIPLE_ITEMS_REQUEST
     web_client.host.should == 'open.api.ebay.com'
@@ -62,7 +64,7 @@ describe EbayClient do
   end
 
   it "should not exceed 20 items details per request" do
-    web_client = mock('web_client')
+    web_client = WebClient
     expected_ebay_items = []
     response_data = ['', '']
     for i in (1..30)
@@ -78,7 +80,7 @@ describe EbayClient do
     response2 = make_success_response(make_multiple_items_response(response_data[1]))
     web_client.should_receive(:get).ordered.with(SAMPLE_BASE_URL + EbayBaseSpec.generate_multiple_items_request(expected_ebay_items[0..19].map{|ebay_item| ebay_item.itemid.to_s})).and_return(response1)
     web_client.should_receive(:get).ordered.with(SAMPLE_BASE_URL + EbayBaseSpec.generate_multiple_items_request(expected_ebay_items[20..29].map{|ebay_item| ebay_item.itemid.to_s})).and_return(response2)
-    ebay_client = EbayClient.new(web_client, NIL_API_KEY)
+    ebay_client = EbayClient.new(NIL_API_KEY)
     actual_details = ebay_client.get_details(expected_ebay_items.map{|ebay_item| ebay_item.itemid})
     actual_details.length.should == expected_ebay_items.length
   end
@@ -86,7 +88,8 @@ describe EbayClient do
   it "should get the current ebay time" do
     web_client = SettableHttpClient.new "unused"
     web_client.set_response(SAMPLE_GET_EBAY_TIME_RESPONSE)
-    ebay_client = EbayClient.new(WebClient.new(web_client), NIL_API_KEY)
+    WebClient.client = web_client
+    ebay_client = EbayClient.new(NIL_API_KEY)
     current_time = ebay_client.get_current_time
     web_client.path[0].should == SAMPLE_GET_EBAY_TIME_REQUEST
     web_client.host.should == 'open.api.ebay.com'

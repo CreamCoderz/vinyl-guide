@@ -6,13 +6,9 @@ require 'remarkable/active_record'
 require 'factory_girl'
 require 'sunspot'
 require 'sunspot/rails'
-#TODO: this should be implicitly required
-require File.expand_path(File.join(File.dirname(__FILE__), 'factories', 'release_factory'))
-require File.expand_path(File.join(File.dirname(__FILE__), 'factories', 'ebay_item_factory'))
-require File.expand_path(File.join(File.dirname(__FILE__), 'factories', 'label_factory'))
-require File.expand_path(File.join(File.dirname(__FILE__), 'factories', 'format_factory'))
-require File.expand_path(File.join(File.dirname(__FILE__), 'factories', 'user_factory'))
-require File.expand_path(File.join(File.dirname(__FILE__), 'factories', 'comment_factory'))
+require 'webmock/rspec'
+
+Dir[Rails.root.join("spec/factories/**/*.rb")].each {|f| require f}
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -37,4 +33,8 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
+
+  config.before(:each) do
+    WebMock.disable_net_connect!(:allow_localhost => true)
+  end
 end
