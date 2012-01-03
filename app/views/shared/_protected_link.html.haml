@@ -1,0 +1,8 @@
+- if signed_in?
+  = content_for :protected_link
+- else
+  %p.sign-in-message
+    Please
+    =link_to('sign in', new_user_session_path)
+    to comment on this auction
+

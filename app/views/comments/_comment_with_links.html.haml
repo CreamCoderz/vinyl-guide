@@ -1,5 +1,4 @@
 - content_for "comment_#{comment.id}_links".to_sym do
-  = link_to 'View All Comments For This Item', polymorphic_path(comment.parent, :anchor => "comments")
   |
-  = link_to 'View Single Comment', comment_path(comment)
+  = link_to 'View All Comments For This Item', polymorphic_path(comment.parent, :anchor => "comments")
 = render :partial => 'comments/comment', :locals => {:comment => comment}

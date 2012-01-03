@@ -5,7 +5,7 @@ describe CommentsController do
     @ebay_item = Factory(:ebay_item)
   end
 
-  describe "create" do
+  describe "#create" do
     context "success" do
       before do
         @user = Factory(:confirmed_user)
@@ -79,6 +79,11 @@ describe CommentsController do
     it "assigns @comments" do
       get :index
       assigns[:comments].should == [@comment]
+    end
+    it "uses page param" do
+      Comment.stub(:order).and_return(Comment)
+      Comment.should_receive(:paginate).with(:page => 2, :per_page => 50)
+      get :index, :page => 2
     end
   end
 

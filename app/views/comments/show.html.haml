@@ -10,7 +10,7 @@
         = relative_past_time(@comment.created_at)
     .comment-body
       %span
-        = @comment.body
+        = simple_format(@comment.body)
       %span
     .comment-links
       = link_to 'View All Comments', comments_path

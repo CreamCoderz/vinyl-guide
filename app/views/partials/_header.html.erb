@@ -14,9 +14,15 @@
             <li><a href="/other?page=1">OTHER</a></li>
           </ul>
         </li>
-        <li><%= link_to 'RELEASES', releases_path %></li>
-        <li><%= link_to 'LABELS', labels_path %></li>
+        <li><%= link_to 'COMMENTS', comments_path %></li>
         <li><a href="/about/welcome">ABOUT</a></li>
+        <li>
+          <% if signed_in? %>
+            <%= link_to "SIGN OUT", destroy_user_session_path %>
+          <% else %>
+            <%= link_to "SIGN IN", new_user_session_path %>
+          <% end %>
+        </li>
       </ul>
       <div class="search-form">
         <form name="search" action="/search" method="get">

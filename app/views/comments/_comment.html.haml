@@ -12,7 +12,7 @@
         = link_to("Delete Comment", comment_path(comment), :method => :delete)
   .comment-body
     %span
-      = truncate(comment.body, :length => 120)
+      = truncate_with_link(comment)
     %span
+  = link_to 'View Comment', comment_path(comment)
   = content_for "comment_#{comment.id}_links".to_sym
-

@@ -27,3 +27,7 @@
 .user-info {
     color: #006600;
 }
+
+.sign-in-message {
+    clear: left;
+}

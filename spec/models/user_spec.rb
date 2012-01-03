@@ -2,7 +2,13 @@ require "spec_helper"
 
 describe User do
 
+  before do
+    Factory(:user)
+  end
+
   context "validations" do
+    it { should validate_uniqueness_of :username }
+
     it "allows alphanumeric and _ characters" do
       Factory.build(:user, :username => "jah_chicken_3").should be_valid
     end

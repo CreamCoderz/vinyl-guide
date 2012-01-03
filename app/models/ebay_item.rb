@@ -18,7 +18,7 @@ class EbayItem < ActiveRecord::Base
   belongs_to :format
 
   has_many :pictures, :foreign_key => "ebay_item_id"
-  has_many :comments, :as => :parent
+  has_many :comments, :as => :parent, :order => "created_at DESC"
 
   scope :all_time, lambda {}
   scope :singles, where(:format_id => Format::SINGLE.id)
