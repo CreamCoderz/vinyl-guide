@@ -8,11 +8,12 @@
     %span
       = relative_past_time(comment.created_at)
     - if current_user == comment.user
-      %span
-        = link_to("Delete Comment", comment_path(comment), :method => :delete)
   .comment-body
     %span
       = truncate_with_link(comment)
     %span
   = link_to 'View Comment', comment_path(comment)
+  - if current_user == comment.user
+    |
+    = link_to("Delete Comment", comment_path(comment), :method => :delete)
   = content_for "comment_#{comment.id}_links".to_sym
