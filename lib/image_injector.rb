@@ -25,7 +25,7 @@ class ImageInjector
 
   def write_image(image_name, image_content)
     if (verify_image(image_content))
-      f = File.new(@image_dir.path + image_name, "w")
+      f = File.new(VinylGuide::STORAGE_DIR.path + image_name, "w")
       f.syswrite(image_content)
       return true
     end

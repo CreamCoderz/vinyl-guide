@@ -1,4 +1,7 @@
 class EbayItem < ActiveRecord::Base
+  include ImageWriter
+  include ImageClient
+
   SEARCHABLE_FIELDS = ['title']
   DESC, ASC = 'desc', 'asc'
 
@@ -36,7 +39,8 @@ class EbayItem < ActiveRecord::Base
   @@per_page = 20
 
   before_save :set_format
-
+  after_create :inject_images
+  after_destroy :destroy_image
   after_save { |item| item.index! }
 
   searchable do
@@ -50,11 +54,15 @@ class EbayItem < ActiveRecord::Base
   end
 
   def related_items
-    release ? release.ebay_items.all(:conditions => "id != #{id}") : []
+    release ? release.ebay_items.where("id != #{id}") : []
   end
 
   def link
     "/#{self.id}"
+  end
+
+  def image_name
+    "/gallery/#{id}.jpg"
   end
 
   private
@@ -63,4 +71,15 @@ class EbayItem < ActiveRecord::Base
       FORMATS_BY_SIZE[format].include?(size)
     end
   end
+
+  def inject_images
+    update_attributes(:hasimage => true) if galleryimg && write_image(image_name, fetch(galleryimg))
+    true
+  end
+
+  def destroy_image
+    delete_image(image_name)
+  end
+
+
 end

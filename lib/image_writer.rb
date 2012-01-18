@@ -3,10 +3,14 @@ module ImageWriter
 
   def write_image(image_name, image_content)
     if verified = verify_image(image_content)
-      f = File.new(@image_dir.path + image_name, "w")
+      f = File.new(VinylGuide::STORAGE_DIR.path + image_name, "w")
       f.syswrite(image_content)
     end
     verified
+  end
+
+  def delete_image(image_name)
+    File.delete(VinylGuide::STORAGE_DIR.path + image_name)
   end
 
   def verify_image(image_content)

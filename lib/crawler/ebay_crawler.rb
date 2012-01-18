@@ -8,9 +8,8 @@ class EbayCrawler
   #wasteful hack to get around ebay's current api issues: http://dev-forums.ebay.com/thread.jspa?threadID=500016830&start=15&tstart=0
   CRAWLING_INTERVAL_SECONDS = 20 * 60
 
-  def initialize(ebay_client, image_dir=nil)
-    @ebay_client = ebay_client
-    @image_dir = image_dir
+  def initialize
+    @ebay_client = EbayClient.new(VinylGuide::EBAY_API_KEY)
   end
 
   def get_auctions
@@ -39,8 +38,10 @@ class EbayCrawler
                                  :currencytype => item_details.currencytype)
         if ebay_item.save
           pictureimgs = item_details.pictureimgs || []
-          total_pictures += pictureimgs.select { |pictureimg| Picture.new(:ebay_item_id => ebay_item.id, :url => pictureimg).save }.length
-          total_gallery += inject_images(ebay_item) if (@image_dir)
+          total_pictures += pictureimgs.select do |pictureimg|
+            Picture.new(:ebay_item_id => ebay_item.id, :url => pictureimg).save
+          end.length
+          total_gallery += 1 if ebay_item.hasimage
         end
       end
       ebay_auctions.destroy_all
@@ -48,18 +49,6 @@ class EbayCrawler
     EBAY_CRAWLER_LOGGER.info("#{Time.new} added #{added_items_count} of #{ebay_auctions.length} new item details")
     EBAY_CRAWLER_LOGGER.info("#{Time.new} added #{total_pictures} new pictures")
     EBAY_CRAWLER_LOGGER.info("#{Time.new} added #{total_gallery} new gallery pictures")
-  end
-
-  private
-
-  def inject_images(ebay_item)
-    num_gallery = 0
-    if ebay_item.galleryimg && write_image("/gallery/#{ebay_item.id}.jpg", fetch(ebay_item.galleryimg))
-      num_gallery += 1
-      ebay_item.hasimage = true
-      ebay_item.save
-    end
-    num_gallery
   end
 
 end
