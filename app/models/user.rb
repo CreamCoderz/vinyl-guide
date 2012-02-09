@@ -6,4 +6,6 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username
 
   attr_accessible :email, :username, :password, :password_confirmation, :remember_me
+
+  after_create lambda { |u| u.confirm! }
 end

@@ -20,4 +20,14 @@ describe User do
     end
   end
 
+  context "callbacks" do
+    context "after_create" do
+      it "autoconfirms a user" do
+        user = Factory.build(:user)
+        user.should_receive(:confirm!)
+        user.save!
+      end
+    end
+  end
+
 end
