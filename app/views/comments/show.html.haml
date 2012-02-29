@@ -5,7 +5,7 @@
         = gallery_img_for(@comment.parent).html_safe
     .user-info
       %span
-        = @comment.user.email
+        = @comment.user.username
       %span
         = relative_past_time(@comment.created_at)
     .comment-body
