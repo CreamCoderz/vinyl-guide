@@ -1,0 +1,13 @@
+.favorites
+  .numbered-pagination
+    = will_paginate @favorites, :previous_label => "< Prev", :next_label => "Next >"
+    .pagination-desc
+      %h3
+        = header_text("Favorites", @page_results)
+  %hr
+
+  = render :partial => 'favorites/favorites', :locals => {:favorites => @favorites}
+
+  %hr
+  .numbered-pagination
+    = will_paginate @favorites, :previous_label => "< Prev", :next_label => "Next >"

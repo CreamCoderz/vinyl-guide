@@ -62,14 +62,36 @@ describe EbayItemsController do
   end
 
   context "custom routes" do
-    ['lps', 'eps', 'singles', 'other'].each do |route|
+    [:lps, :eps, :singles, :other].each do |route|
       describe "##{route}" do
         before do
-          @items = [Factory("#{route.singularize}_ebay_item")]
+          @items = [Factory("#{route.to_s.singularize}_ebay_item")]
         end
         it "uses the #{route} scope to assign page_results" do
-          get route.to_sym
+          get route
           assigns[:page_results].items.should == @items
+        end
+        context "favorites" do
+
+          context "logged in" do
+            before do
+              user = Factory(:confirmed_user)
+              @favorite = Factory(:favorite, :user => user)
+              sign_in user
+            end
+            it "assigns @favorites" do
+              get route
+              assigns[:favorites].should == [@favorite]
+            end
+          end
+
+          context "logged out" do
+            it "assigns @favorites to an empty array" do
+              get route
+              assigns[:favorites].should == []
+            end
+          end
+
         end
       end
     end

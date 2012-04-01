@@ -1,0 +1,3 @@
+%ul.ebay-items
+  - favorites.each do |favorite|
+    = render :partial=> "partials/ebay_item_abbrv", :locals => {:ebay_item => favorite.ebay_item}

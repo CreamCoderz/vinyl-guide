@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111120051048) do
+ActiveRecord::Schema.define(:version => 20120205060712) do
 
   create_table "comments", :force => true do |t|
     t.integer  "parent_id"
@@ -53,18 +53,26 @@ ActiveRecord::Schema.define(:version => 20111120051048) do
     t.integer  "format_id"
   end
 
-  add_index "ebay_items", ["endtime", "price"], :name => "endtime"
+  add_index "ebay_items", ["endtime"], :name => "index_ebay_items_on_endtime"
   add_index "ebay_items", ["format_id", "endtime"], :name => "index_ebay_items_on_format_id_and_endtime"
   add_index "ebay_items", ["format_id", "price"], :name => "index_ebay_items_on_format_id_and_price"
   add_index "ebay_items", ["format_id", "title"], :name => "index_ebay_items_on_format_id_and_title"
   add_index "ebay_items", ["format_id"], :name => "index_ebay_items_on_format_id"
   add_index "ebay_items", ["itemid"], :name => "index_ebay_items_on_itemid"
   add_index "ebay_items", ["price", "format_id"], :name => "index_ebay_items_on_price_and_format_id"
-  add_index "ebay_items", ["price"], :name => "price"
   add_index "ebay_items", ["release_id"], :name => "index_ebay_items_on_release_id"
   add_index "ebay_items", ["size"], :name => "index_ebay_items_on_size"
   add_index "ebay_items", ["title", "format_id"], :name => "index_ebay_items_on_title_and_format_id"
   add_index "ebay_items", ["title"], :name => "index_ebay_items_on_title"
+
+  create_table "favorites", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "ebay_item_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "favorites", ["user_id"], :name => "index_favorites_on_user_id"
 
   create_table "formats", :force => true do |t|
     t.string "name"
@@ -80,7 +88,6 @@ ActiveRecord::Schema.define(:version => 20111120051048) do
   create_table "pictures", :force => true do |t|
     t.integer "ebay_item_id"
     t.string  "url"
-    t.boolean "hasimage"
   end
 
   add_index "pictures", ["ebay_item_id"], :name => "index_pictures_on_ebay_item_id"
@@ -99,16 +106,15 @@ ActiveRecord::Schema.define(:version => 20111120051048) do
   add_index "releases", ["label_id"], :name => "index_releases_on_label_id"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                               :default => "", :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
-    t.string   "password_salt",                       :default => "", :null => false
+    t.string   "email",                                 :default => "", :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "reset_password_token"
-    t.string   "remember_token"
+    t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                       :default => 0
+    t.integer  "sign_in_count",                         :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"

@@ -1,0 +1,53 @@
+.favorites hr {
+    clear: left;
+}
+
+.item-row .add-to-favorites {
+    float: left;
+    height: 16px;
+    font-size: 12px;
+}
+
+.add-to-favorites input[type=submit], .add-to-favorites a {
+    line-height: 13px;
+    font-size: 12px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    border: 2px solid #900;
+    padding: 1px 6px;
+    display: block;
+}
+
+.add-to-favorites a {
+    height: 13px;
+}
+
+.new_favorite input[type="submit"] {
+    background-color: #FFF;
+    color: #060;
+    font-weight: normal;
+    padding: 1px 6px;
+}
+
+.edit_favorite input[type="submit"] {
+    background-color: #FFF;
+    color: #900;
+    font-weight: normal;
+    padding: 1px 6px;
+}
+
+.numbered-pagination .pagination {
+    float: left;
+    margin-top: 5px;
+}
+
+.numbered-pagination .pagination-desc {
+    margin-left: 10px;
+    float: left;
+}
+
+.numbered-pagination .pagination-desc h3 {
+    margin-top: 0;
+    margin-left :50px;
+}

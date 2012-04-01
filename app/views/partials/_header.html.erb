@@ -18,7 +18,7 @@
         <li><a href="/about/welcome">ABOUT</a></li>
         <li>
           <% if signed_in? %>
-            <%= link_to "SIGN OUT", destroy_user_session_path %>
+            <%= link_to "MY ITEMS", user_path(current_user) %>
           <% else %>
             <%= link_to "SIGN IN", new_user_session_path %>
           <% end %>

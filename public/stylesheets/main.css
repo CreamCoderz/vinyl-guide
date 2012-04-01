@@ -107,11 +107,6 @@ a:active {
     background: #990000;
 }
 
-.recordItem {
-    margin: 2px;
-    list-style: none;
-}
-
 .container {
     width: 1180px;
     margin: 10px;
@@ -440,29 +435,6 @@ table.item-list-header {
 
 .align-right {
     text-align: right;
-}
-
-ul.ebay-items {
-    margin: 0;
-}
-
-ul.ebay-items li {
-    padding-top: 2px;
-    padding-bottom: 10px;
-}
-
-ul.ebay-items li img {
-    float: left;
-    padding: 8px 26px 10px;
-}
-
-ul.ebay-items li p {
-    margin-top: 8px;
-}
-
-ul.ebay-items li table tr td {
-    padding-top: 8px;
-    padding-right: 20px;
 }
 
 #time form {

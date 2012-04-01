@@ -3,6 +3,7 @@
 <ol>
   <li>&bull; Contribute to the knowledge base</li>
   <li>&bull; Voice your opinions</li>
+  <li>&bull; Track your favorites</li>
 </ol>
 
 <%= form_for resource_name, resource, :url => registration_path(resource_name) do |f| -%>
@@ -21,5 +22,8 @@
 
   <p><%= f.submit "Sign up" %></p>
 <% end -%>
+
+<p>Note: Your email will NEVER be sold or displayed.</p>
+<p>Your password is encrypted and unknown to site administrators.</p>
 
 <p>Already have an account? <%= link_to 'Sign in!', new_user_session_path %></p>
