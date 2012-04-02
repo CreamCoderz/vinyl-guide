@@ -57,7 +57,7 @@ describe FavoritesController do
             response.status.should == 400
           end
           it "includes errors in the json" do
-            JSON.parse(response.body)['errors'].should be_present
+            JSON.parse(response.body)['error'].should be_present
           end
         end
       end

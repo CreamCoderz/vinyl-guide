@@ -5,10 +5,20 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   def authorize_user
-    render :nothing => true, :status => :forbidden if current_user.id != params[:id].to_i
+    if current_user.id != params[:id].to_i
+      respond_to do |format|
+        format.html { render :nothing => true, :status => :forbidden }
+        format.json { render :json => {:error => "You are not authorized to take this action"}, :status => :forbidden }
+      end
+    end
   end
 
   def authorize_nested_user
-    render :nothing => true, :status => :forbidden if current_user.id != params[:user_id].to_i
+    if current_user.id != params[:user_id].to_i
+      respond_to do |format|
+        format.html { render :nothing => true, :status => :forbidden }
+        format.json { render :json => {:error => "You are not authorized to take this action"}, :status => :forbidden }
+      end
+    end
   end
 end

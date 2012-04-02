@@ -17,7 +17,7 @@ class FavoritesController < ApplicationController
         end
       else
         format.html { redirect_to request.referrer, :notice => "An error occurred. #{favorite.errors.full_messages}" }
-        format.json { render :json => {:errors => favorite.errors.full_messages}, :status => 400 }
+        format.json { render :json => {:error => favorite.errors.full_messages}, :status => 400 }
       end
     end
   end
