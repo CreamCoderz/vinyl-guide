@@ -65,6 +65,15 @@ ActiveRecord::Schema.define(:version => 20120310212811) do
   add_index "ebay_items", ["title", "format_id"], :name => "index_ebay_items_on_title_and_format_id"
   add_index "ebay_items", ["title"], :name => "index_ebay_items_on_title"
 
+  create_table "favorites", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "ebay_item_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "favorites", ["user_id"], :name => "index_favorites_on_user_id"
+
   create_table "formats", :force => true do |t|
     t.string "name"
   end

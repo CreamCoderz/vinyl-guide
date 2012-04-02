@@ -3,8 +3,13 @@ VinylGuide::Application.routes.draw do
       :registrations => "registrations",
       :sessions => 'sessions',
       :confirmations => 'confirmations',
-      :passwords => 'passwords'
+      :passwords => 'passwords',
   }
+
+  resources :users do
+    resources :favorites
+  end
+
   resources :labels
   resources :releases do
     collection do

@@ -1,0 +1,14 @@
+%h3
+  = "Welcome to your page #{@user.username}"
+%p
+  = link_to "Sign Out", destroy_user_session_path
+%p
+  = @favorites.empty? ? "No Favorites Yet.." : "Last #{pluralize(@favorites.length, 'Favorite')}"
+  = link_to '(show all favorites)', user_favorites_path(@user) if @favorites.count > 3
+= render :partial => 'favorites/favorites', :locals => {:favorites => @favorites}
+
+
+%p
+  = @comments.empty? ? "No Comments Yet.." : "Last #{pluralize(@comments.length, 'Comment')}"
+= render :partial => "comments/comments", :locals => {:comments => @comments}
+

@@ -8,4 +8,6 @@ class User < ActiveRecord::Base
   attr_accessible :email, :username, :password, :password_confirmation, :remember_me
 
   after_create lambda { |u| u.confirm! }
+  has_many :favorites
+  has_many :comments
 end

@@ -3,6 +3,7 @@ class EbayItemsController < ApplicationController
 
   before_filter :set_sortable_fields, :only => [:all, :singles, :eps, :lps, :other, :home]
   before_filter :set_page_num, :only => [:all, :singles, :eps, :lps, :other]
+  before_filter :set_favorites, :only => [:all, :singles, :eps, :lps, :other]
   before_filter :find_ebay_item, :only => [:edit, :update, :show]
   before_filter :set_release, :only => [:show]
 
@@ -19,7 +20,7 @@ class EbayItemsController < ApplicationController
       flash[:notice] = 'The auction was successfully updated.'
       if request.xhr?
         @controls = true
-        render :template => "partials/_ebay_item_abbrv.erb", :layout => false, :locals => {:ebay_item => @ebay_item}
+        render :template => "partials/_ebay_item_abbrv.html.haml", :layout => false, :locals => {:ebay_item => @ebay_item}
       else
         redirect_to ebay_item_path(@ebay_item)
       end
@@ -62,6 +63,10 @@ class EbayItemsController < ApplicationController
 
   def set_page_num
     @page_num = ParamsParser.parse_page_param(params)
+  end
+
+  def set_favorites
+    @favorites = current_user.present? ? current_user.favorites : []
   end
 
   def find_ebay_item
