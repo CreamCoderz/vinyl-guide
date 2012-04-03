@@ -24,6 +24,8 @@ function Favorite(successData) {
         var errorData = $.parseJSON("" + jqXHR.responseText);
         alert(errorData.error);
         form.find('input[type=submit]').attr('value', beforeSubmitText);
+        // refresh the page to resolve a bad state
+        window.location = window.location
     };
 
     var formConfig = {
