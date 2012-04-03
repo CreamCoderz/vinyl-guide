@@ -43,7 +43,7 @@ label {
     font-family: Courier, sans-serif;
     font-size: 20px;
     border: 2px solid #FF9900;
-    width: 228px;
+    width: 227px;
 }
 
 input, select, textarea {
@@ -347,7 +347,11 @@ a.selected.desc {
     margin: 0 8px;
     padding: 0 15px 0 0;
     float: left;
-    background: #006600 url('/images/menu_down.png') no-repeat 100px 4px;
+    background: #006600 url('/images/menu_down.png') no-repeat 100px 7px;
+}
+
+.auction-menu ul > li.more.account {
+    background: #006600 url('/images/menu_down.png') no-repeat 90px 7px;
 }
 
 .auction-menu {
@@ -363,6 +367,10 @@ a.selected.desc {
     display: block;
     min-width: 90px;
     overflow: hidden;
+}
+
+.auction-menu ul li.more.account a {
+    min-width: 100px;
 }
 
 .auction-menu ul {

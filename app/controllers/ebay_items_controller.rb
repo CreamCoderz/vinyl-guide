@@ -30,7 +30,6 @@ class EbayItemsController < ApplicationController
   end
 
   def home
-    flash.now[:notice] = "If you have recently created an account, you should now be able to log in without any issues." unless current_user
     @ebay_items = Rails.cache.fetch("recent-items", :expires_in => 5.minutes) { EbayItem.all(:order => 'endtime DESC', :limit => PAGE_LIMIT) }
     @top_items = Rails.cache.fetch("top-items", :expires_in => 5.minutes) { EbayItem.top_items.all }
   end

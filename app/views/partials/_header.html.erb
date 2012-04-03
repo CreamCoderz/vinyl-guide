@@ -16,13 +16,19 @@
         </li>
         <li><%= link_to 'COMMENTS', comments_path %></li>
         <li><a href="/about/welcome">ABOUT</a></li>
-        <li>
           <% if signed_in? %>
-            <%= link_to "MY ITEMS", user_path(current_user) %>
+            <li class="more account">
+              <span><%= link_to "ACCOUNT", user_path(current_user) %></span>
+              <ul>
+                <li><%= link_to "MY PAGE", user_path(current_user) %></li>
+                <li><%= link_to "SIGN OUT", destroy_user_session_path %></li>
+              </ul>
+            </li>
           <% else %>
-            <%= link_to "SIGN IN", new_user_session_path %>
+            <li>
+                <%= link_to "SIGN IN", new_user_session_path %>
+            </li>
           <% end %>
-        </li>
       </ul>
       <div class="search-form">
         <form name="search" action="/search" method="get">
