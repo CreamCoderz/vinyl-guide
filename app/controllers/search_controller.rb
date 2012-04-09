@@ -1,5 +1,7 @@
 class SearchController < ApplicationController
 
+  before_filter :set_favorites
+
   def search
     page_num = ParamsParser.parse_page_param(params)
     @query = ParamsParser.parse_query_param(params)
@@ -21,6 +23,12 @@ class SearchController < ApplicationController
     if request.xml_http_request?
       render :json => {:hits => @page_results.total, :ebay_items => JSON.parse(@page_results.items.to_json(:only => [:id, :title], :methods => [:link]))}
     end
+  end
+
+  private
+
+  def set_favorites
+    @favorites = current_user.present? ? current_user.favorites : []
   end
 
 end
