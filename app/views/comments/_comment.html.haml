@@ -7,7 +7,6 @@
       = comment.user.username
     %span
       = relative_past_time(comment.created_at)
-    - if current_user == comment.user
   .comment-body
     %span
       = truncate_with_link(comment)

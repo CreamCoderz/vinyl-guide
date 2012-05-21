@@ -1,5 +1,5 @@
 %h2 Sign in
-= form_for resource_name, resource, :url => session_path(resource_name) do |f|
+= form_for resource, :url => session_path(resource_name) do |f|
   = hidden_field_tag :redirect_url, @redirect_url
   %p= f.label :email
   %p= f.text_field :email
