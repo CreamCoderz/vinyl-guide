@@ -26,7 +26,7 @@ VinylGuide::Application.configure do
 
   config.cache_store = :dalli_store
 
-  PROPERTIES = YAML.load_file("config/build.development.yml")
+  PROPERTIES = YAML.load_file("#{Rails.root}/config/build.development.yml")
 
 end
 

@@ -55,4 +55,7 @@ VinylGuide::Application.configure do
   config.action_mailer.smtp_settings = {
       :domain => 'www.rootsvinylguide.com',
   }
+
+  PROPERTIES = YAML.load_file("#{Rails.root}/config/build.production.yml")
+
 end
