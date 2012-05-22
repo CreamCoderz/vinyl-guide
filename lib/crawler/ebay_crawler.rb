@@ -37,6 +37,7 @@ class EbayCrawler
                                  :speed => item_details.speed, :condition => item_details.condition, :subgenre => item_details.subgenre,
                                  :currencytype => item_details.currencytype)
         if ebay_item.save
+          added_items_count += 1
           pictureimgs = item_details.pictureimgs || []
           total_pictures += pictureimgs.select do |pictureimg|
             Picture.new(:ebay_item_id => ebay_item.id, :url => pictureimg).save
