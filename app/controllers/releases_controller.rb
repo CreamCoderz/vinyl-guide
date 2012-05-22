@@ -4,7 +4,7 @@ class ReleasesController < ApplicationController
 
   def index
     @page_num = ParamsParser.parse_page_param(params)
-    release_results = Release.paginate(:all, :order => "artist ASC", :include => [:label_entity, :format, :ebay_items], :page => @page_num, :per_page => '20')
+    release_results = Release.includes(:label_entity, :format, :ebay_items).order("artist ASC").paginate(:page => @page_num, :per_page => '20')
     @page_results = Paginator::Result.new(:paginated_results => release_results)
     @releases = @page_results.items
     @parsed_params = ParsedParams.new({})
@@ -15,7 +15,7 @@ class ReleasesController < ApplicationController
   end
 
   def show
-    @release = Release.find(params[:id], :include => [:label_entity, :format, :ebay_items])
+    @release = Release.includes(:label_entity, :format, :ebay_items).find(params[:id])
     @page_results = Paginator::Result.from_items(@release.ebay_items)
     @controls = true
     respond_to do |format|

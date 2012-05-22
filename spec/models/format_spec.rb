@@ -31,7 +31,7 @@ describe Format do
 
     it "should validate uniqueness of name" do
       Format.create!(:name => "EL-P")
-      Format.create(:name => "EL-P").errors.on(:name).should == "The name must be unique"
+      Format.create(:name => "EL-P").errors[:name].should include("The name must be unique")
     end
   end
 end

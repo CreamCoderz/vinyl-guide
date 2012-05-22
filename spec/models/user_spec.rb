@@ -7,8 +7,8 @@ describe User do
   end
 
   context "associations" do
-    it { should have_many(:favorites) }
-    it { should have_many(:comments) }
+    it { should have_many(:favorites, :order => 'created_at DESC') }
+    it { should have_many(:comments, :order => 'created_at DESC') }
   end
 
   context "validations" do

@@ -35,5 +35,5 @@ VinylGuide::Application.configure do
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
 
-  PROPERTIES = YAML.load_file("config/build.test.yml")
+  PROPERTIES = YAML.load_file("#{Rails.root}/config/build.test.yml")
 end

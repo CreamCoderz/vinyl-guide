@@ -4,6 +4,7 @@ describe FavoritesController do
 
   before do
     @user = Factory(:confirmed_user)
+    request.stub(:referrer).and_return(root_path)
   end
 
   describe "#create" do

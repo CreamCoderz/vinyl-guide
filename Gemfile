@@ -24,6 +24,6 @@ group :test do
   gem 'rspec', '2.5'
   gem "rspec-rails", "2.5"
   gem 'test-unit', '1.2.3'
-  gem "remarkable_activerecord"
+  gem 'remarkable_activerecord', :git => 'git://github.com/KingOfWeb/remarkable.git', :branch => 'rails-3.1'
   gem 'webmock'
 end

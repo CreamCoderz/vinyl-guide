@@ -34,8 +34,8 @@ describe Label do
   describe "constraints" do
     it "should validate uniqueness of name" do
       Label.create!(:name => "Studio One")
-      Label.create(:name => "Studio One").errors.on(:name).should == "The label name must be unique."
-      Label.create(:name => "sTuDio oNE").errors.on(:name).should == "The label name must be unique."
+      Label.create(:name => "Studio One").errors[:name].should include("The label name must be unique.")
+      Label.create(:name => "sTuDio oNE").errors[:name].should include("The label name must be unique.")
     end
 
     it "should delete all references to itself when destroyed" do

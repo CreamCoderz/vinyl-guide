@@ -114,7 +114,7 @@ describe Release do
       Release.create!(@valid_attributes)
       @valid_attributes[:format_id] = (Format::EP).id
       Release.create!(@valid_attributes)
-      Release.create(@valid_attributes).errors.on(:title).should == "The release must not match an existing combination of fields"
+      Release.create(@valid_attributes).errors[:title].should include("The release must not match an existing combination of fields")
     end
 
     it "should allow LP, EP, or single for the format field" do
@@ -127,12 +127,12 @@ describe Release do
     describe "#create" do
       it "should not allow any other format value" do
         @valid_attributes[:format_id] = 20000
-        Release.create(@valid_attributes).errors.on(:format).should == "the format must exist"
+        Release.create(@valid_attributes).errors[:format].should include("the format must exist")
       end
 
       it "should only allow 4 digit dates" do
         @valid_attributes[:year] = 12
-        Release.create(@valid_attributes).errors.on(:year).should == "the year must have 4 digits and be valid"
+        Release.create(@valid_attributes).errors[:year].should include("the year must have 4 digits and be valid")
       end
     end
 
@@ -140,7 +140,7 @@ describe Release do
       it "should no allow any other format values on update" do
         Release.create!(@valid_attributes)
         @valid_attributes[:format_id] = 20000
-        Release.create(@valid_attributes).errors.on(:format).should == "the format must exist"
+        Release.create(@valid_attributes).errors[:format].should include("the format must exist")
       end
     end
 

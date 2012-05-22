@@ -3,6 +3,7 @@ require 'spec_helper'
 describe CommentsController do
   before do
     @ebay_item = Factory(:ebay_item)
+    request.stub(:referrer).and_return(root_path)
   end
 
   describe "#create" do
@@ -82,7 +83,7 @@ describe CommentsController do
     end
     it "uses page param" do
       Comment.stub(:order).and_return(Comment)
-      Comment.should_receive(:paginate).with(:page => 2, :per_page => 50)
+      Comment.should_receive(:paginate).with(:page => "2", :per_page => 50)
       get :index, :page => 2
     end
   end

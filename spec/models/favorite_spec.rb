@@ -12,7 +12,7 @@ describe Favorite do
     end
     it { should validate_presence_of :user }
     it { should validate_presence_of :ebay_item }
-    it { should validate_uniqueness_of :user_id, :scope => :ebay_item_id, :message => 'You have already added this item to your favorites!'}
+    it { should validate_uniqueness_of :user_id, :scope => :ebay_item_id, :message => '- You have already added this item to your favorites!'}
   end
 
   context "scopes" do
