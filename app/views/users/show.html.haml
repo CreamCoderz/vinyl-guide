@@ -2,7 +2,7 @@
   = "Welcome to your page #{@user.username}"
 %p
   = @favorites.empty? ? "No Favorites Yet.." : "Last #{pluralize(@favorites.length, 'Favorite')}"
-  = link_to '(show all favorites)', user_favorites_path(@user) if @favorites.count > 3
+  = link_to '(show all favorites)', user_favorites_path(@user)
 = render :partial => 'favorites/favorites', :locals => {:favorites => @favorites}
 
 
