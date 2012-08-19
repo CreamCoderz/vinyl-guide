@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120310212811) do
+ActiveRecord::Schema.define(:version => 20120720071358) do
 
   create_table "comments", :force => true do |t|
     t.integer  "parent_id"
@@ -30,7 +31,7 @@ ActiveRecord::Schema.define(:version => 20120310212811) do
   end
 
   create_table "ebay_items", :force => true do |t|
-    t.integer  "itemid",       :limit => 8
+    t.integer  "itemid",        :limit => 8
     t.text     "description"
     t.integer  "bidcount"
     t.float    "price"
@@ -51,6 +52,8 @@ ActiveRecord::Schema.define(:version => 20120310212811) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "format_id"
+    t.string   "gallery_image"
+    t.string   "slug"
   end
 
   add_index "ebay_items", ["endtime"], :name => "index_ebay_items_on_endtime"
@@ -62,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20120310212811) do
   add_index "ebay_items", ["price", "format_id"], :name => "index_ebay_items_on_price_and_format_id"
   add_index "ebay_items", ["release_id"], :name => "index_ebay_items_on_release_id"
   add_index "ebay_items", ["size"], :name => "index_ebay_items_on_size"
+  add_index "ebay_items", ["slug"], :name => "index_ebay_items_on_slug", :unique => true
   add_index "ebay_items", ["title", "format_id"], :name => "index_ebay_items_on_title_and_format_id"
   add_index "ebay_items", ["title"], :name => "index_ebay_items_on_title"
 

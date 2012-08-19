@@ -35,14 +35,18 @@ describe EbayItemsController do
       @ebay_item = Factory(:ebay_item, :release => @release)
     end
     it "should assign an empty array of related ebay items" do
-      get :show, :id => @ebay_item.id
+      get :show, :id => @ebay_item
       assigns[:ebay_item].should == @ebay_item
       assigns[:related_ebay_items].should be_empty
     end
     it "should assign the related ebay item" do
       related_ebay_item = Factory(:ebay_item, :release => @release)
-      get :show, :id => @ebay_item.id
+      get :show, :id => @ebay_item
       assigns[:related_ebay_items].should == [related_ebay_item]
+    end
+    it "redirects to the friendly url when an id is specified in the path" do
+      get :show, :id => @ebay_item.id
+      response.should redirect_to(ebay_item_path(@ebay_item))
     end
   end
 
@@ -146,5 +150,12 @@ describe EbayItemsController do
       end
     end
 
+  end
+
+  describe "#redirect_to_friendly_url" do
+    it "redirects to the friendly url when an id is specified in the path" do
+      request.stub(:path).and_return(mock_ebay_item.id)
+      contoller.send(:redirect_to_friendly_url).should redirect_to(ebay_)
+    end
   end
 end

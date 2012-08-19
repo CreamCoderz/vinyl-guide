@@ -6,6 +6,7 @@ class EbayItemsController < ApplicationController
   before_filter :set_favorites, :only => [:all, :singles, :eps, :lps, :other, :update]
   before_filter :find_ebay_item, :only => [:edit, :update, :show]
   before_filter :set_release, :only => [:show]
+  before_filter :redirect_to_friendly_url, :only => [:show]
 
   def index
     @release = Release.find(params[:release_id], :include => :ebay_items)
@@ -75,5 +76,11 @@ class EbayItemsController < ApplicationController
   def set_release
     @release = Release.new
     @release.label_entity = Label.new
+  end
+
+  def redirect_to_friendly_url
+    if request.path != ebay_item_path(@ebay_item)
+      redirect_to @ebay_item, status: :moved_permanently
+    end
   end
 end

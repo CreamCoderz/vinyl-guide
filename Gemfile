@@ -5,7 +5,7 @@ gem "rails", "~> 3.2"
 gem "rake", "!= 0.9.0"
 gem "mysql", "2.8.1"
 gem "cobravsmongoose", "0.0.2"
-gem 'nokogiri', '1.4.3.1'
+gem 'nokogiri', '~> 1.5.0'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'will_paginate'
@@ -19,6 +19,9 @@ gem 'haml', '3.1.4'
 gem 'jquery-rails'
 gem 'newrelic_rpm'
 gem 'dalli'
+gem 'carrierwave'
+gem "fog", "~> 1.3.1"
+gem 'friendly_id', "~> 4.0.1"
 
 group :test do
   gem 'rspec', '2.5'

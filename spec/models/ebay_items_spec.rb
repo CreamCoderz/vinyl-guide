@@ -129,4 +129,19 @@ describe EbayItem do
       ebay_item.link.should == "/#{ebay_item.id}"
     end
   end
+
+  describe "#legacy_gallery_path" do
+    before do
+      @ebay_item = Factory.create(:ebay_item)
+    end
+    it "returns a path to the image using the ebay_item id" do
+      @ebay_item.hasimage = true
+      @ebay_item.legacy_gallery_path.should == "/images/gallery/#{@ebay_item.id}.jpg"
+    end
+    it "returns a path to the default image when hasimage is false" do
+      @ebay_item.hasimage = false
+      @ebay_item.legacy_gallery_path.should == "/images/noimage.jpg"
+    end
+  end
+
 end

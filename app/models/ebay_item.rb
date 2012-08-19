@@ -1,6 +1,7 @@
 class EbayItem < ActiveRecord::Base
   include ImageWriter
   include ImageClient
+  extend FriendlyId
 
   SEARCHABLE_FIELDS = ['title']
   DESC, ASC = 'desc', 'asc'
@@ -15,6 +16,7 @@ class EbayItem < ActiveRecord::Base
   validates_uniqueness_of :itemid
   validates_numericality_of :price
   validates_numericality_of :bidcount
+  validates_presence_of :title
   validates_presence_of :url
 
   belongs_to :release
@@ -22,6 +24,9 @@ class EbayItem < ActiveRecord::Base
 
   has_many :pictures, :foreign_key => "ebay_item_id"
   has_many :comments, :as => :parent, :order => "created_at DESC"
+
+  mount_uploader :gallery_image, GalleryImageUploader
+  friendly_id :title, :use => :slugged
 
   scope :all_time, lambda {}
   scope :singles, where(:format_id => Format::SINGLE.id)
@@ -40,6 +45,7 @@ class EbayItem < ActiveRecord::Base
 
   before_save :set_format
   after_create :inject_images
+  after_create :set_gallery_image
   after_destroy :destroy_image
   after_save { |item| item.index! }
 
@@ -65,6 +71,10 @@ class EbayItem < ActiveRecord::Base
     "/gallery/#{id}.jpg"
   end
 
+  def legacy_gallery_path
+    hasimage ? "/images#{image_name}" : "/images/noimage.jpg"
+  end
+
   private
   def set_format
     self.format ||= FORMATS_BY_SIZE.keys.detect do |format|
@@ -81,5 +91,8 @@ class EbayItem < ActiveRecord::Base
     delete_image(image_name)
   end
 
+  def set_gallery_image
+    self.gallery_image = read_image(image_name)
+  end
 
 end

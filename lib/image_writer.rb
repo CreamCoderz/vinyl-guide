@@ -13,6 +13,10 @@ module ImageWriter
     File.delete(VinylGuide::STORAGE_DIR.path + image_name)
   end
 
+  def read_image(image_name)
+    File.open(VinylGuide::STORAGE_DIR.path + image_name)
+  end
+
   def verify_image(image_content)
     image_content.present? && DEFAULT_EBAY_IMAGE != image_content
   end
