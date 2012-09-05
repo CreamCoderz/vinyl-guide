@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120720071358) do
+ActiveRecord::Schema.define(:version => 20120828055210) do
 
   create_table "comments", :force => true do |t|
     t.integer  "parent_id"
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(:version => 20120720071358) do
   create_table "pictures", :force => true do |t|
     t.integer "ebay_item_id"
     t.string  "url"
+    t.string  "image"
   end
 
   add_index "pictures", ["ebay_item_id"], :name => "index_pictures_on_ebay_item_id"

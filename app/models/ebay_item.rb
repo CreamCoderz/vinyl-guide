@@ -45,7 +45,7 @@ class EbayItem < ActiveRecord::Base
 
   before_save :set_format
   after_create :inject_images
-  after_create :set_gallery_image
+  after_create :save_gallery_image
   after_destroy :destroy_image
   after_save { |item| item.index! }
 
@@ -91,8 +91,9 @@ class EbayItem < ActiveRecord::Base
     delete_image(image_name)
   end
 
-  def set_gallery_image
+  def save_gallery_image
     self.gallery_image = read_image(image_name)
+    save!
   end
 
 end

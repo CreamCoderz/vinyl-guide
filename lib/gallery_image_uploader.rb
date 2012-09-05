@@ -9,7 +9,9 @@ class GalleryImageUploader < CarrierWave::Uploader::Base
   end
 
   def filename
-    raise "Model slug not present for: #{model.inspect}" if model.slug.blank?
-    model.slug
+    if model.gallery_image.present?
+      raise "Model slug not present for: #{model.inspect}" if model.slug.blank?
+      model.slug
+    end
   end
 end
