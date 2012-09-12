@@ -5,7 +5,7 @@ require File.dirname(__FILE__) + '/ebay_time_parser'
 class EbayClient
   FIND_ITEMS_CALL = 'FindItemsAdvanced'
   FIND_ITEMS_BASE_CALL = 'services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME='
-  FIND_COUNTRY_DATA = {'EBAY-US' => 'Reggae%20%26%20Ska', 'EBAY-GB' => 'Reggae%2F+Ska'}
+  FIND_COUNTRY_DATA = {'EBAY-US' => 'Reggae%2C%20Ska%20%26%20Dub', 'EBAY-GB' => 'Reggae%2F%20Ska'}
 
   GET_ITEM_DETAILS_CALL = 'GetMultipleItems'
   GET_EBAY_TIME = 'geteBayTime'
@@ -13,6 +13,8 @@ class EbayClient
 
   BASE_FIND_URL = 'http://svcs.ebay.com/'
   BASE_DETAILS_URL = 'http://open.api.ebay.com/'
+
+  CATEGORY_ID = 176985
 
   def initialize(api_key)
     @api_key = api_key
@@ -26,6 +28,7 @@ class EbayClient
       page_num = 1
       while !is_last_page
         find_items_url = generate_find_items_advanced_url(global_id, sub_genre, end_time_from_utc, page_num)
+        p find_items_url
         response = WebClient.get(find_items_url)
         find_items_parser = EbayFindItemsParser.new(response.body)
         results.concat(find_items_parser.get_items)
@@ -59,7 +62,7 @@ class EbayClient
   private
 
   def generate_find_items_advanced_url(global_id, sub_genre, end_time, page_num)
-    "#{BASE_FIND_URL}#{FIND_ITEMS_BASE_CALL}#{@api_key}&GLOBAL-ID=#{global_id}&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&categoryId=306&aspectFilter%280%29.aspectName=Genre&aspectFilter%280%29.aspectValueName=#{sub_genre}&itemFilter.name=EndTimeTo&itemFilter.value=#{end_time}&paginationInput.pageNumber=#{page_num}"
+    "#{BASE_FIND_URL}#{FIND_ITEMS_BASE_CALL}#{@api_key}&GLOBAL-ID=#{global_id}&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&categoryId=#{CATEGORY_ID}&aspectFilter%280%29.aspectName=Genre&aspectFilter%280%29.aspectValueName=#{sub_genre}&itemFilter.name=EndTimeTo&itemFilter.value=#{end_time}&paginationInput.pageNumber=#{page_num}"
   end
 
   def generate_get_details_url(item_ids_query)
