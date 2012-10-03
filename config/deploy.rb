@@ -14,7 +14,7 @@ $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 # Load RVM's capistrano plugin.
 require "rvm/capistrano"
 
-set :rvm_ruby_string, '1.9.2'
+set :rvm_ruby_string, '1.9.3'
 set :rvm_type, :user  # Don't use system-wide RVM
 
 
@@ -41,7 +41,7 @@ before 'deploy:restart', 'deploy:migrate'
 namespace :deploy do
 
   desc "Symlink config files"
-  task :create_conf_symlinks, :roles => [:app, :web, :db] do
+  task :create_conf_symlinks, :roles => [:app, :web, :db, :util] do
     run "ln -s #{shared_path}/system/config/database.yml #{current_path}/config/database.yml"
     run "ln -s #{shared_path}/system/config/newrelic.yml #{current_path}/config/newrelic.yml"
     run "ln -s #{shared_path}/system/config/build.#{rails_env}.yml #{current_path}/config/build.#{rails_env}.yml"
@@ -54,12 +54,11 @@ namespace :deploy do
   end
 
   task :bundle_install, :roles => [:web, :db] do
-    bundle_dir = File.join(shared_path, 'bundle')
-    run "cd #{current_release}; bundle install --path #{bundle_dir}"
+    run "cd #{current_release}; bundle install"
   end
 
   desc "start solr"
-  task :start_solr, :roles => [:app, :web, :db] do
+  task :start_solr, :roles => [:util] do
     run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:stop || true"
     run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:start"
   end

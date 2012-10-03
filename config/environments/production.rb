@@ -47,7 +47,7 @@ VinylGuide::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  config.cache_store = :dalli_store, '10.176.161.115'
+  config.cache_store = :dalli_store, '10.180.27.250'
 
   config.action_mailer.default_url_options = { :host => "www.rootsvinylguide.com" }
   config.action_mailer.logger = Rails.logger

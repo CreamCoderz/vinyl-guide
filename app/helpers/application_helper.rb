@@ -5,20 +5,17 @@ module ApplicationHelper
   CURRENCY_SYMBOLS = {'USD' => '$', 'GBP' => '&pound;', 'AUD' => '$', 'CAD' => '$', 'CHF' => '?', 'CNY' => '&yen;', 'EUR' => '&euro;',
                       'HKD' => '$', 'INR' => 'INR', 'MYR' => 'MYR', 'PHP' => 'PHP', 'PLN' => 'PLN', 'SEK' => 'kr', 'SGD' => '$', 'TWD' => '$'}
 
-  def display_gallery_img(id, hasimage)
-    if hasimage
-      return "/images/gallery/#{id}.jpg"
-    else
-      return "/images/noimage.jpg"
-    end
+
+  def display_gallery_img(ebay_item)
+    ebay_item.gallery_image.url
   end
 
-  def display_gallery_img_for(ebay_item)
-    ebay_item && ebay_item.hasimage ? "/images/gallery/#{ebay_item.id}.jpg" : "/images/noimage.jpg"
+  def display_picture_img(picture)
+    picture.image.url
   end
 
   def gallery_img_for(item)
-    image_tag(display_gallery_img_for(item))
+    image_tag(display_gallery_img(item))
   end
 
   def url_escape(html)
@@ -75,7 +72,7 @@ module ApplicationHelper
   def related_items(related_items)
     related_items.collect do |related_item|
       link_to "/#{related_item.id}" do
-        %|<span><img src="#{display_gallery_img(related_item.id, related_item.hasimage)}"/></span>"|
+        %|<span><img src="#{display_gallery_img(related_item)}"/></span>"|
       end.concat('\n')
     end
   end

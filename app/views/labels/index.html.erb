@@ -9,7 +9,7 @@
 <ul class="ebay-items">
   <% @labels.each do |label| %>
       <li class="record-item" id="label<%= label.id %>">
-        <img src="<%= display_gallery_img_for(label.ebay_item) %>"/>
+        <img src="<%= display_gallery_img(label.ebay_item) %>"/>
         <table>
           <tr>
             <td><label>Name</label></td>

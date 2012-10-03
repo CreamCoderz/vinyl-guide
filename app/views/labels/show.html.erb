@@ -15,7 +15,7 @@
       <% @label.releases.each_with_index do |release, i| %>
         <div class="small-auction">
           <% link_to "/#{release.id}" do %>
-              <img src="<%= display_gallery_img(release.ebay_item.id, release.ebay_item.hasimage) %>"/>
+              <img src="<%= display_gallery_img(release.ebay_item) %>"/>
           <% end %>
           <p><%= link_to h(truncate(release.title, :length => 40)), release_path(release) %></p>
 
