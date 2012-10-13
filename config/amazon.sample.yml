@@ -1,0 +1,7 @@
+amazon_s3_credentials:
+  provider: '',
+  aws_access_key_id: '',
+  aws_secret_access_key: '',
+  region: ''
+amazon_s3_bucket: ''
+amazon_s3_host: ''

@@ -1,6 +1,7 @@
 .idea/*
 config/database.yml
 config/newrelic.yml
+config/amazon.yml
 config/build.*
 log/*
 tmp/*

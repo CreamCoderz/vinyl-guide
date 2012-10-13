@@ -1,4 +1,6 @@
 VinylGuide::Application.configure do
+  PROPERTIES = YAML.load_file("#{Rails.root}/config/build.development.yml")
+
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -24,9 +26,7 @@ VinylGuide::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
-  config.cache_store = :dalli_store
-
-  PROPERTIES = YAML.load_file("#{Rails.root}/config/build.development.yml")
+  config.cache_store = :dalli_store, PROPERTIES['memcached_host']
 
 end
 

@@ -1,4 +1,7 @@
 VinylGuide::Application.configure do
+
+  PROPERTIES = YAML.load_file("#{Rails.root}/config/build.production.yml")
+
   # Settings specified here will take precedence over those in config/application.rb
 
   # The production environment is meant for finished, "live" apps.
@@ -47,7 +50,7 @@ VinylGuide::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  config.cache_store = :dalli_store, '10.180.27.250'
+  config.cache_store = :dalli_store, PROPERTIES['memcached_host']
 
   config.action_mailer.default_url_options = { :host => "www.rootsvinylguide.com" }
   config.action_mailer.logger = Rails.logger
@@ -55,7 +58,5 @@ VinylGuide::Application.configure do
   config.action_mailer.smtp_settings = {
       :domain => 'www.rootsvinylguide.com',
   }
-
-  PROPERTIES = YAML.load_file("#{Rails.root}/config/build.production.yml")
 
 end
