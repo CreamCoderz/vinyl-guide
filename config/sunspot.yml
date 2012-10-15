@@ -1,6 +1,6 @@
 production:
   solr:
-    hostname: 10.176.161.115
+    hostname: 10.180.27.250
     port: 8983
     log_level: WARNING
     min_memory: 50M
