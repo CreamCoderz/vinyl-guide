@@ -48,10 +48,9 @@ class EbayClient
       item_details_url = generate_get_details_url(item_ids_query)
       response = WebClient.get(item_details_url)
       new_details = EbayItemsDetailsParser.parse(response.body)
-
+      new_details.each {|new_detail| yield new_detail } if new_details.present?
       detailses.concat(new_details)
     end
-    detailses
   end
 
   def get_current_time

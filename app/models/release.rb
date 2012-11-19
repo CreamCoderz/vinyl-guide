@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../../lib/query_generator'
 
 class Release < ActiveRecord::Base
   SEARCHABLE_FIELDS = [:title, :artist, :matrix_number]
-  VALID_YEARS = (1940..Time.new.year).to_a.reverse
+  VALID_YEARS = (1940..Time.now.year).to_a.reverse
 
   has_many :ebay_items, :order => "updated_at DESC"
   belongs_to :format

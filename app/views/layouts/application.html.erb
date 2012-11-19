@@ -18,11 +18,14 @@
 <body>
 <%= render :partial => "partials/header" %>
 
-<p style="color: green"><%= flash[:notice] %></p>
-<p style="color: red"><%= flash[:alert] %></p>
-<p style="color: red"><%= flash[:error] %></p>
+<%- if flash.present? %>
+    <p style="color: green"><%= flash[:notice] %></p>
+    <p style="color: red"><%= flash[:alert] %></p>
+    <p style="color: red"><%= flash[:error] %></p>
+<% end %>
 
 <div class="content">
+  <div class="anchor"></div>
   <%= yield %>
 </div>
 

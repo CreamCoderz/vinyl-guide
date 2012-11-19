@@ -26,7 +26,7 @@ describe EbayClient do
     WebClient.client = web_client
     find_items_results = ebay_client.find_items(end_time_to)
     web_client.path[0].should == EbayBaseSpec.generate_find_items_request(end_time_to, 1)
-    web_client.path[1].should == EbayBaseSpec.generate_find_items_request(end_time_to, 1, 'EBAY-GB', 'Reggae%2F+Ska')
+    web_client.path[1].should == EbayBaseSpec.generate_find_items_request(end_time_to, 1, 'EBAY-GB', 'Reggae%2F%20Ska')
     web_client.host.should == SAMPLE_BASE_FIND_HOST
     find_items_results.should == FOUND_ITEMS.concat([FOUND_ITEM_6, FOUND_ITEM_7])
     #TODO: log all other unmarked items
@@ -35,7 +35,7 @@ describe EbayClient do
   it "should send request per page for many pages of find items results" do
     web_client = WebClient
     end_time_to = Date.new.next
-    uk_request = EbayBaseSpec.generate_find_items_request(end_time_to, 1, 'EBAY-GB', 'Reggae%2F+Ska')
+    uk_request = EbayBaseSpec.generate_find_items_request(end_time_to, 1, 'EBAY-GB', 'Reggae%2F%20Ska')
     expected_url1 = EbayBaseSpec.generate_find_items_request(end_time_to, 1)
     expected_url2 = EbayBaseSpec.generate_find_items_request(end_time_to, 2)
     uk_response = make_success_response(EbayBaseSpec.generate_complete_find_items_response(1, 1))
@@ -55,7 +55,8 @@ describe EbayClient do
     web_client.set_response(multiple_items_response)
     WebClient.client = web_client
     ebay_client = EbayClient.new(NIL_API_KEY)
-    detailses = ebay_client.get_details([TETRACK_ITEMID, GARNET_ITEMID])
+    detailses = []
+    ebay_client.get_details([TETRACK_ITEMID, GARNET_ITEMID]) {|detail| detailses << detail}
     web_client.path[0].should == SAMPLE_GET_MULTIPLE_ITEMS_REQUEST
     web_client.host.should == 'open.api.ebay.com'
     detailses.length.should == 2
@@ -81,7 +82,8 @@ describe EbayClient do
     web_client.should_receive(:get).ordered.with(SAMPLE_BASE_URL + EbayBaseSpec.generate_multiple_items_request(expected_ebay_items[0..19].map{|ebay_item| ebay_item.itemid.to_s})).and_return(response1)
     web_client.should_receive(:get).ordered.with(SAMPLE_BASE_URL + EbayBaseSpec.generate_multiple_items_request(expected_ebay_items[20..29].map{|ebay_item| ebay_item.itemid.to_s})).and_return(response2)
     ebay_client = EbayClient.new(NIL_API_KEY)
-    actual_details = ebay_client.get_details(expected_ebay_items.map{|ebay_item| ebay_item.itemid})
+    actual_details = []
+    ebay_client.get_details(expected_ebay_items.map{|ebay_item| ebay_item.itemid}) {|detail| actual_details << detail}
     actual_details.length.should == expected_ebay_items.length
   end
 

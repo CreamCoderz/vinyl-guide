@@ -4,8 +4,8 @@ include EbayBaseData
 module EbayBaseSpec
 
   # ---------------- FINDING -------------------------
-  def self.generate_find_items_request(end_time_from, page_number, global_id='EBAY-US', sub_genre='Reggae%20%26%20Ska', app_id=NIL_API_KEY)
-    "/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=#{app_id}&GLOBAL-ID=#{global_id}&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&categoryId=306&aspectFilter%280%29.aspectName=Genre&aspectFilter%280%29.aspectValueName=#{sub_genre}&itemFilter.name=EndTimeTo&itemFilter.value=#{DateUtil.date_to_utc(end_time_from)}&paginationInput.pageNumber=#{page_number}"
+  def self.generate_find_items_request(end_time_from, page_number, global_id='EBAY-US', sub_genre='Reggae%2C%20Ska%20%26%20Dub', app_id=NIL_API_KEY)
+    "/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=#{app_id}&GLOBAL-ID=#{global_id}&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&categoryId=176985&aspectFilter%280%29.aspectName=Genre&aspectFilter%280%29.aspectValueName=#{sub_genre}&itemFilter.name=EndTimeTo&itemFilter.value=#{DateUtil.date_to_utc(end_time_from)}&paginationInput.pageNumber=#{page_number}"
   end
 
   def self.generate_auction_item(auction_item)
@@ -14,7 +14,7 @@ module EbayBaseSpec
             <title>BOB MARLEY &amp; THE WAILERS EXODUS 180 GRAM VINYL LP NEW</title>
             <globalId>EBAY-US</globalId>
             <primaryCategory>
-                <categoryId>306</categoryId>
+                <categoryId>176985</categoryId>
                 <categoryName>Records</categoryName>
             </primaryCategory>
             <galleryURL>http://thumbs2.ebaystatic.com/pict/2505001942428080_1.jpg</galleryURL>

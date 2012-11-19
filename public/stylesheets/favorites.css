@@ -2,10 +2,9 @@
     clear: left;
 }
 
-.item-row .add-to-favorites {
+.user-options .add-to-favorites {
     float: left;
-    height: 16px;
-    font-size: 12px;
+    padding: 0;
 }
 
 .add-to-favorites input[type=submit], .add-to-favorites a {
@@ -27,14 +26,14 @@
     background-color: #FFF;
     color: #060;
     font-weight: normal;
-    padding: 1px 6px;
+    padding: 3px 6px;
 }
 
 .edit_favorite input[type="submit"] {
     background-color: #FFF;
     color: #900;
     font-weight: normal;
-    padding: 1px 6px;
+    padding: 0 6px;
 }
 
 .numbered-pagination .pagination {

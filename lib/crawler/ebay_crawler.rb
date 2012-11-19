@@ -28,8 +28,8 @@ class EbayCrawler
     ebay_auctions = EbayAuction.where("end_time < ?", current_time)
     added_items_count, total_pictures, total_gallery = 0, 0, 0
     if ebay_auctions.present?
-      item_detailses = @ebay_client.get_details(ebay_auctions.map { |ebay_auction| ebay_auction.item_id })
-      item_detailses.each do |item_details|
+      @ebay_client.get_details(ebay_auctions.map { |ebay_auction| ebay_auction.item_id }) do |item_details|
+        p 'creating ebay item...'
         ebay_item = EbayItem.new(:itemid => item_details.itemid, :title => item_details.title, :description => item_details.description,
                                  :bidcount => item_details.bidcount, :price => item_details.price, :endtime => item_details.endtime,
                                  :starttime => item_details.starttime, :url => item_details.url, :galleryimg => item_details.galleryimg,
@@ -37,12 +37,15 @@ class EbayCrawler
                                  :speed => item_details.speed, :condition => item_details.condition, :subgenre => item_details.subgenre,
                                  :currencytype => item_details.currencytype)
         if ebay_item.save
+          p "created item: #{ebay_item.inspect}"
           added_items_count += 1
           pictureimgs = item_details.pictureimgs || []
           total_pictures += pictureimgs.select do |pictureimg|
             Picture.new(:ebay_item_id => ebay_item.id, :url => pictureimg).save
           end.length
           total_gallery += 1 if ebay_item.hasimage
+        else
+         p "failed to created item: #{ebay_item.itemid} - #{ebay_item.errors.full_messages}"
         end
       end
       ebay_auctions.destroy_all

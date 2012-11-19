@@ -30,18 +30,7 @@
             </li>
           <% end %>
       </ul>
-      <div class="search-form">
-        <form name="search" action="/search" method="get">
-          <input type="text" name="q" id="q" value=""/>
-          <input type="submit" value="SEARCH"/>
-        </form>
-      </div>
-
-      <script type="text/javascript">
-//          $(document).ready(function() {
-//              new AutoCompleter("q", "<%= search_path %>", "ebay_item");
-//          });
-      </script>
+      <%= render :partial => 'search/form' %>
 
     </div>
   </div>

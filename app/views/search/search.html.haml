@@ -1,0 +1,11 @@
+.container
+  .search-header
+    = render :partial => 'search/form'
+  - header_text = "#{@page_results.range} #{@page_results.total} Search Results found for \"#{h(@query)}\""
+  = render :partial => "partials/sortable_list_header", :locals => {:header_text => header_text, :sort_partial => "sort_links"}
+  %hr
+  %ul.ebay-items
+    - @page_results.items.each do |ebay_item|
+      = render :partial=> "partials/ebay_item_abbrv", :locals => {:ebay_item => ebay_item, :controls => false}
+  = render :partial => "partials/paginated_links", :locals => {:next_link => @page_results.next_page_num, :prev_link => @page_results.prev_page_num}
+  %br

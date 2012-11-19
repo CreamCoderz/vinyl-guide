@@ -39,17 +39,19 @@ label {
 }
 
 .search-form input[type=text] {
-    margin-top: -2px;
+    border: 2px solid #FF9900;
     font-family: Courier, sans-serif;
     font-size: 20px;
-    border: 2px solid #FF9900;
-    width: 227px;
+    margin-top: -2px;
+    text-indent: 5px;
+    width: 220px;
 }
 
 input, select, textarea {
+    border: 2px solid #990000;
+    border-radius: 10px;
     font-family: Courier, sans-serif;
     font-size: 14px;
-    border: 2px solid #990000;
 }
 
 .controls a:link {
@@ -109,7 +111,7 @@ a:active {
 
 .container {
     width: 1180px;
-    margin: 10px;
+    padding: 10px;
 }
 
 .container ul {
@@ -117,6 +119,7 @@ a:active {
 }
 
 .container hr {
+    clear: left;
     margin-left: 0;
     height: 2px;
     background-color: #006600;
@@ -131,6 +134,7 @@ a:active {
 }
 
 .content {
+    background-color: #FFF5E6;
     margin-top: 0;
     padding: 0;
     width: 1200px;
@@ -168,6 +172,12 @@ input[type=submit] {
     color: #990000;
     font-weight: normal;
     padding: 1px 6px;
+}
+
+input[type=submit]:hover {
+    background-color: #990000;
+    color: #FF9900;
+    cursor: pointer;
 }
 
 .nav div {
@@ -456,9 +466,34 @@ div.small-auction {
     padding: 10px 20px;
 }
 
-.home-header {
-    display:inline;
+.container .search-header, .container .browse-header {
+    clear: left;
+    margin-left: 0;
+    margin-bottom: 20px;
+    margin-top: 40px;
+    text-align: center;
 }
+
+.container .search-header .search-form {
+    display: block;
+    float: none;
+    margin: 10px;
+    text-align: center;
+}
+
+.container .search-header .search-form input[type=text] {
+    width: 800px;
+}
+
+.container .search-header .search-form input[type=text], .container .search-header .search-form input[type=submit] {
+    border-width: 3px;
+    font-size: 40px;
+}
+
+.container .search-header h3, .container .browse-header h3 {
+    display: inline;
+}
+
 .twitter-widget {
 }
 

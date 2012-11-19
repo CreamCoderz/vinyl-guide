@@ -1,0 +1,54 @@
+.container
+  %h1 An EBay auction tracker for Reggae and Ska Records
+
+  .search-header
+    %h3 Search finished EBay auction results for Reggae and Ska records
+    = render :partial => 'search/form'
+  .browse-header
+    %h3 Browse the top auctions that finished in the last 24 Hours
+    = link_to '(more...)', all_path(:sort => 'price', :order => 'desc', :time => 'today')
+  %ul.ebay-items
+    = render :partial => "partials/ebay_item_abbrv", :collection => @top_items
+
+  .browse-header
+    %h3 Browse the most recently finished auctions
+    = link_to '(more...)', all_path
+  %ul.ebay-items
+    = render :partial => "partials/ebay_item_abbrv", :collection => @ebay_items
+
+  %hr
+  .twitter-widget
+  %p
+    Recent Updates from
+    = link_to 'rootsvinylguide@twitter', "http://twitter.com/rootsvinylguide"
+  %script{:src=>"http://widgets.twimg.com/j/2/widget.js"}
+  :javascript
+     new TWTR.Widget({
+       version: 2,
+       type: 'profile',
+       rpp: 2,
+       interval: 6000,
+       width: 800,
+       height: 300,
+       theme: {
+           shell: {
+               background: '#FFF5E6',
+               color: '#990000',
+               border: '1px solid'
+           },
+           tweets: {
+               background: '#FFF5E6',
+               color: '#990000',
+               links: '#990000'
+           }
+       },
+       features: {
+           scrollbar: false,
+           loop: false,
+           live: false,
+           hashtags: true,
+           timestamp: true,
+           avatars: false,
+           behavior: 'all'
+       }
+     }).render().setUser('rootsvinylguide').start();

@@ -18,7 +18,7 @@ describe EbayItem do
     end
   end
 
-  context "named scopes" do
+  context "scopes" do
     context "formats" do
       before do
         @other_ebay_item = Factory(:ebay_item, :size => "jumbo")

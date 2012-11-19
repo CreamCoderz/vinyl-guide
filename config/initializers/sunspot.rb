@@ -7,3 +7,6 @@ module Sunspot
     end
   end
 end
+
+# Does not raise exceptions when writing to solr
+Sunspot.session = Sunspot::SessionProxy::SilentFailSessionProxy.new(Sunspot.session)

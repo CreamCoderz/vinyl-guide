@@ -12,7 +12,7 @@ describe EbayItemsController do
     end
     it "assigns todays top three highest priced items" do
       get :home
-      assigns[:top_items].should =~ [@ebay_item]
+      assigns[:top_items].should =~ EbayItem.top_items
     end
   end
 
@@ -155,7 +155,9 @@ describe EbayItemsController do
   describe "#redirect_to_friendly_url" do
     it "redirects to the friendly url when an id is specified in the path" do
       request.stub(:path).and_return(mock_ebay_item.id)
-      contoller.send(:redirect_to_friendly_url).should redirect_to(ebay_)
+      controller.instance_variable_set(:@ebay_item, mock_ebay_item)
+      controller.should_receive(:redirect_to).with(mock_ebay_item, status: :moved_permanently)
+      controller.send(:redirect_to_friendly_url)
     end
   end
 end

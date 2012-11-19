@@ -1,30 +1,31 @@
+- ebay_item ||= ebay_item_abbrv
 %li.record-item{:id=>"ebay_item_#{ebay_item.id}"}
   .image-thumb
-    %img{:src=>display_gallery_img(ebay_item)}
+    = link_to ebay_item do
+      %img{:src=>display_gallery_img(ebay_item)}
+  .item-headers
+    %label
+      Title
+    %label
+      Ended
+    %label
+      Price
   .item-data
     .item-row
-      %label
-        Title
-      .details= link_to(ebay_item.title, ebay_item, :title => "View #{ebay_item.title} Details")
+      = link_to(ebay_item.title, ebay_item, :title => "View #{ebay_item.title} Details")
     .item-row
-      %label
-        Ended At
-      .details= display_date(ebay_item.endtime)
+      = display_date(ebay_item.endtime)
     .item-row
-      %label
-        Price
-      .details
-        = number_to_currency(ebay_item.price, :unit => display_currency_symbol(ebay_item.currencytype))
-        = ebay_item.currencytype
-    .item-row
-      .actions
-        .add-to-favorites{:title => "Add to Favorites"}
-          - if user_signed_in?
-            = render :partial => 'favorites/favorite', :locals => {:ebay_item => ebay_item}
-          - else
-            = link_to "+Favorite", new_user_session_path(:message => "Please sign in to add an item to your favorites.")
-        .comment.triangle-border
-          = link_to 'Comment', ebay_item_path(ebay_item, :anchor => 'comments')
+      = number_to_currency(ebay_item.price, :unit => display_currency_symbol(ebay_item.currencytype))
+      = ebay_item.currencytype
+    .user-options
+      .add-to-favorites{:title => "Add to Favorites"}
+        - if user_signed_in?
+          = render :partial => 'favorites/favorite', :locals => {:ebay_item => ebay_item}
+        - else
+          = link_to "+Favorite", new_user_session_path(:message => "Please sign in to add an item to your favorites.")
+      .comment.triangle-border
+        = link_to 'Comment', ebay_item_path(ebay_item, :anchor => 'comments')
   - if @controls && ebay_item.release_id
     %p
       = form_for(ebay_item) do |f|
@@ -32,4 +33,3 @@
         %input{:type=>"hidden", :name=>"ebay_item[release_id]", :value=>""}
         %p
           = f.submit 'X', :class => "unmap-auction"
-  .clearfix

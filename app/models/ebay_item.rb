@@ -46,7 +46,6 @@ class EbayItem < ActiveRecord::Base
   before_save :set_format
   after_create :save_gallery_image
   after_destroy :destroy_image
-  after_save { |item| item.index! }
 
   searchable do
     text(:title_text) { title }

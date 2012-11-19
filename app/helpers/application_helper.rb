@@ -37,7 +37,7 @@ module ApplicationHelper
   end
 
   def display_date(date)
-    date.to_time.strftime("%B %d, %Y - %I:%M:%S %p GMT")
+    "#{time_ago_in_words(date)} ago"
   end
 
   def display_currency_symbol(currency_type)
