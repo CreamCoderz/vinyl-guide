@@ -1,0 +1,15 @@
+- ebay_item ||= top_ebay_item
+
+.top-item
+  -#- picture = top_item.pictures.first
+  - pictures = Picture.where(:id => [356031, 356024,356030, 356038]) #TODO: temp
+  - picture = pictures[top_ebay_item_counter]
+  = link_to ebay_item do
+    = image_tag "/images/pictures/#{picture.id}_0.jpg" #TODO: use a real path to the assets host
+  %div
+    = link_to(ebay_item.title, ebay_item, :title => "View #{ebay_item.title} Details")
+  %div
+    = display_date(ebay_item.endtime)
+  %div
+    = number_to_currency(ebay_item.price, :unit => display_currency_symbol(ebay_item.currencytype))
+    = ebay_item.currencytype

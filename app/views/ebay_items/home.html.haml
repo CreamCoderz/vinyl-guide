@@ -1,14 +1,13 @@
 .container
-  %h1 An EBay auction tracker for Reggae and Ska Records
 
   .search-header
     %h3 Search finished EBay auction results for Reggae and Ska records
     = render :partial => 'search/form'
   .browse-header
-    %h3 Browse the top auctions that finished in the last 24 Hours
+    %h3 Top sold auctions in the last 24 Hours
     = link_to '(more...)', all_path(:sort => 'price', :order => 'desc', :time => 'today')
-  %ul.ebay-items
-    = render :partial => "partials/ebay_item_abbrv", :collection => @top_items
+  .top-items
+    = render :partial => "top_ebay_item", :collection => @top_items
 
   .browse-header
     %h3 Browse the most recently finished auctions

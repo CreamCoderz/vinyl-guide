@@ -23,13 +23,12 @@ ul.ebay-items li {
     height: 110px;
 }
 
-ul.ebay-items li:hover {
+ul.ebay-items li:hover, .top-items .top-item:hover {
     background-color: #FFE3B8;
     border: 2px solid;
     border-radius: 17px;
     border-color: #FFF5E6;
-    margin-bottom: 7px;
-    height: 110px;
+    cursor: pointer;
 }
 
 ul.ebay-items li img {
@@ -137,4 +136,29 @@ ul.ebay-items li table tr td {
     border-color: white transparent;
     display: block;
     width: 0;
+}
+
+.top-items .top-item {
+    background-color: #FFF5E6;
+    border: 2px solid;
+    border-color: #FFF5E6;
+    display: inline-block;
+    overflow: hidden;
+    padding: 7px;
+    text-overflow: ellipsis;
+}
+
+.top-item {
+}
+
+.top-items a {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 4px;
+}
+
+.top-items a, .top-items a img {
+    width: 250px;
 }
