@@ -38,7 +38,7 @@ class EbayItem < ActiveRecord::Base
   scope :today, from("ebay_items force index (index_ebay_items_on_endtime)").where("endtime > NOW()-INTERVAL 1 DAY")
   scope :week, from("ebay_items force index (index_ebay_items_on_endtime)").where("endtime > NOW()-INTERVAL 1 WEEK")
   scope :month, from("ebay_items force index (index_ebay_items_on_endtime)").where("endtime > NOW()-INTERVAL 1 MONTH")
-  scope :top_items, from("ebay_items force index (index_ebay_items_on_endtime)").where("endtime > NOW()-INTERVAL 1 DAY").order("price DESC").limit(4)
+  scope :top_items, from("ebay_items force index (index_ebay_items_on_endtime)").where("endtime > NOW()-INTERVAL 1 DAY").order("price DESC")
 
   cattr_reader :per_page
   @@per_page = 20
