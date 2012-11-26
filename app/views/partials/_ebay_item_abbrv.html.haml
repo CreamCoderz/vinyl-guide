@@ -1,5 +1,5 @@
 - ebay_item ||= ebay_item_abbrv
-%li.record-item{:id=>"ebay_item_#{ebay_item.id}"}
+%li.record-item{:id=>"ebay_item_#{ebay_item.id}", :data => {:link => ebay_item_path(ebay_item)}}
   .image-thumb
     = link_to ebay_item do
       %img{:src=>display_gallery_img(ebay_item)}

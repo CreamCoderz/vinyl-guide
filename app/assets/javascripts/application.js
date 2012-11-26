@@ -1,3 +1,10 @@
+//= require jquery
+//= require jquery.selectboxes
+//= require jquery.autocomplete
+//= require jquery.form
+//= require_tree .
+//= require_self
+
 function AutoCompleter(id, path, key, callback, linkTextBuilder) {
 
     //TODO: looks like jquery is setting the scope of 'this', so i had to inline the functions

@@ -1,6 +1,6 @@
 - ebay_item ||= top_ebay_item
 
-.top-item
+.top-item{:data => {:link => ebay_item_path(ebay_item)}}
   -#- picture = top_item.pictures.first
   - pictures = Picture.where(:id => [356031, 356024,356030, 356038]) #TODO: temp
   - picture = pictures[top_ebay_item_counter]

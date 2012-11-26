@@ -23,6 +23,7 @@ ul.ebay-items li {
     height: 110px;
 }
 
+/* same selector used in ebayitems.js */
 ul.ebay-items li:hover, .top-items .top-item:hover {
     background-color: #FFE3B8;
     border: 2px solid;
