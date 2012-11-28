@@ -1,9 +1,7 @@
 .top-item{:data => {:link => ebay_item_path(ebay_item)}}
-  -#- picture = top_item.pictures.first
-  - pictures = Picture.where(:id => [356031, 356024,356030, 356038]) #TODO: temp
-  - picture = pictures[ebay_item_counter]
+  - picture = ebay_item.pictures.first
   = link_to ebay_item do
-    = image_tag "/images/pictures/#{picture.id}_0.jpg" #TODO: use a real path to the assets host
+    = image_tag display_picture_img(picture)
   %div
     = link_to(ebay_item.title, ebay_item, :title => "View #{ebay_item.title} Details")
   %div
