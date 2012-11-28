@@ -362,6 +362,7 @@ a.selected.desc {
     padding: 0 15px 0 0;
     float: left;
     background: #006600 url('/images/menu_down.png') no-repeat 100px 7px;
+    z-index: 1;
 }
 
 .auction-menu ul > li.more.account {
