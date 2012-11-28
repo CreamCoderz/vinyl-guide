@@ -7,13 +7,17 @@
     %h3 Top sold auctions in the last 24 Hours
     = link_to '(more...)', all_path(:sort => 'price', :order => 'desc', :time => 'today')
   .top-items
-    = render :partial => "top_ebay_item", :collection => @top_items
+    - if @top_items.present?
+      = render :partial => "top_ebay_item", :collection => @top_items, :as => :ebay_item
+    - else
+      %p
+        There have been no auctions tracked within the last 24 hours...
 
   .browse-header
     %h3 Browse the most recently finished auctions
     = link_to '(more...)', all_path
   %ul.ebay-items
-    = render :partial => "partials/ebay_item_abbrv", :collection => @ebay_items
+    = render :partial => "partials/ebay_item_abbrv", :collection => @ebay_items, :as => :ebay_item
 
   %hr
   .twitter-widget

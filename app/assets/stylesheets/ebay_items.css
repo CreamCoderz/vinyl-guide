@@ -103,7 +103,7 @@ ul.ebay-items li table tr td {
 
 .triangle-border {
     position: relative;
-    padding: 2px;
+    padding: 2px 2px 2px 4px;
     width: 55px;
     height: 14px;
     border: 1px solid #900;
@@ -157,9 +157,17 @@ ul.ebay-items li table tr td {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.top-items > a {
     padding: 4px;
 }
 
 .top-items a, .top-items a img {
     width: 250px;
+}
+
+.top-items p {
+    text-align: center;
+    font-size: 18px;
 }
