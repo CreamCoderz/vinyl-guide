@@ -26,7 +26,8 @@ $(document).ready(function () {
     });
 
     $('ul.ebay-items li, .top-items .top-item').click(function (event) {
-        if (!$(event.target).attr('href')) {
+        console.log($(event.target).attr('type'));
+        if (!$(event.target).attr('href') && !$(event.target).attr('type')) {
             event.preventDefault();
             event.stopPropagation();
             window.location = $(this).data('link');

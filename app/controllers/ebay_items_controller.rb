@@ -4,7 +4,7 @@ class EbayItemsController < ApplicationController
 
   before_filter :set_sortable_fields, :only => [:all, :singles, :eps, :lps, :other, :home]
   before_filter :set_page_num, :only => [:all, :singles, :eps, :lps, :other]
-  before_filter :set_favorites, :only => [:all, :singles, :eps, :lps, :other, :update]
+  before_filter :set_favorites, :only => [:all, :home, :singles, :eps, :lps, :other, :update]
   before_filter :find_ebay_item, :only => [:edit, :update, :show]
   before_filter :set_release, :only => [:show]
   before_filter :redirect_to_friendly_url, :only => [:show]
