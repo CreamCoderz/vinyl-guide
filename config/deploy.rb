@@ -33,6 +33,7 @@ set :scm_verbose, true
 set :deploy_via, :remote_cache
 
 after 'deploy:finalize_update', 'deploy:create_conf_symlinks'
+after 'deploy:finalize_update', 'deploy:bundle_install'
 before 'deploy:restart', 'deploy:create_image_symlinks'
 before 'deploy:restart', 'deploy:bundle_install'
 before 'deploy:restart', 'deploy:start_solr'

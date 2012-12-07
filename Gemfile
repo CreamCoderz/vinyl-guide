@@ -22,6 +22,7 @@ gem 'dalli'
 gem 'carrierwave', "0.6.2"
 gem "fog", "~> 1.3.1"
 gem 'friendly_id', "~> 4.0.1"
+gem 'libv8', '~> 3.11.8'
 gem "therubyracer", :require => 'v8'
 
 group :test do
