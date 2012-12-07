@@ -2,6 +2,7 @@
 //= require jquery.selectboxes
 //= require jquery.autocomplete
 //= require jquery.form
+//= require rails
 //= require_tree .
 //= require_self
 

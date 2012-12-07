@@ -4,10 +4,11 @@ class EbayItemsController < ApplicationController
 
   before_filter :set_sortable_fields, :only => [:all, :singles, :eps, :lps, :other, :home]
   before_filter :set_page_num, :only => [:all, :singles, :eps, :lps, :other]
-  before_filter :set_favorites, :only => [:all, :home, :singles, :eps, :lps, :other, :update]
   before_filter :find_ebay_item, :only => [:edit, :update, :show]
   before_filter :set_release, :only => [:show]
   before_filter :redirect_to_friendly_url, :only => [:show]
+  before_filter :set_page_results, :only => [:all, :singles, :eps, :lps, :other]
+  before_filter :set_favorites, :only => [:all, :singles, :eps, :lps, :other]
 
   def index
     @release = Release.find(params[:release_id], :include => :ebay_items)
@@ -41,12 +42,8 @@ class EbayItemsController < ApplicationController
     @related_ebay_items = @ebay_item.related_items
   end
 
-  [:singles, :eps, :lps, :other].each do |m|
-    define_method(m) { set_page_results(m) }
-  end
-
-  def all
-    set_page_results(:all_time)
+  [:singles, :eps, :lps, :other, :all].each do |m|
+    define_method(m) {}
   end
 
   private
@@ -57,8 +54,10 @@ class EbayItemsController < ApplicationController
     @order_query = "#{@sort_param} #{@order_param}"
   end
 
-  def set_page_results(scope)
-    ebay_items = EbayItem.send(scope).send(@time).order(@order_query).paginate(:page => @page_num, :per_page => '20')
+  def set_page_results
+    scope = params[:action]
+    scope = 'all_time' if scope == 'all' # hack to resolve early poor lifestyle decisions.
+    ebay_items = EbayItem.send(scope).send(@time).includes(:comments => :user).order(@order_query).paginate(:page => @page_num, :per_page => '20')
     @page_results = Paginator::Result.new(:paginated_results => ebay_items)
   end
 
@@ -67,7 +66,7 @@ class EbayItemsController < ApplicationController
   end
 
   def set_favorites
-    @favorites = current_user.present? ? current_user.favorites : []
+    @favorites = current_user.present? ? current_user.favorite_ebay_items(@page_results.items) : {}
   end
 
   def find_ebay_item

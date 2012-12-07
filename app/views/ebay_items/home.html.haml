@@ -16,8 +16,8 @@
   .browse-header
     %h3 Browse the most recently finished auctions
     = link_to '(more...)', all_path
-  %ul.ebay-items
-    = render :partial => "partials/ebay_item_abbrv", :collection => @ebay_items, :as => :ebay_item
+  .top-items
+    = render :partial => "top_ebay_item", :collection => @ebay_items, :as => :ebay_item
 
   %hr
   .twitter-widget

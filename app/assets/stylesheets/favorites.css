@@ -8,6 +8,7 @@
 }
 
 .add-to-favorites input[type=submit], .add-to-favorites a {
+    text-decoration: none;
     line-height: 13px;
     font-size: 12px;
     -webkit-border-radius: 6px;
@@ -16,6 +17,10 @@
     border: 1px solid #900;
     padding: 1px 6px;
     display: block;
+}
+
+.add-to-favorites input[type=submit]:hover, .add-to-favorites a:hover {
+    text-decoration: underline;
 }
 
 .add-to-favorites a {

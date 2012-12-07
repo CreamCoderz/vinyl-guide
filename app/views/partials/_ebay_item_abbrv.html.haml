@@ -2,21 +2,22 @@
   .image-thumb
     = link_to ebay_item do
       %img{:src=>display_gallery_img(ebay_item)}
-  .item-headers
-    %label
-      Title
-    %label
-      Ended
-    %label
-      Price
-  .item-data
-    .item-row
-      = link_to(ebay_item.title, ebay_item, :title => "View #{ebay_item.title} Details")
-    .item-row
-      = display_date(ebay_item.endtime)
-    .item-row
-      = number_to_currency(ebay_item.price, :unit => display_currency_symbol(ebay_item.currencytype))
-      = ebay_item.currencytype
+  .item-description
+    .item-headers
+      %label
+        Title
+      %label
+        Ended
+      %label
+        Price
+    .item-data
+      .item-row
+        = link_to(ebay_item.title, ebay_item, :title => "View #{ebay_item.title} Details")
+      .item-row
+        = display_date(ebay_item.endtime)
+      .item-row
+        = number_to_currency(ebay_item.price, :unit => display_currency_symbol(ebay_item.currencytype))
+        = ebay_item.currencytype
     .user-options
       .add-to-favorites{:title => "Add to Favorites"}
         - if user_signed_in?
@@ -24,7 +25,11 @@
         - else
           = link_to "+Favorite", new_user_session_path(:message => "Please sign in to add an item to your favorites.")
       .comment.triangle-border
-        = link_to 'Comment', ebay_item_path(ebay_item, :anchor => 'comments')
+        - comments_desc = pluralize(ebay_item.comments.size, 'Comment')
+        = link_to comments_desc, ebay_item_path(ebay_item, :anchor => 'comments')
+  .item-comments.hidden
+    = render :partial => "comments/comments", :locals => {:comments => ebay_item.comments, :ebay_item => ebay_item}
+  .clearfix
   - if @controls && ebay_item.release_id
     %p
       = form_for(ebay_item) do |f|

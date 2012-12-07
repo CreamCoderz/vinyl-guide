@@ -28,7 +28,7 @@ group :test do
   gem 'rspec', '2.5'
   gem "rspec-rails", "2.5"
   gem 'test-unit', '1.2.3'
-  gem 'remarkable_activerecord'
+  gem 'remarkable_activerecord', '>=4.0.0.alpha2'
   gem 'webmock'
 end
 

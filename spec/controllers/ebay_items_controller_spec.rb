@@ -2,6 +2,10 @@ require 'spec_helper'
 
 describe EbayItemsController do
 
+  before do
+    Rails.cache.stub(:fetch).and_yield
+  end
+
   def mock_ebay_item(stubs={})
     @mock_ebay_item ||= mock_model(EbayItem, stubs)
   end
@@ -12,7 +16,7 @@ describe EbayItemsController do
     end
     it "assigns todays top three highest priced items" do
       get :home
-      assigns[:top_items].should =~ EbayItem.top_items
+      assigns[:top_items].should == EbayItem.top_items
     end
   end
 
@@ -80,19 +84,19 @@ describe EbayItemsController do
           context "logged in" do
             before do
               user = Factory(:confirmed_user)
-              @favorite = Factory(:favorite, :user => user)
+              @favorite = Factory(:favorite, :ebay_item => @items.first, :user => user)
               sign_in user
             end
             it "assigns @favorites" do
               get route
-              assigns[:favorites].should == [@favorite]
+              assigns[:favorites].should == {@favorite.ebay_item.id => @favorite}
             end
           end
 
           context "logged out" do
-            it "assigns @favorites to an empty array" do
+            it "assigns @favorites to an empty hash" do
               get route
-              assigns[:favorites].should == []
+              assigns[:favorites].should == {}
             end
           end
 

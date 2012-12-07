@@ -18,11 +18,6 @@
   <div style="clear: both"></div>
 
   <h3 id="comments">Comments</h3>
-  <%= render :partial => "comments/comments", :locals => {:comments => @ebay_item.comments} %>
-
-  <% content_for :protected_link do %>
-    <%= render :partial => "comments/form", :locals => {:ebay_item => @ebay_item} %>
-  <% end %>
-  <%= render 'shared/protected_link' %>
+  <%= render :partial => "comments/comments", :locals => {:comments => @ebay_item.comments, :ebay_item => @ebay_item} %>
 
 </div>

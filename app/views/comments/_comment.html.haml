@@ -1,7 +1,4 @@
 %li
-  .item-image
-    = link_to polymorphic_path(comment.parent) do
-      = gallery_img_for(comment.parent).html_safe
   .user-info
     %span
       = comment.user.username
@@ -9,10 +6,8 @@
       = relative_past_time(comment.created_at)
   .comment-body
     %span
-      = truncate_with_link(comment)
+      = comment.body
     %span
-  = link_to 'View Comment', comment_path(comment)
   - if current_user == comment.user
-    |
     = link_to("Delete Comment", comment_path(comment), :method => :delete)
   = content_for "comment_#{comment.id}_links".to_sym

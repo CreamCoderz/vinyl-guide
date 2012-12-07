@@ -1,7 +1,13 @@
-= form_for Comment.new(:parent => ebay_item) do |f|
-  = f.hidden_field :parent_id
-  = f.hidden_field :parent_type
-  .comment-text
-    = f.text_area :body, :cols => 60, :rows => 3
-  .comment-submit
-    = f.submit
+- if signed_in?
+  = form_for Comment.new(:parent => ebay_item) do |f|
+    = f.hidden_field :parent_id
+    = f.hidden_field :parent_type
+    .comment-text
+      = f.text_area :body, :cols => 60, :rows => 3
+    .comment-submit
+      = f.submit
+- else
+  %p.sign-in-message
+    Please
+    =link_to('sign in', new_user_session_path)
+    to comment on this auction

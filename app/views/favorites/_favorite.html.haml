@@ -1,5 +1,5 @@
-- favorites = @favorites || []
-- favorite = favorites.detect { |favorite| favorite.ebay_item == ebay_item } || Favorite.new(:ebay_item => ebay_item, :user => current_user)
+- favorites = @favorites || {}
+- favorite = favorites[ebay_item.id] || Favorite.new(:ebay_item => ebay_item, :user => current_user)
 = form_for [current_user, favorite], :html => {:method => (favorite.persisted? ? :delete : :create), :id => nil} do |f|
   = f.hidden_field :ebay_item_id, :id => nil
   = f.submit (favorite.persisted? ? '-Favorite' : '+Favorite'), :id => nil

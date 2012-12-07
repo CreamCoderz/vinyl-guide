@@ -84,10 +84,10 @@ describe EbayItem do
     describe ".top_items" do
       before do
         @ebay_items = []
-        5.times { |i| @ebay_items << Factory(:ebay_item, :price => 1.00 * i) }
+        2.times { |i| @ebay_items << Factory(:ebay_item, :price => 1.00 * i) }
       end
       it "assigns todays top four highest priced items" do
-        EbayItem.top_items.should == @ebay_items[1..-1].reverse
+        EbayItem.top_items.should == @ebay_items.reverse
       end
     end
   end

@@ -1,3 +1,4 @@
 %ol.comments
-  - comments.each do |comment|
-    = render :partial => 'comments/comment', :locals => {:comment => comment}
+  = render(:partial => 'comments/comment', :collection => comments) || "Be the first to leave a comment!"
+  = render :partial => "comments/form", :locals => {:ebay_item => ebay_item}
+

@@ -26,12 +26,17 @@ $(document).ready(function () {
     });
 
     $('ul.ebay-items li, .top-items .top-item').click(function (event) {
-        console.log($(event.target).attr('type'));
-        if (!$(event.target).attr('href') && !$(event.target).attr('type')) {
+        if (!$(event.target).attr('href') && !$(event.target).attr('name') && !$(event.target).is('input')) {
             event.preventDefault();
             event.stopPropagation();
-            window.location = $(this).data('link');
+            window.location = $(this).closest('.record-item').data('link');
         }
+    });
+
+    $('.comment').click(function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        $(event.target).closest('.record-item').find('.item-comments').first().toggle('fast');
     });
 
     //TODO: make this work
