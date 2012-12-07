@@ -1,4 +1,5 @@
 %h3
-  Recent Comments
-= render :partial => 'comments/comments_with_links', :locals => {:comments => @comments}
+  Recent Commented Items
+%ul.ebay-items
+  = render :partial => "partials/ebay_item_abbrv", :collection => @comments.map(&:parent), :as => :ebay_item
 = will_paginate @comments, :previous_label => "< Prev", :next_label => "Next >"
