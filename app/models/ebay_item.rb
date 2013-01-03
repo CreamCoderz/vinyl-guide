@@ -50,7 +50,7 @@ class EbayItem < ActiveRecord::Base
   searchable do
     text(:title_text) { title }
     text(:sellerid)
-    text(:description) { description.present? ? description[1..100] : nil }
+    #text(:description) { description.present? ? description[1..100] : nil }
     string :title
     long(:endtime) { endtime.to_i }
     float :price
