@@ -7,14 +7,14 @@
       %label
         Title
       %label
-        Ended
+        = ebay_item.comment.present? ? "Commented" : "Ended"
       %label
         Price
     .item-data
       .item-row
         = link_to(ebay_item.title, ebay_item, :title => "View #{ebay_item.title} Details")
       .item-row
-        = display_date(ebay_item.endtime)
+        = ebay_item.comment.present? ? display_date(ebay_item.comment.created_at) : display_date(ebay_item.endtime)
       .item-row
         = number_to_currency(ebay_item.price, :unit => display_currency_symbol(ebay_item.currencytype))
         = ebay_item.currencytype

@@ -12,6 +12,8 @@ class EbayItem < ActiveRecord::Base
       Format::SINGLE => ["size=? OR size=?", '7"', "Single (7-Inch)"]
   }
 
+  attr_accessor :comment
+
   validates_numericality_of :itemid, :only_integer => true
   validates_uniqueness_of :itemid
   validates_numericality_of :price

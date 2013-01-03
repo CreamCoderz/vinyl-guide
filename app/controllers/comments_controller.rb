@@ -25,7 +25,8 @@ class CommentsController < ApplicationController
   end
 
   def index
-    @comments = Comment.order('comments.created_at DESC').paginate(:page => params[:page], :per_page => 50).group(:parent_id)
+    @comments = Comment.order('comments.created_at DESC').includes(:parent).paginate(:page => params[:page], :per_page => 50).group(:parent_id)
+    @comments.each { |comment| comment.parent.comment = comment }
   end
 
   def show
