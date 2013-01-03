@@ -29,7 +29,7 @@ $(document).ready(function () {
         if (!$(event.target).attr('href') && !$(event.target).attr('name') && !$(event.target).is('input')) {
             event.preventDefault();
             event.stopPropagation();
-            window.location = $(this).data('link');
+            window.location = $(event.target).closest('.record-item').data('link');
         }
     });
 
