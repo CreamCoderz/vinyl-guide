@@ -6,20 +6,17 @@ describe SearchController do
   DESC, ASC = SearchController::ORDER_OPTIONS
 
 
-  #TODO: don't die on missing query param
-  #TODO: do not bother searching for empty queries
-
   describe "#search" do
 
     context "default search" do
       before do
         @mock_search = mock("search")
-        @mock_search.should_receive(:execute).and_return(@mock_search)
+        @mock_search.stub(:execute).and_return(@mock_search)
         @paginated_collection = WillPaginate::Collection.create(1, 1, 0) do |pager|
           pager.replace([])
         end
-        @mock_search.should_receive(:total).any_number_of_times.and_return(0)
-        @mock_search.should_receive(:results).any_number_of_times.and_return(@paginated_collection)
+        @mock_search.stub(:total).any_number_of_times.and_return(0)
+        @mock_search.stub(:results).any_number_of_times.and_return(@paginated_collection)
       end
 
       it "uses the default search params" do
@@ -47,9 +44,13 @@ describe SearchController do
       end
 
       it "ignores a blank query" do
-        expect_search_params(@mock_search, {:order_by => [:endtime, :desc],
-                                            :paginate => [:page => 1, :per_page => 20]})
+        EbayItem.should_not_receive(:search)
         get :search, {:q => ""}
+      end
+
+      it "resques from connection exceptions" do
+        EbayItem.stub(:search).and_raise(Errno::ECONNREFUSED)
+        get :search, {:q => "exception raising query"}
       end
     end
 

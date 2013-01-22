@@ -26,6 +26,7 @@ class CommentsController < ApplicationController
 
   def index
     @comments = Comment.with_recent_unique_parents.paginate(:page => params[:page], :per_page => 50)
+    @comments.each { |comment| comment.parent.comment = comment }
   end
 
   def show

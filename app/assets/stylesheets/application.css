@@ -139,6 +139,7 @@ a:active {
 .content {
     background-color: #FFF5E6;
     margin-top: 0;
+    min-height: 600px;
     padding: 0;
     width: 1200px;
 }
@@ -496,6 +497,16 @@ div.small-auction {
 
 .container .search-header h3, .container .browse-header h3 {
     display: inline;
+}
+
+.error, .alert, .notice {
+    font-size: 18px;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.notice {
+    color: #006600;
 }
 
 .twitter-widget {
