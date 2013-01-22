@@ -82,13 +82,12 @@ describe CommentsController do
       assigns[:comments].should == [@comment]
     end
     it "uses page param" do
-      Comment.stub(:order).and_return(Comment)
+      Comment.stub(:with_recent_unique_parents).and_return(Comment)
       Comment.should_receive(:paginate).with(:page => "2", :per_page => 50).and_return(Comment)
       get :index, :page => 2
     end
-    it "groups by parent_id" do
-      Comment.stub_chain(:order, :paginate).and_return(Comment)
-      Comment.should_receive(:group).with(:parent_id).and_return(Comment)
+    it "calls with_recent_unique_parents" do
+      Comment.should_receive(:with_recent_unique_parents).and_return(Comment)
       get :index
     end
   end
