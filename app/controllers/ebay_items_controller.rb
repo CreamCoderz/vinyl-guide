@@ -1,6 +1,6 @@
 class EbayItemsController < ApplicationController
   PAGE_LIMIT = 20
-  TOP_HOME_PAGE_LIMIT = 4
+  TOP_HOME_PAGE_LIMIT = 5
   SMALL_HOME_PAGE_LIMIT = 8
 
   before_filter :set_sortable_fields, :only => [:all, :singles, :eps, :lps, :other, :home]

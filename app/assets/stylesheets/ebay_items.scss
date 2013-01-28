@@ -136,7 +136,7 @@ ul.ebay-items li table tr td {
 .top-items {
 
   a, a img {
-    width: 250px;
+    width: 190px;
   }
 
   .top-item {
@@ -144,6 +144,7 @@ ul.ebay-items li table tr td {
     border: 2px solid;
     border-color: #FFF5E6;
     display: inline-block;
+    margin-right: 5px;
     overflow: hidden;
     padding: 7px;
     text-overflow: ellipsis;
