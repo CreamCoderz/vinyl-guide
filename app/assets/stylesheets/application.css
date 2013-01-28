@@ -464,13 +464,6 @@ table.item-list-header {
     display: inline;
 }
 
-div.small-auction {
-    float: left;
-    width: 100px;
-    font-size: 14px;
-    padding: 10px 20px;
-}
-
 .container .search-header, .container .browse-header {
     clear: left;
     margin-left: 0;
@@ -507,16 +500,4 @@ div.small-auction {
 
 .notice {
     color: #006600;
-}
-
-.twitter-widget {
-}
-
-/* Twitter Widget Overrides */
-.twtr-hd {
-    display: none
-}
-
-.twtr-ft {
-    display: none
 }

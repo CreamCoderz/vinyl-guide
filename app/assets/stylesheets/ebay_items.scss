@@ -1,0 +1,204 @@
+.record-item {
+  margin: 2px;
+  list-style: none;
+  clear: left;
+}
+
+.image-thumb {
+  float: left;
+  height: 100px;
+  min-height: 80px;
+  min-width: 132px;
+}
+
+ul.ebay-items {
+  margin: 0 0 10px 0;
+}
+
+ul.ebay-items > li {
+  border: 2px solid;
+  border-radius: 17px;
+  border-color: #FFF5E6;
+  margin-bottom: 7px;
+}
+
+/* same selector used in ebayitems.js */
+ul.ebay-items > li:hover, .top-items .top-item:hover, .small-auctions .small-auction:hover a {
+  background-color: #FFE3B8;
+  border: 2px solid;
+  border-radius: 17px;
+  border-color: #FFF5E6;
+  cursor: pointer;
+}
+
+ul.ebay-items li img {
+  float: left;
+  padding: 8px 26px 10px;
+}
+
+ul.ebay-items li p {
+  margin-top: 8px;
+}
+
+ul.ebay-items li table tr td {
+  padding-top: 8px;
+  padding-right: 20px;
+}
+
+.item-headers label {
+  display: block;
+}
+
+.item-data {
+  width: 750px;
+}
+
+.item-data, .item-headers, .item-description {
+  float: left;
+}
+
+.item-row, .item-headers label, .user-options {
+  margin: 5px 0;
+  margin-left: 20px;
+}
+
+.item-row {
+  width: 730px;
+}
+
+.item-row a {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 730px;
+}
+
+.item-row label {
+  float: left;
+}
+
+.item-row .actions {
+  background-color: #000;
+}
+
+.user-options {
+  height: 25px;
+}
+
+.user-options > div {
+  background-color: #FFF;
+}
+
+.comment {
+  float: left;
+  margin: 0 0 0 28px;
+  padding: 1px 6px;
+}
+
+.triangle-border {
+  position: relative;
+  padding: 2px 4px;
+  height: 14px;
+  border: 1px solid #900;
+  color: #900;
+  background: white;
+  font-size: 12px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+
+.triangle-border::before {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 8px;
+  border-width: 8px 7px 0;
+  border-style: solid;
+  border-color: #900 transparent;
+  display: block;
+  width: 0;
+}
+
+.triangle-border::after {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  left: 9px;
+  border-width: 8px 6px 0;
+  border-style: solid;
+  border-color: white transparent;
+  display: block;
+  width: 0;
+}
+
+.top-items {
+
+  a, a img {
+    width: 250px;
+  }
+
+  .top-item {
+    background-color: #FFF5E6;
+    border: 2px solid;
+    border-color: #FFF5E6;
+    display: inline-block;
+    overflow: hidden;
+    padding: 7px;
+    text-overflow: ellipsis;
+
+    > a {
+      padding: 4px;
+    }
+
+    a {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    p {
+      text-align: center;
+      font-size: 18px;
+    }
+  }
+}
+
+.small-auctions {
+   font-size: 12px;
+
+  .small-auction {
+    display: inline-block;
+    margin: 0 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    width: 130px;
+
+    a {
+      background-color: #FFF5E6;
+      border: 2px solid;
+      border-color: #FFF5E6;
+      color: inherit;
+      display: block;
+      padding: 7px;
+
+      img {
+        max-height: 80px;
+        max-width: 80px;
+      }
+
+      &:hover {
+        text-decoration: inherit;
+      }
+    }
+  }
+
+}
+
+.record-item .item-comments {
+  clear: left;
+  padding-left: 5px;
+}

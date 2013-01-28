@@ -29,4 +29,6 @@ VinylGuide::Application.routes.draw do
 
   root :to => 'ebay_items#home'
 
+  match 'about/welcome' => 'pages#about'
+
 end

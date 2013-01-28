@@ -1,5 +1,0 @@
-<div class="small-auction">
-  <%= gallery_img_for(ebay_item) %>
-  <p><%= link_to h(truncate(ebay_item.title, :length => 40)), ebay_item_path(ebay_item) %></p>
-  <p><%= number_to_currency(ebay_item.price, :unit => display_currency_symbol(ebay_item.currencytype)) %> <%= ebay_item.currencytype %></p>
-</div>

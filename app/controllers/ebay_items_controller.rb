@@ -1,6 +1,7 @@
 class EbayItemsController < ApplicationController
   PAGE_LIMIT = 20
-  HOME_PAGE_LIMIT = 4
+  TOP_HOME_PAGE_LIMIT = 4
+  SMALL_HOME_PAGE_LIMIT = 8
 
   before_filter :set_sortable_fields, :only => [:all, :singles, :eps, :lps, :other, :home]
   before_filter :set_page_num, :only => [:all, :singles, :eps, :lps, :other]
@@ -33,8 +34,8 @@ class EbayItemsController < ApplicationController
   end
 
   def home
-    @ebay_items = Rails.cache.fetch("recent-items", :expires_in => 5.minutes) { EbayItem.order('endtime DESC').limit(HOME_PAGE_LIMIT) }
-    @top_items = Rails.cache.fetch("top-items", :expires_in => 5.minutes) { EbayItem.top_items.limit(HOME_PAGE_LIMIT).all }
+    @top_items = Rails.cache.fetch("top-items", :expires_in => 5.minutes) { EbayItem.top_items.limit(TOP_HOME_PAGE_LIMIT).all }
+    @ebay_items = Rails.cache.fetch("recent-items", :expires_in => 5.minutes) { EbayItem.order('endtime DESC').limit(SMALL_HOME_PAGE_LIMIT) }
   end
 
   def show

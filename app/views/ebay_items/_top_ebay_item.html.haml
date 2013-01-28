@@ -1,5 +1,6 @@
 .top-item{:data => {:link => ebay_item_path(ebay_item)}}
   - picture = ebay_item.pictures.first
+  -#TODO: move peer nodes to this link to children of this link and restyle
   = link_to ebay_item do
     -#TODO: make a helper that does this
     = image_tag picture.present? ? display_picture_img(picture) : display_gallery_img(ebay_item)
