@@ -18,15 +18,20 @@
         <li><a href="/about/welcome">ABOUT</a></li>
           <% if signed_in? %>
             <li class="more account">
-              <span><%= link_to "ACCOUNT", user_path(current_user) %></span>
+              <span><%= link_to "MY USER", user_path(current_user) %></span>
               <ul>
                 <li><%= link_to "MY PAGE", user_path(current_user) %></li>
                 <li><%= link_to "SIGN OUT", destroy_user_session_path %></li>
               </ul>
             </li>
           <% else %>
-            <li>
+            <li class="more account">
                 <%= link_to "SIGN IN", new_user_session_path %>
+                <ul>
+                  <li>
+                    <div><%= render :partial => 'sessions/sign_in' %></div>
+                  </li>
+                </ul>
             </li>
           <% end %>
       </ul>

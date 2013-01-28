@@ -8,5 +8,5 @@
 
 %p
   = @comments.empty? ? "No Comments Yet.." : "Last #{pluralize(@comments.length, 'Comment')}"
-= render :partial => "comments/comments", :locals => {:comments => @comments}
+= render(:partial => 'comments/comment', :collection => @comments)
 

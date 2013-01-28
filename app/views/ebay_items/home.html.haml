@@ -1,7 +1,11 @@
 .container
 
+  .browse-header
+    %h3
+      RootsVinylGuide is an EBay auctions tracker for the category of Reggae &amp; Ska records
   .search-header
     = render :partial => 'search/form'
+
   .browse-header
     %h3 Top Recent Auctions
     = link_to '(more...)', all_path(:sort => 'price', :order => 'desc', :time => 'today')
