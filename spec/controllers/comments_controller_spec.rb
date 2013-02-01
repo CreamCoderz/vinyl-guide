@@ -83,7 +83,7 @@ describe CommentsController do
     end
     it "uses page param" do
       Comment.stub(:with_recent_unique_parents).and_return(Comment)
-      Comment.should_receive(:paginate).with(:page => "2", :per_page => 50).and_return(Comment)
+      Comment.should_receive(:paginate).with(:page => "2", :per_page => 50).and_return([@comment])
       get :index, :page => 2
     end
     it "calls with_recent_unique_parents" do

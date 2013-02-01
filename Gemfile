@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 source 'http://gems.github.com'
 
-gem "rails", "~> 3.2.9"
+gem "rails", "3.2.11"
 gem "rake", "!= 0.9.0"
 gem "mysql", "2.8.1"
 gem "cobravsmongoose", "0.0.2"
