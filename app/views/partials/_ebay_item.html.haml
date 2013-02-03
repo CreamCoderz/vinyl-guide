@@ -1,0 +1,64 @@
+%div
+  %label Price
+  %span
+    = number_to_currency ebay_item.price, :unit => display_currency_symbol(ebay_item.currencytype)
+    = ebay_item.currencytype
+%div
+  %label Bid Count
+  %span= ebay_item.bidcount
+
+%div
+  %label Ended At
+  %span= display_long_date(ebay_item.endtime)
+  %span= "(#{display_date(ebay_item.endtime)})"
+%div
+  %label Seller Id
+  %span= ebay_item.sellerid
+
+.description-block
+  .top-image
+    = display_top_img(ebay_item)
+    - (ebay_item.pictures[1..2] || []).each do |picture|
+      = image_tag display_picture_img(picture)
+
+.description
+  %label Description
+  = ebay_item.description
+
+%div
+  %label Ebay Item Id
+  %span= ebay_item.itemid
+
+%div
+  %label Started At
+  %span= display_long_date(ebay_item.starttime)
+  %span= "(#{display_date(ebay_item.starttime)})"
+
+- if ebay_item.country.present?
+  %div
+    %label Country
+    %span= ebay_item.country
+
+- if ebay_item.subgenre.present?
+  %div
+    %label Sub-Genre
+    %span= ebay_item.subgenre
+
+- if ebay_item.size.present?
+  %div
+    %label Size
+    %span= ebay_item.size
+
+- if ebay_item.speed.present?
+  %div
+    %label Speed
+    %span= ebay_item.speed
+
+- if ebay_item.condition.present?
+  %div
+    %label Condition
+    %span= ebay_item.condition
+
+.additional-photos
+  - (ebay_item.pictures[3..-1] || []).each do |picture|
+    = image_tag display_picture_img(picture)

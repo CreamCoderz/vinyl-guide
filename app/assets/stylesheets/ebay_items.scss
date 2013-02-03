@@ -168,7 +168,7 @@ ul.ebay-items li table tr td {
 }
 
 .small-auctions {
-   font-size: 12px;
+  font-size: 12px;
 
   .small-auction {
     display: inline-block;
@@ -202,4 +202,29 @@ ul.ebay-items li table tr td {
 .record-item .item-comments {
   clear: left;
   padding-left: 5px;
+}
+
+.detailed-description {
+
+  div {
+    margin-bottom: 10px;
+  }
+
+  .description-block {
+    margin-top: 10px;
+
+    .top-image {
+      margin-right: 10px;
+      img {
+        max-width: 360px;
+      }
+    }
+
+
+  }
+
+  .additional-photos {
+    clear: both;
+    margin-bottom: 35px;
+  }
 }

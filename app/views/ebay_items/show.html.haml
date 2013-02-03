@@ -1,0 +1,24 @@
+.container
+  %div
+    %h3= link_to @ebay_item.title, @ebay_item
+  - if @ebay_item.release
+    .related-items
+      %p
+        = no_or_length(@ebay_item.related_items)
+        Related Auctions for
+        = link_to release_title_for(@ebay_item.release), @ebay_item.release
+      %p
+        = render :partial => "partials/small_ebay_item_index", :locals => {:ebay_items => @ebay_item.related_items, :num_per_row => 8}
+  - else
+    -# render :partial=> "partials/map_ebay_item", :locals => {:ebay_item => @ebay_item, :release => @release} %>
+  .clearfix
+
+  .detailed-description
+    = render :partial=> "partials/ebay_item", :locals => {:ebay_item => @ebay_item}
+  .clearfix
+
+  %div
+    %h3#comments Comments
+    = render :partial => "comments/comments", :locals => {:comments => @ebay_item.comments, :ebay_item => @ebay_item}
+
+</div>

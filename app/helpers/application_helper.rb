@@ -14,6 +14,11 @@ module ApplicationHelper
     picture.image.url
   end
 
+  def display_top_img(ebay_item)
+    picture = ebay_item.pictures.first
+    image_tag picture.present? ? display_picture_img(picture) : display_gallery_img(ebay_item)
+  end
+
   def gallery_img_for(item)
     image_tag(display_gallery_img(item))
   end
