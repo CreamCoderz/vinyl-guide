@@ -1,6 +1,6 @@
 .container
   %div
-    %h3= link_to @ebay_item.title, @ebay_item
+    %h3= link_to @ebay_item.title, @ebay_item.url, :target => '_blank'
   - if @ebay_item.release
     .related-items
       %p
