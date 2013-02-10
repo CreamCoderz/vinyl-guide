@@ -56,7 +56,7 @@ namespace :deploy do
     run "ln -s #{shared_path}/system/vinylguide_store/pictures #{current_path}/public/images/pictures"
   end
 
-  task :bundle_install, :roles => [:web, :db] do
+  task :bundle_install, :roles => [:web, :db, :util] do
     run "cd #{current_release}; bundle install"
   end
 
