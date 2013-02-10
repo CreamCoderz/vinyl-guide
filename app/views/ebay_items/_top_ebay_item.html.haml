@@ -1,12 +1,12 @@
 .top-item{:data => {:link => ebay_item_path(ebay_item)}}
   -#TODO: move peer nodes to this link to children of this link and restyle
-  = link_to ebay_item do
+  = link_to ebay_item, :title => ebay_item.title do
     -#TODO: make a helper that does this
     = display_top_img(ebay_item)
   %div
     = link_to(ebay_item.title, ebay_item, :title => "View #{ebay_item.title} Details")
   %div
-    = display_date(ebay_item.endtime)
+    = display_short_date(ebay_item.endtime)
   %div
     = number_to_currency(ebay_item.price, :unit => display_currency_symbol(ebay_item.currencytype))
     = ebay_item.currencytype

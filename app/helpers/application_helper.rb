@@ -45,6 +45,10 @@ module ApplicationHelper
     "#{time_ago_in_words(date)} ago"
   end
 
+  def display_short_date(date)
+    display_date(date).gsub('about', '')
+  end
+
   def display_long_date(date)
     date.to_time.strftime("%B %d, %Y - %I:%M:%S %p GMT")
   end

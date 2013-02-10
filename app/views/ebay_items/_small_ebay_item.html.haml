@@ -1,8 +1,8 @@
 .small-auction
-  = link_to ebay_item_path(ebay_item) do
+  = link_to ebay_item_path(ebay_item), :title => ebay_item.title do
     = gallery_img_for(ebay_item)
     %div
       = number_to_currency(ebay_item.price, :unit => display_currency_symbol(ebay_item.currencytype))
       = ebay_item.currencytype
     %div
-      = display_date(ebay_item.endtime).gsub('about', '')
+      = display_short_date(ebay_item.endtime)
