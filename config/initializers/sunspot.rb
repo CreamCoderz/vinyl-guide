@@ -18,11 +18,12 @@ module Sunspot
         command << "-Djava.util.logging.config.file=#{logging_config_path}" if logging_config_path
         command << '-jar' << File.basename(solr_jar)
         FileUtils.cd(File.dirname(solr_jar)) do
-          if ::PROPERTIES['solr_error_output'].present? && ::PROPERTIES['solr_standard_output'].present?
-            exec("#{Shellwords.shelljoin(command)} 1> #{File.join(::PROPERTIES['solr_home_path'], ::PROPERTIES['solr_standard_output'])} 2> #{File.join(::PROPERTIES['solr_home_path'], ::PROPERTIES['solr_error_output'])}")
-          else
-            exec(Shellwords.shelljoin(command))
-          end
+          #if ::PROPERTIES['solr_error_output'].present? && ::PROPERTIES['solr_standard_output'].present?
+            # STDOUT and STDERR redirection currently does not with exec
+            #command << "1> #{File.join(::PROPERTIES['solr_home_path'], ::PROPERTIES['solr_standard_output'])}"
+            #command << "2> #{File.join(::PROPERTIES['solr_home_path'], ::PROPERTIES['solr_error_output'])}"
+          #end
+          exec(*command)
         end
       end
     end
