@@ -46,6 +46,7 @@ namespace :deploy do
     run "ln -s #{shared_path}/system/config/amazon.yml #{release_path}/config/amazon.yml"
     run "ln -s #{shared_path}/system/config/database.yml #{release_path}/config/database.yml"
     run "ln -s #{shared_path}/system/config/newrelic.yml #{release_path}/config/newrelic.yml"
+    run "ln -s #{shared_path}/system/config/sunspot.yml #{release_path}/config/sunspot.yml"
     run "ln -s #{shared_path}/system/config/build.#{rails_env}.yml #{release_path}/config/build.#{rails_env}.yml"
   end
 
@@ -61,7 +62,7 @@ namespace :deploy do
 
   desc "start solr"
   task :start_solr, :roles => [:util] do
-    run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:stop || true"
+    run "if [ -f #{shared_path}/solr/pids/#{rails_env}/sunspot-solr-#{rails_env}.pid ]; then cd #{release_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:stop; fi"
     run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:start"
   end
 
