@@ -7,7 +7,7 @@ gem "mysql", "2.8.1"
 gem "cobravsmongoose", "0.0.2"
 gem 'nokogiri', '~> 1.5.0'
 gem 'sunspot_rails'
-gem 'sunspot_solr'
+gem 'sunspot_solr', :git => 'git://github.com/sunspot/sunspot.git'
 gem 'will_paginate'
 gem 'json', '1.5.1'
 gem 'factory_girl', '1.3.3'
