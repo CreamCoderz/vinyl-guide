@@ -2,6 +2,9 @@ class ReleasesController < ApplicationController
 
 #  before_filter :redirect_anonymous, :only => [:new]
 
+  # Return 410 - Gone until the releases feature is fully realized.
+  before_filter lambda { render :nothing => true, :status => 410 }
+
   def index
     @page_num = ParamsParser.parse_page_param(params)
     release_results = Release.includes(:label_entity, :format, :ebay_items).order("artist ASC").paginate(:page => @page_num, :per_page => '20')
