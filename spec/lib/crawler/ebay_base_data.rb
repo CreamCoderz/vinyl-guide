@@ -93,6 +93,7 @@ xmlns=\"http://www.ebay.com/marketplace/search/v1/services\">
   TETRACK_SPEED = "33 RPM"
   TETRACK_COUNTRY = "SE"
   TETRACK_HASIMAGE = true
+  TETRACK_GENRE = "Reggae, Ska &amp; Dub"
 
   GARNET_DESCRIPTION = '45 RPM. Garnet Silk--Babylon Be Still/Version. Johnny Osbourne--Play Play Girl. Byron Lee &amp; The Dragonaires--Spring Garden on Fire/Instrumental. Gregory Isaacs--Hard Drugs/Version.. Records between VG+ to VG++. Not Mint. Great Records to add to your collection. Thanks for looking. Please see my other auctions for more great items. Happy Bidding!!'
   GARNET_ENDTIME = '2009-07-03T22:02:53.000Z'
@@ -110,6 +111,7 @@ xmlns=\"http://www.ebay.com/marketplace/search/v1/services\">
   GARNET_SPEED = "78 RPM"
   GARNET_COUNTRY = "FR"
   GARNET_HASIMAGE = true
+  GARNET_GENRE = "Reggae, Ska &amp; Dub"
 
   TETRACK_EBAY_ITEM = EbayItemData.new(:description => CGI.unescapeHTML(TETRACK_DESCRIPTION),
           :itemid => TETRACK_ITEMID, :endtime => DateUtil.utc_to_date(TETRACK_ENDTIME), :starttime => DateUtil.utc_to_date(TETRACK_STARTTIME),
@@ -117,16 +119,13 @@ xmlns=\"http://www.ebay.com/marketplace/search/v1/services\">
           :sellerid => TETRACK_SELLERID,
           :title => CGI.unescapeHTML(TETRACK_TITLE), :country => TETRACK_COUNTRY, :pictureimgs => TETRACK_PICTURE_IMGS, :currencytype => USD_CURRENCY,
           :size => TETRACK_SIZE,
-          :subgenre => TETRACK_SUB_GENRE, :condition => TETRACK_CONDITION, :speed => TETRACK_SPEED)
+          :subgenre => TETRACK_SUB_GENRE, :condition => TETRACK_CONDITION, :speed => TETRACK_SPEED, :genre => CGI.unescapeHTML(TETRACK_GENRE))
 
   GARNET_EBAY_ITEM = EbayItemData.new(:description => CGI.unescapeHTML(GARNET_DESCRIPTION),
           :itemid => GARNET_ITEMID, :endtime => DateUtil.utc_to_date(GARNET_ENDTIME), :starttime => DateUtil.utc_to_date(GARNET_STARTTIME),
           :url => GARNET_URL, :galleryimg => GARNET_GALLERY_IMG, :bidcount => GARNET_BIDCOUNT, :price => GARNET_PRICE, :sellerid => GARNET_SELLERID,
           :title => CGI.unescapeHTML(GARNET_TITLE), :country => GARNET_COUNTRY, :pictureimgs => GARNET_PICTURE_IMGS, :currencytype => USD_CURRENCY,
-          :size => GARNET_SIZE, :subgenre => GARNET_SUB_GENRE, :condition => GARNET_CONDITION, :speed => GARNET_SPEED)
-
-
-
+          :size => GARNET_SIZE, :subgenre => GARNET_SUB_GENRE, :condition => GARNET_CONDITION, :speed => GARNET_SPEED, :genre => CGI.unescapeHTML(GARNET_GENRE))
 
   ITEMS_DETAILS_RESPONSE_XML = "<ItemSpecifics>
      <NameValueList>

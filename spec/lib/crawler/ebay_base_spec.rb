@@ -4,8 +4,8 @@ include EbayBaseData
 module EbayBaseSpec
 
   # ---------------- FINDING -------------------------
-  def self.generate_find_items_request(end_time_from, page_number, global_id='EBAY-US', sub_genre='Reggae%2C%20Ska%20%26%20Dub', app_id=NIL_API_KEY)
-    "/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=#{app_id}&GLOBAL-ID=#{global_id}&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&categoryId=176985&aspectFilter%280%29.aspectName=Genre&aspectFilter%280%29.aspectValueName=#{sub_genre}&itemFilter.name=EndTimeTo&itemFilter.value=#{DateUtil.date_to_utc(end_time_from)}&paginationInput.pageNumber=#{page_number}"
+  def self.generate_find_items_request(end_time_from, page_number, global_id='EBAY-US', app_id=NIL_API_KEY)
+    "/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=#{app_id}&GLOBAL-ID=#{global_id}&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&categoryId=176985&itemFilter.name=EndTimeTo&itemFilter.value=#{DateUtil.date_to_utc(end_time_from)}&paginationInput.pageNumber=#{page_number}"
   end
 
   def self.generate_auction_item(auction_item)
@@ -112,7 +112,7 @@ module EbayBaseSpec
      </NameValueList>
      <NameValueList>
       <Name>Genre</Name>
-      <Value>Reggae/Ska</Value>
+      <Value>#{CGI.escapeHTML(ebay_item_data.genre)}</Value>
      </NameValueList>
      <NameValueList>
       <Name>Record Size</Name>

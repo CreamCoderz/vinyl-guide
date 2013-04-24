@@ -28,6 +28,7 @@ class EbayItemsDetailsParser
               :currencytype => extract_value(CURRENCY_ID, item[PRICE]),
               :size => parsed_specifics[RECORDSIZE],
               :subgenre => parsed_specifics[SUBGENRE],
+              :genre => parsed_specifics[GENRE],
               :condition => parsed_specifics[CONDITION],
               :speed => parsed_specifics[SPEED])
         rescue Exception => e

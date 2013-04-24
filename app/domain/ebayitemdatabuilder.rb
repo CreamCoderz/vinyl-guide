@@ -14,6 +14,7 @@ class EbayItemDataBuilder
     @ebayitem.subgenre = nil
     @ebayitem.condition = nil
     @ebayitem.speed = nil
+    @ebayitem.genre = nil
     return self
   end
 
@@ -33,9 +34,6 @@ class EbayItemDataBuilder
 
   def to_data
     @num += 1
-    description, itemid, endtime, starttime, url,
-            galleryimg, bidcount, price, sellerid, title, country, pictureimgs,
-            currencytype, size=nil, subgenre=nil, condition=nil, speed=nil
     EbayItemData.new(
             :description => @ebayitem.description,
                     :itemid => @ebayitem.itemid,
@@ -53,7 +51,8 @@ class EbayItemDataBuilder
                     :size => @ebayitem.size,
                     :subgenre => @ebayitem.subgenre,
                     :condition => @ebayitem.condition,
-                    :speed => @ebayitem.speed)
+                    :speed => @ebayitem.speed,
+                    :genre => @ebayitem.genre)
   end
 
   #TODO: this is convenient but it creates a dependency to activerecord
@@ -92,7 +91,7 @@ class EbayItemDataBuilder
   class EbayItemDataSubset
     #TODO: pull in this accessor list dynamically from EbayItemData
     attr_accessor :description, :itemid, :endtime, :starttime, :url, :galleryimg, :bidcount, :price, :sellerid, :title,
-            :pictureimgs, :currencytype, :size, :subgenre, :condition, :speed, :country
+            :pictureimgs, :currencytype, :size, :subgenre, :condition, :speed, :country, :genre
 
     def initialize(num)
       @description = "the description #{num}"
@@ -112,6 +111,7 @@ class EbayItemDataBuilder
       @condition = "#{num} Used"
       @speed = "#{num} rpm"
       @country = "#{num}land"
+      @genre = "Reggae, Ska & Dub"
     end
 
   end

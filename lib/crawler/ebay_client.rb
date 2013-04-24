@@ -5,7 +5,7 @@ require File.dirname(__FILE__) + '/ebay_time_parser'
 class EbayClient
   FIND_ITEMS_CALL = 'FindItemsAdvanced'
   FIND_ITEMS_BASE_CALL = 'services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME='
-  FIND_COUNTRY_DATA = {'EBAY-US' => 'Reggae%2C%20Ska%20%26%20Dub', 'EBAY-GB' => 'Reggae%2F%20Ska'}
+  FIND_COUNTRY_DATA = ['EBAY-US', 'EBAY-GB']
 
   GET_ITEM_DETAILS_CALL = 'GetMultipleItems'
   GET_EBAY_TIME = 'geteBayTime'
@@ -23,11 +23,11 @@ class EbayClient
   def find_items(end_time_from)
     end_time_from_utc = DateUtil.date_to_utc(end_time_from)
     results = []
-    FIND_COUNTRY_DATA.each_pair do |global_id, sub_genre|
+    FIND_COUNTRY_DATA.each do |global_id|
       is_last_page = false
       page_num = 1
       while !is_last_page
-        find_items_url = generate_find_items_advanced_url(global_id, sub_genre, end_time_from_utc, page_num)
+        find_items_url = generate_find_items_advanced_url(:global_id => global_id, :end_time => end_time_from_utc, :page_num => page_num)
         p find_items_url
         response = WebClient.get(find_items_url)
         find_items_parser = EbayFindItemsParser.new(response.body)
@@ -46,6 +46,7 @@ class EbayClient
       start_pos = (i * ITEMS_PER_DETAILS_REQ)
       item_ids_query = item_ids[start_pos..[(start_pos + ITEMS_PER_DETAILS_REQ)-1, item_ids.length].min].join(',')
       item_details_url = generate_get_details_url(item_ids_query)
+      p item_details_url
       response = WebClient.get(item_details_url)
       new_details = EbayItemsDetailsParser.parse(response.body)
       new_details.each {|new_detail| yield new_detail } if new_details.present?
@@ -60,8 +61,9 @@ class EbayClient
 
   private
 
-  def generate_find_items_advanced_url(global_id, sub_genre, end_time, page_num)
-    "#{BASE_FIND_URL}#{FIND_ITEMS_BASE_CALL}#{@api_key}&GLOBAL-ID=#{global_id}&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&categoryId=#{CATEGORY_ID}&aspectFilter%280%29.aspectName=Genre&aspectFilter%280%29.aspectValueName=#{sub_genre}&itemFilter.name=EndTimeTo&itemFilter.value=#{end_time}&paginationInput.pageNumber=#{page_num}"
+  def generate_find_items_advanced_url(options)
+    global_id, end_time, page_num = options[:global_id], options[:end_time], options[:page_num]
+    "#{BASE_FIND_URL}#{FIND_ITEMS_BASE_CALL}#{@api_key}&GLOBAL-ID=#{global_id}&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&categoryId=#{CATEGORY_ID}&itemFilter.name=EndTimeTo&itemFilter.value=#{end_time}&paginationInput.pageNumber=#{page_num}"
   end
 
   def generate_get_details_url(item_ids_query)

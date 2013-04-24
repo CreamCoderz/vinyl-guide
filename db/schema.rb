@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120828055210) do
+ActiveRecord::Schema.define(:version => 20130317012628) do
 
   create_table "comments", :force => true do |t|
     t.integer  "parent_id"
@@ -54,20 +54,20 @@ ActiveRecord::Schema.define(:version => 20120828055210) do
     t.integer  "format_id"
     t.string   "gallery_image"
     t.string   "slug"
+    t.string   "genrename"
+    t.integer  "genre_id"
   end
 
   add_index "ebay_items", ["endtime"], :name => "index_ebay_items_on_endtime"
   add_index "ebay_items", ["format_id", "endtime"], :name => "index_ebay_items_on_format_id_and_endtime"
   add_index "ebay_items", ["format_id", "price"], :name => "index_ebay_items_on_format_id_and_price"
   add_index "ebay_items", ["format_id", "title"], :name => "index_ebay_items_on_format_id_and_title"
-  add_index "ebay_items", ["format_id"], :name => "index_ebay_items_on_format_id"
-  add_index "ebay_items", ["itemid"], :name => "index_ebay_items_on_itemid", :unique => true
+  add_index "ebay_items", ["genre_id", "format_id"], :name => "index_ebay_items_on_genre_id_and_format_id"
+  add_index "ebay_items", ["itemid"], :name => "index_ebay_items_on_itemid"
   add_index "ebay_items", ["price", "format_id"], :name => "index_ebay_items_on_price_and_format_id"
   add_index "ebay_items", ["release_id"], :name => "index_ebay_items_on_release_id"
-  add_index "ebay_items", ["size"], :name => "index_ebay_items_on_size"
   add_index "ebay_items", ["slug"], :name => "index_ebay_items_on_slug", :unique => true
   add_index "ebay_items", ["title", "format_id"], :name => "index_ebay_items_on_title_and_format_id"
-  add_index "ebay_items", ["title"], :name => "index_ebay_items_on_title"
 
   create_table "favorites", :force => true do |t|
     t.integer  "user_id"
@@ -80,6 +80,13 @@ ActiveRecord::Schema.define(:version => 20120828055210) do
 
   create_table "formats", :force => true do |t|
     t.string "name"
+  end
+
+  create_table "genres", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "labels", :force => true do |t|

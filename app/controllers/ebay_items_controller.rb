@@ -34,8 +34,8 @@ class EbayItemsController < ApplicationController
   end
 
   def home
-    @top_items = Rails.cache.fetch("top-items", :expires_in => 5.minutes) { EbayItem.top_items.limit(TOP_HOME_PAGE_LIMIT).all }
-    @ebay_items = Rails.cache.fetch("recent-items", :expires_in => 5.minutes) { EbayItem.order('endtime DESC').limit(SMALL_HOME_PAGE_LIMIT) }
+    @top_items = Rails.cache.fetch("top-items", :expires_in => 5.minutes) { EbayItem.reggae.top_items.limit(TOP_HOME_PAGE_LIMIT).all }
+    @ebay_items = Rails.cache.fetch("recent-items", :expires_in => 5.minutes) { EbayItem.reggae.order('endtime DESC').limit(SMALL_HOME_PAGE_LIMIT) }
   end
 
   def show
@@ -58,7 +58,7 @@ class EbayItemsController < ApplicationController
   def set_page_results
     scope = params[:action]
     scope = 'all_time' if scope == 'all' # hack to resolve early poor lifestyle decisions.
-    ebay_items = EbayItem.send(scope).send(@time).includes(:comments => :user).order(@order_query).paginate(:page => @page_num, :per_page => '20')
+    ebay_items = EbayItem.reggae.send(scope).send(@time).includes(:comments => :user).order(@order_query).paginate(:page => @page_num, :per_page => '20')
     @page_results = Paginator::Result.new(:paginated_results => ebay_items)
   end
 

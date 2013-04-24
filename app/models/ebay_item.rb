@@ -23,12 +23,15 @@ class EbayItem < ActiveRecord::Base
 
   belongs_to :release
   belongs_to :format
+  belongs_to :genre
 
   has_many :pictures, :foreign_key => "ebay_item_id"
   has_many :comments, :as => :parent, :order => "created_at DESC"
 
   mount_uploader :gallery_image, GalleryImageUploader
   friendly_id :title, :use => :slugged
+
+  scope :reggae, where(:genre_id => Genre::REGGAE_SKA_AND_DUB)
 
   scope :all_time, lambda {}
   scope :singles, where(:format_id => Format::SINGLE.id)
@@ -46,6 +49,7 @@ class EbayItem < ActiveRecord::Base
   @@per_page = 20
 
   before_save :set_format
+  before_save :set_genre
   after_create :save_gallery_image
   after_destroy :destroy_image
 
@@ -80,6 +84,10 @@ class EbayItem < ActiveRecord::Base
     self.format ||= FORMATS_BY_SIZE.keys.detect do |format|
       FORMATS_BY_SIZE[format].include?(size)
     end
+  end
+
+  def set_genre
+    self.genre ||= Genre.find_by_name(genrename)
   end
 
   def destroy_image

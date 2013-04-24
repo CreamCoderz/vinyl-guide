@@ -17,6 +17,8 @@ Factory.define :ebay_item do |ebay_item|
   ebay_item.currencytype "USD"
   ebay_item.hasimage false
   ebay_item.release_id nil
+  ebay_item.genrename { Genre::REGGAE_SKA_AND_DUB.name }
+  ebay_item.genre_id { Genre::REGGAE_SKA_AND_DUB.id }
 end
 
 Factory.define :single_ebay_item, :parent => :ebay_item do |ebay_item|

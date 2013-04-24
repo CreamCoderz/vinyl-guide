@@ -17,5 +17,8 @@ class Picture < ActiveRecord::Base
   def save_image
     self.remote_image_url = url
     save!
+  rescue Timeout::Error => e
+    p "Timeout fetching image.. #{url}"
+    false
   end
 end

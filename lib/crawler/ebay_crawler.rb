@@ -35,7 +35,7 @@ class EbayCrawler
                                  :starttime => item_details.starttime, :url => item_details.url, :galleryimg => item_details.galleryimg,
                                  :sellerid => item_details.sellerid, :country => item_details.country, :size => item_details.size,
                                  :speed => item_details.speed, :condition => item_details.condition, :subgenre => item_details.subgenre,
-                                 :currencytype => item_details.currencytype)
+                                 :genrename => item_details.genre, :currencytype => item_details.currencytype)
         if ebay_item.save
           p "created item: #{ebay_item.inspect}"
           added_items_count += 1

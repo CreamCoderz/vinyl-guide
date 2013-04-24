@@ -26,7 +26,7 @@ describe EbayClient do
     WebClient.client = web_client
     find_items_results = ebay_client.find_items(end_time_to)
     web_client.path[0].should == EbayBaseSpec.generate_find_items_request(end_time_to, 1)
-    web_client.path[1].should == EbayBaseSpec.generate_find_items_request(end_time_to, 1, 'EBAY-GB', 'Reggae%2F%20Ska')
+    web_client.path[1].should == EbayBaseSpec.generate_find_items_request(end_time_to, 1, 'EBAY-GB')
     web_client.host.should == SAMPLE_BASE_FIND_HOST
     find_items_results.should == FOUND_ITEMS.concat([FOUND_ITEM_6, FOUND_ITEM_7])
     #TODO: log all other unmarked items
@@ -35,7 +35,7 @@ describe EbayClient do
   it "should send request per page for many pages of find items results" do
     web_client = WebClient
     end_time_to = Date.new.next
-    uk_request = EbayBaseSpec.generate_find_items_request(end_time_to, 1, 'EBAY-GB', 'Reggae%2F%20Ska')
+    uk_request = EbayBaseSpec.generate_find_items_request(end_time_to, 1, 'EBAY-GB')
     expected_url1 = EbayBaseSpec.generate_find_items_request(end_time_to, 1)
     expected_url2 = EbayBaseSpec.generate_find_items_request(end_time_to, 2)
     uk_response = make_success_response(EbayBaseSpec.generate_complete_find_items_response(1, 1))

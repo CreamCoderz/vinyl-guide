@@ -2,6 +2,7 @@ require 'spec_helper'
 
 require File.dirname(__FILE__) + "/ebay_items_details_parser_helper"
 require File.dirname(__FILE__) + '/../../../lib/crawler/ebay_items_details_parser'
+require File.dirname(__FILE__) + '/ebay_base_spec'
 include EbayItemsDetailsParserHelper
 include EbayBaseSpec
 
@@ -64,7 +65,7 @@ describe EbayItemsDetailsParser do
     check_ebay_item(expected_item_data, item_detailses[0])
   end
 
-  it "sould handle parsing one picture image node" do
+  it "should handle parsing one picture image node" do
     @ebay_item.pictureimgs = ['http://blah.com/1']
     expected_item_data = @ebay_item.to_data
     item_detail_response = EbayBaseSpec.generate_detail_item_xml_response(expected_item_data)

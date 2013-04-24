@@ -18,6 +18,7 @@ module EbayItemsDetailsParserData
   ITEMSPECIFICS = 'ItemSpecifics'
   NAMEVALUELIST = 'NameValueList'
   RECORDSIZE = 'Record Size'
+  GENRE = 'Genre'
   SUBGENRE = 'Sub-Genre'
   NAME = 'Name'
   VALUE = 'Value'
@@ -35,7 +36,7 @@ module EbayItemsDetailsParserData
   NULL_STRATEGY = lambda{|node|node}
 
   ITEMSSPECIFICS_STRATEGY = lambda do |item_specifics_node|
-    parsed_specifics = {RECORDSIZE => nil, SUBGENRE => nil, CONDITION => nil, SPEED => nil}
+    parsed_specifics = {RECORDSIZE => nil, SUBGENRE => nil, CONDITION => nil, SPEED => nil, GENRE => nil}
     if item_specifics_node
       item_specifics = item_specifics_node[NAMEVALUELIST]
       item_specifics = ArrayUtil.arrayifiy(item_specifics)

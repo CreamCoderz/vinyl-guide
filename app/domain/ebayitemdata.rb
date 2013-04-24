@@ -1,5 +1,5 @@
 class EbayItemData
-  attr_reader :description, :itemid, :endtime, :starttime, :url, :galleryimg, :bidcount, :price, :sellerid, :title, :pictureimgs, :currencytype, :size, :subgenre, :condition, :speed, :country
+  attr_reader :description, :itemid, :endtime, :starttime, :url, :galleryimg, :bidcount, :price, :sellerid, :title, :pictureimgs, :currencytype, :size, :subgenre, :genre, :condition, :speed, :country
 
   def initialize(params)
     @description = params[:description]
@@ -15,6 +15,7 @@ class EbayItemData
     @pictureimgs = params[:pictureimgs]
     @size = params[:size]
     @subgenre = params[:subgenre]
+    @genre = params[:genre]
     @condition = params[:condition]
     @speed = params[:speed]
     @country = params[:country]
@@ -40,6 +41,7 @@ class EbayItemData
     result = result && self.condition == other.condition
     result = result && self.speed == other.speed
     result = result && self.country == other.country
+    result = result && self.genre == other.genre
   end
 
 
