@@ -87,7 +87,7 @@ class EbayItem < ActiveRecord::Base
   end
 
   def set_genre
-    self.genre ||= Genre.find_by_name(genrename)
+    self.genre ||= Genre.find_by_ebay_genre(genrename)
   end
 
   def destroy_image

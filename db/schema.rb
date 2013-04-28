@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130317012628) do
+ActiveRecord::Schema.define(:version => 20130428072450) do
 
   create_table "comments", :force => true do |t|
     t.integer  "parent_id"
@@ -81,6 +81,15 @@ ActiveRecord::Schema.define(:version => 20130317012628) do
   create_table "formats", :force => true do |t|
     t.string "name"
   end
+
+  create_table "genre_aliases", :force => true do |t|
+    t.string   "name"
+    t.integer  "genre_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "genre_aliases", ["name"], :name => "index_genre_aliases_on_name"
 
   create_table "genres", :force => true do |t|
     t.string   "name"

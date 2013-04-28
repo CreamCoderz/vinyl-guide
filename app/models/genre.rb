@@ -25,4 +25,7 @@ class Genre < ActiveRecord::Base
 
   validates_uniqueness_of :name
 
+  def self.find_by_ebay_genre(ebay_genre)
+    find_by_name(ebay_genre) || GenreAlias.find_by_name(ebay_genre).try(:genre)
+  end
 end
