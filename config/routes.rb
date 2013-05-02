@@ -20,6 +20,11 @@ VinylGuide::Application.routes.draw do
   resources :ebay_items
   resources :comments
 
+  namespace :admin do
+    resources :genres
+    resources :genre_aliases
+  end
+
   match 'search' => 'search#search'
   match 'singles' => 'ebay_items#singles'
   match 'eps' => 'ebay_items#eps'

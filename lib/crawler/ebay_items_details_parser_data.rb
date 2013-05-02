@@ -42,7 +42,9 @@ module EbayItemsDetailsParserData
       item_specifics = ArrayUtil.arrayifiy(item_specifics)
       item_specifics.each do |item_specific|
         if parsed_specifics.key? item_specific[NAME][NODE_VALUE]
-          parsed_specifics[item_specific[NAME][NODE_VALUE]] = item_specific[VALUE][NODE_VALUE]
+          item_specific_value = item_specific[VALUE]
+          item_specific_value = item_specific_value.first if item_specific_value.is_a?(Array)
+          parsed_specifics[item_specific[NAME][NODE_VALUE]] = item_specific_value[NODE_VALUE]
         end
       end
     end

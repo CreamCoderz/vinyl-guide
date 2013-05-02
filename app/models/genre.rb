@@ -1,4 +1,10 @@
 class Genre < ActiveRecord::Base
+  has_many :genre_aliases
+  has_many :ebay_items
+
+  accepts_nested_attributes_for :genre_aliases
+
+  after_create :update_ebay_items
 
   #BLUES = Genre.find_by_name("Blues")
   #CHILDRENS = Genre.find_by_name("Children's")
@@ -27,5 +33,11 @@ class Genre < ActiveRecord::Base
 
   def self.find_by_ebay_genre(ebay_genre)
     find_by_name(ebay_genre) || GenreAlias.find_by_name(ebay_genre).try(:genre)
+  end
+
+  private
+
+  def update_ebay_items
+    EbayItem.where(:genrename => name).update_all(["genre_id = ?", id])
   end
 end

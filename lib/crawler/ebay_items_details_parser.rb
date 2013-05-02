@@ -48,7 +48,7 @@ class EbayItemsDetailsParser
       VALUE_EXTRACTOR[field].call(node[field])
     rescue Exception => e
       puts "problem with nil field: #{field} node: #{node}"
-      raise Exception
+      raise e
     end
 
   end
