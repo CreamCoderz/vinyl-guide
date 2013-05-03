@@ -1,7 +1,6 @@
 class Admin::GenresController < Admin::AdminController
   def index
-    genre_names = EbayItem.select('distinct(genrename), genre_id').where('genrename is not null').where('genre_id is null').map(&:genrename).uniq.sort
-    @uncategorized_genre_aliases = genre_names.map { |genre_name| GenreAlias.new(:name => genre_name) }
+    @uncategorized_genre_aliases = EbayItem.group(:genrename).where('genrename is not null').where('genre_id is null').count
     @genres = Genre.order('name ASC').all(:include => :genre_aliases)
   end
 

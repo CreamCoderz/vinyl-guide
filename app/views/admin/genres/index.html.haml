@@ -2,9 +2,10 @@
   %h2 Genres
 
   %h3 Uncategorized Genre Names
-  - @uncategorized_genre_aliases.each do |genre_alias|
+  - @uncategorized_genre_aliases.each do |genre_name, count|
+    - genre_alias = GenreAlias.new(:name => genre_name)
     .new-genre
-      %p= genre_alias.name
+      %p= "#{genre_alias.name} (#{count})"
       = form_for [:admin, genre_alias] do |f|
         = f.hidden_field :name
         - options = options_for_select([nil] + @genres.map{|genre| [genre.name, genre.id]})
