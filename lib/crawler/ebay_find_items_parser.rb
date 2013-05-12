@@ -32,4 +32,7 @@ class EbayFindItemsParser
     @num_total_items
   end
 
+  def total_pages
+    @total_pages.to_i
+  end
 end

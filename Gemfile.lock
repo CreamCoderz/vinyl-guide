@@ -68,11 +68,15 @@ GEM
       warden (~> 1.1)
     diff-lcs (1.1.3)
     erubis (2.7.0)
+    ethon (0.5.12)
+      ffi (>= 1.3.0)
+      mime-types (~> 1.18)
     excon (0.13.4)
     execjs (1.4.0)
       multi_json (~> 1.0)
     factory_girl (1.3.3)
     fastthread (1.0.7)
+    ffi (1.8.1)
     file-tail (1.0.12)
       tins (~> 0.5)
     fog (1.3.1)
@@ -201,6 +205,8 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
+    typhoeus (0.6.3)
+      ethon (~> 0.5.11)
     tzinfo (0.3.35)
     uglifier (1.2.4)
       execjs (>= 0.3.0)
@@ -244,6 +250,7 @@ DEPENDENCIES
   sunspot_solr!
   test-unit (= 1.2.3)
   therubyracer
+  typhoeus (~> 0.6.3)
   uglifier
   webmock
   will_paginate

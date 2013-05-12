@@ -24,6 +24,7 @@ gem "fog", "~> 1.3.1"
 gem 'friendly_id', "~> 4.0.1"
 gem 'libv8', '~> 3.11.8'
 gem "therubyracer", :require => 'v8'
+gem "typhoeus", '~> 0.6.3'
 
 group :test do
   gem 'rspec', '2.5'

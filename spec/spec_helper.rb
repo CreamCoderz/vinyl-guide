@@ -34,6 +34,11 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
+  config.before(:all) do
+    SeedData.create_formats
+    SeedData.create_genres
+  end
+
   config.before(:each) do
     WebMock.disable_net_connect!(:allow_localhost => true)
   end
